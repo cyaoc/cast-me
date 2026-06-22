@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor and IDE local settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
