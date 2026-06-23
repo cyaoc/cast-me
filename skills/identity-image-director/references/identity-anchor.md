@@ -14,6 +14,8 @@ When these conflict, recommend simplifying the scene, crop, action, hand work, p
 
 Use `styling-performance.md` for the styling/performance decision itself. This module's veto means veto silent high-risk execution, not veto user choice: when styling, performance, beautification, camera, or composition choices risk face drift or body deformation, require the coordinating director to present a risk-choice gate unless the user already accepted that risk.
 
+Risk-choice gates must inherit the current decision state. If the user already locked a scene, shot, pose/action, expression, or beauty direction, do not reopen that dimension. Ask only how to handle the risk inside the chosen direction, such as reduce intensity, generate one version now, switch to a safer variant of the same choice, or accept the risk.
+
 Treat identity preservation as best effort, not guaranteed. Do not identify the person, infer sensitive traits, transform the person into a celebrity, or claim consent/ownership/age/relationship details the user did not provide.
 
 Use `user-provided self-reference image` only when the user explicitly says the image is them, a selfie, or their own image. Otherwise use `user-provided person reference image`.
@@ -119,7 +121,7 @@ Reply with A, or reply with "B + athletic build + relaxed smile + three-quarter 
 
 If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the primary identity reference. If the user chooses natural inference or accepts recommended defaults, continue without further sufficiency questions unless a new missing dimension becomes central to the request. Make the prompt explicit that inferred body scale, angle, and expression are natural estimates, not verified identity facts.
 
-For high-risk source-to-target jumps from close-up selfies, screenshots, beautified images, or single-angle face references into new scenes, complex actions, hand/prop interaction, full-body, or half-body-to-thigh compositions, recommend a conservative identity-first path unless the user explicitly chooses a more ambitious composition or says to generate a first attempt despite risk.
+For high-risk source-to-target jumps from close-up selfies, screenshots, beautified images, or single-angle face references into new scenes, complex actions, hand/prop interaction, full-body, or half-body-to-thigh compositions, recommend a conservative identity-first path unless the user explicitly chooses a more ambitious composition or says to generate a first attempt despite risk. If a direction is already locked, make the conservative path a safer variant of that direction rather than a new concept.
 
 For high-risk source-to-target jumps, offer a staged stability strategy when possible: first generate a conservative half-body or three-quarter composition that locks likeness and natural proportions with reduced action complexity; if the result is close, make one targeted revision for face likeness, proportion, or deformation without reinventing the scene. If the user chooses a riskier first attempt, preserve identity as much as possible and state the accepted risk in the prompt.
 

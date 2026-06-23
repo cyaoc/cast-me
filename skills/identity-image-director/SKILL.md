@@ -30,8 +30,14 @@ For normal generation, read all three references before generation. For a narrow
   - then a localized options label with 2-4 concrete choices using `A)`, `B)`, `C)`, and optional `D)`, with one choice marked by a localized equivalent of `(Recommended)` when a safe default exists
   - end with a localized reply instruction showing how to accept the recommendation and how to override specific fields
 - Do not use bare open-ended questions, yes/no-only prompts, or number-only menus for clarification. Give concrete choices, the recommended path, and shorthand examples.
-- Ask missing production-critical choices serially, one dimension per turn, with concrete suggestions. Do not hide important choices inside a dense preset when the user has not chosen them.
+- Ask missing production-critical choices serially, one unresolved dimension or tightly coupled decision group per turn, with concrete suggestions. Do not hide important choices inside a dense preset when the user has not chosen them.
 - Do not create nested menus. A follow-up must ask the next missing decision, not route the user into another category menu.
+- Maintain a decision state after every user response:
+  - `locked`: the user explicitly selected, specified, overrode, or accepted this value through recommended defaults
+  - `suggested`: a prior option or recommendation previewed this value, but the user has not explicitly locked it
+  - `unresolved`: the value is still missing and production-critical
+- Every clarification must ask exactly one unresolved dimension or tightly coupled decision group and inherit all locked and suggested prior decisions. Do not ask a locked dimension again unless the user reopens it, contradicts it, or asks to change it.
+- Suggested details are not final choices, but later questions must refine or adapt from them instead of restarting with generic menus. When the user accepts recommended defaults, convert relevant suggested details into locked decisions.
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording.
 - If the user says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording, stop asking and generate with recommended defaults for unresolved choices.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks Codex to decide, or the dimension is irrelevant to the requested output.
@@ -79,7 +85,7 @@ Resolve aspect ratio, crop, and text treatment through the serial clarification 
 
 After the output type is known, use `references/composition-director.md` to infer the design read and ask one creative-direction follow-up unless the user's brief is already detailed enough to write a complete production prompt.
 
-Use this serial clarification ladder for missing production-critical choices. Ask only the next unresolved dimension, and skip a dimension only when it is already specified, irrelevant, or the user has accepted recommended defaults:
+Use this serial clarification ladder for missing production-critical choices. Ask only the next unresolved dimension or tightly coupled decision group. Skip any dimension that is locked, irrelevant, or accepted through recommended defaults; carry suggested values forward as the basis for later options:
 
 1. output type / canvas intent
 2. creative direction / scene concept
@@ -90,7 +96,7 @@ Use this serial clarification ladder for missing production-critical choices. As
 7. lighting and color/palette
 8. avoid-list and theme-breaking elements
 
-Combine tightly coupled dimensions when that reduces friction, such as `pose/action + expression`, `lighting + color/palette`, or a shot direction that resolves composition together with necessary styling/performance details. Do not combine unrelated dimensions into a dense all-in-one menu unless the user explicitly asks to speed through with recommended defaults.
+Combine tightly coupled dimensions when that reduces friction, such as `pose/action + expression`, `lighting + color/palette`, or a shot direction that resolves composition together with necessary styling/performance details. When a combined question locks several fields, record each field as locked and do not ask them again. Do not combine unrelated dimensions into a dense all-in-one menu unless the user explicitly asks to speed through with recommended defaults.
 
 For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
 
@@ -100,7 +106,7 @@ Use `references/composition-director.md` for creative direction options, portrai
 
 Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose/action, expression, gaze, hand direction, and performance complexity.
 
-If `references/identity-anchor.md` flags a high-risk source-to-target jump or conflict with styling/performance, ask one risk-choice gate before generation unless the user already accepted the risk:
+If `references/identity-anchor.md` flags a high-risk source-to-target jump or conflict with styling/performance, ask one risk-choice gate before generation unless the user already accepted the risk. The risk-choice gate must inherit the user's locked concept, composition, pose/action, expression, and beauty direction; it may adjust intensity or risk handling, but must not restart the direction choice:
 
 ```text
 I recommend: use the stable identity-first version first, because the current reference is better for locking face likeness than for strong pose, strong expression, heavy beautification, or complex hands.

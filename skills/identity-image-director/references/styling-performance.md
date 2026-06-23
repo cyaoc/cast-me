@@ -8,6 +8,8 @@ This module owns what the person wears, holds, does, and performs. It must respe
 
 When styling or performance conflicts with identity likeness or natural anatomy, simplify wardrobe changes, props, hand work, action complexity, head turn, expression intensity, or beautification before sacrificing likeness or body structure unless the user explicitly chooses a riskier level.
 
+Before asking about wardrobe, props, pose, expression, gaze, hands, or beauty level, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or beauty level again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
+
 ## Risk and Beauty Levels
 
 Use these levels when the coordinating director needs to ask a risk-choice gate or write the accepted tradeoff into the production prompt:
@@ -42,6 +44,8 @@ Resolve wardrobe, headwear, jewelry, accessories, makeup, hair styling, and prop
 Do not replace distinctive clothing, headwear, jewelry, accessories, hairstyle, or makeup unless the user requests replacement, accepts defaults that include replacement, or the chosen concept makes replacement unavoidable.
 
 If the output type is known, the user has not specified wardrobe/accessory treatment, and the original clothing, headwear, jewelry, or accessories are visually important or may conflict with the requested format, ask one short follow-up before generation.
+
+If a creative direction already suggested a styling lane, such as lifestyle, street photo, editorial, professional, cinematic, or character design, wardrobe/accessory options must stay inside that lane unless the user reopens the direction.
 
 Do not combine wardrobe/accessory treatment into the creative-direction question unless the user already specified it or it is inseparable from the requested concept. If wardrobe/accessory treatment is still missing after the direction is chosen, ask it as the next serial clarification.
 
@@ -78,6 +82,8 @@ If hand/prop interaction is complex and the reference is a close-up selfie, scre
 ## Performance Direction
 
 Pose/action options must cover body direction, gaze, mouth state, and energy level. Keep performance theme-appropriate while preserving identity readability.
+
+If the user already chose an action, do not ask "what action" again. Ask only the unresolved performance detail, such as expression intensity, gaze, hand simplification, or risk level. If an action was suggested but not locked, offer refinements that inherit it, such as lighter, more dynamic, or safer variations.
 
 Pose and expression should serve the requested theme, not blindly copy the screenshot. Prefer natural, restrained direction over exaggerated posing. Keep both eyes, nose bridge, lips, and face outline clearly visible unless the user asks for a profile or obscured-face concept.
 

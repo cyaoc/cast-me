@@ -17,6 +17,8 @@ After the output type is known, infer the design read:
 
 Before proposing options or writing a production prompt, form a compact design read: what the image is for, who will view it, what visual language fits, and which defaults must be avoided. Let the design read pick the aesthetic; do not default to generic AI taste.
 
+Before asking any composition question, read the coordinating director's decision state. Do not ask for a locked output type, scene concept, aspect ratio, crop, shot distance, camera angle, or text treatment again. If a prior option suggested shot, pose, lighting, or palette details, use those suggestions as the starting point for the next options instead of offering a generic menu.
+
 Resolve one creative-direction follow-up for every output type unless the user's brief is already detailed enough to write a complete production prompt. This applies to portraits, professional headshots, posters, CG/key art, editorial images, avatars, commercial visuals, and custom themes.
 
 If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, present 2-4 concrete viable directions for the user to choose. Each option should differ meaningfully in setting, role/archetype, mood, and output use; it may include sample pose, expression, lighting, or palette as preview hints, but those hints are not resolved choices unless the user explicitly accepts defaults. Do not offer generic labels without visual substance.
@@ -37,7 +39,7 @@ D) Custom / mix-and-match - describe your own theme or combine several direction
 Reply with A, or reply with "B + use recommended defaults". If you reply with only B, I will ask the next missing dimension, such as styling/performance, aspect ratio, or lighting/color.
 ```
 
-The visual details inside creative-direction options are previews. If the user replies with only a direction letter/name, continue the serial ladder and ask the next unresolved dimension. Treat preview details as final only if the user accepts defaults or repeats them explicitly.
+The visual details inside creative-direction options are suggested previews unless the question explicitly says it is resolving a production package. If the user replies with only a direction letter/name, lock the chosen direction and continue the serial ladder with the next unresolved dimension. Later questions must inherit the suggested preview details and refine them; treat preview details as final only if the user accepts defaults or repeats them explicitly.
 
 For practical formats such as LinkedIn, resume, social avatar, or realistic portrait, options should still be concrete, such as different background types, crop, expression, wardrobe treatment, lighting, palette, and polish level. Do not skip the direction follow-up just because the output type is conventional.
 
@@ -46,6 +48,8 @@ Use concrete visual language. Prefer materials, light, camera, location, props, 
 ## Shot Direction
 
 Shot direction may resolve composition, crop, camera distance/angle, subject blocking, and background relationship in one decision. Use `styling-performance.md` for exact pose/action, expression, gaze, hands, props, and performance complexity. If shot direction also resolves those choices, skip the later pose/action question unless a production-critical detail remains unresolved.
+
+If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If crop, camera distance, or angle is already locked, do not ask shot direction again; only ask the unresolved part, such as background relationship or negative space.
 
 For realistic portraits, personal photoshoots, lifestyle portraits, social portraits, and beauty/editorial portraits, ask a lightweight portrait shot-direction question unless the user already specified crop, pose, expression, hands, background/props, or accepted recommended defaults. Portraits are common but still need directed composition and performance.
 
