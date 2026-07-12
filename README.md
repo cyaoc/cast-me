@@ -6,14 +6,23 @@ It is meant for person-centered outputs such as portraits, professional headshot
 
 ## Install in Codex
 
-From this repository:
+This repository is a standalone Codex skill, not a marketplace plugin. With Codex installed, run the bundled skill installer against this GitHub URL:
+
+**macOS / Linux**
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R skills/identity-image-director ~/.codex/skills/
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
 ```
 
-Then start a new Codex session, or reload Codex if your environment supports skill reloads.
+**Windows PowerShell**
+
+```powershell
+python "$HOME\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" `
+  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+```
+
+The installer places it in `~/.codex/skills/identity-image-director` and stops if that destination already exists. Start a new Codex session, then invoke `$identity-image-director`.
 
 ## How to Use
 
