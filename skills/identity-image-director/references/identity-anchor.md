@@ -4,17 +4,19 @@ Use this reference whenever a person reference image is involved. Its job is to 
 
 ## Priority
 
-Apply output priorities in this order:
+Separate locked user intent from quality constraints.
 
-1. visible identity likeness
-2. natural non-deformed anatomy
-3. composition, scene, pose, lighting, styling transformation, and performance ambition
+Locked intent includes every selected scene, shot, camera perspective, projection strength, action, head direction, gaze, styling, and output requirement. Do not silently change it.
 
-When these conflict, recommend simplifying the scene, crop, action, hand work, props, camera ambition, beautification, or styling before sacrificing likeness or natural body structure. This is the default recommendation, not a silent override of the user's choice.
+Within that intent, apply quality priorities:
 
-Use `styling-performance.md` for the styling/performance decision itself. This module's veto means veto silent high-risk execution, not veto user choice: when styling, performance, beautification, camera, or composition choices risk face drift or body deformation, require the coordinating director to present a risk-choice gate unless the user already accepted that risk.
+1. recognizable facial identity adapted to the target face angle
+2. valid underlying anatomy plus coherent projected proportions and pose geometry
+3. nonessential scene, styling, prop, hand-detail, lighting, and finish complexity
 
-Risk-choice gates must inherit the current decision state. If the user already locked a scene, shot, pose/action, expression, or beauty direction, do not reopen that dimension. Ask only how to handle the risk inside the chosen direction, such as reduce intensity, generate one version now, switch to a safer variant of the same choice, or accept the risk.
+If locked intent conflicts with identity or geometry, present a risk-choice gate. Recommend improving missing evidence or simplifying only unresolved, nonessential variables first. Change a locked camera, action, head direction, or gaze only when the user explicitly reopens it, never as an automatic fallback.
+
+Use `styling-performance.md` for the performance decision itself. This module vetoes silent high-risk execution, not the user's chosen direction.
 
 Treat identity preservation as best effort, not guaranteed. Do not identify the person, infer sensitive traits, transform the person into a celebrity, or claim consent/ownership/age/relationship details the user did not provide.
 
@@ -72,20 +74,20 @@ Avoid:
 - removing distinctive wardrobe, headwear, jewelry, or accessories unless requested
 - redesigning the face
 - beautifying into a different face
-- changing face width, eye shape, nose structure, lips, chin, jawline, skin tone, or age impression
+- redesigning underlying face width, intrinsic eye shape, nose structure, lips, chin, jawline, skin tone, or age impression; target angle and locked projection may change their apparent outline, visibility, or image-space size
 - random text
 - watermarks
-- distorted face or hands
+- random or target-plane-inconsistent face deformation, or malformed hands
 - copying the source close-up crop scale into a full-body image
-- oversized head, tiny body, doll-like proportions, chibi proportions, compressed torso, or miniature limbs unless explicitly requested
+- structurally oversized head, compressed torso, miniature limbs, or doll-like anatomy not explained by the selected projection
 - pasting a frontal face onto an angled head, side-facing body, or action pose
 - stiff copied expression, selfie gaze, frozen reference-photo mouth shape, or unnatural face/body mismatch
 
 When the target image needs a different pose, expression, camera angle, crop, or full-body composition, preserve the identity anchors while adapting the face and body naturally to the new state. The source image is not a template for pose, expression, face angle, camera distance, or head-to-body scale unless the user says to copy those details.
 
-For close-up or half-body references used in full-body outputs, state that the input is only a face/visible-styling reference. Do not preserve the source image's close-up head scale. Use natural human proportions, camera distance appropriate for a complete standing or seated figure, balanced head-to-body scale, realistic shoulder width, torso length, legs, and feet.
+For close-up or half-body references used beyond the visible source coverage, state that the input verifies only the shown face, body, and styling evidence. Do not copy the source crop's head size into a wider target. Keep underlying anatomy structurally valid while letting projected sizes follow the locked viewpoint, distance, and perspective strength.
 
-For full-body and three-quarter outputs, require natural adult human proportions: realistic head-to-body scale, shoulder width, torso length, leg length, and limb size. Identity similarity must come from facial structure and visible styling anchors, not from enlarging the head.
+For full-body and three-quarter outputs, distinguish underlying anatomy from projected proportions. Shoulder, torso, hip, limb, and joint relationships must remain valid in world space; apparent head/body size and limb foreshortening may change intentionally with camera projection. Identity similarity must come from facial structure, not arbitrary local enlargement disconnected from that projection.
 
 For frontal references used in angled, side-facing, action, poster, or cinematic outputs, do not force a frontal face onto the new pose. Adapt the same facial structure to the target head turn and camera perspective so the gaze, jawline, cheek plane, nose bridge, mouth angle, and face outline match the selected direction.
 
@@ -95,35 +97,41 @@ If there are multiple reference images, label each one by role, such as `Image 1
 
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
-## Reference Sufficiency
+## Reference Coverage
+
+Before generation, record only the coverage needed by the target as `verified`, `described`, `inferred`, or `missing`:
+
+- face identity coverage: visible facial structure and which face angles are actually shown
+- body-scale coverage: visible shoulder, torso, hip, limb, height, stance, and outfit information
+- angle coverage: frontal, three-quarter, profile, high/low viewpoint, and perspective evidence
+- performance coverage: expression range, weight-bearing pose, action, hands, and prop interaction
+
+The source image remains evidence only for what it shows. A face or upper-body reference can verify face identity and visible styling without verifying full-body scale, alternate angles, or action geometry.
 
 Run this check before generation when the requested output depends on source information the provided reference does not show well:
 
-- full-body, seated, 9:16 half-body-to-thigh, hand/prop interaction, or complex action output from a face close-up, selfie, screenshot, beautified image, or half-body reference
-- side profile, strong head turn, over-the-shoulder pose, or cinematic angle from a frontal-only reference
-- specific body build, height impression, outfit, lower body, shoes, or posture that is not visible
-- strong expression change when the reference has only one stiff, selfie, screenshot, or neutral expression
+- the target reveals body scale, limbs, feet, posture, support, hands, or prop interaction outside the visible source coverage
+- the target requires face, head, body, or camera angles not shown by the source
+- the target depends on body build, height impression, outfit, or movement facts that are not visible
+- the target requires expression or performance range not demonstrated by the source
 - multiple reference images with unclear roles
 
-If the missing information is production-critical and the user has not accepted recommended defaults, ask one options block before generation. Prefer the accuracy-preserving path over natural inference:
+If production-critical coverage is missing and the user has not explicitly accepted inference for those gaps, ask one options block before generation. Construct the risk options from the actual coverage gaps and inherit every locked scene, camera, shot, action, expression, and styling choice.
 
-```text
-I recommend: add the missing reference details before generation, because the current image is enough for visible face identity but not enough to define exact body scale, alternate face angles, or expression range accurately.
+Offer only relevant paths:
 
-Options:
-A) I will attach more real reference images (Recommended) - full-body, side/profile, outfit, posture, or expression references for better accuracy
-B) I will describe missing details - body build, posture, side/profile features, expression range, outfit, or lower-body details
-C) Continue with natural inference - preserve identity anchors, infer realistic body proportions, adapt face angle and expression naturally to the scene; treat inferred details as estimates, not verified identity facts
-D) Use a safer composition - half-body or three-quarter crop instead of full-body/action framing
+- add real references for the missing body, angle, expression, hand, outfit, or action evidence
+- describe the missing facts
+- continue with clearly labeled inference and accept the corresponding identity/anatomy/perspective risk
+- use a staged stability pass when it materially reduces risk, while labeling the intermediate body or angle as inferred rather than verified
 
-Reply with A, or reply with "B + athletic build + relaxed smile + three-quarter left angle", or reply with "C + use recommended defaults".
-```
+Recommend the most accurate path that preserves locked intent. Change camera, crop, or action only if the user explicitly reopens it; never introduce that change as a fallback inside the coverage gate.
 
-If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the primary identity reference. If the user chooses natural inference or accepts recommended defaults, continue without further sufficiency questions unless a new missing dimension becomes central to the request. Make the prompt explicit that inferred body scale, angle, and expression are natural estimates, not verified identity facts.
+If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the primary identity reference. If the user explicitly accepts inference for those gaps, continue without another coverage question unless a new missing dimension becomes central to the request. Make the prompt explicit that inferred body scale, angle, and expression are natural estimates, not verified identity facts.
 
-For high-risk source-to-target jumps from close-up selfies, screenshots, beautified images, or single-angle face references into new scenes, complex actions, hand/prop interaction, full-body, or half-body-to-thigh compositions, recommend a conservative identity-first path unless the user explicitly chooses a more ambitious composition or says to generate a first attempt despite risk. If a direction is already locked, make the conservative path a safer variant of that direction rather than a new concept.
+For high-risk source-to-target jumps, preserve every locked camera and performance choice while exposing the missing coverage. Recommend added evidence or user description first; if the user accepts inference, keep the selected shot and label inferred body, angle, and performance facts explicitly.
 
-For high-risk source-to-target jumps, offer a staged stability strategy when possible: first generate a conservative half-body or three-quarter composition that locks likeness and natural proportions with reduced action complexity; if the result is close, make one targeted revision for face likeness, proportion, or deformation without reinventing the scene. If the user chooses a riskier first attempt, preserve identity as much as possible and state the accepted risk in the prompt.
+Offer a staged stability strategy only when it addresses the actual gap. Choose the intermediate framing, angle, or action from the locked target rather than a fixed half-body recipe, and label all synthetic intermediate body or angle information as inferred rather than verified.
 
 The generated result should feel like the same person in a new scene, not a copy of the source screenshot.
 
@@ -131,13 +139,14 @@ The generated result should feel like the same person in a new scene, not a copy
 
 Use `styling-performance.md` for exact pose, action, expression, gaze, hands, props, wardrobe, and role/costume styling. This section defines identity-safe limits for those choices.
 
-Keep both eyes, nose bridge, lips, and face outline clearly visible unless the user asks for a profile or obscured-face concept. Prefer restrained performance over exaggerated posing when identity readability is at risk.
+Keep identity readable at the target face angle instead of turning the person back toward camera. A frontal face can show both eyes; a three-quarter face may naturally narrow the far eye; a profile may hide it. Preserve angle-correct brow, eye, nose, cheek, mouth, jaw, ear, and outline relationships. Prefer restrained performance only when the user has not locked a stronger direction.
+
+A selected camera perspective is locked user intent. Strong high/low viewpoints, close wide perspective, fisheye-like treatment, and deliberate stretching remain available when chosen. If they threaten identity or anatomy, use the risk-choice gate; do not silently reduce the angle, increase camera distance, narrow the perspective, or turn the face back toward camera.
 
 Avoid:
 
-- extreme high angle or low angle
-- fisheye or wide-angle closeups of the face
-- exaggerated perspective stretching
+- unrequested extreme viewpoints or lens distortion
+- accidental face/body stretching that does not follow the selected camera perspective
 - unnecessary extreme profile angles when they do not serve the requested concept or identity readability
 - forcing a frontal face onto a turned head, side-facing body, or action pose
 - face/body perspective mismatch where gaze, jawline, cheek plane, nose bridge, mouth angle, and head turn do not agree
@@ -148,10 +157,10 @@ Avoid:
 
 Use positive, concrete visual direction first. Choose only negative constraints relevant to the requested output:
 
-- Face and identity: no identity drift, no face redesign, no asymmetrical eyes, no distorted face, no waxy or plastic skin, no over-smoothed skin, no automatic beautification into a different person.
+- Face and identity: no identity drift, no underlying face redesign, no target-plane-inconsistent eye or feature deformation, no random facial warping, no waxy or plastic skin, no over-smoothed skin, no automatic beautification into a different person; allow angle- and projection-correct apparent asymmetry.
 - Hands and body: no extra fingers, fused fingers, malformed hands, broken wrists, extra limbs, distorted anatomy, or prominent hands when the hands are not important to the composition.
 - Text, UI, and artifacts: no random text, watermark, fake logo, fake brand, stream UI, stickers, overlays, unreadable microtext, or compression artifacts.
-- Composition and camera: no extra people unless requested, no extreme fisheye, no wide-angle face stretching, no cropped face or important headwear, no heavy occlusion of eyes, nose, mouth, or face outline.
+- Composition and camera: no extra people unless requested; no unrequested or projection-inconsistent stretching, crop, or occlusion; preserve the selected viewpoint, perspective strength, face angle, and angle-appropriate feature visibility.
 - Style-specific finish: for photorealistic requests, avoid cheap CG, anime finish, plastic rendering, and unnatural skin; for CG or key art requests, avoid uncanny face drift and identity-losing stylization.
 
 ## Revision
@@ -164,8 +173,15 @@ If the result is close, revise surgically. Change one target at a time and repea
 - do not regenerate a new concept when the user asked for a correction
 - do not use a style or pose reference to overwrite the primary identity reference
 
+Classify geometry revisions before editing:
+
+- for a pasted-frontal-face or face/body mismatch, preserve camera position and perspective strength; correct only neck, head, facial plane, and gaze relationships
+- for a proportion failure, distinguish underlying anatomy discontinuity from intentional projection exaggeration; preserve the chosen near/far size change and fix only random, local, or camera-inconsistent deformation
+
+Never normalize a locked strong perspective while repairing anatomy or coordination.
+
 If a revision request is ambiguous and needs user input, ask with the standard lightweight decision format. Do not ask a bare "how should I revise it?" question.
 
-Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries are explicit, reference roles are labeled when multiple inputs exist, reference sufficiency is resolved when relevant, identity risks from styling/performance are handled, priority order is explicit, and face visibility, natural head-to-body scale, and face/body angle consistency are explicit.
+Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries and coverage are explicit, reference roles are labeled when multiple inputs exist, inference/risk handling is resolved, locked intent is preserved, and underlying anatomy, projected proportions, pose geometry, target-angle identity readability, and face/body coordination are explicit.
 
-If the generated output is visible in the current thread, review whether the person still looks like the input reference, face anchor features are preserved rather than redesigned, both eyes/nose bridge/lips/face outline remain clear enough for identity, and there are no distorted face/hands or obvious AI tells.
+If the generated output is visible in the current thread, review whether the person still looks like the input reference, face anchors remain recognizable at the selected angle, facial planes agree with head turn and gaze, and there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells.

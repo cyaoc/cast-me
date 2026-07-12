@@ -1,28 +1,23 @@
 # Styling and Performance Director
 
-Use this reference for wardrobe, headwear, jewelry, accessories, props, makeup, hair styling, role/costume research, pose, action, expression, gaze, hand direction, and performance energy.
+Use this reference for wardrobe, headwear, jewelry, accessories, props, makeup, hair styling, role/costume research, pose geometry, action, expression, gaze, hand direction, and performance energy.
 
 ## Ownership
 
-This module owns what the person wears, holds, does, and performs. It does not own framing, crop, camera position, subject placement, spatial layers, or background relationship; those belong to `composition-director.md`. It must respect `identity-anchor.md`: visible likeness and natural non-deformed anatomy are the default recommendation above styling ambition, props, complex actions, expression intensity, and beautification.
+This module owns what the person wears, holds, does, and performs. It does not own framing, crop, camera position, subject placement, spatial layers, or background relationship; those belong to `composition-director.md`. Inside locked user intent, it must respect the identity and geometry quality constraints in `identity-anchor.md`.
 
-When styling or performance conflicts with identity likeness or natural anatomy, simplify wardrobe changes, props, hand work, action complexity, head turn, expression intensity, or beautification before sacrificing likeness or body structure unless the user explicitly chooses a riskier level.
+When styling or performance conflicts with identity or geometry, first simplify only unresolved, unsupported, non-story-critical details. Never alter a locked action, head direction, gaze, hand interaction, or styling choice without a risk-choice gate.
 
 Before asking about wardrobe, props, pose, expression, gaze, hands, or beauty level, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or beauty level again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
 
-## Risk and Beauty Levels
+## Risk and Beauty Handling
 
-Use these levels when the coordinating director needs to ask a risk-choice gate or write the accepted tradeoff into the production prompt:
-
-- Stable identity-first: preserve likeness and natural proportions; use subtle expression, simple body direction, calm hands, low prop complexity, and natural retouching.
-- Generate one version now: keep the user's requested direction, accept moderate likeness/proportion risk, reduce only the highest-risk variable, and plan for targeted revision if needed.
-- Stronger beauty polish: improve skin finish, lighting, complexion, grooming, styling, and photo polish while preserving original facial structure and face proportions.
-- Bold attempt: keep strong action, strong expression, obvious beauty retouching, complex hands, or ambitious camera direction; explicitly accept lower likeness or proportion stability.
+When a risk gate is needed, derive its options from the actual unsupported fields and locked intent. Relevant options add evidence or description, accept labeled inference, or stage the work around the actual gap. Do not use a universal stable/bold ladder, and do not treat intentional projected size change under a locked camera as anatomy instability.
 
 Beauty retouching should be specific:
 
 - Natural cleanup: remove screenshot/capture artifacts, improve light and skin tone, keep pores/texture and original facial structure.
-- Refined editorial polish: cleaner skin, better complexion, stronger grooming/makeup/styling, but no change to face width, eyes, nose, lips, chin, jawline, or age impression.
+- Refined editorial polish: cleaner skin, better complexion, stronger grooming/makeup/styling, but no redesign of intrinsic face width, eyes, nose, lips, chin, jawline, or age impression.
 - Obvious beautification: idealized face shape or features may reduce likeness; require explicit user acceptance before using this level.
 
 ## Category Routing
@@ -77,7 +72,7 @@ When props are used, define:
 - whether the prop should be foreground, background, or secondary
 - what must not appear, such as fake logos, random text, unreadable labels, or extra products
 
-If hand/prop interaction is complex and the reference is a close-up selfie, screenshot, beautified image, or single-angle face reference, prefer simpler hand placement or a safer crop unless the user explicitly chooses a complex action.
+If hand/prop interaction is complex and unsupported by the reference, expose that coverage gap. Offer simpler hand placement or a safer crop only when those fields remain unresolved or the user voluntarily chooses the tradeoff.
 
 ## Performance Direction
 
@@ -89,16 +84,23 @@ Selecting performance does not lock framing, camera, background, lighting, or co
 
 If the user already chose an action, do not ask "what action" again. Ask only the unresolved performance detail, such as expression intensity, gaze, hand simplification, or risk level. If an action was suggested but not locked, offer refinements that inherit it, such as lighter, more dynamic, or safer variations.
 
-Pose and expression should serve the requested theme, not blindly copy the screenshot. Prefer natural, restrained direction over exaggerated posing. Keep both eyes, nose bridge, lips, and face outline clearly visible unless the user asks for a profile or obscured-face concept.
+Pose and expression should serve the requested theme, not blindly copy the screenshot. Apply the angle-aware identity rules from `identity-anchor.md`: never turn the face back toward camera merely to expose both eyes. Prefer restrained direction only when the user has not locked a stronger performance.
 
-For high-risk source-to-target jumps, reduce performance complexity first:
+## Pose Geometry
 
-- prefer calm standing, seated, or slight turn over complex action
-- prefer hands calm, lightly posed, or out of frame over intricate finger work
-- prefer subtle expression over extreme emotion
-- prefer three-quarter or half-body framing over full-body action when body information is missing
-- prefer gaze near camera or gently off-camera over extreme profile when identity readability matters
-- prefer natural cleanup or refined editorial polish over obvious beautification unless the user explicitly chooses stronger beauty retouching
+For non-trivial action, write one coherent chain using only the links relevant and visible in the chosen frame:
+
+- ground contact and support point
+- weight-bearing leg, seat, or contact surface
+- pelvis and hip direction
+- torso/ribcage and shoulder rotation
+- neck, head turn, and tilt
+- facial plane and gaze
+- hands, props, and follow-through
+
+Every link must agree with the locked camera and perspective. Do not write only "natural dynamic pose", attach decorative limbs to a static torso, or turn the head independently of neck and shoulders.
+
+For high-risk source-to-target jumps, simplify only unresolved, unsupported, and non-story-critical performance details. Never change a locked action, head direction, gaze, framing, or camera intent without a risk-choice gate. Prefer simpler hands, props, or expression only when those fields remain unresolved or the user selects that tradeoff.
 
 Avoid:
 
@@ -134,11 +136,11 @@ When writing the production prompt, include styling/performance details only whe
 - beauty level: natural cleanup, refined editorial polish, or obvious beautification with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details
 - prop purpose, hand relationship, and hand complexity
-- pose/action, body direction, gaze, mouth state, expression intensity, and energy level
+- pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, hand/prop, and energy relationships
 - forbidden styling, props, expressions, or performance notes
 
 For fashion, costume, uniform, or character work, name the visible production anchors rather than writing only a label such as "luxury", "cyberpunk", "old money", "warrior", or "professional". Include what is actually visible: silhouette, garment layers, fabric behavior, closures, trims, accessories, makeup/grooming, and how the person performs the role.
 
 Before generation, check that styling/performance choices are explicit enough for the output type, do not contradict identity preservation, and do not overload the composition with unnecessary wardrobe changes, props, or action complexity.
 
-If the generated output is visible, review whether wardrobe/accessories were preserved or changed as requested, props support the concept without competing, hands/action are natural, expression fits the brief, and styling does not make the person look like a different identity.
+If the generated output is visible, review whether wardrobe/accessories changed as requested, props support the concept, all relevant visible pose relationships are coherent with the camera and action, expression fits the brief, and styling does not change identity.

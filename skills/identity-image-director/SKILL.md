@@ -13,9 +13,9 @@ Turn a user-provided person image into a polished final image while preserving t
 
 Read the relevant reference files before asking their related questions or writing a production prompt:
 
-- `references/identity-anchor.md` - required for any person reference image, identity preservation, reference sufficiency, face integrity, anatomy/proportion risk, identity cues, risk-choice gates for risky styling/performance, and identity-focused revisions.
-- `references/composition-director.md` - required for creative direction, decisive moment, shot framing, camera/capture consequences, art direction, lighting/color/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
-- `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose, action, expression, gaze, hands, and performance energy.
+- `references/identity-anchor.md` - required for any person reference image, identity preservation, reference coverage, target-angle face integrity, anatomy/projection risk, identity cues, risk-choice gates, and identity/geometry revisions.
+- `references/composition-director.md` - required for creative direction, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, lighting/color/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
+- `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose geometry, action, expression, gaze, hands, and performance energy.
 
 For normal generation, read all three references before generation. For a narrow revision, read only the reference that owns the issue unless the revision touches multiple modules.
 
@@ -42,10 +42,10 @@ For normal generation, read all three references before generation. For a narrow
 - Every clarification must ask exactly one unresolved dimension or tightly coupled decision group and inherit all locked and suggested prior decisions. Do not ask a locked dimension again unless the user reopens it, contradicts it, or asks to change it.
 - Suggested details are not final choices, but later questions must refine or adapt from them instead of restarting with generic menus. When the user accepts recommended defaults, convert relevant suggested details into locked decisions.
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording.
-- If the user says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording, stop asking and generate with recommended defaults for unresolved choices.
+- If the user says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated evidence or inference risk.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks Codex to decide, or the dimension is irrelevant to the requested output.
-- When identity/anatomy constraints conflict with requested composition, styling, pose, expression, hands, or beautification, trigger a risk-choice gate instead of silently rejecting the user's intent or silently executing the risky version. Recommend the stable identity-first path, explain the risk in one short reason, and let the user choose a risk level.
-- Do not repeat the risk-choice gate when the user has already clearly accepted the risk, such as `try one version`, `I accept lower likeness`, `stronger beauty retouch`, `bold attempt`, `follow my idea`, or equivalent wording. Continue with the chosen risk level and make the prompt explicit about the tradeoff.
+- When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk-choice gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or accepted inference.
+- Do not repeat a risk-choice gate when the user clearly accepted that specific risk, such as `try one version with inferred body and angle`, `I accept lower likeness`, `stronger beauty retouch`, or `bold attempt with the missing evidence inferred`. Continue with the chosen risk and make the prompt explicit about the tradeoff.
 - When `imagegen` also triggers, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
 - Use Codex built-in image generation/editing only.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
@@ -92,7 +92,7 @@ Use this adaptive clarification ladder as an internal routing order for missing 
 
 1. output type / canvas intent
 2. creative direction / scene concept
-3. shot direction: composition, camera distance/angle, subject blocking, and background relationship
+3. shot/perspective direction: composition, camera position/distance/angle, projection character, subject blocking, and background relationship
 4. wardrobe, headwear, jewelry, accessory, makeup, hair, and prop treatment
 5. canvas aspect ratio, safe areas, variants, and text treatment
 6. performance direction: pose/action, expression, gaze, hands, and energy level
@@ -106,7 +106,7 @@ Stop asking as soon as every user-visible tradeoff that could materially change 
 Keep ownership clear while routing:
 
 - creative direction owns the visual premise, world, mood, audience read, and decisive moment
-- shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint, subject placement, spatial layers, and background relationship
+- shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint/distance, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship
 - styling owns wardrobe, hair, makeup, accessories, and props
 - performance owns pose/action, expression, gaze, mouth state, hands, and energy
 - lighting/color owns motivated light, contrast, palette, skin/material rendering, and finish
@@ -117,27 +117,17 @@ Prefer one owned dimension per question. Combine across modules only when the vi
 
 For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
 
-Use `references/identity-anchor.md` for reference sufficiency checks, high-risk source-to-target jumps, face integrity, natural body proportion constraints, identity cues, and risk-choice gates for risky styling/performance.
+Use `references/identity-anchor.md` for reference coverage, high-risk source-to-target jumps, target-angle face integrity, underlying anatomy, projected proportions, identity cues, and risk-choice gates.
 
-Use `references/composition-director.md` for creative direction, decisive moment, shot and capture plans, art direction, lighting/color/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
+Use `references/composition-director.md` for creative direction, decisive moment, shot/perspective and capture/projection plans, art direction, lighting/color/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
 
-Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose/action, expression, gaze, hand direction, and performance complexity.
+Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose geometry/action, expression, gaze, hand direction, and performance complexity.
 
-If `references/identity-anchor.md` flags a high-risk source-to-target jump or conflict with styling/performance, ask one risk-choice gate before generation unless the user already accepted the risk. The risk-choice gate must inherit the user's locked concept, composition, pose/action, expression, and beauty direction; it may adjust intensity or risk handling, but must not restart the direction choice:
+If `references/identity-anchor.md` flags missing coverage or a conflict, ask one risk-choice gate unless the user already accepted that specific risk. Generate 2-4 concrete options from the actual coverage gaps and locked intent rather than a universal menu.
 
-```text
-I recommend: use the stable identity-first version first, because the current reference is better for locking face likeness than for strong pose, strong expression, heavy beautification, or complex hands.
+The gate must inherit all locked scene, shot, camera perspective, projection strength, pose/action, head direction, gaze, styling, text, and output decisions. Relevant paths may add real evidence, accept user description, continue with labeled inference, or use a staged pass that addresses the actual gap. Recommend the most accurate path that preserves locked intent; never restart, reopen, or silently downgrade it.
 
-Options:
-A) Stable identity-first (Recommended) - preserve likeness and natural proportions; simplify action, expression, hands, and beautification
-B) Generate one version now - keep the user's direction, accept moderate risk, then revise face likeness or proportions if needed
-C) Stronger beauty polish - improve skin, lighting, complexion, and styling while preserving the original facial structure
-D) Bold attempt - keep strong action, expression, or obvious beauty retouching; accept lower likeness or proportion risk
-
-Reply with A, or reply with "B + keep side-facing dining table action + natural smile".
-```
-
-Then wait after each question. Generate only after the required choices are resolved, the user accepts recommended defaults for the remaining choices, supplies overrides, or explicitly says Codex should decide.
+Then wait after each question. Generate only after focused gates are resolved and ordinary choices are resolved, defaulted, overridden, or delegated to Codex.
 
 ## Safety Handling
 
@@ -172,18 +162,18 @@ Before generation, check:
 
 - identity lock names the person's face as the anchor and forbids face redesign
 - reference transfer boundaries say what identity anchors to preserve and what temporary source state not to copy
-- reference sufficiency is resolved when the output depends on missing full-body scale, side/profile structure, posture, outfit, or expression range
-- priority order is explicit: likeness first, natural anatomy second, scene/composition/styling/performance third
+- reference coverage labels required face, body-scale, angle, and performance evidence as verified, described, inferred, or missing
+- locked user intent is separated from quality priorities; camera perspective, projection strength, action, head direction, and gaze are never silently simplified
 - the directorial intent names the audience read and, for story-bearing images, the decisive moment: what is happening now, what just happened or may happen next, and which small visual evidence carries that story
 - portrait shot direction or Director Shot Plan is resolved when relevant
 - named character, role, costume, uniform, or prop styling has researched or user-provided visual anchors, with the version resolved when relevant
 - wardrobe/accessory/prop treatment is explicit
 - output type, canvas, layout contract, crop, and text treatment are explicit
 - exact in-image text is quoted verbatim, with hierarchy and placement resolved when text matters
-- pose, action, expression, gaze, hands, props, and performance complexity fit the chosen direction and do not endanger likeness or anatomy
+- pose, action, expression, gaze, hands, props, and performance complexity are coherent with identity and anatomy inside the locked direction; unresolved conflicts use one risk gate
 - accepted risk level is explicit when the user chooses a riskier action, expression, beautification, camera, or composition path
-- face visibility, perspective limits, natural head-to-body scale, and face/body angle consistency are explicit
-- camera consequences are explicit when relevant: camera height, subject distance, perspective character, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
+- target-angle identity readability, face/body coordination, underlying anatomy, projected proportions, and pose geometry are explicit
+- camera consequences are explicit when relevant: camera height, subject distance, perspective character, allowed projection exaggeration, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
 - lighting is motivated by the scene and defines direction, size/hardness, falloff, negative fill or separation when useful, rather than listing generic three-point lights
 - scene, shot direction, lighting, palette, materials, props, and negative constraints are concrete enough for the output type
 - delivery requirements cover platform readability, crop-safe composition, text-safe areas, and exact-text verification when relevant
@@ -200,10 +190,11 @@ If the generated output is visible in the current thread, review it before final
 - whether face anchor features are preserved rather than redesigned
 - whether the output matches the requested type, canvas, crop, pose, action, expression, gaze, lighting, palette, and text treatment
 - whether the selected feeling and decisive moment read clearly rather than producing only a polished but generic image
-- whether both eyes, nose bridge, lips, and face outline remain clear enough for identity
+- whether identity remains readable at the selected face angle without turning the face back toward camera
 - whether there is one clear hero subject and supporting details do not compete
 - whether styling, materials, background, props, hands, action, and expression are specific enough and natural
-- whether there are unwanted text artifacts, distorted face/hands, or obvious AI tells
+- whether underlying anatomy is valid, projected proportions follow the locked perspective, and all relevant visible pose relationships are coherent
+- whether there are unwanted text artifacts, projection-inconsistent face deformation, malformed hands, or obvious AI tells
 - whether the result remains readable and correctly cropped for the intended platform, with exact text checked character by character when text matters
 
 If the result is visibly close but has a specific issue, run one targeted revision and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.

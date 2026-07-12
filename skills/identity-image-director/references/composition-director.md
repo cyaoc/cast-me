@@ -1,6 +1,6 @@
 # Composition Director
 
-Use this reference for creative direction, decisive moment, shot framing, camera/capture consequences, art direction, canvas/aspect, lighting/color/finish, delivery, output recipes, and final prompt structure.
+Use this reference for creative direction, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, canvas/aspect, lighting/color/finish, delivery, output recipes, and final prompt structure.
 
 ## Creative Direction
 
@@ -54,7 +54,7 @@ Do not translate cinematic, premium, relaxed, or story-driven into color grading
 
 ## Shot Direction
 
-Shot direction owns scene framing, subject scale/body cutoff, camera position, subject placement, spatial layers, and background relationship. It does not own pose/action, expression, gaze, mouth state, hands, or energy; route those to `styling-performance.md`. Any performance detail previewed here remains suggested until its own dimension is chosen.
+Shot direction owns scene framing, subject scale/body cutoff, camera position/distance/viewpoint, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship. It does not own pose/action, expression, gaze, mouth state, hands, or energy; route those to `styling-performance.md`. Any performance detail previewed here remains suggested until its own dimension is chosen.
 
 If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If subject scale/body cutoff, camera distance, or angle is already locked, ask only the unresolved shot part, such as placement or background relationship.
 
@@ -88,12 +88,27 @@ D) Custom - say how much body to show, whether the camera looks from above/level
 Reply with A, or reply with "B + camera near waist height + long station platform behind + title space above".
 ```
 
+## Perspective Intent
+
+When perspective materially changes the requested image and remains unresolved, ask one plain-language choice adapted to the theme:
+
+- physically strong perspective - accept pronounced near/far size change and foreshortening as part of the shot
+- strong viewpoint with controlled projected proportions - preserve spatial impact while restraining head/body exaggeration
+- proportion-first perspective - reduce projection drama to favor stable identity and familiar body scale
+- custom - describe which parts should feel nearer, larger, shorter, or more stretched
+
+These are semantic lanes, not fixed presets. Do not use fixed angles, focal lengths, or equipment unless the user supplied them, and still describe their visible consequence. The selection locks viewpoint/distance character, perspective strength, and allowed projection exaggeration; it does not silently lock action, expression, styling, or lighting.
+
+If camera perspective is already locked, skip this question. Preserve it through any later reference-coverage or risk gate.
+
 ## Camera and Capture Plan
 
 Translate the selected shot into an internal capture plan using controls that change a visible result:
 
 - camera height, angle, subject distance, and perspective character
 - wide environmental feel, natural perspective, or telephoto-like compression
+- underlying human anatomy: the person's world-space head, shoulders, torso, hips, limbs, and joints remain structurally valid
+- projected image proportions: apparent size and foreshortening follow distance, viewpoint, and the selected perspective strength
 - focus placement and shallow, moderate, or deep depth distribution
 - frozen action, natural motion blur, or long-exposure character when motion matters
 
@@ -148,7 +163,7 @@ Use these recipes as prompt vocabulary after the relevant choices are resolved. 
 
 ### Realistic Portrait
 
-Use realistic photography language: capture context, 50mm or 85mm portrait lens, natural skin texture, soft light, shallow depth of field, believable wardrobe, ordinary imperfections, and a clean but not empty background.
+Use realistic photography language: capture context, the selected natural or compressed perspective, natural skin texture, motivated light, appropriate depth distribution, believable wardrobe, ordinary imperfections, and a clean but not empty background.
 
 Avoid CG polish, fantasy styling, poster typography, and unreal materials.
 
@@ -210,13 +225,13 @@ Consider these dimensions when relevant:
 
 - identity priority: same person, face anchor, no face redesign
 - reference transfer boundaries: identity anchors to preserve; temporary source state not to copy, such as pose, expression, face angle, crop scale, selfie perspective, screenshot artifacts, or lighting
-- source sufficiency: whether missing full-body scale, side/profile structure, posture, outfit, or expression range is inferred naturally, described by the user, or supplied by extra real references
+- reference coverage: which required face, body-scale, angle, and performance facts are verified, described, inferred, or missing
 - shot direction: portrait or director plan covering composition, camera distance/angle, subject blocking, and background relationship
 - directorial intent: the first audience impression and decisive moment when the image carries a story
 - styling/performance: wardrobe/accessory structure, hair/makeup, props, pose/action, expression, gaze, hands, and energy level from `styling-performance.md`
 - world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
-- composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, focus/depth distribution, motion treatment, and perspective limits
-- face visibility: eyes, nose bridge, lips, and face outline visible; avoid major occlusion
+- composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
+- identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
 - lighting: motivated source, direction, size/hardness, fill or negative fill, falloff, separation, reflections, and how light reaches face, hair, wardrobe, and accessories
 - palette/finish: main, support, and accent colors; skin-tone priority; warm/cool and saturation hierarchy; highlight/shadow treatment; forbidden colors or moods
 - texture/detail: skin, hair, fabric, metal, props, environmental surfaces
@@ -232,22 +247,24 @@ Canvas/aspect: <ratio, crop, platform, or size intent>
 Layout contract: <subject placement, negative space, text-safe areas, panel/region structure, or "simple single-image layout">
 Input image: reference for the person's visible identity
 Primary request: <user request>
-Identity and reference transfer: <same person; face anchor details; what identity anchors to preserve; what temporary source state not to copy; whether missing body scale, angle, or expression details are inferred or user-supplied>
-Priority order: preserve visible identity likeness first; keep natural non-deformed anatomy second; simplify composition, scene, styling, performance, hands, props, or lighting before sacrificing likeness or anatomy
+Identity and reference transfer: <same person; face anchors; temporary source pose/angle/crop/perspective not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
+Locked intent and quality constraints: <camera perspective, projection strength, action, head direction, gaze, and other locked choices that cannot change silently; identity, anatomy, projection, and pose quality required inside them>
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
-Camera/capture plan: <camera height and subject distance, perspective character, focus/depth distribution, motion treatment when relevant, and only useful numeric parameters tied to visible results>
-Subject identity/anatomy: <face visibility, crop, camera, perspective limits, natural adult proportions, realistic head-to-body scale, identity through facial structure instead of enlarged head size, and perspective-aware face angle>
+Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>
+Perspective contract: <underlying anatomy; projected proportions; which near/far enlargement and foreshortening are intentional; which random or camera-inconsistent deformation is forbidden>
+Subject identity/anatomy: <identity readability at the target face angle; angle-correct facial planes; valid world-space head, shoulder, torso, hip, limb, and joint structure>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include important materials and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
+Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
 Lighting/color/finish: <motivated source, direction, size/hardness, fill or negative fill, separation, skin/environment relationship, palette, material behavior, and finish>
 Text: <exact text in straight quotes; hierarchy and placement; or "no text">
 Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
 Continuity invariants (series only): <identity, wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment that must not drift>
-Constraints: no identity drift, no face redesign, no automatic beautification into a different face, no age drift, no ethnicity drift, no extra people unless requested, no watermark, no random text, no fake brands, no distorted face or hands, do not remove original wardrobe/accessories unless requested, do not copy close-up crop scale into full-body output, do not paste a frontal face onto an angled pose, no stiff copied expression, no oversized head or tiny body; add output-adaptive quality negatives and safety framing when relevant
+Constraints: no identity drift, underlying face redesign, age/ethnicity drift, extra people unless requested, watermark, random text, fake brands, target-plane-inconsistent face deformation, malformed hands, copied source crop scale, pasted frontal face, stiff copied expression, invalid underlying anatomy, or random/projection-inconsistent deformation; preserve angle-correct facial appearance and intentional projection exaggeration, and add only output-adaptive negatives
 ```
 
-Before generation, check that output type, canvas, layout contract, crop, text treatment, portrait shot direction or director shot plan, scene, lighting, palette, materials, quality negatives, and theme-breaking constraints are concrete enough for the output type. Use `styling-performance.md` to check wardrobe, props, pose/action, expression, gaze, hands, and performance complexity.
+Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color, text/output contract, and adaptive negatives are concrete enough for the task.
 
-If the generated output is visible, review whether the selected feeling and decisive moment read clearly; whether identity, type, canvas, crop, styling/performance, lighting, palette, and text treatment match; whether supporting details compete; whether exact text is correct character by character; whether the result remains readable for the intended platform; and whether there are distorted features, text artifacts, or obvious AI tells.
+If the generated output is visible, review whether the selected feeling and decisive moment read; identity remains recognizable at the target angle; underlying anatomy is valid; projected proportions match the locked perspective; pose geometry, facial planes, and gaze agree; intentional exaggeration is distinct from random deformation; requested styling/light/text/output match; and there are no competing details or obvious artifacts.

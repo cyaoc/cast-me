@@ -55,19 +55,29 @@ or:
 you decide
 ```
 
+This resolves ordinary creative choices. If the reference lacks target-critical body, angle, or performance evidence, the skill may still ask one focused coverage/risk choice unless you explicitly accept inference for that gap.
+
 ## How the Guidance Adapts
 
 The eight production dimensions remain an internal checklist, not an eight-question form. Practical images take a shorter route; story-heavy, exact-text, full-body/action, or series work keeps more distinct decisions. There is no target question count: the skill stops when every user-visible tradeoff that could materially change the result is resolved, irrelevant, or explicitly defaulted.
 
 Each question changes one visible part of the result. Creative direction chooses the premise and decisive moment; shot direction chooses the frame and space; styling chooses what the person wears or holds; performance chooses action, expression, gaze, and hands; lighting/color chooses how the moment feels. Preview details are not silently locked.
 
-For example, instead of asking for an 85mm lens, the skill may offer:
+For example, instead of asking for a specific lens choice, the skill may offer:
 
 - closer portrait - face dominates and the background softens
 - waist-up environmental portrait - face stays readable while the setting carries context
 - full-body environmental frame - the world carries more story, with higher body-reference risk
 
 Professional capture details are then resolved internally as visible effects. You do not need camera bodies, lens models, ISO, aperture, shutter speed, Kelvin values, or lighting equipment; requested numbers are treated as approximate aesthetic cues, not a guaranteed physical exposure plan.
+
+Strong camera perspectives remain valid choices. When perspective matters, the skill distinguishes:
+
+- physically strong perspective - visible near/far enlargement and foreshortening are intentional
+- strong viewpoint with controlled projected proportions - keep spatial impact while restraining head/body exaggeration
+- proportion-first perspective - reduce projection drama for familiar body scale
+
+These are generated from the requested theme, not fixed angle or lens presets. A selected camera is not silently downgraded by identity safeguards. The skill separately checks reference coverage, underlying anatomy, projected proportions, pose geometry, and identity readability at the target face angle.
 
 ## Useful Request Patterns
 
@@ -90,8 +100,8 @@ $identity-image-director [Image] Create a movie poster titled "MIDNIGHT SIGNAL";
 Typical routes:
 
 - professional avatar: use if missing -> shot/body framing (optionally with an explicit avatar canvas) -> styling if material -> performance -> lighting/color
-- directed portrait: creative direction and moment -> shot -> styling if material -> performance -> lighting/color
-- cinematic poster or key art: direction and moment -> shot -> styling/props -> aspect/text -> performance -> lighting/color, plus one focused identity-risk gate only when needed
+- directed portrait: creative direction and moment -> shot/perspective -> styling if material -> performance -> lighting/color
+- cinematic poster or key art: direction and moment -> shot/perspective -> styling/props -> aspect/text -> performance -> lighting/color, plus one coverage/risk gate only when needed
 
 ## What to Specify
 
@@ -101,6 +111,7 @@ A person reference plus the intended image/use and the feeling you want is enoug
 - aspect ratio or platform: 1:1 avatar, 4:5 social post, 9:16 vertical poster, 16:9 hero image
 - wardrobe/accessories: keep, simplify, polish, or replace
 - pose and expression
+- perspective intent: physically strong exaggeration, strong viewpoint with controlled proportions, or proportion-first
 - lighting and color palette
 - exact text, or no text
 - things to avoid
