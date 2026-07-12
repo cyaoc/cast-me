@@ -1,6 +1,6 @@
 # Composition Director
 
-Use this reference for creative direction, shot framing, canvas/aspect, lighting, palette, output recipes, and final prompt structure.
+Use this reference for creative direction, decisive moment, shot framing, camera/capture consequences, art direction, canvas/aspect, lighting/color/finish, delivery, output recipes, and final prompt structure.
 
 ## Creative Direction
 
@@ -8,6 +8,7 @@ After the output type is known, infer the design read:
 
 - audience and use case
 - mood words from the user
+- the decisive moment for story-bearing images: what is happening now, what just happened or may happen next, and what the audience should feel first
 - reference-image role
 - platform or crop needs
 - shot direction: composition, camera distance/angle, subject blocking, and background relationship
@@ -19,9 +20,9 @@ Before proposing options or writing a production prompt, form a compact design r
 
 Before asking any composition question, read the coordinating director's decision state. Do not ask for a locked output type, scene concept, aspect ratio, crop, shot distance, camera angle, or text treatment again. If a prior option suggested shot, pose, lighting, or palette details, use those suggestions as the starting point for the next options instead of offering a generic menu.
 
-Resolve one creative-direction follow-up for every output type unless the user's brief is already detailed enough to write a complete production prompt. This applies to portraits, professional headshots, posters, CG/key art, editorial images, avatars, commercial visuals, and custom themes.
+Resolve creative direction whenever it is still production-critical. Do not force a direction question when a practical use and the user's desired read already define it; posters, editorials, commercial visuals, key art, and story-heavy portraits usually need a distinct direction choice unless already specified.
 
-If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, present 2-4 concrete viable directions for the user to choose. Each option should differ meaningfully in setting, role/archetype, mood, and output use; it may include sample pose, expression, lighting, or palette as preview hints, but those hints are not resolved choices unless the user explicitly accepts defaults. Do not offer generic labels without visual substance.
+If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, present 2-4 concrete viable directions. Each option should differ meaningfully in setting, role/archetype, mood, output use, and a visible decisive moment when the image carries a story. Sample camera, expression, lighting, or palette remain preview hints unless explicitly selected or defaulted.
 
 When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer 2-4 concrete options with different setting, role/archetype, mood, and output use; keep sample pose, expression, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
 
@@ -31,57 +32,92 @@ Use this pattern and adapt the option contents to the user's image and requested
 I recommend: <recommended direction or concept>, because <one short reason tied to the user's request and reference image>.
 
 Options:
-A) <direction name> (Recommended) - <setting/world>, <role/archetype>, <mood>, <output use>
-B) <direction name> - <setting/world>, <role/archetype>, <mood>, <output use>
-C) <direction name> - <setting/world>, <role/archetype>, <mood>, <output use>
+A) <direction name> (Recommended) - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
+B) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
+C) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
 D) Custom / mix-and-match - describe your own theme or combine several directions
 
-Reply with A, or reply with "B + use recommended defaults". If you reply with only B, I will ask the next missing dimension, such as styling/performance, aspect ratio, or lighting/color.
+Reply with A, or reply with "B + use recommended defaults". If you reply with only B, I will ask the next missing dimension, such as shot direction, styling, performance, aspect/text, or lighting/color.
 ```
 
-The visual details inside creative-direction options are suggested previews unless the question explicitly says it is resolving a production package. If the user replies with only a direction letter/name, lock the chosen direction and continue the serial ladder with the next unresolved dimension. Later questions must inherit the suggested preview details and refine them; treat preview details as final only if the user accepts defaults or repeats them explicitly.
+The visual details inside creative-direction options are suggested previews. If the user replies with only a direction letter/name, lock that direction and continue the adaptive ladder with the next unresolved dimension. Later questions must inherit and refine the previews; treat them as final only if the user accepts defaults or repeats them explicitly.
 
-For practical formats such as LinkedIn, resume, social avatar, or realistic portrait, options should still be concrete, such as different background types, crop, expression, wardrobe treatment, lighting, palette, and polish level. Do not skip the direction follow-up just because the output type is conventional.
+For LinkedIn, resume, social-avatar, or other practical formats, skip creative direction when the use and desired read already define it. If direction remains ambiguous, offer concrete practical outcomes rather than story-world concepts; later shot, styling, performance, and lighting decisions remain separate.
 
 Use concrete visual language. Prefer materials, light, camera, location, props, and composition over vague praise like "stunning", "high quality", or "cinematic" alone.
 
+## Directorial Intent and Decisive Moment
+
+For story-bearing images, turn mood words into a visible moment: what the person is doing, what just happened or may happen next, the first audience impression, and one or two details that prove the story.
+
+Do not translate cinematic, premium, relaxed, or story-driven into color grading alone. If several moments fit, offer plain visible choices. A selected moment explicitly locks its stated setting, action, and story evidence; camera, styling, lighting, and any unstated expression, gaze, hands, or energy remain suggested for later decisions.
+
 ## Shot Direction
 
-Shot direction may resolve composition, crop, camera distance/angle, subject blocking, and background relationship in one decision. Use `styling-performance.md` for exact pose/action, expression, gaze, hands, props, and performance complexity. If shot direction also resolves those choices, skip the later pose/action question unless a production-critical detail remains unresolved.
+Shot direction owns scene framing, subject scale/body cutoff, camera position, subject placement, spatial layers, and background relationship. It does not own pose/action, expression, gaze, mouth state, hands, or energy; route those to `styling-performance.md`. Any performance detail previewed here remains suggested until its own dimension is chosen.
 
-If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If crop, camera distance, or angle is already locked, do not ask shot direction again; only ask the unresolved part, such as background relationship or negative space.
+If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If subject scale/body cutoff, camera distance, or angle is already locked, ask only the unresolved shot part, such as placement or background relationship.
 
-For realistic portraits, personal photoshoots, lifestyle portraits, social portraits, and beauty/editorial portraits, ask a lightweight portrait shot-direction question unless the user already specified crop, pose, expression, hands, background/props, or accepted recommended defaults. Portraits are common but still need directed composition and performance.
+For realistic, lifestyle, social, and beauty/editorial portraits, ask a lightweight shot-direction question unless framing, camera/viewpoint, subject placement, and background relationship are already resolved or accepted through recommended defaults. Performance details alone do not resolve shot direction.
 
 For LinkedIn, resume, professional headshot, business avatar, or simple social avatar requests, keep the gate lightweight: crop and background. Use `styling-performance.md` for expression and wardrobe/accessory treatment. Do not ask a full Director Shot Plan or introduce props unless the user requests them.
 
 ```text
-I recommend: clean three-quarter portrait direction, because it preserves identity while giving the image a natural, intentional photoshoot feel.
+I recommend: show the person from the waist up, because the face stays clear while the background can still explain the setting.
 
 Options:
-A) Clean three-quarter portrait (Recommended) - upper body to mid-thigh, relaxed posture, natural gaze, subtle expression, hands calm or out of frame, no unnecessary props
-B) Full-body lifestyle portrait - complete body visible, natural proportions, simple stance, environment supports the person without competing
-C) Close portrait / beauty-style crop - face and shoulders prioritized, stronger expression, shallow depth, no full-body accuracy needed
-D) Custom - specify crop, pose, expression, hands, background, or props
+A) Show the person from the waist up (Recommended) - camera around eye height, face easy to read, background still shows where they are
+B) Show the whole body - the setting carries more of the story, but more body reference is needed
+C) Move closer to the face and shoulders - expression becomes the focus and the background matters less
+D) Custom - say how much of the body to show, whether the camera looks from above/level/below, where the person sits in frame, and how much background remains
 
-Reply with A, or reply with "B + seated pose + soft smile + no props".
+Reply with A, or reply with "B + camera near eye level + person on the right + deep station background".
 ```
 
 For cinematic posters, editorial/magazine images, commercial campaign visuals, CG/game key art, full-body/action outputs, story-heavy concepts, product/prop interaction, or requests for a filmic/editorial/high-fashion/hero image, ask a fuller Director Shot Plan unless already specified:
 
 ```text
-I recommend: three-quarter hero composition with controlled performance, because it balances identity preservation with a stronger directed image.
+I recommend: show the person from the upper body to mid-thigh, because both the face and the story world remain easy to read.
 
 Options:
-A) Three-quarter hero shot (Recommended) - upper body to mid-thigh, slight natural head turn, controlled gaze, clear hands, one clean background relationship, no unnecessary props
-B) Full-body environmental shot - complete body visible, natural proportions, readable stance, background supports the story without competing
-C) Cinematic close-medium shot - face and shoulders dominate, stronger emotion, shallow depth, no full-body accuracy needed
-D) Custom - specify composition, camera angle, action, expression, hands, props, and background relationship
+A) Upper body to mid-thigh (Recommended) - person reads first, one clear background layer supports the story, and room can remain for a title
+B) Whole body in the setting - show something near the camera, the person, and a deeper background; body-reference requirements are higher
+C) Move closer to face and shoulders - emotion reads first and only a few background clues remain
+D) Custom - say how much body to show, whether the camera looks from above/level/below, where the person sits, and where title or background space should remain
 
-Reply with A, or reply with "B + walking pose + looking past camera + one umbrella prop".
+Reply with A, or reply with "B + camera near waist height + long station platform behind + title space above".
 ```
 
-Lighting/color options must cover key/fill/rim light, palette, skin/metal/fabric rendering, and forbidden color mood when relevant.
+## Camera and Capture Plan
+
+Translate the selected shot into an internal capture plan using controls that change a visible result:
+
+- camera height, angle, subject distance, and perspective character
+- wide environmental feel, natural perspective, or telephoto-like compression
+- focus placement and shallow, moderate, or deep depth distribution
+- frozen action, natural motion blur, or long-exposure character when motion matters
+
+Focal length, aperture, shutter speed, ISO, white balance, format, or equipment names are optional aesthetic vocabulary, not required fields. Tie each one used to a visible consequence. If the user asks for parameter styling, label numbers as approximate visual cues; never claim a physically valid exposure or lighting rig from the generation brief alone.
+
+## Lighting, Color, and Finish
+
+Lighting must be motivated by the scene rather than a generic list of key/fill/rim lights. Resolve the believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation when relevant.
+
+Name a modifier or shaping method only when it clarifies the visible effect, such as large diffusion, bounce, Fresnel-like hard light, flag/negative fill, grid, or gobo.
+
+Also define skin-tone priority; the warm/cool, brightness, contrast, and saturation relationship between person and environment; and useful finish such as highlight roll-off, shadow detail, grain, halation, sharpness, and material rendering.
+
+Ask in visible outcomes: soft window-like light feels natural and close; motivated side light creates stronger shape and tension; polished frontal beauty light feels cleaner and more commercial. Adapt the actual options to the locked concept.
+
+Do not rely on camera brands, precise light power, empty LUT names, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
+
+## Art Direction and Physical World
+
+Treat art direction as internal synthesis of the locked world, shot, styling, and lighting, not as another user gate. If a required choice is unresolved, route it to its owning dimension.
+
+When the setting matters, define time/weather, believable spatial logic, foreground/midground/background roles, surface age and material behavior, one primary story clue, and silhouette/color separation between wardrobe and background.
+
+Prefer two or three details that explain the moment over decorative clutter. Every visible object should support character, action, place, or delivery.
 
 ## Taste Rules
 
@@ -90,7 +126,7 @@ Lighting/color options must cover key/fill/rim light, palette, skin/metal/fabric
 - keep one coherent palette with one restrained accent
 - define forbidden palette/mood when the theme depends on color discipline
 - separate materials, lighting, and palette instead of compressing them into "premium"
-- include 5-12 concrete scene details when the background matters
+- include a few concrete, story-bearing scene details when the background matters; do not meet a detail count by adding clutter
 - avoid default AI tells: purple-blue glow, random orbs or blobs, automatic centered hero layouts, generic beige/brass "premium" styling, fake brand logos, unreadable microtext, stock-photo cliches, cheap plastic CG, over-smoothed skin, and template-like card/poster layouts
 - use typography only when it has a job and exact user copy exists
 
@@ -154,6 +190,14 @@ Use the provided product or brand mood if any, controlled composition, premium l
 
 Do not invent brand names, slogans, logos, or product claims.
 
+## Layout and Output Contract
+
+When use or platform is known, form a recommended canvas aspect ratio, safe areas, platform variants, and small-size readability. If these are not locked or accepted through recommended defaults, ask them as one output-contract choice; do not silently lock a platform convention.
+
+Verify exact text character by character. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
+
+For a requested series, also lock the continuity facts that must not drift: wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment. Do not add this contract to a single image.
+
 ## Prompt Structure
 
 Use this structure as flexible scaffolding for generation prompts, not a form to fill.
@@ -168,13 +212,15 @@ Consider these dimensions when relevant:
 - reference transfer boundaries: identity anchors to preserve; temporary source state not to copy, such as pose, expression, face angle, crop scale, selfie perspective, screenshot artifacts, or lighting
 - source sufficiency: whether missing full-body scale, side/profile structure, posture, outfit, or expression range is inferred naturally, described by the user, or supplied by extra real references
 - shot direction: portrait or director plan covering composition, camera distance/angle, subject blocking, and background relationship
+- directorial intent: the first audience impression and decisive moment when the image carries a story
 - styling/performance: wardrobe/accessory structure, hair/makeup, props, pose/action, expression, gaze, hands, and energy level from `styling-performance.md`
-- world/setting: location, architecture/nature/props, spatial layers, atmosphere, scale, story context
-- composition/camera: crop, subject placement, symmetry/asymmetry, lens feel, distance, angle, perspective limits
+- world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
+- composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, focus/depth distribution, motion treatment, and perspective limits
 - face visibility: eyes, nose bridge, lips, and face outline visible; avoid major occlusion
-- lighting: key/fill/rim light, volume light, reflections, how light hits face, hair, wardrobe, and accessories
-- palette: main colors, support colors, accent colors, forbidden colors or moods
+- lighting: motivated source, direction, size/hardness, fill or negative fill, falloff, separation, reflections, and how light reaches face, hair, wardrobe, and accessories
+- palette/finish: main, support, and accent colors; skin-tone priority; warm/cool and saturation hierarchy; highlight/shadow treatment; forbidden colors or moods
 - texture/detail: skin, hair, fabric, metal, props, environmental surfaces
+- output contract: canvas aspect, platform readability, safe areas, exact-text verification, and required variants
 - negative constraints: no text unless exact copy, no watermark, no fake brands, no random UI, no theme-breaking elements
 
 The expanded prompt should be theme-adaptive. Do not reuse examples such as forests, temples, cyberpunk, saints, warriors, or luxury studios unless the user chose that direction. Delete rows that do not help the specific output.
@@ -189,15 +235,19 @@ Primary request: <user request>
 Identity and reference transfer: <same person; face anchor details; what identity anchors to preserve; what temporary source state not to copy; whether missing body scale, angle, or expression details are inferred or user-supplied>
 Priority order: preserve visible identity likeness first; keep natural non-deformed anatomy second; simplify composition, scene, styling, performance, hands, props, or lighting before sacrificing likeness or anatomy
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
+Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
+Camera/capture plan: <camera height and subject distance, perspective character, focus/depth distribution, motion treatment when relevant, and only useful numeric parameters tied to visible results>
 Subject identity/anatomy: <face visibility, crop, camera, perspective limits, natural adult proportions, realistic head-to-body scale, identity through facial structure instead of enlarged head size, and perspective-aware face angle>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include important materials and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
-Lighting/color/materials: <key light, fill/rim/volume light when useful, palette, material behavior, and forbidden colors or moods>
+Lighting/color/finish: <motivated source, direction, size/hardness, fill or negative fill, separation, skin/environment relationship, palette, material behavior, and finish>
 Text: <exact text in straight quotes; hierarchy and placement; or "no text">
+Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
+Continuity invariants (series only): <identity, wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment that must not drift>
 Constraints: no identity drift, no face redesign, no automatic beautification into a different face, no age drift, no ethnicity drift, no extra people unless requested, no watermark, no random text, no fake brands, no distorted face or hands, do not remove original wardrobe/accessories unless requested, do not copy close-up crop scale into full-body output, do not paste a frontal face onto an angled pose, no stiff copied expression, no oversized head or tiny body; add output-adaptive quality negatives and safety framing when relevant
 ```
 
 Before generation, check that output type, canvas, layout contract, crop, text treatment, portrait shot direction or director shot plan, scene, lighting, palette, materials, quality negatives, and theme-breaking constraints are concrete enough for the output type. Use `styling-performance.md` to check wardrobe, props, pose/action, expression, gaze, hands, and performance complexity.
 
-If the generated output is visible in the current thread, review whether the output matches the requested type, canvas, crop, styling/performance, lighting, palette, and text treatment; whether there is one clear hero subject; whether supporting details do not compete; whether styling, materials, background, props, hands, action, and expression are specific enough and natural; and whether there are unwanted text artifacts or obvious AI tells.
+If the generated output is visible, review whether the selected feeling and decisive moment read clearly; whether identity, type, canvas, crop, styling/performance, lighting, palette, and text treatment match; whether supporting details compete; whether exact text is correct character by character; whether the result remains readable for the intended platform; and whether there are distorted features, text artifacts, or obvious AI tells.

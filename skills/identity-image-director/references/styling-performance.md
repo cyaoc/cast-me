@@ -4,7 +4,7 @@ Use this reference for wardrobe, headwear, jewelry, accessories, props, makeup, 
 
 ## Ownership
 
-This module owns what the person wears, holds, does, and performs. It must respect `identity-anchor.md`: visible likeness and natural non-deformed anatomy are the default recommendation above styling ambition, props, complex actions, expression intensity, and beautification.
+This module owns what the person wears, holds, does, and performs. It does not own framing, crop, camera position, subject placement, spatial layers, or background relationship; those belong to `composition-director.md`. It must respect `identity-anchor.md`: visible likeness and natural non-deformed anatomy are the default recommendation above styling ambition, props, complex actions, expression intensity, and beautification.
 
 When styling or performance conflicts with identity likeness or natural anatomy, simplify wardrobe changes, props, hand work, action complexity, head turn, expression intensity, or beautification before sacrificing likeness or body structure unless the user explicitly chooses a riskier level.
 
@@ -82,6 +82,10 @@ If hand/prop interaction is complex and the reference is a close-up selfie, scre
 ## Performance Direction
 
 Pose/action options must cover body direction, gaze, mouth state, and energy level. Keep performance theme-appropriate while preserving identity readability.
+
+Describe performance choices as visible behavior, not acting jargon: where the body turns, what the hands do, where the eyes land, whether the mouth is relaxed or active, and how restrained or forceful the moment feels. For example, distinguish a quiet pause with gaze beyond camera from an engaged task with hands occupied or a stronger action with accepted identity/anatomy risk. Adapt the behavior to the locked decisive moment.
+
+Selecting performance does not lock framing, camera, background, lighting, or color. If those dimensions are unresolved, keep any previewed details suggested for their own later questions.
 
 If the user already chose an action, do not ask "what action" again. Ask only the unresolved performance detail, such as expression intensity, gaze, hand simplification, or risk level. If an action was suggested but not locked, offer refinements that inherit it, such as lighter, more dynamic, or safer variations.
 

@@ -14,7 +14,7 @@ Turn a user-provided person image into a polished final image while preserving t
 Read the relevant reference files before asking their related questions or writing a production prompt:
 
 - `references/identity-anchor.md` - required for any person reference image, identity preservation, reference sufficiency, face integrity, anatomy/proportion risk, identity cues, risk-choice gates for risky styling/performance, and identity-focused revisions.
-- `references/composition-director.md` - required for creative direction, shot framing, aspect/crop/text, lighting/color, output recipes, taste rules, and final prompt structure.
+- `references/composition-director.md` - required for creative direction, decisive moment, shot framing, camera/capture consequences, art direction, lighting/color/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
 - `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose, action, expression, gaze, hands, and performance energy.
 
 For normal generation, read all three references before generation. For a narrow revision, read only the reference that owns the issue unless the revision touches multiple modules.
@@ -32,6 +32,9 @@ For normal generation, read all three references before generation. For a narrow
 - Do not use bare open-ended questions, yes/no-only prompts, or number-only menus for clarification. Give concrete choices, the recommended path, and shorthand examples.
 - Ask missing production-critical choices serially, one unresolved dimension or tightly coupled decision group per turn, with concrete suggestions. Do not hide important choices inside a dense preset when the user has not chosen them.
 - Do not create nested menus. A follow-up must ask the next missing decision, not route the user into another category menu.
+- Keep the eight production dimensions as an internal completeness checklist, not as eight mandatory user questions. Adapt the route to the task: simple headshots and avatars usually need fewer choices than portraits, while posters, key art, full-body action, exact text, or series work may need more. Skip dimensions that are already stated, irrelevant, or accepted through recommended defaults.
+- Preserve detail without turning the interaction into a professional form. Ask users to choose visible outcomes in plain language; translate those choices internally into camera, lighting, color, material, and delivery decisions. Do not ask beginners to choose camera bodies, lens models, ISO, aperture, shutter speed, Kelvin values, light power, or modifiers. If the user explicitly asks for parameter styling, use only approximate aesthetic cues tied to visible results, not a claimed physical exposure plan.
+- Do not compress creative direction, shot direction, styling, performance, lighting, and delivery into one production package when several of those dimensions are still unresolved. A direction option may preview later details, but selecting it locks only the dimension being asked unless the user explicitly accepts the whole recommendation or recommended defaults.
 - Maintain a decision state after every user response:
   - `locked`: the user explicitly selected, specified, overrode, or accepted this value through recommended defaults
   - `suggested`: a prior option or recommendation previewed this value, but the user has not explicitly locked it
@@ -79,30 +82,44 @@ Supported output types:
 - commercial campaign visual
 - custom themed image
 
-Resolve aspect ratio, crop, and text treatment through the serial clarification ladder when they are not stated. Platform conventions such as square avatar, vertical poster, or no text are recommendations to offer, not silent assumptions. If the user accepts defaults, use the safest platform convention. If there is required in-image text, keep it exact and wrap it in straight quotes.
+Resolve canvas aspect ratio, safe areas, and text treatment through the adaptive clarification ladder when they are not stated. Shot direction owns how much of the person appears in frame. Platform conventions such as square avatar, vertical poster, or no text are recommendations to offer, not silent assumptions. If the user accepts defaults, use the safest platform convention. If there is required in-image text, keep it exact and wrap it in straight quotes.
 
 ## Step 2: Resolve Brief and Creative Direction
 
 After the output type is known, use `references/composition-director.md` to infer the design read and ask one creative-direction follow-up unless the user's brief is already detailed enough to write a complete production prompt.
 
-Use this serial clarification ladder for missing production-critical choices. Ask only the next unresolved dimension or tightly coupled decision group. Skip any dimension that is locked, irrelevant, or accepted through recommended defaults; carry suggested values forward as the basis for later options:
+Use this adaptive clarification ladder as an internal routing order for missing production-critical choices. It is not a requirement to ask eight questions. Ask only the next unresolved dimension or tightly coupled decision group, skip anything locked, irrelevant, or accepted through recommended defaults, and carry suggested values forward as the basis for later options:
 
 1. output type / canvas intent
 2. creative direction / scene concept
 3. shot direction: composition, camera distance/angle, subject blocking, and background relationship
 4. wardrobe, headwear, jewelry, accessory, makeup, hair, and prop treatment
-5. aspect ratio, crop, and text treatment
+5. canvas aspect ratio, safe areas, variants, and text treatment
 6. performance direction: pose/action, expression, gaze, hands, and energy level
 7. lighting and color/palette
 8. avoid-list and theme-breaking elements
 
-Combine tightly coupled dimensions when that reduces friction, such as `pose/action + expression`, `lighting + color/palette`, or a shot direction that resolves composition together with necessary styling/performance details. When a combined question locks several fields, record each field as locked and do not ask them again. Do not combine unrelated dimensions into a dense all-in-one menu unless the user explicitly asks to speed through with recommended defaults.
+Route by production complexity rather than a turn-count target. Simple practical images omit story-world decisions that do not affect the result; directed portraits keep each material visual choice; posters, key art, full-body/action, exact text, or series work add only their relevant decisions and focused risk gates.
+
+Stop asking as soon as every user-visible tradeoff that could materially change intent, identity, or use is locked, irrelevant, or accepted through recommended defaults. Resolve remaining professional implementation details internally. Question count is an outcome of the brief, never a quota.
+
+Keep ownership clear while routing:
+
+- creative direction owns the visual premise, world, mood, audience read, and decisive moment
+- shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint, subject placement, spatial layers, and background relationship
+- styling owns wardrobe, hair, makeup, accessories, and props
+- performance owns pose/action, expression, gaze, mouth state, hands, and energy
+- lighting/color owns motivated light, contrast, palette, skin/material rendering, and finish
+- art direction internally reconciles the locked world, shot, styling, and lighting into one physical scene; it is not a separate user gate
+- output contract owns canvas aspect ratio, safe areas, platform variants, exact text, and platform readability
+
+Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, lock those fields explicitly, and skip them later. Never silently lock performance from shot text or lock shot, styling, performance, or lighting from a preview. Keep `pose/action + expression + gaze`, `lighting + color/palette`, and `canvas aspect + safe areas + text treatment` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
 
 For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
 
 Use `references/identity-anchor.md` for reference sufficiency checks, high-risk source-to-target jumps, face integrity, natural body proportion constraints, identity cues, and risk-choice gates for risky styling/performance.
 
-Use `references/composition-director.md` for creative direction options, portrait shot direction, fuller Director Shot Plan, aspect/crop/text, lighting/color, output recipes, taste rules, and final prompt scaffolding.
+Use `references/composition-director.md` for creative direction, decisive moment, shot and capture plans, art direction, lighting/color/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
 
 Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose/action, expression, gaze, hand direction, and performance complexity.
 
@@ -157,6 +174,7 @@ Before generation, check:
 - reference transfer boundaries say what identity anchors to preserve and what temporary source state not to copy
 - reference sufficiency is resolved when the output depends on missing full-body scale, side/profile structure, posture, outfit, or expression range
 - priority order is explicit: likeness first, natural anatomy second, scene/composition/styling/performance third
+- the directorial intent names the audience read and, for story-bearing images, the decisive moment: what is happening now, what just happened or may happen next, and which small visual evidence carries that story
 - portrait shot direction or Director Shot Plan is resolved when relevant
 - named character, role, costume, uniform, or prop styling has researched or user-provided visual anchors, with the version resolved when relevant
 - wardrobe/accessory/prop treatment is explicit
@@ -165,7 +183,11 @@ Before generation, check:
 - pose, action, expression, gaze, hands, props, and performance complexity fit the chosen direction and do not endanger likeness or anatomy
 - accepted risk level is explicit when the user chooses a riskier action, expression, beautification, camera, or composition path
 - face visibility, perspective limits, natural head-to-body scale, and face/body angle consistency are explicit
+- camera consequences are explicit when relevant: camera height, subject distance, perspective character, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
+- lighting is motivated by the scene and defines direction, size/hardness, falloff, negative fill or separation when useful, rather than listing generic three-point lights
 - scene, shot direction, lighting, palette, materials, props, and negative constraints are concrete enough for the output type
+- delivery requirements cover platform readability, crop-safe composition, text-safe areas, and exact-text verification when relevant
+- a requested series locks continuity for wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment; single images omit this extra contract
 - quality negative constraints are output-adaptive rather than a dumped generic list
 - safety handling is applied only when relevant, stays tool-agnostic, and does not silently rewrite the user's concept
 - the prompt avoids generic AI tells, fake brands, random UI, random text, and theme-breaking elements
@@ -177,9 +199,11 @@ If the generated output is visible in the current thread, review it before final
 - whether the person still looks like the input reference
 - whether face anchor features are preserved rather than redesigned
 - whether the output matches the requested type, canvas, crop, pose, action, expression, gaze, lighting, palette, and text treatment
+- whether the selected feeling and decisive moment read clearly rather than producing only a polished but generic image
 - whether both eyes, nose bridge, lips, and face outline remain clear enough for identity
 - whether there is one clear hero subject and supporting details do not compete
 - whether styling, materials, background, props, hands, action, and expression are specific enough and natural
 - whether there are unwanted text artifacts, distorted face/hands, or obvious AI tells
+- whether the result remains readable and correctly cropped for the intended platform, with exact text checked character by character when text matters
 
 If the result is visibly close but has a specific issue, run one targeted revision and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.

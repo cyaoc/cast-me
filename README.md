@@ -2,7 +2,7 @@
 
 Identity Image Director is a Codex skill for turning a person reference image into a polished final image while preserving the person's visible identity as much as possible.
 
-It is meant for person-centered outputs such as portraits, professional headshots, social avatars, cinematic posters, editorial images, commercial visuals, and CG or game key art. The skill acts like a lightweight visual director: it asks only for missing production-critical choices, gives concrete options, and lets you accept recommended defaults when you want to move quickly.
+It is meant for person-centered outputs such as portraits, professional headshots, social avatars, cinematic posters, editorial images, commercial visuals, and CG or game key art. The skill acts like a visual director: it keeps a complete production checklist, but asks only the choices that matter for this image, explains them through visible examples, and translates them into professional camera, lighting, styling, performance, and delivery direction.
 
 ## Install in Codex
 
@@ -55,6 +55,20 @@ or:
 you decide
 ```
 
+## How the Guidance Adapts
+
+The eight production dimensions remain an internal checklist, not an eight-question form. Practical images take a shorter route; story-heavy, exact-text, full-body/action, or series work keeps more distinct decisions. There is no target question count: the skill stops when every user-visible tradeoff that could materially change the result is resolved, irrelevant, or explicitly defaulted.
+
+Each question changes one visible part of the result. Creative direction chooses the premise and decisive moment; shot direction chooses the frame and space; styling chooses what the person wears or holds; performance chooses action, expression, gaze, and hands; lighting/color chooses how the moment feels. Preview details are not silently locked.
+
+For example, instead of asking for an 85mm lens, the skill may offer:
+
+- closer portrait - face dominates and the background softens
+- waist-up environmental portrait - face stays readable while the setting carries context
+- full-body environmental frame - the world carries more story, with higher body-reference risk
+
+Professional capture details are then resolved internally as visible effects. You do not need camera bodies, lens models, ISO, aperture, shutter speed, Kelvin values, or lighting equipment; requested numbers are treated as approximate aesthetic cues, not a guaranteed physical exposure plan.
+
 ## Useful Request Patterns
 
 ```text
@@ -73,9 +87,15 @@ $identity-image-director [Image] Create a 1:1 social avatar, clean background, n
 $identity-image-director [Image] Create a movie poster titled "MIDNIGHT SIGNAL"; keep the person recognizable
 ```
 
+Typical routes:
+
+- professional avatar: use if missing -> shot/body framing (optionally with an explicit avatar canvas) -> styling if material -> performance -> lighting/color
+- directed portrait: creative direction and moment -> shot -> styling if material -> performance -> lighting/color
+- cinematic poster or key art: direction and moment -> shot -> styling/props -> aspect/text -> performance -> lighting/color, plus one focused identity-risk gate only when needed
+
 ## What to Specify
 
-Include any of these details when you already know them:
+A person reference plus the intended image/use and the feeling you want is enough to begin. Include any of these optional details when you already know them:
 
 - output type: portrait, headshot, poster, editorial image, avatar, commercial visual, CG/key art
 - aspect ratio or platform: 1:1 avatar, 4:5 social post, 9:16 vertical poster, 16:9 hero image
@@ -84,3 +104,7 @@ Include any of these details when you already know them:
 - lighting and color palette
 - exact text, or no text
 - things to avoid
+
+## Review Changes
+
+Use [the golden conversations](evals/golden-conversations.md) to check adaptive question depth, decision inheritance, risk gates, delivery, and surgical revisions.
