@@ -22,7 +22,29 @@ python "$HOME\.codex\skills\.system\skill-installer\scripts\install-skill-from-g
   --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
 ```
 
-The installer places it in `~/.codex/skills/identity-image-director` and stops if that destination already exists. Start a new Codex session, then invoke `$identity-image-director`.
+The installer places it in `~/.codex/skills/identity-image-director` and stops if that destination already exists.
+
+### Update
+
+Updating replaces the installed copy, including any local changes made inside it.
+
+**macOS / Linux**
+
+```bash
+rm -rf ~/.codex/skills/identity-image-director
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+```
+
+**Windows PowerShell**
+
+```powershell
+Remove-Item -Recurse -Force "$HOME\.codex\skills\identity-image-director"
+python "$HOME\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" `
+  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+```
+
+Start a new Codex session after installing or updating, then invoke `$identity-image-director`.
 
 ## How to Use
 
