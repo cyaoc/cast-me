@@ -92,15 +92,17 @@ Use concrete visual language. Prefer materials, light, camera, location, props, 
 
 ## Directorial Intent and Decisive Moment
 
-For story-bearing images, turn mood words into a visible moment: what the person is doing, what just happened or may happen next, the first audience impression, and one or two details that prove the story.
+For story-bearing images, turn mood words into a visible moment: what the person is doing, what just happened or may happen next, the first audience impression, and one or two details that prove the story. Treat event/action, before/after tension, story evidence, and first impression as the Decisive Moment visible signature.
 
-Do not translate cinematic, premium, relaxed, or story-driven into color grading alone. If several moments fit, offer plain visible choices. A selected moment explicitly locks its stated setting, action, and story evidence; camera, styling, lighting, and any unstated expression, gaze, hands, or energy remain suggested for later decisions.
+Do not translate cinematic, premium, relaxed, or story-driven into color grading alone. If several moments fit, offer plain visible choices using `scoped-option-refresh.md`; on a Scoped Option Refresh, require at least two signature parts to differ from every Shown Option in this area. A selected moment explicitly locks its stated setting, action, and story evidence; camera, styling, lighting, and any unstated expression, gaze, hands, or energy remain suggested for later decisions.
 
 ## Shot Direction
 
 Shot direction owns scene framing, subject scale/body cutoff, camera position/distance/viewpoint, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship. It does not own pose/action, expression, gaze, mouth state, hands, or energy; route those to `styling-performance.md`. Any performance detail previewed here remains suggested until its own dimension is chosen.
 
 If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If subject scale/body cutoff, camera distance, or angle is already locked, ask only the unresolved shot part, such as placement or background relationship.
+
+Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. On a Scoped Option Refresh, preserve every explicitly locked signature part and require at least two remaining parts to differ from every Shown Option in Shot history. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A/B/C to the current scene, locks, and history.
 
 For realistic, lifestyle, social, and beauty/editorial portraits, ask a lightweight shot-direction question unless framing, camera/viewpoint, subject placement, and background relationship are already resolved or accepted through recommended defaults. Performance details alone do not resolve shot direction.
 
@@ -143,6 +145,8 @@ When perspective materially changes the requested image and remains unresolved, 
 
 These are semantic lanes, not fixed presets. Do not use fixed angles, focal lengths, or equipment unless the user supplied them, and still describe their visible consequence. The selection locks viewpoint/distance character, perspective strength, and allowed projection exaggeration; it does not silently lock action, expression, styling, or lighting.
 
+If the user asks for more spatial or perspective creativity after choosing a lane, preserve the Perspective Intent classification and refresh Shot expressions within it. Do not invent another lane for novelty.
+
 If camera perspective is already locked, skip this question. Preserve it through any later reference-coverage or risk gate.
 
 ## Camera and Capture Plan
@@ -165,6 +169,8 @@ Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dim
 Resolve it in this order: honor an explicit finish; after accepted recommended defaults or delegated choices, resolve it internally; otherwise use the existing lighting/color gate. A bare creative-direction choice leaves previewed finish details `suggested`.
 
 When the gate is needed, present exactly three image-specific Finish Directions labeled A through C plus `D) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
+
+Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature. On a Scoped Option Refresh, preserve explicit finish locks and require at least two remaining signature parts to differ from every Shown Option in Finish history.
 
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
@@ -258,6 +264,8 @@ Do not invent brand names, slogans, logos, or product claims.
 ## Layout and Output Contract
 
 When use or platform is known, form a recommended canvas aspect ratio, safe areas, platform variants, and small-size readability. If these are not locked or accepted through recommended defaults, ask them as one output-contract choice; do not silently lock a platform convention.
+
+Treat layout structure, subject/text-safe placement, safe areas/readability, and required variant organization as the Layout visible signature. When a visible Layout gate is needed, use `scoped-option-refresh.md`. On a Scoped Option Refresh, preserve exact text, explicit aspect ratio, and hard delivery requirements; require at least two unlocked signature parts to differ from every Shown Option in Layout history.
 
 Verify exact text character by character. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 

@@ -44,7 +44,11 @@ If a creative direction already suggested a styling lane, such as lifestyle, str
 
 Do not combine wardrobe/accessory treatment into the creative-direction question unless the user already specified it or it is inseparable from the requested concept. If wardrobe/accessory treatment is still missing after the direction is chosen, ask it as the next serial clarification.
 
+Treat silhouette/layers, materials, headwear/accessories, makeup/hair/grooming, and props as the Styling visible signature. On a Scoped Option Refresh, preserve every named garment, accessory, grooming, or prop Explicit Lock and require at least two remaining signature parts to differ from every Shown Option in Styling history.
+
 For LinkedIn, professional headshot, resume, or business-avatar requests, do not assume the outfit or headwear should be replaced. If distinctive wardrobe, headwear, jewelry, or accessories are visible and the user did not say whether to keep or change them, ask:
+
+The pattern below shows the expected level of visible consequence for an initial gate; it is not a permanent keep/simplify/replace catalog. Adapt A/B/C to the actual visible wardrobe and current locks, and generate Fresh Options from the Styling signature when the user asks for another batch.
 
 ```text
 I recommend: keep the original outfit, headwear, and accessories, then polish them for the professional context, because these are the strongest visual identity cues in the reference and replacing them can shift the final image too far.
@@ -77,6 +81,8 @@ If hand/prop interaction is complex and unsupported by the reference, expose tha
 ## Performance Direction
 
 Pose/action options must cover body direction, gaze, mouth state, and energy level. Keep performance theme-appropriate while preserving identity readability.
+
+Treat action/body direction, expression/mouth, gaze, hands/prop interaction, and energy as the Performance visible signature. When several choices fit or the user requests a Scoped Option Refresh, use three visible options plus `D) Custom`, preserve explicitly locked performance parts, and require at least two remaining signature parts to differ from every Shown Option in Performance history.
 
 Describe performance choices as visible behavior, not acting jargon: where the body turns, what the hands do, where the eyes land, whether the mouth is relaxed or active, and how restrained or forceful the moment feels. For example, distinguish a quiet pause with gaze beyond camera from an engaged task with hands occupied or a stronger action with accepted identity/anatomy risk. Adapt the behavior to the locked decisive moment.
 

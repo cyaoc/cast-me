@@ -19,6 +19,11 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Every concrete direction shown or internally chosen is tracked for the current conversation; automatic recommendations differ from every Shown Direction in at least three of the six Direction Signature parts.
 - Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension, never as a later mandatory step or automatic second pass.
 - When First-Pass Finish is unresolved, the existing lighting/color gate offers exactly three image-specific Finish Directions plus `D) Custom`; each direction describes one coherent visible result rather than a parameter list or palette swap.
+- Route a request for replacement choices to the explicitly named creative area, otherwise the unresolved visible gate, otherwise the most recently presented refreshable gate. Ask one compact scope question only when none of those targets exists.
+- Every visible refreshable creative gate contains three concrete A/B/C options plus the permanent `D) Custom` option. Track all presented concrete options in conversation-local, per-area Shown Option histories; adopted Custom and delegated options count, while the placeholder does not.
+- Outside Creative Direction, every Fresh Option differs from every Shown Option in the same area, including options in the current batch, in at least two owner-specific visible signature parts. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
+- A Scoped Option Refresh preserves identity, output requirements, unrelated values, and every Explicit Lock. It may reopen only target-area Derived Locks and fields the user explicitly asks to change.
+- Output Type, Role/Costume Version, Safety, reference coverage, identity risk, Perspective Intent classification, and exact-text verification remain focused or classificatory choices rather than novelty menus.
 
 ## 1. Vague professional avatar
 
@@ -193,3 +198,105 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[result visible] The skin looks plastic. Fix only that finish problem.`
 
 **Expected:** Enter the targeted revision flow only because the user explicitly requested it. Restore natural skin texture, repeat the identity invariants, and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other locked element. Do not restart the concept or perform another unrequested pass after this revision.
+
+## 30. Active Finish Refresh
+
+**Input:** `[portrait at the Finish Direction gate] These three do not work. Give me another batch.`
+
+**Expected:** Refresh only First-Pass Finish. Show three new image-specific Finish Directions plus `D) Custom`; preserve identity, creative direction, scene, Shot, Styling, Performance, canvas, and text. Do not enter Style Refresh, generate an image, or start a targeted revision.
+
+## 31. Explicit refresh target beats the visible gate
+
+**Input:** `[portrait at the Finish Direction gate] Give me three new shot choices instead.`
+
+**Expected:** Refresh only Shot because the user named it explicitly. Keep First-Pass Finish unresolved, preserve every unrelated choice and Explicit Lock, and do not interpret the request as Style Refresh.
+
+## 32. Recent refreshable gate survives adoption and generation
+
+**Input:** `[user adopted a Finish Direction and generated the first image; no later refreshable gate was shown] The choices from before were not right after all. Give me another batch.`
+
+**Expected:** Treat First-Pass Finish as the most recently presented refreshable gate and show three Fresh Finish Directions plus `D) Custom`. Do not edit or regenerate the visible image merely because choices were requested.
+
+## 33. No reliable refresh scope
+
+**Input:** `[new conversation with a person reference but no creative gate yet] Give me some more options.`
+
+**Expected:** Ask one compact localized scope question with concrete choices such as creative direction, Shot, Styling, Performance, or First-Pass Finish. Do not silently default to Style Refresh, create nested menus, or ask several questions.
+
+## 34. Named creative refresh while a focused gate is pending
+
+**Input:** `[reference-coverage gate is unresolved] Before I answer that, give me three new performance choices.`
+
+**Expected:** Refresh only Performance and keep the reference-coverage gate unresolved for return before generation. The topic change does not accept evidence inference, weaken the focused gate, or turn its paths into creative options.
+
+## 35. Partial Shot reopen preserves an Explicit Lock
+
+**Input:** `[waist-up framing is locked] Keep it waist-up, but give me three new shot relationships.`
+
+**Expected:** Preserve the waist-up body cutoff. Generate three Shot options plus `D) Custom` that differ through viewpoint/distance/projection, subject placement, or spatial/background relationship; do not change style, action, expression, or lighting.
+
+## 36. Three consecutive Decisive Moment refreshes
+
+**Input:** `[story-bearing direction locked] Reject the Decisive Moment gate and request three consecutive new batches.`
+
+**Expected:** Each batch contains three concrete moments plus `D) Custom`. Every new moment differs from all prior moments in at least two of event/action, before/after tension, story evidence, and first impression while remaining inside the locked Creative Direction.
+
+## 37. Three consecutive Shot refreshes
+
+**Input:** `[scene and Creative Direction locked] Reject the Shot gate and request three consecutive new batches.`
+
+**Expected:** Each batch contains three concrete Shot options plus `D) Custom`. Every option differs from all prior Shot options in at least two of body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship. Fixed crop labels, equipment tokens, and renamed versions do not count as fresh.
+
+## 38. Three consecutive First-Pass Finish refreshes
+
+**Input:** `[all dimensions except First-Pass Finish locked] Reject the Finish gate and request three consecutive new batches.`
+
+**Expected:** Each batch contains three image-specific Finish Directions plus `D) Custom`. Every option differs from all prior Finish options in at least two of overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character. A palette-only change is not fresh.
+
+## 39. Three consecutive Styling refreshes
+
+**Input:** `[professional portrait with identity, scene, Shot, and Performance locked] Reject the Styling gate and request three consecutive new batches.`
+
+**Expected:** Each batch contains three concrete Styling options plus `D) Custom`. Every option differs from all prior Styling options in at least two of silhouette/layers, materials, headwear/accessories, makeup/hair/grooming, and props. Preserve every named garment or accessory Explicit Lock; do not reuse keep/simplify/replace as a fixed catalog.
+
+## 40. Three consecutive Performance refreshes
+
+**Input:** `[Decisive Moment and Shot locked] Reject the Performance gate and request three consecutive new batches.`
+
+**Expected:** Each batch contains three visible Performance options plus `D) Custom`. Every option differs from all prior Performance options in at least two of action/body direction, expression/mouth, gaze, hands/prop interaction, and energy. Adjective-only changes such as “more natural” or “more powerful” are not fresh.
+
+## 41. Three consecutive Layout refreshes
+
+**Input:** `[poster exact title and platform requirements locked] Reject the Layout gate and request three consecutive new batches.`
+
+**Expected:** Each batch contains three Layout options plus `D) Custom`. Every option differs from all prior Layout options in at least two of layout structure, subject/text-safe placement, safe areas/readability, and required variant organization. Preserve exact text, required aspect ratio, and platform delivery locks.
+
+## 42. Scoped Custom option history
+
+**Input:** `[Shot gate] D) Custom: waist-up, low viewpoint, subject on the far right, deep empty platform to the left. Now give me a new Shot batch.`
+
+**Expected:** Record the adopted Custom Shot in Shot history and exclude equivalent automatic recommendations. Keep the `D) Custom` placeholder available in the next gate; do not add the Custom Shot to Creative Direction or another area's history.
+
+## 43. Scoped Delegated Refresh
+
+**Input:** `[Performance already exists] I do not like that action. Pick a fresh one yourself and continue.`
+
+**Expected:** Do not display a Performance gate. Select and record one compatible Fresh Performance internally, preserve unrelated values and Explicit Locks, then continue; focused risk, coverage, safety, and exact-text gates remain available.
+
+## 44. Scoped Refresh Exhaustion
+
+**Input:** `[waist-up crop, eye-level viewpoint, centered placement, flat background, and proportion-first perspective are all Explicit Locks after many Shot batches] Give me three new Shot options without changing anything.`
+
+**Expected:** Keep the two-part Shot freshness threshold. Identify the single Explicit Lock most responsible for leaving fewer than three Fresh Options and ask whether to reopen only that field, while retaining stop and `D) Custom` paths. If every lock stays, stop; do not fabricate a batch or escalate to Style Refresh.
+
+## 45. Focused and classificatory gates do not become novelty menus
+
+**Input:** `[Safety, reference-coverage, identity-risk, Output Type, Role/Costume Version, or exact-text gate is visible] Give me more options.`
+
+**Expected:** Keep the active gate fact-dependent and offer only paths justified by the actual intent, evidence, classification, or text problem. Do not apply Shown Option history, a two-part freshness threshold, or unrelated creative choices.
+
+## 46. Perspective classification stays stable
+
+**Input:** `[strong viewpoint with controlled projected proportions is locked] Give me three more spatially dramatic choices.`
+
+**Expected:** Preserve the selected Perspective Intent and generate Fresh Shot expressions within it. Do not invent a fourth perspective-risk category, weaken the controlled-proportion constraint, or reopen action, Styling, Performance, or First-Pass Finish.
