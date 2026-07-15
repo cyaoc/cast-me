@@ -128,9 +128,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 19. Ordinary refresh versus Trend Refresh
 
-**Input:** `First: give me another batch. Later: show me current visual directions for 2026.`
+**Input:** `First: give me another batch. Later: make the next batch feel like a 1990s yearbook. Finally: show me current visual directions for 2026.`
 
-**Expected:** The ordinary Style Refresh uses the Direction Atlas and conversation history without browsing. The explicit dated/current request triggers live visual research, extracts concrete production anchors, keeps source links available, and applies the same freshness threshold. If research is unavailable, say currentness could not be verified rather than guessing or presenting remembered styles as current.
+**Expected:** The ordinary Style Refresh and the historical-era constraint use the Direction Atlas and conversation history without browsing. The explicit dated/current request triggers live visual research, extracts concrete production anchors, keeps source links available, and applies the same freshness threshold. If research is unavailable, say currentness could not be verified rather than guessing or presenting remembered styles as current.
 
 ## 20. Delegated Refresh
 
