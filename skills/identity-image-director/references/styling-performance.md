@@ -8,17 +8,17 @@ This module owns what the person wears, holds, does, and performs. It does not o
 
 When styling or performance conflicts with identity or geometry, first simplify only unresolved, unsupported, non-story-critical details. Never alter a locked action, head direction, gaze, hand interaction, or styling choice without a risk-choice gate.
 
-Before asking about wardrobe, props, pose, expression, gaze, hands, or beauty level, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or beauty level again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
+Before asking about wardrobe, props, pose, expression, gaze, hands, or facial treatment, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or facial treatment again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
 
 ## Risk and Beauty Handling
 
 When a risk gate is needed, derive its options from the actual unsupported fields and locked intent. Relevant options add evidence or description, accept labeled inference, or stage the work around the actual gap. Do not use a universal stable/bold ladder, and do not treat intentional projected size change under a locked camera as anatomy instability.
 
-Beauty retouching should be specific:
+Keep facial treatment inside the First-Pass Finish dimension and use the existing identity boundary:
 
-- Natural cleanup: remove screenshot/capture artifacts, improve light and skin tone, keep pores/texture and original facial structure.
-- Refined editorial polish: cleaner skin, better complexion, stronger grooming/makeup/styling, but no redesign of intrinsic face width, eyes, nose, lips, chin, jawline, or age impression.
-- Obvious beautification: idealized face shape or features may reduce likeness; require explicit user acceptance before using this level.
+- Natural Retouch: reduce distracting shine, minor unevenness, clearly temporary blemishes, and capture artifacts while preserving pores, fine lines, skin tone, age impression, original facial structure, distinctive marks, and anything uncertain.
+- Stronger complexion, grooming, makeup, flyaway-hair, or texture polish may proceed without another gate while protected identity anchors remain unchanged.
+- Requested changes to face or body structure, intrinsic features, skin tone, ethnicity impression, body shape, or apparent age require the existing identity risk-choice gate. Do not add a beauty-specific workflow.
 
 ## Category Routing
 
@@ -133,7 +133,7 @@ When writing the production prompt, include styling/performance details only whe
 
 - wardrobe/headwear/jewelry/accessories: preserve, simplify, polish, or replace because requested
 - hair/makeup/grooming constraints, especially if visible identity depends on them
-- beauty level: natural cleanup, refined editorial polish, or obvious beautification with accepted likeness risk
+- facial treatment: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details
 - prop purpose, hand relationship, and hand complexity
 - pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, hand/prop, and energy relationships

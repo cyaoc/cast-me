@@ -17,6 +17,8 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Reference-coverage, identity-risk, safety, and exact-text gates remain focused exceptions.
 - Every visible Direction Gate contains three concrete A/B/C directions plus the permanent `D) Custom` option.
 - Every concrete direction shown or internally chosen is tracked for the current conversation; automatic recommendations differ from every Shown Direction in at least three of the six Direction Signature parts.
+- Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension, never as a later mandatory step or automatic second pass.
+- When First-Pass Finish is unresolved, the existing lighting/color gate offers exactly three image-specific Finish Directions plus `D) Custom`; each direction describes one coherent visible result rather than a parameter list or palette swap.
 
 ## 1. Vague professional avatar
 
@@ -149,3 +151,45 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `Bring back the earlier "Moonlit flooded citadel" direction exactly.`
 
 **Expected:** Honor the explicit request even though the direction is already Shown. Freshness limits automatic recommendations, not deliberate user reuse.
+
+## 23. Defaulted photographic First-Pass Finish
+
+**Input:** `[selfie] Turn this into a polished LinkedIn headshot. Keep my face, age, mole under my left eye, natural skin tone, and current clothes. Use recommended defaults for everything else.`
+
+**Expected:** Generate without another ordinary question. The first prompt includes a coherent lighting/color/retouch/finish treatment and uses Natural Retouch: reduce distracting shine, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, the named mole, every uncertain mark, and natural texture. Do not redesign the face or schedule another generation/editing pass.
+
+## 24. Unresolved beginner Finish Directions
+
+**Input:** `[portrait] Keep the locked 4:5 rainy-station editorial direction, waist-up shot, black jacket, three-quarter turn, quiet expression, and gaze past camera. Everything is resolved except light, color, retouching, texture, and the final finished feeling; I do not know post-production.`
+
+**Expected:** Reuse the existing lighting/color gate rather than adding a post-processing step. Show exactly three image-specific Finish Directions labeled A/B/C plus `D) Custom`, with one recommendation and one short visible-result reason. Each direction makes its overall feeling, light/contrast, person/environment color relationship, identity-safe facial treatment, and relevant texture easy to imagine. Do not ask for LUTs, software, camera, or parameter-by-parameter choices.
+
+## 25. Explicit finish bypasses the gate
+
+**Input:** `[portrait] Make a 4:5 editorial portrait with soft window-like side light, neutral skin, muted warm walls, open shadows, visible pores and fine lines, no grain, and a clean matte finish. Keep my identity and use recommended defaults for everything else.`
+
+**Expected:** Lock the explicit finish, resolve only its materially relevant production controls, and generate without a Finish Direction question. Do not replace the requested treatment with a preset name or ask the user to choose it again.
+
+## 26. No facial retouching
+
+**Input:** `[portrait] Keep my face completely unretouched and preserve the scar over my right eyebrow. You decide the global light, color, contrast, grain, and texture.`
+
+**Expected:** Lock no facial retouching and the named scar. Resolve global lighting/color/retouch/finish internally and keep exposure, contrast, grain, sharpness, and environmental texture available without applying facial cleanup, smoothing, blemish removal, or structural change.
+
+## 27. Stronger retouching follows the existing identity boundary
+
+**Input:** `[portrait] Give me stronger complexion cleanup, tidier flyaway hair, and refined editorial skin texture, but keep the same face. Also make my jaw narrower, skin lighter, and age me down ten years.`
+
+**Expected:** Apply the non-structural complexion, grooming, and texture polish without another beauty-specific gate. Route the narrower jaw, lighter skin, and younger apparent age through the existing identity risk-choice gate because they alter protected identity anchors; do not silently apply, reject, or weaken those requested structural changes.
+
+## 28. Medium-adapted CG First-Pass Finish
+
+**Input:** `[portrait] Make premium dark-fantasy game key art. Keep the identity, 16:9 canvas, full-body stance, bronze lamellar armor, ruined gate, low camera, and amber moonlight. Everything is locked except the final surface, material, and finished look.`
+
+**Expected:** Use the existing lighting/color gate to offer three coherent, image-specific material/medium Finish Directions plus `D) Custom`. Describe face rendering, bronze, cloth, stone, atmosphere, surface detail, and final key-art character in medium-appropriate language; do not turn the choice into photographic skin-retouching, LUT, exposure, or irrelevant editing controls.
+
+## 29. Explicit targeted finish revision
+
+**Input:** `[result visible] The skin looks plastic. Fix only that finish problem.`
+
+**Expected:** Enter the targeted revision flow only because the user explicitly requested it. Restore natural skin texture, repeat the identity invariants, and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other locked element. Do not restart the concept or perform another unrequested pass after this revision.

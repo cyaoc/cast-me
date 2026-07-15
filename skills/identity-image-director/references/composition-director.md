@@ -1,6 +1,6 @@
 # Composition Director
 
-Use this reference for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, canvas/aspect, lighting/color/finish, delivery, output recipes, and final prompt structure.
+Use this reference for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, canvas/aspect, lighting/color/retouch/finish, delivery, output recipes, and final prompt structure.
 
 ## Creative Direction
 
@@ -158,17 +158,21 @@ Translate the selected shot into an internal capture plan using controls that ch
 
 Focal length, aperture, shutter speed, ISO, white balance, format, or equipment names are optional aesthetic vocabulary, not required fields. Tie each one used to a visible consequence. If the user asks for parameter styling, label numbers as approximate visual cues; never claim a physically valid exposure or lighting rig from the generation brief alone.
 
-## Lighting, Color, and Finish
+## First-Pass Finish
 
-Lighting must be motivated by the scene rather than a generic list of key/fill/rim lights. Resolve the believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation when relevant.
+Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension. Include the selected finish in the original generation prompt; never add a mandatory post-processing step or automatic second generation/editing pass.
 
-Name a modifier or shaping method only when it clarifies the visible effect, such as large diffusion, bounce, Fresnel-like hard light, flag/negative fill, grid, or gobo.
+Resolve it in this order: honor an explicit finish; after accepted recommended defaults or delegated choices, resolve it internally; otherwise use the existing lighting/color gate. A bare creative-direction choice leaves previewed finish details `suggested`.
 
-Also define skin-tone priority; the warm/cool, brightness, contrast, and saturation relationship between person and environment; and useful finish such as highlight roll-off, shadow detail, grain, halation, sharpness, and material rendering.
+When the gate is needed, present exactly three image-specific Finish Directions labeled A through C plus `D) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
 
-Ask in visible outcomes: soft window-like light feels natural and close; motivated side light creates stronger shape and tension; polished frontal beauty light feels cleaner and more commercial. Adapt the actual options to the locked concept.
+Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
-Do not rely on camera brands, precise light power, empty LUT names, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
+For realistic portraits, professional headshots, social avatars, and photographic editorials, use Natural Retouch when defaults are accepted: reduce distracting shine, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
+
+Treat explicit `no retouch`, preservation requests, and named facial marks as locks. Keep global exposure, color, contrast, grain, sharpness, and environmental texture separately controllable. Stronger complexion, grooming, or texture polish may proceed without another gate while the protected identity anchors remain unchanged; route structural or intrinsic feature, skin-tone, ethnicity-impression, body-shape, or apparent-age changes through the existing identity risk-choice gate in `identity-anchor.md` and `styling-performance.md`.
+
+For CG, game key art, illustration, and other non-photographic outputs, adapt face, surface, texture, material, and final image character to the selected medium without forcing photographic retouching vocabulary or irrelevant controls. Any filter or grading treatment must follow the locked creative direction and motivated lighting/color logic. Do not rely on camera brands, precise light power, empty LUT names, fixed presets, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
 
 ## Art Direction and Physical World
 
@@ -207,13 +211,13 @@ Use these recipes as prompt vocabulary after the relevant choices are resolved. 
 
 ### Realistic Portrait
 
-Use realistic photography language: capture context, the selected natural or compressed perspective, natural skin texture, motivated light, appropriate depth distribution, believable wardrobe, ordinary imperfections, and a clean but not empty background.
+Use realistic photography language: capture context, the selected natural or compressed perspective, Natural Retouch or an explicit facial-treatment lock, motivated light, appropriate depth distribution, believable wardrobe, ordinary imperfections, and a clean but not empty background.
 
 Avoid CG polish, fantasy styling, poster typography, and unreal materials.
 
 ### Professional Headshot
 
-Use a clean background, restrained retouching, confident but natural expression, business/editorial lighting, and realistic face preservation.
+Use a clean background, Natural Retouch or the user's explicit facial-treatment lock, confident but natural expression, business/editorial lighting, and realistic face preservation.
 
 Do not default to replacing distinctive original clothing or headwear with a blazer. Use `styling-performance.md` for unresolved wardrobe treatment when visible wardrobe/headwear is distinctive or could affect the output.
 
@@ -227,7 +231,7 @@ Only include text if the user provides exact text. If text treatment is unresolv
 
 ### CG or Game Key Art
 
-Use premium concept-art finish, detailed materials, cinematic environment, dynamic but identity-preserving pose, and stylized lighting. Define the world, camera angle, costume/material system, and readable silhouette.
+Use premium concept-art finish, medium-specific face and surface rendering, detailed materials, cinematic environment, dynamic but identity-preserving pose, and stylized lighting. Define the world, camera angle, costume/material system, and readable silhouette without photographic retouching controls.
 
 Do not over-stylize the face until the person becomes unrecognizable.
 
@@ -276,9 +280,7 @@ Consider these dimensions when relevant:
 - world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
 - composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
 - identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
-- lighting: motivated source, direction, size/hardness, fill or negative fill, falloff, separation, reflections, and how light reaches face, hair, wardrobe, and accessories
-- palette/finish: main, support, and accent colors; skin-tone priority; warm/cool and saturation hierarchy; highlight/shadow treatment; forbidden colors or moods
-- texture/detail: skin, hair, fabric, metal, props, environmental surfaces
+- lighting/color/retouch/finish: motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture; final image character; only materially useful controls
 - output contract: canvas aspect, platform readability, safe areas, exact-text verification, and required variants
 - negative constraints: no text unless exact copy, no watermark, no fake brands, no random UI, no theme-breaking elements
 
@@ -302,13 +304,13 @@ Subject identity/anatomy: <identity readability at the target face angle; angle-
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include important materials and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
-Lighting/color/finish: <motivated source, direction, size/hardness, fill or negative fill, separation, skin/environment relationship, palette, material behavior, and finish>
+Lighting/color/retouch/finish: <coherent First-Pass Finish; motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture and final image character; only materially useful production controls>
 Text: <exact text in straight quotes; hierarchy and placement; or "no text">
 Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
 Continuity invariants (series only): <identity, wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment that must not drift>
 Constraints: no identity drift, underlying face redesign, age/ethnicity drift, extra people unless requested, watermark, random text, fake brands, target-plane-inconsistent face deformation, malformed hands, copied source crop scale, pasted frontal face, stiff copied expression, invalid underlying anatomy, or random/projection-inconsistent deformation; preserve angle-correct facial appearance and intentional projection exaggeration, and add only output-adaptive negatives
 ```
 
-Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color, text/output contract, and adaptive negatives are concrete enough for the task.
+Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task.
 
-If the generated output is visible, review whether the selected feeling and decisive moment read; identity remains recognizable at the target angle; underlying anatomy is valid; projected proportions match the locked perspective; pose geometry, facial planes, and gaze agree; intentional exaggeration is distinct from random deformation; requested styling/light/text/output match; and there are no competing details or obvious artifacts.
+If the generated output is visible, review whether the selected feeling and decisive moment read; identity remains recognizable at the target angle; underlying anatomy is valid; projected proportions match the locked perspective; pose geometry, facial planes, and gaze agree; intentional exaggeration is distinct from random deformation; requested styling, First-Pass Finish, text, and output match; and there are no competing details or obvious artifacts.

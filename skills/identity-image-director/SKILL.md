@@ -14,7 +14,7 @@ Turn a user-provided person image into a polished final image while preserving t
 Read the relevant reference files before asking their related questions or writing a production prompt:
 
 - `references/identity-anchor.md` - required for any person reference image, identity preservation, reference coverage, target-angle face integrity, anatomy/projection risk, identity cues, risk-choice gates, and identity/geometry revisions.
-- `references/composition-director.md` - required for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, lighting/color/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
+- `references/composition-director.md` - required for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, lighting/color/retouch/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
 - `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose geometry, action, expression, gaze, hands, and performance energy.
 
 For normal generation, read all three references before generation. For a narrow revision, read only the reference that owns the issue unless the revision touches multiple modules.
@@ -46,6 +46,8 @@ For normal generation, read all three references before generation. For a narrow
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording.
 - If the user says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated evidence or inference risk.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks Codex to decide, or the dimension is irrelevant to the requested output.
+- Resolve First-Pass Finish in this order: honor an explicit finish; resolve it internally after accepted recommended defaults or delegated choices; otherwise use the existing lighting/color gate in `references/composition-director.md`. A creative-direction preview remains `suggested` until the user resolves or defaults it.
+- Include First-Pass Finish in the initial generation prompt. Enter a targeted finish revision only after an explicit user request; never schedule an automatic second generation or editing pass.
 - When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk-choice gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or accepted inference.
 - Do not repeat a risk-choice gate when the user clearly accepted that specific risk, such as `try one version with inferred body and angle`, `I accept lower likeness`, `stronger beauty retouch`, or `bold attempt with the missing evidence inferred`. Continue with the chosen risk and make the prompt explicit about the tradeoff.
 - When `imagegen` also triggers, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
@@ -98,7 +100,7 @@ Use this adaptive clarification ladder as an internal routing order for missing 
 4. wardrobe, headwear, jewelry, accessory, makeup, hair, and prop treatment
 5. canvas aspect ratio, safe areas, variants, and text treatment
 6. performance direction: pose/action, expression, gaze, hands, and energy level
-7. lighting and color/palette
+7. lighting/color/retouch/finish
 8. avoid-list and theme-breaking elements
 
 Route by production complexity rather than a turn-count target. Simple practical images omit story-world decisions that do not affect the result; directed portraits keep each material visual choice; posters, key art, full-body/action, exact text, or series work add only their relevant decisions and focused risk gates.
@@ -111,7 +113,7 @@ Keep ownership clear while routing:
 - shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint/distance, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship
 - styling owns wardrobe, hair, makeup, accessories, and props
 - performance owns pose/action, expression, gaze, mouth state, hands, and energy
-- lighting/color owns motivated light, contrast, palette, skin/material rendering, and finish
+- lighting/color/retouch/finish owns motivated light, contrast, palette, identity-safe facial or material treatment, texture, and final image character
 - art direction internally reconciles the locked world, shot, styling, and lighting into one physical scene; it is not a separate user gate
 - output contract owns canvas aspect ratio, safe areas, platform variants, exact text, and platform readability
 
@@ -121,7 +123,7 @@ For all output types, collect enough brief detail before generation to support a
 
 Use `references/identity-anchor.md` for reference coverage, high-risk source-to-target jumps, target-angle face integrity, underlying anatomy, projected proportions, identity cues, and risk-choice gates.
 
-Use `references/composition-director.md` for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot/perspective and capture/projection plans, art direction, lighting/color/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
+Use `references/composition-director.md` for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot/perspective and capture/projection plans, art direction, lighting/color/retouch/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
 
 Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose geometry/action, expression, gaze, hand direction, and performance complexity.
 
@@ -177,6 +179,7 @@ Before generation, check:
 - target-angle identity readability, face/body coordination, underlying anatomy, projected proportions, and pose geometry are explicit
 - camera consequences are explicit when relevant: camera height, subject distance, perspective character, allowed projection exaggeration, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
 - lighting is motivated by the scene and defines direction, size/hardness, falloff, negative fill or separation when useful, rather than listing generic three-point lights
+- First-Pass Finish coherently resolves light/contrast, color relationships, identity-safe facial or material treatment, relevant texture, and final image character using only controls that materially affect this output
 - scene, shot direction, lighting, palette, materials, props, and negative constraints are concrete enough for the output type
 - delivery requirements cover platform readability, crop-safe composition, text-safe areas, and exact-text verification when relevant
 - a requested series locks continuity for wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment; single images omit this extra contract
@@ -190,7 +193,7 @@ If the generated output is visible in the current thread, review it before final
 
 - whether the person still looks like the input reference
 - whether face anchor features are preserved rather than redesigned
-- whether the output matches the requested type, canvas, crop, pose, action, expression, gaze, lighting, palette, and text treatment
+- whether the output matches the requested type, canvas, crop, pose, action, expression, gaze, lighting, palette, facial or material treatment, texture, finish, and text treatment
 - whether the selected feeling and decisive moment read clearly rather than producing only a polished but generic image
 - whether identity remains readable at the selected face angle without turning the face back toward camera
 - whether there is one clear hero subject and supporting details do not compete
@@ -199,4 +202,4 @@ If the generated output is visible in the current thread, review it before final
 - whether there are unwanted text artifacts, projection-inconsistent face deformation, malformed hands, or obvious AI tells
 - whether the result remains readable and correctly cropped for the intended platform, with exact text checked character by character when text matters
 
-If the result is visibly close but has a specific issue, run one targeted revision and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.
+If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.
