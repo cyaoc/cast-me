@@ -156,7 +156,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[selfie] Turn this into a polished LinkedIn headshot. Keep my face, age, mole under my left eye, natural skin tone, and current clothes. Use recommended defaults for everything else.`
 
-**Expected:** Generate without another ordinary question. The first prompt includes a coherent lighting/color/retouch/finish treatment and uses Natural Retouch: reduce distracting shine, redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, the named mole, every uncertain mark, and natural texture. Do not redesign the face or schedule another generation/editing pass.
+**Expected:** Generate without another ordinary question. The first prompt includes a coherent lighting/color/retouch/finish treatment and uses Natural Retouch: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, the named mole, every uncertain mark, and natural texture. Do not redesign the face or schedule another generation/editing pass.
 
 ## 24. Unresolved beginner Finish Directions
 
