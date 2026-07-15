@@ -14,7 +14,7 @@ Turn a user-provided person image into a polished final image while preserving t
 Read the relevant reference files before asking their related questions or writing a production prompt:
 
 - `references/identity-anchor.md` - required for any person reference image, identity preservation, reference coverage, target-angle face integrity, anatomy/projection risk, identity cues, risk-choice gates, and identity/geometry revisions.
-- `references/composition-director.md` - required for creative direction, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, lighting/color/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
+- `references/composition-director.md` - required for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, lighting/color/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
 - `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose geometry, action, expression, gaze, hands, and performance energy.
 
 For normal generation, read all three references before generation. For a narrow revision, read only the reference that owns the issue unless the revision touches multiple modules.
@@ -36,11 +36,13 @@ For normal generation, read all three references before generation. For a narrow
 - Preserve detail without turning the interaction into a professional form. Ask users to choose visible outcomes in plain language; translate those choices internally into camera, lighting, color, material, and delivery decisions. Do not ask beginners to choose camera bodies, lens models, ISO, aperture, shutter speed, Kelvin values, light power, or modifiers. If the user explicitly asks for parameter styling, use only approximate aesthetic cues tied to visible results, not a claimed physical exposure plan.
 - Do not compress creative direction, shot direction, styling, performance, lighting, and delivery into one production package when several of those dimensions are still unresolved. A direction option may preview later details, but selecting it locks only the dimension being asked unless the user explicitly accepts the whole recommendation or recommended defaults.
 - Maintain a decision state after every user response:
-  - `locked`: the user explicitly selected, specified, overrode, or accepted this value through recommended defaults
+  - `locked: explicit`: the user directly specified, selected, or overrode this value; preserve it through a Style Refresh unless the user explicitly reopens it
+  - `locked: derived`: a selected direction or accepted recommended defaults supplied this value; a Style Refresh may reopen it only when it belongs to the previous direction
   - `suggested`: a prior option or recommendation previewed this value, but the user has not explicitly locked it
   - `unresolved`: the value is still missing and production-critical
 - Every clarification must ask exactly one unresolved dimension or tightly coupled decision group and inherit all locked and suggested prior decisions. Do not ask a locked dimension again unless the user reopens it, contradicts it, or asks to change it.
-- Suggested details are not final choices, but later questions must refine or adapt from them instead of restarting with generic menus. When the user accepts recommended defaults, convert relevant suggested details into locked decisions.
+- Suggested details are not final choices, but later questions must refine or adapt from them instead of restarting with generic menus. When the user accepts recommended defaults, convert relevant suggested details into `locked: derived` decisions; a repeated or overridden value becomes `locked: explicit`.
+- Route any request for another batch, a new style, or a completely different direction through the Style Refresh rules in `references/composition-director.md`. Reuse the existing Direction Gate; do not restart the brief or add another mandatory step.
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording.
 - If the user says `default`, `use recommended defaults`, `you decide`, `generate now`, or equivalent wording, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated evidence or inference risk.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks Codex to decide, or the dimension is irrelevant to the requested output.
@@ -86,7 +88,7 @@ Resolve canvas aspect ratio, safe areas, and text treatment through the adaptive
 
 ## Step 2: Resolve Brief and Creative Direction
 
-After the output type is known, use `references/composition-director.md` to infer the design read and ask one creative-direction follow-up unless the user's brief is already detailed enough to write a complete production prompt.
+After the output type is known, use `references/composition-director.md` to infer the design read and ask one creative-direction follow-up unless the user's brief is already detailed enough to write a complete production prompt. Use its Direction Atlas, freshness tracking, and lock-reopening rules whenever creative direction is unresolved or the user requests a Style Refresh.
 
 Use this adaptive clarification ladder as an internal routing order for missing production-critical choices. It is not a requirement to ask eight questions. Ask only the next unresolved dimension or tightly coupled decision group, skip anything locked, irrelevant, or accepted through recommended defaults, and carry suggested values forward as the basis for later options:
 
@@ -105,7 +107,7 @@ Stop asking as soon as every user-visible tradeoff that could materially change 
 
 Keep ownership clear while routing:
 
-- creative direction owns the visual premise, world, mood, audience read, and decisive moment
+- creative direction owns the visual premise, world, mood, audience read, decisive moment, Direction Signature, and conversation-local Shown Directions
 - shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint/distance, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship
 - styling owns wardrobe, hair, makeup, accessories, and props
 - performance owns pose/action, expression, gaze, mouth state, hands, and energy
@@ -113,13 +115,13 @@ Keep ownership clear while routing:
 - art direction internally reconciles the locked world, shot, styling, and lighting into one physical scene; it is not a separate user gate
 - output contract owns canvas aspect ratio, safe areas, platform variants, exact text, and platform readability
 
-Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, lock those fields explicitly, and skip them later. Never silently lock performance from shot text or lock shot, styling, performance, or lighting from a preview. Keep `pose/action + expression + gaze`, `lighting + color/palette`, and `canvas aspect + safe areas + text treatment` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
+Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, record direction-supplied values as `locked: derived`, and skip them later; the dimension or override the user directly chooses is `locked: explicit`. Never silently lock performance from shot text or lock shot, styling, performance, or lighting from a preview. Keep `pose/action + expression + gaze`, `lighting + color/palette`, and `canvas aspect + safe areas + text treatment` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
 
 For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
 
 Use `references/identity-anchor.md` for reference coverage, high-risk source-to-target jumps, target-angle face integrity, underlying anatomy, projected proportions, identity cues, and risk-choice gates.
 
-Use `references/composition-director.md` for creative direction, decisive moment, shot/perspective and capture/projection plans, art direction, lighting/color/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
+Use `references/composition-director.md` for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot/perspective and capture/projection plans, art direction, lighting/color/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
 
 Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose geometry/action, expression, gaze, hand direction, and performance complexity.
 

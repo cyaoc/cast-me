@@ -1,6 +1,6 @@
 # Composition Director
 
-Use this reference for creative direction, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, canvas/aspect, lighting/color/finish, delivery, output recipes, and final prompt structure.
+Use this reference for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, canvas/aspect, lighting/color/finish, delivery, output recipes, and final prompt structure.
 
 ## Creative Direction
 
@@ -22,9 +22,53 @@ Before asking any composition question, read the coordinating director's decisio
 
 Resolve creative direction whenever it is still production-critical. Do not force a direction question when a practical use and the user's desired read already define it; posters, editorials, commercial visuals, key art, and story-heavy portraits usually need a distinct direction choice unless already specified.
 
-If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, present 2-4 concrete viable directions. Each option should differ meaningfully in setting, role/archetype, mood, output use, and a visible decisive moment when the image carries a story. Sample camera, expression, lighting, or palette remain preview hints unless explicitly selected or defaulted.
+If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly three concrete directions labeled A through C plus the permanent `D) Custom` option.
 
-When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer 2-4 concrete options with different setting, role/archetype, mood, and output use; keep sample pose, expression, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
+When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
+
+### Direction Atlas and Freshness
+
+Use the Direction Atlas only while creative direction is unresolved or during a Style Refresh. It is an internal combination vocabulary, not a fixed catalog or prompt gallery. Represent every concrete option with a Direction Signature containing:
+
+| Part | What to define |
+| --- | --- |
+| Production context | The image's use, audience read, and production lane |
+| Medium / era | The visible making tradition and period logic |
+| Scene and decisive moment | Where the person is and what is happening now |
+| Composition grammar | Subject scale, placement, spatial structure, and graphic rhythm |
+| Lighting / color logic | Motivated light and the role of color, not a palette name alone |
+| Finish | Surface, texture, material rendering, and final image character |
+
+Quality-example shapes only; adapt them to the brief rather than treating them as reusable defaults:
+
+- contemporary documentary editorial + tactile 35mm observation + a public-space transition + layered off-center framing + available mixed light + restrained grain
+- mid-century graphic campaign + cut-paper or screen-print construction + one symbolic action + flat poster hierarchy + two-color contrast + imperfect ink texture
+- speculative artifact portrait + sculptural digital realism + a ritual or technical threshold + monumental negative space + material-driven glow and shadow + weathered tactile finish
+
+Generate candidates sequentially. A Fresh Direction differs from every Shown Direction, including candidates already chosen for the current batch, in at least three Direction Signature parts. A renamed option, palette-only change, creator name, camera brand, lens token, or minor prompt variation is not fresh.
+
+Track Shown Directions only in the current conversation:
+
+- Record every presented A, B, and C immediately, whether selected or generated.
+- Never record or consume the `D) Custom` placeholder. When the user adopts a concrete Custom Direction, derive its Direction Signature and record it.
+- Record a direction selected internally during a Delegated Refresh.
+- Do not add persistence or require prior-session history.
+
+Freshness limits automatic recommendations, not user intent. If the user explicitly restores a Shown Direction, honor it.
+
+### Style Refresh
+
+A Style Refresh reopens the selected creative direction and may reopen only direction-owned `locked: derived` values. Preserve identity, output requirements, and unrelated `locked: explicit` values such as aspect ratio, exact text, wardrobe, action, gaze, or composition unless the user explicitly reopens them.
+
+Route the user's wording precisely:
+
+- An ordinary request for more or different directions uses the Direction Atlas and conversation-local history without browsing.
+- `Only change the visual style` reopens medium/era, lighting/color, material treatment, and finish. Preserve scene, action, composition, subject placement, and every unrelated Explicit Lock.
+- `Completely change the direction` reopens creative direction and its derived scene, unlocked composition suggestions, lighting/color, and finish. Preserve identity, output requirements, exact text, and every unrelated Explicit Lock.
+- A request that explicitly says current, recent, latest, trending, a year, or another date is a Trend Refresh. Use live visual research, extract concrete production anchors, keep source links available, and apply the same freshness threshold. If research is unavailable, say currentness could not be verified; do not guess.
+- If the user delegates with `you decide`, `pick one`, or equivalent wording, perform a Delegated Refresh: bypass the visible Direction Gate, select and record one compatible Fresh Direction, apply recommended defaults, and continue. Focused identity, reference-coverage, safety, and exact-text gates still apply.
+
+If Explicit Locks leave fewer than three Fresh Directions, declare Refresh Exhaustion. Keep the three-part threshold, identify the single Explicit Lock most responsible, and ask with the standard decision format whether to reopen only that dimension. Offer bounded ways to reopen that one dimension, plus a path that keeps every lock and stops refreshing; never offer a non-fresh batch or relax unrelated locks.
 
 Use this pattern and adapt the option contents to the user's image and requested output type:
 
@@ -35,12 +79,12 @@ Options:
 A) <direction name> (Recommended) - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
 B) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
 C) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
-D) Custom / mix-and-match - describe your own theme or combine several directions
+D) Custom - describe your own theme or combine several directions
 
 Reply with A, or reply with "B + use recommended defaults". If you reply with only B, I will ask the next missing dimension, such as shot direction, styling, performance, aspect/text, or lighting/color.
 ```
 
-The visual details inside creative-direction options are suggested previews. If the user replies with only a direction letter/name, lock that direction and continue the adaptive ladder with the next unresolved dimension. Later questions must inherit and refine the previews; treat them as final only if the user accepts defaults or repeats them explicitly.
+The visual details inside creative-direction options are suggested previews. If the user replies with only a direction letter/name, record the chosen creative direction as `locked: explicit` and continue the adaptive ladder with the next unresolved dimension. Values supplied by the direction itself are `locked: derived` only when the option explicitly makes them part of its premise; camera, styling, performance, lighting, palette, or finish previews remain `suggested`. Accepting recommended defaults converts relevant previews to `locked: derived`; repeating or overriding one converts it to `locked: explicit`.
 
 For LinkedIn, resume, social-avatar, or other practical formats, skip creative direction when the use and desired read already define it. If direction remains ambiguous, offer concrete practical outcomes rather than story-world concepts; later shot, styling, performance, and lighting decisions remain separate.
 

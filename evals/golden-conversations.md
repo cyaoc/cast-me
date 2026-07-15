@@ -15,6 +15,8 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - A risk gate handles missing evidence or accepted inference without reopening or silently downgrading locked camera and performance choices.
 - Never repeat a locked choice. "Use recommended defaults", "you decide", or equivalent wording ends ordinary clarification.
 - Reference-coverage, identity-risk, safety, and exact-text gates remain focused exceptions.
+- Every visible Direction Gate contains three concrete A/B/C directions plus the permanent `D) Custom` option.
+- Every concrete direction shown or internally chosen is tracked for the current conversation; automatic recommendations differ from every Shown Direction in at least three of the six Direction Signature parts.
 
 ## 1. Vague professional avatar
 
@@ -87,3 +89,63 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[result visible] The strong near/far exaggeration is correct, but the turned body has a frontal face and the torso is randomly compressed. Fix only the coordination.`
 
 **Expected:** Preserve camera position, perspective strength, intentional projection exaggeration, action, composition, background, lighting, color, text, and identity anchors. Correct only underlying anatomy discontinuity plus neck/head/facial-plane/gaze alignment. Do not normalize the shot, move the camera, turn the action into standing, or rebuild the concept.
+
+## 13. Three consecutive Style Refreshes
+
+**Input:** `[portrait] Show A/B/C plus D) Custom for a cinematic editorial portrait. I reject the first batch, then request three consecutive new batches.`
+
+**Expected:** Each gate contains exactly three concrete A/B/C directions plus `D) Custom`. The three refreshes add nine Shown Directions; every new Direction Signature differs from every direction shown earlier in the conversation, including options from the same batch, in at least three of production context, medium/era, scene and decisive moment, composition grammar, lighting/color logic, and finish. Renaming, a palette-only change, or equipment vocabulary does not count as fresh.
+
+## 14. Unselected options still become Shown Directions
+
+**Input:** `[portrait] Present a creative-direction gate. I choose none of A/B/C and ask for another batch.`
+
+**Expected:** Record all three presented A/B/C options immediately, not only a selected or generated direction. The next batch must be fresh against all three. Keep the tracking conversation-local and require no persistence or setup.
+
+## 15. Adopted Custom Direction
+
+**Input:** `[portrait] D) Custom: an embossed paper-cut theatre portrait with flat side-on staging. Now refresh the style.`
+
+**Expected:** Derive and record the adopted Custom Direction's six-part Direction Signature, then exclude equivalent automatic recommendations. Every refreshed gate still includes the permanent `D) Custom` placeholder; never record or consume the placeholder itself.
+
+## 16. Style Refresh lock provenance
+
+**Input:** `[portrait] Keep a 4:5 canvas, exact title "NIGHT WALK", black jacket, walking action, leftward gaze, and subject on the right third. Choose direction A and use recommended defaults. Now refresh the style.`
+
+**Expected:** Preserve identity and every Explicit Lock for canvas, exact text, wardrobe, action, gaze, and composition. Reopen the selected creative direction and its direction-owned Derived Locks; values introduced by selected/defaulted direction details must not be misclassified as unrelated Explicit Locks. Preview details that were never repeated or defaulted remain suggested rather than locked.
+
+## 17. Only change the visual style
+
+**Input:** `[portrait] Keep the current scene, action, composition, and subject placement. Only change the visual style.`
+
+**Expected:** Reopen only medium/era, lighting/color, material treatment, and finish. Preserve the scene, action, composition, subject placement, identity, and every other Explicit Lock. Show exactly three Fresh Directions plus `D) Custom` unless the user delegates the choice.
+
+## 18. Completely change the direction
+
+**Input:** `[portrait] Completely change the direction, but keep the same person, 9:16 canvas, exact title "EMBER", and white coat.`
+
+**Expected:** Reopen creative direction plus its derived scene, unlocked composition suggestions, lighting/color, and finish. Preserve identity, output requirements, exact text, wardrobe, and every unrelated Explicit Lock. Do not restart the brief or weaken reference-coverage and identity-risk gates.
+
+## 19. Ordinary refresh versus Trend Refresh
+
+**Input:** `First: give me another batch. Later: show me current visual directions for 2026.`
+
+**Expected:** The ordinary Style Refresh uses the Direction Atlas and conversation history without browsing. The explicit dated/current request triggers live visual research, extracts concrete production anchors, keeps source links available, and applies the same freshness threshold. If research is unavailable, say currentness could not be verified rather than guessing or presenting remembered styles as current.
+
+## 20. Delegated Refresh
+
+**Input:** `[upper-body portrait] I reject the previous directions. Pick a completely different direction yourself and continue; infer the missing full-body and angle evidence.`
+
+**Expected:** Do not display a Direction Gate. Select one compatible Fresh Direction internally, record it as Shown, apply recommended defaults, and continue. The user's accepted inference resolves that coverage gap, while any new focused identity, coverage, safety, or exact-text gate remains available.
+
+## 21. Refresh Exhaustion
+
+**Input:** `[portrait] Keep the exact scene, composition, action, lighting, palette, medium, and finish, but give me three fresh directions after many prior batches.`
+
+**Expected:** Do not weaken the three-part freshness threshold or silently relax locks. Identify the single Explicit Lock most responsible for leaving fewer than three Fresh Directions and ask whether to reopen only that dimension, using the standard decision format. If the user keeps every lock, stop refreshing instead of offering a non-fresh batch.
+
+## 22. Explicitly restore a Shown Direction
+
+**Input:** `Bring back the earlier "Moonlit flooded citadel" direction exactly.`
+
+**Expected:** Honor the explicit request even though the direction is already Shown. Freshness limits automatic recommendations, not deliberate user reuse.
