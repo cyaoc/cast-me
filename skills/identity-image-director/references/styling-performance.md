@@ -10,13 +10,13 @@ When styling or performance conflicts with identity or geometry, first simplify 
 
 Before asking about wardrobe, props, pose, expression, gaze, hands, or facial treatment, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or facial treatment again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
 
-## Risk and Beauty Handling
+## Risk and Facial Treatment
 
 When a risk gate is needed, derive its options from the actual unsupported fields and locked intent. Relevant options add evidence or description, accept labeled inference, or stage the work around the actual gap. Do not use a universal stable/bold ladder, and do not treat intentional projected size change under a locked camera as anatomy instability.
 
 Keep facial treatment inside the First-Pass Finish dimension and use the existing identity boundary:
 
-- Natural Retouch: reduce distracting shine, minor unevenness, clearly temporary blemishes, and capture artifacts while preserving pores, fine lines, skin tone, age impression, original facial structure, distinctive marks, and anything uncertain.
+- Use the Natural Retouch baseline in `composition-director.md` for default photographic finish.
 - Stronger complexion, grooming, makeup, flyaway-hair, or texture polish may proceed without another gate while protected identity anchors remain unchanged.
 - Requested changes to face or body structure, intrinsic features, skin tone, ethnicity impression, body shape, or apparent age require the existing identity risk-choice gate. Do not add a beauty-specific workflow.
 

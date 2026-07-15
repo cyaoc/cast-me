@@ -174,6 +174,8 @@ Treat explicit `no retouch`, preservation requests, and named facial marks as lo
 
 For CG, game key art, illustration, and other non-photographic outputs, adapt face, surface, texture, material, and final image character to the selected medium without forcing photographic retouching vocabulary or irrelevant controls. Any filter or grading treatment must follow the locked creative direction and motivated lighting/color logic. Do not rely on camera brands, precise light power, empty LUT names, fixed presets, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
 
+Enter a targeted finish revision only after an explicit user request for one concrete visible failure, such as plastic skin, a color cast, crushed shadows, clipped highlights, excessive smoothing, or oversharpening. Repeat the identity invariants and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other unrelated lock. Do not schedule another generation or editing pass.
+
 ## Art Direction and Physical World
 
 Treat art direction as internal synthesis of the locked world, shot, styling, and lighting, not as another user gate. If a required choice is unresolved, route it to its owning dimension.

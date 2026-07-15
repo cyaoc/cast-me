@@ -168,7 +168,7 @@ Use positive, concrete visual direction first. Choose only negative constraints 
 If the result is close, revise surgically. Change one target at a time and repeat identity constraints:
 
 - change only the requested issue
-- keep face, composition, crop, camera, pose, expression, gaze, wardrobe, palette, text, product placement, and background unchanged unless they are the issue
+- keep face, pose, composition, crop, palette, text, product placement, and background unchanged unless they are the issue
 - preserve original text unless replacement text is supplied
 - do not regenerate a new concept when the user asked for a correction
 - do not use a style or pose reference to overwrite the primary identity reference
@@ -179,8 +179,6 @@ Classify geometry revisions before editing:
 - for a proportion failure, distinguish underlying anatomy discontinuity from intentional projection exaggeration; preserve the chosen near/far size change and fix only random, local, or camera-inconsistent deformation
 
 Never normalize a locked strong perspective while repairing anatomy or coordination.
-
-Enter a targeted finish revision only after an explicit user request for one concrete visible failure, such as plastic skin, a color cast, crushed shadows, clipped highlights, excessive smoothing, or oversharpening. Repeat the identity invariants and every unrelated lock; do not schedule another generation or editing pass.
 
 If a revision request is ambiguous and needs user input, ask with the standard lightweight decision format. Do not ask a bare "how should I revise it?" question.
 
