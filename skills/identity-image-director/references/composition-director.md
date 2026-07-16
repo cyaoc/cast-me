@@ -238,9 +238,9 @@ For any photographic output, including headshots, editorials, avatars, and comme
 
 ### Realistic Portrait
 
-Use `photorealistic` or equivalent real-capture semantics, the selected perspective, motivated light, believable exposure and color, appropriate depth distribution, and concrete skin, hair, fabric, object, and environmental texture. Preserve ordinary imperfections and use Natural Retouch or the user's explicit facial-treatment lock.
+Add the selected perspective, appropriate depth distribution, and Natural Retouch or the user's explicit facial-treatment lock to the shared photographic contract.
 
-Avoid plastic or waxy skin, heavy beauty retouching, CG sheen, artificial HDR halos, fantasy styling, poster typography, and unreal materials.
+Avoid fantasy styling, poster typography, and unreal materials.
 
 ### Professional Headshot
 

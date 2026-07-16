@@ -16,6 +16,10 @@ _Avoid_: Filter preset, parameter list
 An identity-safe finish that reduces clearly temporary blemishes, redness, and distracting shine while preserving real skin texture, age impression, distinctive marks, and anything uncertain.
 _Avoid_: Automatic beautification, skin replacement
 
+**First Read**:
+The one person, face, silhouette, action, emotion, product, or message that must register first at the intended display size. Supporting elements reinforce it rather than compete with it.
+_Avoid_: Generic visual impact, universal drama
+
 **Style Refresh**:
 A user-requested reopening of creative direction and its derived scene, lighting/color, finish, and unlocked composition suggestions. It preserves identity and output constraints plus every Explicit Lock unless the user reopens them.
 _Avoid_: Full restart, reroll

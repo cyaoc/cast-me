@@ -180,7 +180,7 @@ Before generation, check:
 - pose, action, expression, gaze, hands, props, and performance complexity are coherent with identity and anatomy inside the locked direction; unresolved conflicts use one risk gate
 - accepted risk level is explicit when the user chooses a riskier action, expression, beautification, camera, or composition path
 - target-angle identity readability, face/body coordination, underlying anatomy, projected proportions, and pose geometry are explicit
-- final-asset or explicit-preview intent is recorded, and any requested quality or size is a real surface control rather than an unverified prompt claim
+- final-asset or explicit-preview intent is recorded; available quality or size controls carry supported requests, while unavailable explicit requirements are marked unmet or unverified without blocking generation
 - camera consequences are explicit when relevant: camera height, subject distance, perspective character, allowed projection exaggeration, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
 - lighting is motivated by the scene and defines direction, size/hardness, falloff, negative fill or separation when useful, rather than listing generic three-point lights
 - First-Pass Finish coherently resolves light/contrast, color relationships, identity-safe facial or material treatment, relevant texture, and final image character using only controls that materially affect this output
