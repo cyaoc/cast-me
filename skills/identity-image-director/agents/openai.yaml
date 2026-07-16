@@ -1,7 +1,0 @@
-interface:
-  display_name: "Identity Image Director"
-  short_description: "Turn person photos into polished outputs"
-  default_prompt: "Use $identity-image-director to turn this person reference into a polished final image while preserving identity."
-
-policy:
-  allow_implicit_invocation: true

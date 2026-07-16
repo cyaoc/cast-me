@@ -1,6 +1,6 @@
-# Identity Image Director
+# CastMe
 
-Identity Image Director is a Codex skill for turning a person reference image into a polished final image while preserving the person's visible identity as much as possible.
+CastMe is a Codex skill for turning a person reference image into a polished final image while preserving the person's visible identity as much as possible.
 
 It is meant for person-centered outputs such as portraits, professional headshots, social avatars, cinematic posters, editorial images, commercial visuals, and CG or game key art. The skill acts like a visual director: it keeps a complete production checklist, but asks only the choices that matter for this image, explains them through visible examples, and translates them into professional camera, lighting, styling, performance, and delivery direction.
 
@@ -12,17 +12,17 @@ This repository is a standalone Codex skill, not a marketplace plugin. With Code
 
 ```bash
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+  --url https://github.com/cyaoc/cast-me/tree/main/skills/cast-me
 ```
 
 **Windows PowerShell**
 
 ```powershell
 python "$HOME\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" `
-  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+  --url https://github.com/cyaoc/cast-me/tree/main/skills/cast-me
 ```
 
-The installer places it in `~/.codex/skills/identity-image-director` and stops if that destination already exists.
+The installer places it in `~/.codex/skills/cast-me` and stops if that destination already exists.
 
 ### Update
 
@@ -31,33 +31,33 @@ Updating replaces the installed copy, including any local changes made inside it
 **macOS / Linux**
 
 ```bash
-rm -rf ~/.codex/skills/identity-image-director
+rm -rf ~/.codex/skills/cast-me
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+  --url https://github.com/cyaoc/cast-me/tree/main/skills/cast-me
 ```
 
 **Windows PowerShell**
 
 ```powershell
-Remove-Item -Recurse -Force "$HOME\.codex\skills\identity-image-director"
+Remove-Item -Recurse -Force "$HOME\.codex\skills\cast-me"
 python "$HOME\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" `
-  --url https://github.com/cyaoc/identity-image-director/tree/main/skills/identity-image-director
+  --url https://github.com/cyaoc/cast-me/tree/main/skills/cast-me
 ```
 
-Start a new Codex session after installing or updating, then invoke `$identity-image-director`.
+Start a new Codex session after installing or updating, then invoke `$cast-me`.
 
 ## How to Use
 
 Attach a person image and invoke the skill:
 
 ```text
-$identity-image-director [Image] Create a cinematic poster with the title "MIDNIGHT SIGNAL"
+$cast-me [Image] Create a cinematic poster with the title "MIDNIGHT SIGNAL"
 ```
 
 You can also describe the output directly:
 
 ```text
-$identity-image-director [Image] Make this suitable for a LinkedIn profile photo while keeping the same person
+$cast-me [Image] Make this suitable for a LinkedIn profile photo while keeping the same person
 ```
 
 The skill will ask for missing production-critical choices one at a time. Reply with the option letter, or add overrides in the same message:
@@ -113,19 +113,19 @@ These are generated from the requested theme, not fixed angle or lens presets. A
 ## Useful Request Patterns
 
 ```text
-$identity-image-director [Image] Create a natural-light portrait
+$cast-me [Image] Create a natural-light portrait
 ```
 
 ```text
-$identity-image-director [Image] Create a vertical fantasy key art image, keep the original outfit and jewelry
+$cast-me [Image] Create a vertical fantasy key art image, keep the original outfit and jewelry
 ```
 
 ```text
-$identity-image-director [Image] Create a 1:1 social avatar, clean background, no text
+$cast-me [Image] Create a 1:1 social avatar, clean background, no text
 ```
 
 ```text
-$identity-image-director [Image] Create a movie poster titled "MIDNIGHT SIGNAL"; keep the person recognizable
+$cast-me [Image] Create a movie poster titled "MIDNIGHT SIGNAL"; keep the person recognizable
 ```
 
 Typical routes:

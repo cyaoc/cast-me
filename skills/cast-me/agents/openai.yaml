@@ -1,0 +1,7 @@
+interface:
+  display_name: "CastMe"
+  short_description: "Turn person photos into polished outputs"
+  default_prompt: "Use $cast-me to turn this person reference into a polished final image while preserving identity."
+
+policy:
+  allow_implicit_invocation: true

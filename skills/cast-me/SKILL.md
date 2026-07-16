@@ -1,9 +1,9 @@
 ---
-name: identity-image-director
+name: cast-me
 description: Use when the user provides a person screenshot, selfie, portrait, or photo reference and wants a polished final image while preserving the person's visible identity. Supports portraits, professional headshots, cinematic posters, CG or game key art, magazine/editorial images, social avatars, commercial visuals, and other person-centered outputs.
 ---
 
-# Identity Image Director
+# CastMe
 
 ## Goal
 

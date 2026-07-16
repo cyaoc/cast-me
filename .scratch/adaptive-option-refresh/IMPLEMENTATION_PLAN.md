@@ -36,7 +36,7 @@ Add checks for scoped routing, per-area Shown Option history, two-part Fresh Opt
 Run:
 
 ```bash
-rg -n 'Route any request for another batch|Scoped Option Refresh|Shown Option|Fresh Option' skills/identity-image-director/SKILL.md skills/identity-image-director/references
+rg -n 'Route any request for another batch|Scoped Option Refresh|Shown Option|Fresh Option' skills/cast-me/SKILL.md skills/cast-me/references
 ```
 
 Expected red evidence: the coordinator still routes any another-batch request to Style Refresh, and no generic scoped contract exists.
@@ -46,10 +46,10 @@ Expected red evidence: the coordinator still routes any another-batch request to
 ### Task 2: Implement the smallest shared refresh contract
 
 **Files:**
-- Create: `skills/identity-image-director/references/scoped-option-refresh.md`
-- Modify: `skills/identity-image-director/SKILL.md`
-- Modify: `skills/identity-image-director/references/composition-director.md`
-- Modify: `skills/identity-image-director/references/styling-performance.md`
+- Create: `skills/cast-me/references/scoped-option-refresh.md`
+- Modify: `skills/cast-me/SKILL.md`
+- Modify: `skills/cast-me/references/composition-director.md`
+- Modify: `skills/cast-me/references/styling-performance.md`
 - Modify: `CONTEXT.md`
 
 **Interfaces:**
