@@ -1,6 +1,6 @@
 # Scoped Option Refresh
 
-Use this reference before presenting any refreshable creative gate and whenever the user asks for more, different, replacement, or new choices. A Scoped Option Refresh replaces options inside one creative choice area without restarting the brief or disturbing unrelated decisions.
+This module owns refresh-target routing, per-area option history and freshness, Delegated Refresh, lock inheritance, and Refresh Exhaustion.
 
 ## Scope
 

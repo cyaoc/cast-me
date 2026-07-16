@@ -1,6 +1,6 @@
 # Styling and Performance Director
 
-Use this reference for wardrobe, headwear, jewelry, accessories, props, makeup, hair styling, role/costume research, pose geometry, action, expression, gaze, hand direction, and performance energy.
+This module owns wardrobe, accessories, props, grooming, role or costume research, pose geometry, action, expression, gaze, hands, and performance energy.
 
 ## Ownership
 

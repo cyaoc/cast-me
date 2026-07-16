@@ -1,6 +1,6 @@
 # Composition Director
 
-Use this reference for creative direction, Style Refresh, Direction Atlas and freshness tracking, First Read, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, final-asset quality, art direction, canvas/aspect, lighting/color/retouch/finish, delivery, output recipes, and final prompt structure.
+This module owns creative direction, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
 
 ## Creative Direction
 

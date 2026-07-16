@@ -1,6 +1,6 @@
 # Identity Anchor
 
-Use this reference whenever a person reference image is involved. Its job is to protect visible identity likeness and natural, non-deformed human structure.
+This module owns visible identity likeness, reference transfer and coverage, target-angle face integrity, identity prompt constraints, and identity or geometry revision.
 
 ## Priority
 

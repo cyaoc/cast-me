@@ -11,14 +11,24 @@ Turn a user-provided person image into a polished final image while preserving t
 
 ## Reference Modules
 
-Read the relevant reference files before asking their related questions or writing a production prompt:
+Route reference reading by stable Markdown heading. Prefer reading only the named sections when the active file tools support targeted reads; otherwise read the complete owning file. Do not maintain a read-state tracker, but avoid knowingly rereading material already present in the current task context.
 
-- `references/identity-anchor.md` - required for any person reference image, identity preservation, reference coverage, target-angle face integrity, anatomy/projection risk, identity cues, risk-choice gates, and identity/geometry revisions.
-- `references/scoped-option-refresh.md` - required before presenting any refreshable creative gate and whenever the user asks for more, different, replacement, or new choices; owns scoped routing, per-area Shown Option history, Delegated Refresh, lock inheritance, and Refresh Exhaustion.
-- `references/composition-director.md` - required for creative direction, Style Refresh, Direction Atlas and freshness tracking, First Read, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, final-asset quality, lighting/color/retouch/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
-- `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose geometry, action, expression, gaze, hands, and performance energy.
+| Active condition | Read |
+| --- | --- |
+| Normal person-centered generation | `references/identity-anchor.md`: `Priority`, `Reference Transfer`, and `Reference Coverage` |
+| Before writing the final generation prompt | `references/identity-anchor.md`: `Identity Prompt Constraints`; `references/composition-director.md`: `Final-Asset Quality`, `First-Pass Finish`, and `Prompt Structure` |
+| Creative direction, First Read, or decisive moment | `references/composition-director.md`: `Creative Direction` and `Directorial Intent and Decisive Moment`; add `Direction Atlas and Freshness` when options are needed and `Style Refresh` when that branch is active |
+| Shot, perspective, camera, or projection | `references/composition-director.md`: `Shot Direction`; add `Perspective Intent` and `Camera and Capture Plan` when relevant. For side-facing identity, action, or strong perspective, also add identity `Face Visibility and Performance Integrity` and styling/performance `Pose Geometry` as relevant |
+| Physical world, taste, prompt craft, or medium-specific output guidance | `references/composition-director.md`: the relevant `Art Direction and Physical World`, `Taste Rules`, `Prompt Craft Rules`, or matching subsection under `Output Recipes` |
+| Wardrobe, headwear, jewelry, accessories, makeup, hair, or props | `references/styling-performance.md`: the relevant `Ownership`, `Risk and Facial Treatment`, `Category Routing`, `Styling Direction`, or `Props` |
+| Pose, action, expression, gaze, hands, or performance | `references/styling-performance.md`: `Performance Direction` and, for non-trivial action, `Pose Geometry`; add identity `Face Visibility and Performance Integrity` when the face angle or performance affects identity readability |
+| Named character, uniform, historical dress, or other canon-dependent styling | `references/styling-performance.md`: `Role, Costume, and Visual Research` |
+| Exact text, layout, platform delivery, variants, or a requested series | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
+| Presenting or replacing a refreshable creative gate | `references/scoped-option-refresh.md`: `Scope` and `Visible Gate and History`; add `Route the Target`, `Locks and Continuity`, or `Refresh Exhaustion` when active, plus the section that owns the target creative area |
+| Reviewing a visible result | Read identity `Revision` first, then only the owner sections that contributed to generation or revision and their final review checks; composition review checks are in `Prompt Structure`, and styling/performance review checks are in `Prompt Contributions` |
+| Narrow revision to a visible result | Bypass the normal-generation core. Read identity `Revision` plus the section that owns the requested correction. Add identity `Priority` and `Identity Prompt Constraints` for a likeness or face correction; add other core sections only when the correction actually touches reference transfer or coverage, composition, final quality, or finish |
 
-For normal generation, read the identity, composition, and styling/performance references before generation. Read the scoped refresh reference before presenting or refreshing a refreshable creative gate. For a narrow revision, read only the reference that owns the issue unless the revision touches multiple modules.
+Read any other section only when its choice, risk, research branch, output requirement, or revision concern is active. Section-level reading is an optimization, never a correctness dependency.
 
 ## Core Rules
 
@@ -47,14 +57,13 @@ For normal generation, read the identity, composition, and styling/performance r
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `generate now`, or an unscoped equivalent of `you decide`. A `you decide` or `pick one` attached to a Scoped Option Refresh delegates only that target area.
 - If the user says `default`, `use recommended defaults`, `generate now`, or an unscoped global equivalent of `you decide`, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated evidence or inference risk.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks Codex to decide, or the dimension is irrelevant to the requested output.
-- Route generation-time First-Pass Finish and any explicit targeted finish revision through `references/composition-director.md`. A creative-direction preview remains `suggested` until resolved, defaulted, or delegated.
+- A creative-direction preview does not resolve First-Pass Finish; it remains `suggested` until resolved, defaulted, or delegated.
 - When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk-choice gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or accepted inference.
 - Do not repeat a risk-choice gate when the user clearly accepted that specific risk, such as `try one version with inferred body and angle`, `I accept lower likeness`, `stronger beauty retouch`, or `bold attempt with the missing evidence inferred`. Continue with the chosen risk and make the prompt explicit about the tradeoff.
 - When `imagegen` also triggers, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
 - Use Codex built-in image generation/editing only.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
-- Treat normal person-centered generation as a final asset across every crop and medium; only an explicit preview, draft, exploration, or high-volume batch request permits a lower-quality trade-off. Apply the real control and claim rules in `references/composition-director.md` without adding a quality question.
-- Use approximately three to eight observable, output-adaptive failure constraints in the ordinary prompt; do not dump every negative phrase into every prompt or invent a separate negative-prompt field.
+- Treat normal person-centered generation as a final asset across every crop and medium; only an explicit preview, draft, exploration, or high-volume batch request permits a lower-quality trade-off. Do not add a quality question.
 
 ## Step 1: Determine Output Type and Canvas
 
@@ -91,7 +100,7 @@ Resolve canvas aspect ratio, safe areas, and text treatment through the adaptive
 
 ## Step 2: Resolve Brief and Creative Direction
 
-After the output type is known, use `references/composition-director.md` to infer the design read and ask one creative-direction follow-up unless the user's brief is already detailed enough to write a complete production prompt. Use its Direction Atlas, freshness tracking, and lock-reopening rules whenever creative direction is unresolved or the user requests a Style Refresh. Use `references/scoped-option-refresh.md` before presenting any refreshable creative gate or replacing choices in any creative area.
+After the output type is known, infer the design read and ask one creative-direction follow-up unless the user's brief is already detailed enough to write a complete production prompt. Use the Direction Atlas, freshness tracking, and lock-reopening rules whenever creative direction is unresolved or the user requests a Style Refresh.
 
 Use this adaptive clarification ladder as an internal routing order for missing production-critical choices. It is not a requirement to ask eight questions. Ask only the next unresolved dimension or tightly coupled decision group, skip anything locked, irrelevant, or accepted through recommended defaults, and carry suggested values forward as the basis for later options:
 
@@ -122,17 +131,7 @@ Prefer one owned dimension per question. Combine across modules only when the vi
 
 For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
 
-Use `references/identity-anchor.md` for reference coverage, high-risk source-to-target jumps, target-angle face integrity, underlying anatomy, projected proportions, identity cues, and risk-choice gates.
-
-Use `references/scoped-option-refresh.md` for requests that replace choices, including target routing, per-area Shown Option history, owner-specific freshness, Custom, delegation, lock inheritance, and Refresh Exhaustion.
-
-Use `references/composition-director.md` for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot/perspective and capture/projection plans, art direction, lighting/color/retouch/finish, canvas/safe areas/text, delivery, output recipes, taste rules, and final prompt scaffolding.
-
-Use `references/styling-performance.md` for wardrobe/accessory treatment, LinkedIn/professional headshot wardrobe decisions, props, role/costume research, pose geometry/action, expression, gaze, hand direction, and performance complexity.
-
-If `references/identity-anchor.md` flags missing coverage or a conflict, ask one risk-choice gate unless the user already accepted that specific risk. Generate 2-4 concrete options from the actual coverage gaps and locked intent rather than a universal menu.
-
-The gate must inherit all locked scene, shot, camera perspective, projection strength, pose/action, head direction, gaze, styling, text, and output decisions. Relevant paths may add real evidence, accept user description, continue with labeled inference, or use a staged pass that addresses the actual gap. Recommend the most accurate path that preserves locked intent; never restart, reopen, or silently downgrade it.
+If a required focused section flags missing coverage or a conflict, follow its one risk-choice gate unless the user already accepted that specific risk. Inherit every locked decision and never restart, reopen, or silently downgrade the brief.
 
 Then wait after each question. Generate only after focused gates are resolved and ordinary choices are resolved, defaulted, overridden, or delegated to Codex.
 
@@ -161,49 +160,19 @@ Reply with A, or reply with "B + use recommended defaults".
 
 ## Step 3: Generate
 
-Before generation, read all three reference modules unless the task is a narrow revision. Build a complete, concrete production prompt using the prompt structure in `references/composition-director.md`, the identity constraints in `references/identity-anchor.md`, and the styling/performance direction in `references/styling-performance.md`.
+Before generation, load the mandatory final-prompt sections and every active conditional section from the routing table. Build a complete, concrete production prompt from their results.
 
 Complete means all production-critical choices are resolved for the chosen output, not that every possible field is present. Do not use a short generic summary. Do not replace the production prompt with a compact config block. Omit irrelevant dimensions instead of inventing filler.
 
-Before generation, check:
+Generation and review are complete only when:
 
-- identity lock names the person's face as the anchor and forbids face redesign
-- reference transfer boundaries say what identity anchors to preserve and what temporary source state not to copy
-- reference coverage labels required face, body-scale, angle, and performance evidence as verified, described, inferred, or missing
-- locked user intent is separated from quality priorities; camera perspective, projection strength, action, head direction, and gaze are never silently simplified
-- the directorial intent names the First Read at the intended display size and, for story-bearing images, the decisive moment: what is happening now, what just happened or may happen next, and which small visual evidence carries that story
-- portrait shot direction or Director Shot Plan is resolved when relevant
-- named character, role, costume, uniform, or prop styling has researched or user-provided visual anchors, with the version resolved when relevant
-- wardrobe/accessory/prop treatment is explicit
-- output type, canvas, layout contract, crop, and text treatment are explicit
-- exact in-image text is quoted verbatim, with hierarchy and placement resolved when text matters
-- pose, action, expression, gaze, hands, props, and performance complexity are coherent with identity and anatomy inside the locked direction; unresolved conflicts use one risk gate
-- accepted risk level is explicit when the user chooses a riskier action, expression, beautification, camera, or composition path
-- target-angle identity readability, face/body coordination, underlying anatomy, projected proportions, and pose geometry are explicit
-- final-asset or explicit-preview intent is recorded; available quality or size controls carry supported requests, while unavailable explicit requirements are marked unmet or unverified without blocking generation
-- camera consequences are explicit when relevant: camera height, subject distance, perspective character, allowed projection exaggeration, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
-- lighting is motivated by the scene and defines direction, size/hardness, falloff, negative fill or separation when useful, rather than listing generic three-point lights
-- First-Pass Finish coherently resolves light/contrast, color relationships, identity-safe facial or material treatment, relevant texture, and final image character using only controls that materially affect this output
-- scene, shot direction, lighting, palette, materials, props, and negative constraints are concrete enough for the output type
-- delivery requirements cover platform readability, crop-safe composition, text-safe areas, and exact-text verification when relevant
-- a requested series locks continuity for wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment; single images omit this extra contract
-- approximately three to eight observable failure constraints are output-adaptive rather than a dumped generic list
-- safety handling is applied only when relevant, stays tool-agnostic, and does not silently rewrite the user's concept
-- the prompt avoids generic AI tells, fake brands, random UI, random text, and theme-breaking elements
+- every required focused gate is resolved
+- locked user intent is unchanged
+- the results of every module whose sections contributed to generation or revision are represented in the production prompt or revision
+- claims about tool controls, output quality, size, text, and visual review are truthful and verified where required
 
 ## Step 4: Review or Revise
 
-If the generated output is visible in the current thread, review it before final response using all three reference modules:
-
-- whether the person still looks like the input reference
-- whether face anchor features are preserved rather than redesigned
-- whether the output matches the requested type, canvas, crop, pose, action, expression, gaze, lighting, palette, facial or material treatment, texture, finish, and text treatment
-- whether the selected feeling and decisive moment read clearly rather than producing only a polished but generic image
-- whether identity remains readable at the selected face angle without turning the face back toward camera
-- whether the intended First Read registers at the display size and supporting details do not compete
-- whether styling, materials, background, props, hands, action, and expression are specific enough and natural
-- whether underlying anatomy is valid, projected proportions follow the locked perspective, and all relevant visible pose relationships are coherent
-- whether there are unwanted text artifacts, projection-inconsistent face deformation, malformed hands, or obvious AI tells
-- whether the result remains readable and correctly cropped for the intended platform, with exact text checked character by character when text matters
+If the generated output is visible in the current conversation, review identity first, then only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
 
 If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.
