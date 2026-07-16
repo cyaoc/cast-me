@@ -1,6 +1,6 @@
 # Composition Director
 
-Use this reference for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, canvas/aspect, lighting/color/retouch/finish, delivery, output recipes, and final prompt structure.
+Use this reference for creative direction, Style Refresh, Direction Atlas and freshness tracking, First Read, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, final-asset quality, art direction, canvas/aspect, lighting/color/retouch/finish, delivery, output recipes, and final prompt structure.
 
 ## Creative Direction
 
@@ -8,6 +8,7 @@ After the output type is known, infer the design read:
 
 - audience and use case
 - mood words from the user
+- the First Read: the one person, face, silhouette, action, emotion, product, or message that should register first at the intended display size
 - the decisive moment for story-bearing images: what is happening now, what just happened or may happen next, and what the audience should feel first
 - reference-image role
 - platform or crop needs
@@ -16,7 +17,7 @@ After the output type is known, infer the design read:
 - reference transfer boundaries: what identity anchors to preserve and what temporary reference state to redesign for the theme
 - whether the image should feel photographic, editorial, cinematic, commercial, CG, or social-native
 
-Before proposing options or writing a production prompt, form a compact design read: what the image is for, who will view it, what visual language fits, and which defaults must be avoided. Let the design read pick the aesthetic; do not default to generic AI taste.
+Before proposing options or writing a production prompt, form a compact design read: what the image is for, who will view it, what must register first, what visual language fits, and which defaults must be avoided. Let the design read pick the aesthetic; do not default to generic AI taste.
 
 Before asking any composition question, read the coordinating director's decision state. Do not ask for a locked output type, scene concept, aspect ratio, crop, shot distance, camera angle, or text treatment again. If a prior option suggested shot, pose, lighting, or palette details, use those suggestions as the starting point for the next options instead of offering a generic menu.
 
@@ -92,6 +93,10 @@ Use concrete visual language. Prefer materials, light, camera, location, props, 
 
 ## Directorial Intent and Decisive Moment
 
+Give every final output one clear First Read at the intended display size: the primary person, face, silhouette, action, emotion, product, or message. Supporting scene, props, text, effects, and texture must reinforce rather than compete with it.
+
+Adapt impact to intended use. Natural photography favors believable presence, emotion, or a decisive real moment; professional imagery favors competence, trust, and approachability; editorial, commercial, avatar, and illustrative work follow the brief's point of view and display context. Cinematic posters and CG or game key art default to stronger silhouette, scale, story stakes, light, and color unless the brief asks for restraint.
+
 For story-bearing images, turn mood words into a visible moment: what the person is doing, what just happened or may happen next, the first audience impression, and one or two details that prove the story. Treat event/action, before/after tension, story evidence, and first impression as the Decisive Moment visible signature.
 
 Do not translate cinematic, premium, relaxed, or story-driven into color grading alone. If several moments fit, offer plain visible choices using `scoped-option-refresh.md`. A selected moment explicitly locks its stated setting, action, and story evidence; camera, styling, lighting, and any unstated expression, gaze, hands, or energy remain suggested for later decisions.
@@ -162,6 +167,16 @@ Translate the selected shot into an internal capture plan using controls that ch
 
 Focal length, aperture, shutter speed, ISO, white balance, format, or equipment names are optional aesthetic vocabulary, not required fields. Tie each one used to a visible consequence. If the user asks for parameter styling, label numbers as approximate visual cues; never claim a physically valid exposure or lighting rig from the generation brief alone.
 
+## Final-Asset Quality
+
+Treat every normal person-centered generation as a final asset, regardless of crop, face size, medium, or intended display size. Only an explicit preview, draft, exploration, or high-volume batch request permits a lower quality setting for speed or usage.
+
+When the active generation surface exposes a real quality control, request `high` for every final asset. When it exposes a real size control, request the highest stable, non-experimental size compatible with the selected aspect ratio and the model's supported dimensions. Honor an explicit user requirement when the surface can control it; keep these technical defaults internal rather than adding a quality questionnaire.
+
+For an explicit 4K request, the delivery contract must label it an experimental requirement. If a compatible real size cannot be requested and verified, mark the requirement unmet or unverified; do not schedule or propose an upscale in this workflow. Claim 4K only after the resulting pixel dimensions were verified.
+
+When quality or size controls are unavailable, continue without another gate. Preserve final-asset intent through concrete composition, lighting, material, texture, and First-Pass Finish direction, but do not claim that `quality=high`, 2K, 4K, or another exact size was applied. Prompt phrases such as `4K`, `8K`, `high quality`, `best quality`, `HDR`, `masterpiece`, `cinematic`, and `impactful` are not substitutes for real controls or visible direction.
+
 ## First-Pass Finish
 
 Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension. Include the selected finish in the original generation prompt; never add a mandatory post-processing step or automatic second generation/editing pass.
@@ -174,7 +189,7 @@ Treat overall feeling, lighting/contrast, person-environment color relationship,
 
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
-For realistic portraits, professional headshots, social avatars, and photographic editorials, use Natural Retouch when defaults are accepted: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
+For realistic portraits, professional headshots, social avatars, photographic editorials, and photographic commercial visuals, use Natural Retouch when defaults are accepted: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
 
 Treat explicit `no retouch`, preservation requests, and named facial marks as locks. Keep global exposure, color, contrast, grain, sharpness, and environmental texture separately controllable. Use `styling-performance.md` to distinguish stronger non-structural polish from identity-changing treatment and route the latter through the existing identity risk-choice gate.
 
@@ -192,7 +207,7 @@ Prefer two or three details that explain the moment over decorative clutter. Eve
 
 ## Taste Rules
 
-- make one clear hero subject; supporting details must not compete with the person
+- make the intended First Read register immediately; supporting details must not compete with it
 - use negative space deliberately for posters, covers, avatars, and commercial layouts
 - keep one coherent palette with one restrained accent
 - define forbidden palette/mood when the theme depends on color discipline
@@ -205,61 +220,69 @@ Prefer two or three details that explain the moment over decorative clutter. Eve
 
 Use these cross-output rules when writing the final production prompt:
 
+- Build concrete positive direction first, in this order when relevant: intended use; identity and reference boundaries; First Read; composition and action; medium-specific materials and texture; motivated lighting and color; First-Pass Finish; text and delivery constraints; then likely failure constraints.
 - Put canvas, aspect ratio, crop, and layout before subject detail when structure matters.
 - If required in-image text exists, quote every exact string and specify its hierarchy, such as title, subtitle, CTA, price/date, label, or fine print.
 - State scene density with concrete objects, surfaces, spatial layers, and environmental details rather than empty adjectives.
+- State the First Read and supporting hierarchy in concrete composition, contrast, scale, focus, action, or spacing terms.
 - Keep materials, lighting, palette, and camera/capture context as separate controls.
 - For posters, covers, editorials, and commercial visuals, use the three-glance test: first glance reads the hero subject or silhouette, second glance reads the world or message, third glance rewards inspection with texture and detail.
 - For layouts with annotations, labels, panels, UI, diagrams, or multi-image boards, define fixed regions, panel roles, labels, spacing, and readability constraints before style detail.
-- Use negative constraints only for likely failure modes. Keep avoid lists short, targeted, and tied to the output type.
+- End with one ordinary `Constraints` block containing approximately three to eight distinct, observable failure modes for the current output. Keep lower-risk positive locks in their owning prompt slots instead of repeating them as negatives; do not create a provider-specific negative-prompt field or reuse a universal list.
 
 ## Output Recipes
 
-Use these recipes as prompt vocabulary after the relevant choices are resolved. Do not let a recipe silently decide unresolved production-critical choices such as styling/performance, aspect ratio, text, lighting, palette, or avoid-list.
+Use these recipes as medium-specific success criteria and likely failure guidance after the relevant choices are resolved. Build the actual prompt from the current identity, First Read, scene, action, framing, lighting, palette, materials, and First-Pass Finish; never reuse a fixed scene, lighting setup, palette, or suffix. Do not let a recipe silently decide unresolved production-critical choices such as styling/performance, aspect ratio, text, lighting, palette, or avoid-list.
+
+For any photographic output, including headshots, editorials, avatars, and commercial visuals, state `photorealistic` or equivalent real-capture semantics, motivated light, believable exposure and color, and concrete physical texture. Preserve ordinary imperfections and avoid plastic skin, heavy beauty retouching, CG sheen, and artificial HDR halos.
 
 ### Realistic Portrait
 
-Use realistic photography language: capture context, the selected natural or compressed perspective, Natural Retouch or an explicit facial-treatment lock, motivated light, appropriate depth distribution, believable wardrobe, ordinary imperfections, and a clean but not empty background.
+Use `photorealistic` or equivalent real-capture semantics, the selected perspective, motivated light, believable exposure and color, appropriate depth distribution, and concrete skin, hair, fabric, object, and environmental texture. Preserve ordinary imperfections and use Natural Retouch or the user's explicit facial-treatment lock.
 
-Avoid CG polish, fantasy styling, poster typography, and unreal materials.
+Avoid plastic or waxy skin, heavy beauty retouching, CG sheen, artificial HDR halos, fantasy styling, poster typography, and unreal materials.
 
 ### Professional Headshot
 
-Use a clean background, Natural Retouch or the user's explicit facial-treatment lock, confident but natural expression, business/editorial lighting, and realistic face preservation.
+Make the face and natural expression the First Read. Use clean separation, Natural Retouch or the user's explicit facial-treatment lock, motivated professional lighting, realistic garment structure, and calm posture to express competence, trust, and approachability.
 
 Do not default to replacing distinctive original clothing or headwear with a blazer. Use `styling-performance.md` for unresolved wardrobe treatment when visible wardrobe/headwear is distinctive or could affect the output.
 
-Avoid dramatic costume changes, fantasy scenes, and heavy stylization.
+Avoid stock-photo posing, dramatic costume changes, fantasy scenes, heavy stylization, and unrequested low-key spectacle.
 
 ### Cinematic Poster
 
-Use strong silhouette, dramatic key light, rim light, atmospheric background, title-safe composition, bold color contrast, and cinematic grading. Pass the three-glance test: the silhouette reads first, the narrative world reads second, and close details reward inspection.
+Use one identity-preserving hero face or silhouette as the First Read, a second-read story world or conflict, title-safe composition when needed, deliberate color contrast, atmospheric depth, and restrained supporting effects. Pass the three-glance test: the hero reads first, the narrative world reads second, and close texture rewards inspection.
 
 Only include text if the user provides exact text. If text treatment is unresolved and relevant to the output, ask in the aspect/text clarification. If the user accepts defaults or text is not relevant, specify no text. When text exists, define promotional hierarchy and readability distance rather than placing all text at equal weight.
 
 ### CG or Game Key Art
 
-Use premium concept-art finish, medium-specific face and surface rendering, detailed materials, cinematic environment, dynamic but identity-preserving pose, and stylized lighting. Define the world, camera angle, costume/material system, and readable silhouette without photographic retouching controls.
+Use one identity-preserving hero silhouette, readable action, coherent foreground/hero/deep-world layers, environmental scale, differentiated material response, controlled contrast, and medium-specific face and surface rendering. Keep glow, particles, smoke, weather, and energy subordinate; they must not cover the face, silhouette, or action.
 
 Do not over-stylize the face until the person becomes unrecognizable.
 
 ### Editorial or Magazine Image
 
-Use fashion lighting, refined palette, clean pose direction, luxury styling, negative space, strong typography-safe areas, and cover-like composition.
+Express a brief-specific point of view through pose, gaze, styling, composition, palette, negative space, and tactile textile, paper, print, or photographic texture. Avoid generic luxury cues and cover-template polish.
 
 Only include typography with exact user-provided copy. If text treatment is unresolved and relevant to the output, ask in the aspect/text clarification. If the user accepts defaults or text is not relevant, specify no text. Keep typography-safe negative space and avoid fake magazine cover clutter.
 
 ### Social Avatar
 
-Use clear face readability at small size, simple background, strong silhouette, and polished composition. If the crop is unresolved, recommend a square crop for avatars in the aspect/crop clarification rather than silently applying it.
+Prioritize immediate face or silhouette readability, simple background structure, strong separation, and polished composition at thumbnail size while retaining the same final-asset quality default. If the crop is unresolved, recommend a square crop for avatars in the aspect/crop clarification rather than silently applying it.
 
 Avoid dense background detail, small text, and complex full-body staging.
 
 ### Commercial Campaign Visual
 
-Use the provided product or brand mood if any, controlled composition, premium lighting, simple message hierarchy, and usable negative space.
+Follow the supplied audience, positioning, brand mood, product, message hierarchy, exact copy, and negative-space needs. Make the intended person, product, or message the First Read through controlled composition, motivated lighting, and believable packaging, wardrobe, and material detail.
 
 Do not invent brand names, slogans, logos, or product claims.
+
+### Illustration or Other Non-Photographic Output
+
+Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
 
 ## Layout and Output Contract
 
@@ -286,13 +309,14 @@ Consider these dimensions when relevant:
 - reference coverage: which required face, body-scale, angle, and performance facts are verified, described, inferred, or missing
 - shot direction: portrait or director plan covering composition, camera distance/angle, subject blocking, and background relationship
 - directorial intent: the first audience impression and decisive moment when the image carries a story
+- First Read: the one person, face, silhouette, action, emotion, product, or message that registers first at the intended display size, plus its supporting hierarchy
 - styling/performance: wardrobe/accessory structure, hair/makeup, props, pose/action, expression, gaze, hands, and energy level from `styling-performance.md`
 - world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
 - composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
 - identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
 - lighting/color/retouch/finish: motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture; final image character; only materially useful controls
 - output contract: canvas aspect, platform readability, safe areas, exact-text verification, and required variants
-- negative constraints: no text unless exact copy, no watermark, no fake brands, no random UI, no theme-breaking elements
+- negative constraints: approximately three to eight observable failure modes most likely for the current output
 
 The expanded prompt should be theme-adaptive. Do not reuse examples such as forests, temples, cyberpunk, saints, warriors, or luxury studios unless the user chose that direction. Delete rows that do not help the specific output.
 
@@ -305,6 +329,7 @@ Input image: reference for the person's visible identity
 Primary request: <user request>
 Identity and reference transfer: <same person; face anchors; temporary source pose/angle/crop/perspective not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
 Locked intent and quality constraints: <camera perspective, projection strength, action, head direction, gaze, and other locked choices that cannot change silently; identity, anatomy, projection, and pose quality required inside them>
+First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
@@ -318,7 +343,7 @@ Lighting/color/retouch/finish: <coherent First-Pass Finish; motivated light and 
 Text: <exact text in straight quotes; hierarchy and placement; or "no text">
 Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
 Continuity invariants (series only): <identity, wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment that must not drift>
-Constraints: no identity drift, underlying face redesign, age/ethnicity drift, extra people unless requested, watermark, random text, fake brands, target-plane-inconsistent face deformation, malformed hands, copied source crop scale, pasted frontal face, stiff copied expression, invalid underlying anatomy, or random/projection-inconsistent deformation; preserve angle-correct facial appearance and intentional projection exaggeration, and add only output-adaptive negatives
+Constraints: <approximately three to eight observable failure modes most likely for this output, selected from the active identity, anatomy, projection, hand/prop, text, material, layout, or finish risks>
 ```
 
 Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task.

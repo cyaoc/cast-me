@@ -15,7 +15,7 @@ Read the relevant reference files before asking their related questions or writi
 
 - `references/identity-anchor.md` - required for any person reference image, identity preservation, reference coverage, target-angle face integrity, anatomy/projection risk, identity cues, risk-choice gates, and identity/geometry revisions.
 - `references/scoped-option-refresh.md` - required before presenting any refreshable creative gate and whenever the user asks for more, different, replacement, or new choices; owns scoped routing, per-area Shown Option history, Delegated Refresh, lock inheritance, and Refresh Exhaustion.
-- `references/composition-director.md` - required for creative direction, Style Refresh, Direction Atlas and freshness tracking, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, art direction, lighting/color/retouch/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
+- `references/composition-director.md` - required for creative direction, Style Refresh, Direction Atlas and freshness tracking, First Read, decisive moment, shot framing, perspective intent, camera/capture and projection contracts, final-asset quality, lighting/color/retouch/finish, canvas/safe areas/text, delivery, taste rules, and final prompt structure.
 - `references/styling-performance.md` - required for wardrobe, headwear, jewelry, accessories, props, makeup, hair, role/costume research, pose geometry, action, expression, gaze, hands, and performance energy.
 
 For normal generation, read the identity, composition, and styling/performance references before generation. Read the scoped refresh reference before presenting or refreshing a refreshable creative gate. For a narrow revision, read only the reference that owns the issue unless the revision touches multiple modules.
@@ -53,7 +53,8 @@ For normal generation, read the identity, composition, and styling/performance r
 - When `imagegen` also triggers, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
 - Use Codex built-in image generation/editing only.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
-- Use output-adaptive quality negatives; do not dump every negative phrase into every prompt.
+- Treat normal person-centered generation as a final asset across every crop and medium; only an explicit preview, draft, exploration, or high-volume batch request permits a lower-quality trade-off. Apply the real control and claim rules in `references/composition-director.md` without adding a quality question.
+- Use approximately three to eight observable, output-adaptive failure constraints in the ordinary prompt; do not dump every negative phrase into every prompt or invent a separate negative-prompt field.
 
 ## Step 1: Determine Output Type and Canvas
 
@@ -170,7 +171,7 @@ Before generation, check:
 - reference transfer boundaries say what identity anchors to preserve and what temporary source state not to copy
 - reference coverage labels required face, body-scale, angle, and performance evidence as verified, described, inferred, or missing
 - locked user intent is separated from quality priorities; camera perspective, projection strength, action, head direction, and gaze are never silently simplified
-- the directorial intent names the audience read and, for story-bearing images, the decisive moment: what is happening now, what just happened or may happen next, and which small visual evidence carries that story
+- the directorial intent names the First Read at the intended display size and, for story-bearing images, the decisive moment: what is happening now, what just happened or may happen next, and which small visual evidence carries that story
 - portrait shot direction or Director Shot Plan is resolved when relevant
 - named character, role, costume, uniform, or prop styling has researched or user-provided visual anchors, with the version resolved when relevant
 - wardrobe/accessory/prop treatment is explicit
@@ -179,13 +180,14 @@ Before generation, check:
 - pose, action, expression, gaze, hands, props, and performance complexity are coherent with identity and anatomy inside the locked direction; unresolved conflicts use one risk gate
 - accepted risk level is explicit when the user chooses a riskier action, expression, beautification, camera, or composition path
 - target-angle identity readability, face/body coordination, underlying anatomy, projected proportions, and pose geometry are explicit
+- final-asset or explicit-preview intent is recorded, and any requested quality or size is a real surface control rather than an unverified prompt claim
 - camera consequences are explicit when relevant: camera height, subject distance, perspective character, allowed projection exaggeration, focus placement, depth distribution, and motion treatment; exact equipment numbers appear only when they serve a visible result
 - lighting is motivated by the scene and defines direction, size/hardness, falloff, negative fill or separation when useful, rather than listing generic three-point lights
 - First-Pass Finish coherently resolves light/contrast, color relationships, identity-safe facial or material treatment, relevant texture, and final image character using only controls that materially affect this output
 - scene, shot direction, lighting, palette, materials, props, and negative constraints are concrete enough for the output type
 - delivery requirements cover platform readability, crop-safe composition, text-safe areas, and exact-text verification when relevant
 - a requested series locks continuity for wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment; single images omit this extra contract
-- quality negative constraints are output-adaptive rather than a dumped generic list
+- approximately three to eight observable failure constraints are output-adaptive rather than a dumped generic list
 - safety handling is applied only when relevant, stays tool-agnostic, and does not silently rewrite the user's concept
 - the prompt avoids generic AI tells, fake brands, random UI, random text, and theme-breaking elements
 
@@ -198,7 +200,7 @@ If the generated output is visible in the current thread, review it before final
 - whether the output matches the requested type, canvas, crop, pose, action, expression, gaze, lighting, palette, facial or material treatment, texture, finish, and text treatment
 - whether the selected feeling and decisive moment read clearly rather than producing only a polished but generic image
 - whether identity remains readable at the selected face angle without turning the face back toward camera
-- whether there is one clear hero subject and supporting details do not compete
+- whether the intended First Read registers at the display size and supporting details do not compete
 - whether styling, materials, background, props, hands, action, and expression are specific enough and natural
 - whether underlying anatomy is valid, projected proportions follow the locked perspective, and all relevant visible pose relationships are coherent
 - whether there are unwanted text artifacts, projection-inconsistent face deformation, malformed hands, or obvious AI tells

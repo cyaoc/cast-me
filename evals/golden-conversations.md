@@ -24,6 +24,10 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Outside Creative Direction, every Fresh Option differs from every Shown Option in the same area, including options in the current batch, in at least two owner-specific visible signature parts. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
 - A Scoped Option Refresh preserves identity, output requirements, unrelated values, and every Explicit Lock. It may reopen only target-area Derived Locks and fields the user explicitly asks to change.
 - Output Type, Role/Costume Version, Safety, reference coverage, identity risk, Perspective Intent classification, and exact-text verification remain focused or classificatory choices rather than novelty menus.
+- Treat every normal person-centered generation as a final asset across crops and media. Only an explicit preview, draft, exploration, or high-volume batch request permits lower quality for speed or usage.
+- For a final asset, request `quality=high` and the highest stable, non-experimental size compatible with the chosen aspect ratio only when the active surface exposes those real controls. Otherwise continue without another gate and never claim an unverified quality setting or pixel size.
+- Give every final output one clear First Read at its intended display size. Supporting scene, text, product, effects, and texture reinforce that priority; impact intensity follows the intended use rather than defaulting every medium to cinematic drama.
+- Build every final production prompt from concrete brief-specific positive direction, then approximately three to eight observable current failure constraints in the ordinary prompt. Never use a fixed quality suffix, provider-specific negative-prompt field, or universal negative-word dump.
 
 ## 1. Vague professional avatar
 
@@ -300,3 +304,75 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[strong viewpoint with controlled projected proportions is locked] Give me three more spatially dramatic choices.`
 
 **Expected:** Preserve the selected Perspective Intent and generate Fresh Shot expressions within it. Do not invent a fourth perspective-risk category, weaken the controlled-proportion constraint, or reopen action, Styling, Performance, or First-Pass Finish.
+
+## 47. Full-body final asset keeps the same quality priority
+
+**Input:** `[front and three-quarter full-body references] Create a final 3:2 environmental photograph of me crossing a windy pedestrian bridge at blue hour. Keep my identity, age, skin tone, charcoal coat, full-body walking action, sideward gaze, bridge setting, and natural documentary mood. Use recommended defaults.`
+
+**Expected:** Treat the result as a final asset even though the face occupies less of the frame. If the active surface exposes real controls, request `quality=high` and the highest stable, non-experimental 3:2 size it supports. Preserve identity, clothing, hands, body scale, material texture, and environmental detail; never downgrade quality because the request is full-body or environmental.
+
+## 48. Final quality is shared across media
+
+**Input:** `[person references; all production choices resolved] Prepare one final photographic portrait, cinematic poster, CG key art image, editorial image, social avatar, commercial visual, and illustration in their already locked aspect ratios.`
+
+**Expected:** Treat every output as a final asset and apply the same real `quality=high` default when available, including the avatar and illustration. Use the highest stable supported size compatible with each locked aspect ratio rather than lowering quality based on crop, face size, medium, or display size. Medium-specific prompt language may differ; final-asset priority does not.
+
+## 49. Explicit preview permits the trade-off
+
+**Input:** `[portrait] I am exploring 12 quick 1:1 social-avatar directions. Treat these as previews and favor speed over final fidelity.`
+
+**Expected:** Permit a lower quality setting only because the user explicitly requested previews and a speed trade-off. Preserve identity and thumbnail readability, do not silently promote the previews to final assets, and do not imply a later upscale or automatic finishing pass.
+
+## 50. Generation surface exposes no quality or size controls
+
+**Input:** `[person reference; final 4:5 photographic brief fully resolved] Generate now. The active surface exposes no quality or size control.`
+
+**Expected:** Continue generation without another user question. Keep the final-asset intent concrete through composition, motivated light, believable materials and texture, and First-Pass Finish, but do not claim that `quality=high`, 2K, 4K, or any exact pixel size was applied. Do not insert generic quality words as substitute controls.
+
+## 51. Explicit 4K remains experimental and verifiable
+
+**Input:** `[face, three-quarter, and full-body references; final 16:9 poster brief fully resolved] I need true 4K delivery. The active surface exposes no size control and output dimensions cannot be verified.`
+
+**Expected:** Treat 4K as an explicit experimental delivery requirement, not the ordinary default. Continue only with honest capability language: do not claim 4K, set an invented generated resolution, or imply an automatic upscale. A 4K claim is allowed only after a compatible real size was requested and the resulting pixel dimensions were verified.
+
+## 52. Natural photographic First Read stays believable
+
+**Input:** `[portrait and half-body references] Create a final natural 4:5 photograph of me quietly laughing with a friend just outside frame at a bright neighborhood cafe. Keep my identity, age, freckles, blue overshirt, seated pose, and daylight setting. The person and real emotion must register first; keep the cafe supportive and calm, not cinematic or dramatic. Use recommended defaults.`
+
+**Expected:** Make the person's real emotion the First Read through photorealistic capture semantics, a decisive believable moment, motivated daylight, natural exposure and color, and physical skin, hair, fabric, and cafe texture. Keep the environment subordinate. Preserve ordinary imperfections and Natural Retouch; do not add dramatic low-key light, cinematic grading, heavy beauty retouching, artificial HDR halos, or CG sheen.
+
+## 53. Professional impact means trust
+
+**Input:** `[selfie] Create a final LinkedIn headshot. Keep my identity and current navy shirt. I should read as competent, trustworthy, and approachable. Use recommended defaults.`
+
+**Expected:** Make the face and natural expression the First Read. Use clean separation, realistic garment structure, motivated professional lighting, believable skin texture, and calm posture to express competence, trust, and approachability. Do not substitute spectacle, stock-photo posing, an invented blazer, or unrequested dramatic low-key lighting.
+
+## 54. Cinematic poster uses a controlled two-level hierarchy
+
+**Input:** `[person references] Create a final 9:16 cinematic poster with the exact title "ASH HARBOR". Keep my identity, storm-damaged ferry terminal, red rescue coat, and title-safe upper area. Use recommended defaults.`
+
+**Expected:** Make one identity-preserving hero face or silhouette the First Read, then let the damaged terminal and visible conflict form the second read. Use deliberate contrast, atmospheric depth, title-safe composition, and restrained effects that support the person and story. Keep exact text separate from the hero read; do not create equal-weight detail or generic spectacle.
+
+## 55. CG key art keeps effects subordinate
+
+**Input:** `[face, three-quarter, and full-body references] Create final 16:9 dark-fantasy game key art of me defending a ruined hill gate. Keep my identity, age, scar, full-body scale, bronze lamellar armor, forward lunge, low viewpoint, storm setting, and no text. The face and hero silhouette must read first; the ruined army and valley read second. Effects must support the action without covering my face or weapon. Use recommended defaults.`
+
+**Expected:** Build one readable identity-preserving hero silhouette with coherent foreground, hero, gate, army, and deep-valley layers. Differentiate bronze, leather, cloth, stone, rain, and atmosphere through believable material response and controlled contrast. Keep scale and action readable; glow, particles, smoke, rain, and energy remain restrained and never cover the face, silhouette, weapon, or decisive action.
+
+## 56. Editorial, commercial, avatar, and illustration adapt impact
+
+**Input:** `[person reference; each brief otherwise resolved] Prepare four final outputs: a restrained literary-magazine portrait, a bright skincare campaign with supplied product and exact copy, a quiet social avatar, and a hand-cut paper illustration.`
+
+**Expected:** Give each output one brief-specific First Read without inheriting poster or CG drama. The editorial uses pose, gaze, styling, palette, composition, and tactile print-like texture to express a point of view without generic luxury or invented cover text. The commercial visual follows the supplied audience, positioning, product, exact copy, message hierarchy, and negative space without inventing claims or branding. The avatar prioritizes immediate identity readability, simple background structure, and strong separation at thumbnail size while retaining final-asset quality. The illustration names the hand-cut paper medium and uses coherent edges, fibers, layering, ink, and shadow rather than accidental photorealism or plastic 3D treatment.
+
+## 57. Production recipe stays brief-specific
+
+**Input:** `[person references] Create two final photographic environmental portraits with the same identity and 3:2 canvas: one is a quiet winter laundromat goodbye at dawn; the other is a hot afternoon bicycle-repair victory outside a roadside shop. Use recommended defaults.`
+
+**Expected:** Build two distinct production prompts from the actual brief. Each prompt names its own First Read, decisive action, composition, motivated light, color relationship, materials, environmental texture, and First-Pass Finish. Do not reuse a fixed scene, lighting setup, palette, finish, quality-word suffix, or template look merely because both outputs share a medium and canvas.
+
+## 58. Constraints stay short and adaptive
+
+**Input:** `[person reference; final commercial portrait brief fully resolved] The product is a supplied matte ceramic travel mug; no text is requested. Generate now.`
+
+**Expected:** Put concrete positive direction first, then include approximately three to eight observable failures most likely for this image, such as identity drift, malformed product-hand interaction, changed mug shape, random text, or plastic skin. Keep them inside the ordinary prompt. Do not add a provider-specific `negative_prompt` field, copy the full universal identity/anatomy/text/style list, or rely on `4K`, `8K`, `high quality`, `HDR`, `masterpiece`, or `cinematic` as standalone quality mechanisms.
