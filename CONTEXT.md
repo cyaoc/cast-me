@@ -8,6 +8,42 @@ This context describes how the skill preserves a person's identity while guiding
 The actual person reference image that authoritatively anchors face identity for generation or editing. Supporting images and text may add evidence but never replace or override it.
 _Avoid_: Primary identity reference, text-only identity description
 
+**Protected Identity Cue**:
+A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Risk depends on changing these cues, not on whether styling is labeled light or heavy.
+_Avoid_: Makeup intensity, beauty feature
+
+**Reference Appearance**:
+The visible facial styling, grooming, and hair state shown by a person reference when its makeup status or source is unknown. It may be preserved or explicitly restyled, but it is not evidence of the person's unseen bare-face appearance.
+_Avoid_: Natural look, bare face, original makeup
+
+**Appearance Coverage**:
+The visible evidence for the Protected Identity Cues needed by the target look. Unknown makeup alone is not a gap; coverage is missing only when styling, filters, or occlusion hide target-critical cues.
+_Avoid_: Bare-face requirement, makeup detection
+
+**Delegated Styling**:
+A user instruction that asks CastMe to design makeup, hair, wardrobe, or accessories from the story or decide the look. It resolves Styling Direction internally without visible options, while focused identity-risk choices remain available.
+_Avoid_: Styling defaults, implicit makeup choice
+
+**Styling Direction**:
+A complete character-look choice that coordinates makeup, hair, wardrobe, and accessories across only the unlocked fields that need change. It preserves compatible Reference Appearance and may narrow to one styling field when the user explicitly preserves the others.
+_Avoid_: Makeup Gate, separate styling menus, fixed look preset
+
+**Character Read**:
+The intended visible impression of the depicted person, supplied by the user or story or proposed as creative direction. It guides styling and performance but is not an inference about the person's actual personality.
+_Avoid_: True temperament, personality diagnosis, face-based personality inference
+
+**Story Makeup**:
+Intentional visible facial styling or condition that expresses the Character Read, including designed fatigue, weathering, injury, ritual, or cosmetic treatment. It is a Styling lock that First-Pass Finish must render rather than remove as a temporary blemish.
+_Avoid_: Retouch target, accidental blemish, finish effect
+
+**Look Continuity**:
+The locked base makeup, hair, wardrobe, and accessories that identify one character look across a requested series, together with explicit story-state changes such as wetness, wear, injury, or cosmetic breakdown. It is not exact visual sameness between moments.
+_Avoid_: Identical styling state, independent redesign
+
+**Identity Review**:
+A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues. It reports visible drift and never claims a biometric match, similarity score, or identity guarantee.
+_Avoid_: Face score, biometric verification, identity guarantee
+
 **First-Pass Finish**:
 The generation-time visual finish that resolves lighting/color, identity-safe retouching, texture, and final image character in the original image request. It is not a later edit of an exported file.
 _Avoid_: Post-processing, second pass

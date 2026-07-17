@@ -180,9 +180,9 @@ Treat overall feeling, lighting/contrast, person-environment color relationship,
 
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
-For realistic portraits, professional headshots, social avatars, photographic editorials, and photographic commercial visuals, use Natural Retouch when defaults are accepted: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
+For realistic portraits, professional headshots, social avatars, photographic editorials, and photographic commercial visuals, use Natural Retouch when defaults are accepted: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark and every Story Makeup lock from Styling, including intentional fatigue, weathering, injury, dirt, grooming, wet hair, cosmetic treatment, or breakdown. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
 
-Treat explicit `no retouch`, preservation requests, and named facial marks as locks. Keep global exposure, color, contrast, grain, sharpness, and environmental texture separately controllable. Use `styling-performance.md` to distinguish stronger non-structural polish from identity-changing treatment and route the latter through the existing identity risk-choice gate.
+Treat explicit `no retouch`, preservation requests, named facial marks, and Story Makeup as locks. Keep global exposure, color, contrast, grain, sharpness, and environmental texture separately controllable. Use `styling-performance.md` to distinguish physical or depicted styling from finish treatment and route identity-changing treatment through the existing identity risk-choice gate. Selecting or refreshing First-Pass Finish never reopens Styling.
 
 For CG, game key art, illustration, and other non-photographic outputs, adapt face, surface, texture, material, and final image character to the selected medium without forcing photographic retouching vocabulary or irrelevant controls. Any filter or grading treatment must follow the locked creative direction and motivated lighting/color logic. Do not rely on camera brands, precise light power, empty LUT names, fixed presets, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
 
@@ -193,6 +193,8 @@ Enter a targeted finish revision only after an explicit user request for one con
 Treat art direction as internal synthesis of the locked world, shot, performance, styling, and lighting into Physical Scene Coherence, not as another user gate. If a required choice is unresolved, route it to its owning dimension.
 
 When the setting matters, define time/weather, believable spatial logic, foreground/midground/background roles, surface age and material behavior, one primary story clue, and silhouette/color separation between wardrobe and background.
+
+Keep story time/weather, makeup condition, hair and material state, wardrobe, performance, and finish physically compatible. Reconcile Suggested or Derived conflicts internally and use the existing focused conflict choice only for incompatible Explicit Locks.
 
 Prefer two or three details that explain the moment over decorative clutter. Every visible object should support character, action, place, or delivery.
 
@@ -285,7 +287,7 @@ Treat layout structure, subject/text-safe placement, safe areas/readability, and
 
 Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 
-For a requested series, also lock the continuity facts that must not drift: wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment. Do not add this contract to a single image.
+For a requested series, use Look Continuity to lock the base makeup, hair, wardrobe, and accessories, then record explicit per-image story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, and costume damage. Separately preserve existing series invariants such as prop state, light direction, location geography, and color treatment. Continuity means coherent evolution, not identical condition; do not add these contracts to a single image.
 
 ## Prompt Structure
 
@@ -303,7 +305,7 @@ Consider these dimensions when relevant:
 - shot direction: portrait or director plan covering composition, camera distance/angle, subject blocking, and background relationship
 - directorial intent: the first audience impression and decisive moment when the image carries a story
 - First Read: the one person, face, silhouette, action, emotion, product, or message that registers first at the intended display size, plus its supporting hierarchy
-- styling/performance: wardrobe/accessory structure, hair/makeup, props, pose/action, expression, gaze, hands, and energy level from `styling-performance.md`
+- styling/performance: Character Read, wardrobe/accessory structure, hair/makeup, Story Makeup, props, pose/action, expression, gaze, hands, and energy level from `styling-performance.md`
 - world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
 - composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
 - identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
@@ -329,13 +331,14 @@ Shot direction: <portrait shot direction or director shot plan; composition, cam
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>
 Perspective contract: <underlying anatomy; projected proportions; which near/far enlargement and foreshortening are intentional; which random or camera-inconsistent deformation is forbidden>
 Subject identity/anatomy: <identity readability at the target face angle; angle-correct facial planes; valid world-space head, shoulder, torso, hip, limb, and joint structure>
-Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include important materials and accessory constraints>
+Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include Character Read, makeup/hair/grooming, Story Makeup, important materials, and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
-Lighting/color/retouch/finish: <coherent First-Pass Finish; motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture and final image character; only materially useful production controls>
+Lighting/color/retouch/finish: <coherent First-Pass Finish; motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment that preserves Story Makeup; relevant texture and final image character; only materially useful production controls>
 Text: <complete allowed-text set in straight quotes; each string's role/hierarchy, type style, color, relative size, and precise region/alignment; forbid any other text when complete; or "no text">
 Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
-Continuity invariants (series only): <identity, wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment that must not drift>
+Look Continuity (series only): <base makeup, hair, wardrobe, and accessories; explicit wetness, wear, injury, dirt, cosmetic breakdown, or costume-damage evolution for each moment>
+Other series invariants: <identity, prop state, light direction, location geography, and color treatment that must not drift>
 Constraints: <approximately three to eight observable failure modes most likely for this output, selected from the active identity, anatomy, projection, hand/prop, text, material, layout, or finish risks>
 ```
 

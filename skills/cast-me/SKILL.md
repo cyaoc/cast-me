@@ -21,12 +21,13 @@ Route reference reading by stable Markdown heading. Prefer reading only the name
 | Shot, perspective, camera, or projection | `references/composition-director.md`: `Shot Direction`; add `Perspective Intent` and `Camera and Capture Plan` when relevant. For side-facing identity, action, or strong perspective, also add identity `Face Visibility and Performance Integrity` and styling/performance `Pose Geometry` as relevant |
 | Physical world, taste, prompt craft, or medium-specific output guidance | `references/composition-director.md`: the relevant `Art Direction and Physical World`, `Taste Rules`, `Prompt Craft Rules`, or matching subsection under `Output Recipes` |
 | Wardrobe, headwear, jewelry, accessories, makeup, hair, or props | `references/styling-performance.md`: the relevant `Ownership`, `Risk and Facial Treatment`, `Category Routing`, `Styling Direction`, or `Props` |
+| Story-driven styling, Delegated Styling, Character Read, Story Makeup, or Look Continuity | `references/styling-performance.md`: `Ownership`, `Risk and Facial Treatment`, `Styling Direction`, and `Prompt Contributions`; add identity `Reference Coverage` when source styling may hide target-critical identity cues |
 | Pose, action, expression, gaze, hands, or performance | `references/styling-performance.md`: `Performance Direction` and, for non-trivial action, `Pose Geometry`; add identity `Face Visibility and Performance Integrity` when the face angle or performance affects identity readability |
 | Named character, uniform, historical dress, or other canon-dependent styling | `references/styling-performance.md`: `Role, Costume, and Visual Research` |
 | Exact text, layout, platform delivery, variants, or a requested series | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
 | Presenting or replacing a refreshable creative gate | `references/scoped-option-refresh.md`: `Scope` and `Visible Gate and History`; add `Route the Target`, `Locks and Continuity`, or `Refresh Exhaustion` when active, plus the section that owns the target creative area |
-| Reviewing a visible result | Read identity `Revision` first, then only the owner sections that contributed to generation or revision and their final review checks; composition review checks are in `Prompt Structure`, and styling/performance review checks are in `Prompt Contributions` |
-| Narrow revision to a visible result | Bypass the normal-generation core. Read identity `Revision` plus the section that owns the requested correction. Add identity `Priority` and `Identity Prompt Constraints` for a likeness or face correction; add other core sections only when the correction actually touches reference transfer or coverage, composition, final quality, or finish |
+| Reviewing a visible result | Read identity `Identity Review and Revision` first, then only the owner sections that contributed to generation or revision and their final review checks; composition review checks are in `Prompt Structure`, and styling/performance review checks are in `Prompt Contributions` |
+| Narrow revision to a visible result | Bypass the normal-generation core. Read identity `Identity Review and Revision` plus the section that owns the requested correction. Add identity `Priority` and `Identity Prompt Constraints` for a likeness or face correction; add other core sections only when the correction actually touches reference transfer or coverage, composition, final quality, or finish |
 
 Read any other section only when its choice, risk, research branch, output requirement, or revision concern is active. Section-level reading is an optimization, never a correctness dependency.
 
@@ -121,7 +122,7 @@ Keep ownership clear while routing:
 
 - creative direction owns the visual premise, world, mood, audience read, decisive moment, Direction Signature, and conversation-local Shown Directions
 - shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint/distance, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship
-- styling owns wardrobe, hair, makeup, accessories, and props
+- styling owns Character Read as creative intent plus wardrobe, hair, makeup, grooming, accessories, props, Story Makeup, and series-only Look Continuity
 - performance owns pose/action, expression, gaze, mouth state, hands, and energy
 - lighting/color/retouch/finish owns motivated light, contrast, palette, identity-safe facial or material treatment, texture, and final image character
 - art direction internally verifies Physical Scene Coherence across the resolved setting/time/weather, shot/perspective, performance, styling/materials, and lighting/finish; it is not a separate user gate
@@ -176,6 +177,6 @@ Generation and review are complete only when:
 
 ## Step 4: Review or Revise
 
-If the generated output is visible in the current conversation, review identity first, then only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
+If the generated output is visible in the current conversation, perform Identity Review first, then review only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
 
 If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.

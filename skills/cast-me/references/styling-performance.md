@@ -1,10 +1,12 @@
 # Styling and Performance Director
 
-This module owns wardrobe, accessories, props, grooming, role or costume research, pose geometry, action, expression, gaze, hands, and performance energy.
+This module owns Styling Direction, wardrobe, accessories, props, makeup, hair, grooming, role or costume research, pose geometry, action, expression, gaze, hands, and performance energy.
 
 ## Ownership
 
 This module owns what the person wears, holds, does, and performs. It does not own framing, crop, camera position, subject placement, spatial layers, or background relationship; those belong to `composition-director.md`. Inside locked user intent, it must respect the identity and geometry quality constraints in `identity-anchor.md`.
+
+Treat Character Read as creative intent supplied by the user or story or proposed as a creative direction. Record an explicit self-description as an Explicit Lock. Visible appearance may guide formal compatibility and identity preservation, but never infer the person's actual personality, profession, relationships, or inner traits from their face, expression, clothing, or styling.
 
 When styling or performance conflicts with identity or geometry, first simplify only unresolved, unsupported, non-story-critical details. Never alter a locked action, head direction, gaze, hand interaction, or styling choice without a risk-choice gate.
 
@@ -14,11 +16,11 @@ Before asking about wardrobe, props, pose, expression, gaze, hands, or facial tr
 
 When a risk gate is needed, derive its options from the actual unsupported fields and locked intent. Relevant options add evidence or description, accept labeled inference, or stage the work around the actual gap. Do not use a universal stable/bold ladder, and do not treat intentional projected size change under a locked camera as anatomy instability.
 
-Keep facial treatment inside the First-Pass Finish dimension and use the existing identity boundary:
+Keep physical or depicted makeup, hair, grooming, wardrobe, and accessories in Styling. First-Pass Finish owns how the resolved facial state is lit, colored, textured, retouched, and rendered:
 
 - Use the Natural Retouch baseline in `composition-director.md` for default photographic finish.
-- Stronger complexion, grooming, makeup, flyaway-hair, or texture polish may proceed without another gate while protected identity anchors remain unchanged.
-- Requested changes to face or body structure, intrinsic features, skin tone, ethnicity impression, body shape, or apparent age require the existing identity risk-choice gate. Do not add a beauty-specific workflow.
+- Bold color, texture, localized treatment, complexion cleanup, or grooming polish may proceed without another gate while Protected Identity Cues remain unchanged and readable.
+- Natural-looking contour, grooming, hair, coverage, or other treatment requires the existing identity risk-choice gate when it would replace, redraw, or obscure Protected Identity Cues. The same gate applies to requested changes in face or body structure, intrinsic features, skin tone, ethnicity impression, body shape, hairline, distinctive marks, or apparent age. Do not add a beauty-specific workflow or classify risk by makeup intensity.
 
 ## Category Routing
 
@@ -34,11 +36,23 @@ Use the category only as a production lens. Do not let a category override the u
 
 ## Styling Direction
 
-Resolve wardrobe, headwear, jewelry, accessories, makeup, hair styling, and props when they are production-critical or visually important.
+Resolve one Styling Direction across only the unlocked wardrobe, headwear, jewelry, accessories, makeup, hair, grooming, and prop fields that are production-critical or visually important. Explicit locks may narrow the same interface to one field; do not create separate makeup, hair, wardrobe, or accessory menus.
+
+Treat visible makeup, grooming, and hair whose status or source is unknown as Reference Appearance. Preserve compatible Reference Appearance and apply only the story-required change. Unknown makeup alone is neither a reason to request a bare-face image nor permission to claim an unseen natural baseline; use the Appearance Coverage rules in `identity-anchor.md` only when the target depends on hidden Protected Identity Cues.
+
+Activate Styling when role, period, ceremony, fashion, performance context, named or cultural canon, or another story-dependent transformation materially changes the look, even when the user did not list makeup or hair. Skip an ordinary Styling gate for a compatible headshot, avatar, lifestyle portrait, explicit keep-current-look request, complete styling brief, accepted defaults, or unrelated targeted revision.
+
+Treat wording equivalent to `design the styling from the story`, `you decide the makeup and look`, or `styling according to the character` as Delegated Styling for the owned fields. Select one compatible identity-preserving Styling Direction internally, record only its resolved fields as Derived Locks, and continue without a visible Styling gate; focused Appearance Coverage, identity-risk, safety, and exact-text choices remain available.
+
+When the user requests options or a material Styling choice remains unresolved, present exactly three complete story-specific Styling Directions plus `D) Custom`, with one recommendation and one short visible-result reason. Each option describes the intended Character Read, concrete makeup/grooming, hair, wardrobe/accessories, target-critical Protected Identity Cues to preserve, and any material likeness risk in beginner-facing visual language. Selecting an option locks only the fields it actually states.
+
+Treat intentional fatigue, weathering, injury, ritual marks, cosmetic design, grooming, wet hair, and cosmetic breakdown as Story Makeup. Record it as a Styling lock that First-Pass Finish must render coherently rather than remove as a defect. Selecting or refreshing Styling does not resolve First-Pass Finish, and selecting or refreshing Finish does not reopen Styling.
+
+Create Look Continuity only for a requested series. Lock the base makeup, hair, wardrobe, and accessories, then record explicit story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, or costume damage for each moment; a single image gets no continuity state.
 
 Do not replace distinctive clothing, headwear, jewelry, accessories, hairstyle, or makeup unless the user requests replacement, accepts defaults that include replacement, or the chosen concept makes replacement unavoidable.
 
-If the output type is known, the user has not specified wardrobe/accessory treatment, and the original clothing, headwear, jewelry, or accessories are visually important or may conflict with the requested format, ask one short follow-up before generation.
+If the output type is known, the user has not specified wardrobe/accessory treatment, and the original clothing, headwear, jewelry, or accessories are visually important or may conflict with the requested format, ask one short follow-up before generation. Do not ask merely because the source makeup status is unknown.
 
 If a creative direction already suggested a styling lane, such as lifestyle, street photo, editorial, professional, cinematic, or character design, wardrobe/accessory options must stay inside that lane unless the user reopens the direction.
 
@@ -137,9 +151,13 @@ If the character, uniform, role, or costume has multiple major variants, ask the
 
 When writing the production prompt, include styling/performance details only when relevant:
 
+- Character Read as user/story intent, never as an inferred fact about the person
 - wardrobe/headwear/jewelry/accessories: preserve, simplify, polish, or replace because requested
 - hair/makeup/grooming constraints, especially if visible identity depends on them
-- facial treatment: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
+- Reference Appearance, its unknown source status when relevant, and the concrete target transformation without claiming a verified unseen bare-face baseline
+- Protected Identity Cues to preserve and any accepted styling-related likeness risk
+- Story Makeup that must survive First-Pass Finish and series-only Look Continuity with moment-specific evolution
+- facial finish: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details
 - prop purpose, hand relationship, and hand complexity
 - pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, hand/prop, and energy relationships
@@ -147,6 +165,6 @@ When writing the production prompt, include styling/performance details only whe
 
 For fashion, costume, uniform, or character work, name the visible production anchors rather than writing only a label such as "luxury", "cyberpunk", "old money", "warrior", or "professional". Include what is actually visible: silhouette, garment layers, fabric behavior, closures, trims, accessories, makeup/grooming, and how the person performs the role.
 
-Before generation, check that styling/performance choices are explicit enough for the output type, do not contradict identity preservation, and do not overload the composition with unnecessary wardrobe changes, props, or action complexity.
+Before generation, check that styling/performance choices are explicit enough for the output type, preserve compatible Reference Appearance and target-critical Protected Identity Cues, keep Story Makeup and First-Pass Finish ownership separate, and do not overload the composition with unnecessary wardrobe changes, props, or action complexity.
 
 If the generated output is visible, review whether wardrobe/accessories changed as requested, props support the concept, all relevant visible pose relationships are coherent with the camera and action, expression fits the brief, and styling does not change identity.

@@ -488,3 +488,129 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[continuation of scenario 75] Keep rainy night and adapt the light to motivated station fixtures and reflected wet-platform light.`
 
 **Expected:** Record the selected resolution, retain every unrelated Explicit Lock, Derived Lock, accepted risk, reference role, and output requirement from the existing decision state, then continue directly to generation readiness. Do not repeat creative direction, Shot, Styling, Performance, Finish, reference, exact-text, canvas, or output questions.
+
+## 77. Unknown makeup does not block a professional headshot
+
+**Input:** `[clear face reference; makeup status is unknown] Create a professional headshot, keep my current appearance and clothes, and use recommended defaults.`
+
+**Expected:** Treat the visible face, grooming, and hair as valid Reference Appearance. Generate without asking for a bare-face image or opening Styling merely because makeup status is unknown; do not claim the reference proves an unseen bare-face appearance.
+
+## 78. Unknown Reference Appearance can be restyled for a story
+
+**Input:** `[clear person reference; makeup status is unknown] Restyle me as a rain-worn night courier while keeping me recognizable. Use recommended defaults.`
+
+**Expected:** Preserve the same visible person and target-critical Protected Identity Cues while describing the courier makeup, grooming, hair, wardrobe, and accessories concretely. State the target transformation without claiming to remove known makeup or reconstruct a verified bare face.
+
+## 79. Hidden appearance evidence gets one relevant coverage gate
+
+**Input:** `[reference with opaque face paint and a strong beauty filter] Create a bare-face daylight portrait of the same person.`
+
+**Expected:** Mark only the target-critical Protected Identity Cues hidden by the paint or filter as missing Appearance Coverage. Ask one focused gate offering only relevant paths such as a clearer person reference, a user description, or accepted inference; do not classify makeup intensity, promise de-makeup, or invent the hidden face.
+
+## 80. Styling references never become identity evidence
+
+**Input:** `[Image 1: primary face; Image 2: side view of the same person; Image 3: another person's ceremonial makeup and costume] Apply Image 3's styling to me.`
+
+**Expected:** Keep Image 1 as the Primary Identity Anchor, use Image 2 only as supporting identity evidence, and use Image 3 only for the requested makeup, hair, costume, accessory, and material treatment. Never average the faces or borrow Image 3's age impression, body, or identity.
+
+## 81. Character Read comes from intent, not appearance
+
+**Input:** `[person reference] The character should read as calm, severe, and protective. Design the styling from that story.`
+
+**Expected:** Treat calm, severe, and protective as the requested Character Read and an Explicit Lock, not a factual personality diagnosis. Do not infer profession, temperament, relationships, or inner traits from facial expression, face shape, clothing, or other visible appearance.
+
+## 82. Delegated Styling resolves one complete look internally
+
+**Input:** `[person reference; story, role, and identity evidence resolved] Design the makeup, hair, wardrobe, and accessories from the story yourself and continue.`
+
+**Expected:** Treat the request as Delegated Styling, select one complete identity-preserving Styling Direction internally, record its resolved fields as Derived Locks, and ask no ordinary Styling question. Any actual Appearance Coverage, identity-risk, safety, or exact-text issue remains available as one focused gate.
+
+## 83. Requested Styling choices stay one complete gate
+
+**Input:** `[person reference; story and Character Read locked] Show me styling choices for the character.`
+
+**Expected:** Show exactly three complete story-specific Styling Directions plus `D) Custom`, with one recommendation and one short visible-result reason. Each option describes Character Read, concrete makeup/grooming, hair, wardrobe/accessories, Protected Identity Cues to preserve, and material likeness risk; do not create separate makeup, hair, or wardrobe menus.
+
+## 84. Explicit hair and wardrobe locks narrow Styling to makeup
+
+**Input:** `[person reference] Keep my current hair and black coat exactly, but show me makeup choices for the locked story.`
+
+**Expected:** Preserve hair and wardrobe as Explicit Locks and use the same Styling Direction gate narrowed to makeup. Do not reopen hair, wardrobe, scene, Shot, Performance, First-Pass Finish, or another unrelated production dimension.
+
+## 85. Compatible Reference Appearance needs only the story-required change
+
+**Input:** `[person reference already wearing a story-compatible coat and restrained grooming] Keep what already works and style me for the quiet winter-platform scene.`
+
+**Expected:** Preserve and deepen compatible Reference Appearance, changing only missing or conflicting Styling fields. Do not force a conspicuous makeover, replace the coat, or redesign hair and makeup merely to demonstrate styling work.
+
+## 86. An implicit story need activates Styling
+
+**Input:** `[person reference] Cast me as an exhausted 1930s field medic immediately after a night evacuation.`
+
+**Expected:** Activate Styling even though the user did not list makeup or hair. Resolve concrete period- and story-relevant grooming, fatigue treatment, hair, wardrobe, and accessories through existing research and Styling rules while preserving identity and avoiding stereotypes or unsupported canon.
+
+## 87. Simple portraits and unrelated edits leave Styling closed
+
+**Input:** `[case A: clear reference] Make a simple profile avatar and keep my current look. [case B: visible result] Fix only the title spacing.`
+
+**Expected:** In case A, skip ordinary Styling clarification when the current appearance fits. In case B, preserve every Styling lock and make only the requested text revision; do not reopen makeup, hair, wardrobe, accessories, or the broader brief.
+
+## 88. Styling risk follows identity cues, not makeup intensity
+
+**Input:** `[case A] Use bold cobalt eye color without changing my facial relationships. [case B] Use subtle contouring to narrow my face and raise my hairline.`
+
+**Expected:** Let case A proceed without an identity-risk gate merely because the color is bold. Route case B through the existing identity-risk choice because the natural-looking treatment would redraw Protected Identity Cues; do not use light/heavy makeup labels as the threshold.
+
+## 89. Accepted styling risk is not asked twice
+
+**Input:** `[person reference] Cover one eyebrow and part of the hairline with ritual paint and a metal headpiece; I accept the stated likeness risk.`
+
+**Expected:** Record the accepted risk, preserve the remaining readable Protected Identity Cues, and continue without repeating the same gate. Keep the story through localized makeup, wardrobe, materials, and accessories; do not silently weaken the accepted transformation or treat it as verified identity evidence.
+
+## 90. Story Makeup survives Natural Retouch
+
+**Input:** `[person reference] Create the aftermath portrait with intentional fatigue, rain-streaked dirt, a healing cheek injury, smudged eyeliner, and wet hair. Use Natural Retouch for unrelated shine and temporary distractions.`
+
+**Expected:** Record the fatigue, weathering, injury, cosmetic breakdown, and wet hair as Story Makeup and preserve them through light, color, texture, and Natural Retouch. Reduce only unrelated temporary distractions; do not clean away story-required redness, unevenness, dirt, injury, grooming, or cosmetic treatment.
+
+## 91. Styling and First-Pass Finish remain separate owners
+
+**Input:** `[case A] Select Styling Direction B only. [case B] Refresh First-Pass Finish only after Story Makeup is locked.`
+
+**Expected:** In case A, lock only the Styling fields stated by B and leave First-Pass Finish suggested or unresolved. In case B, preserve Story Makeup and every other Styling lock while replacing only Finish-owned light, color, treatment, texture, and final character.
+
+## 92. Story state must remain physically coherent
+
+**Input:** `[night rain, soaked wool coat, wet hair, running makeup, dry powdery skin finish, and hard noon sunlight are all Explicit Locks] Generate now.`
+
+**Expected:** Stop for one focused Physical Scene Coherence choice that names the incompatible rain/story state and finish/light treatment. Recommend one coherent resolution, offer only the direct alternative, and preserve identity, Shot, Performance, wardrobe, text, canvas, accepted risks, and every unrelated lock.
+
+## 93. Look Continuity evolves across a requested series
+
+**Input:** `[person references] Create three connected images: before rain, after the crossing, and after the fight. Keep one character look while weather and injury evolve.`
+
+**Expected:** Create Look Continuity for the series: lock the base makeup, hair, wardrobe, and accessories, then record image-specific wetness, wear, injury, dirt, costume damage, and cosmetic breakdown. Keep the character recognizable without forcing identical styling condition in all three moments.
+
+## 94. One image does not create Look Continuity
+
+**Input:** `[person reference] Create one rain-worn ceremonial portrait with the brief fully resolved.`
+
+**Expected:** Preserve the ordinary Styling locks needed for the image and generate without creating Look Continuity, a persistent look record, or a series workflow.
+
+## 95. Identity can remain readable without being the First Read
+
+**Input:** `[person references] Create action key art where the rescue leap and red silhouette must register first, while the person must remain recognizable.`
+
+**Expected:** Make the action and silhouette the First Read while keeping identity a required readable constraint through the Primary Identity Anchor and Protected Identity Cues. Do not turn the result into a headshot or force the face to lead the composition.
+
+## 96. Identity Review reports visible cue drift only
+
+**Input:** `[visible result and Primary Identity Anchor] Review whether the story styling still looks like the same person.`
+
+**Expected:** Compare visible Protected Identity Cues at the target angle and report concrete drift such as eyebrow shape, facial relationships, skin tone, age impression, hairline, or a distinctive mark. Do not provide a biometric score, match claim, verification statement, or identity guarantee.
+
+## 97. Styling revision restores only drifting cues
+
+**Input:** `[visible result] The eyebrow shape, contour, skin tone, and hairline drifted. Restore those identity cues but keep the injury makeup and everything else.`
+
+**Expected:** Enter the targeted revision flow and restore only the named Protected Identity Cues or remove only their responsible styling treatment. Preserve compatible Story Makeup, scene, Shot, Performance, exact text, wardrobe, First Read, First-Pass Finish, and every unrelated lock; do not regenerate a new concept.

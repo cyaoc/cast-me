@@ -1,6 +1,6 @@
 # Identity Anchor
 
-This module owns visible identity likeness, reference transfer and coverage, target-angle face integrity, identity prompt constraints, and identity or geometry revision.
+This module owns visible identity likeness, Reference Appearance and Appearance Coverage, reference transfer, target-angle face integrity, identity prompt constraints, Identity Review, and identity or geometry revision.
 
 ## Priority
 
@@ -20,6 +20,8 @@ Use `styling-performance.md` for the performance decision itself. This module ve
 
 Treat identity preservation as best effort, not guaranteed. Do not identify the person, infer sensitive traits, transform the person into a celebrity, or claim consent/ownership/age/relationship details the user did not provide.
 
+Identity is a required readable quality constraint for every person-centered result, but it is not always the First Read. Let the locked use determine whether the face, person, silhouette, action, emotion, product, or message leads the composition.
+
 Use `user-provided self-reference image` only when the user explicitly says the image is them, a selfie, or their own image. Otherwise use `user-provided person reference image`.
 
 Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. Accepted inference for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
@@ -36,7 +38,7 @@ Preserve after the user requests it, accepts recommended defaults, or when the d
 - selected or distinctive wardrobe, headwear, jewelry, and accessories
 - user-specified props, text, product, or brand elements
 
-Preserve these visible identity anchors:
+Treat the target-critical subset of these visible identity anchors as Protected Identity Cues:
 
 - face outline and bone structure
 - facial proportions, forehead proportion, and overall recognizability
@@ -95,15 +97,20 @@ For frontal references used in angled, side-facing, action, poster, or cinematic
 
 For reference edits, pass the image being edited as an actual image input and be surgical: state the target transformation first, then name what must remain unchanged. Repeat identity invariants on every edit or revision: same person, same face structure, same age impression, same skin tone, no face redesign, no identity drift, and no automatic beautification into a different person.
 
-If there are multiple reference images, label each one by role, such as `Image 1: Primary Identity Anchor`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Do not let a supporting angle, style, costume, pose, product, or lighting reference overwrite or count as evidence for the Primary Identity Anchor.
+If there are multiple reference images, label each one by role, such as `Image 1: Primary Identity Anchor`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Supporting identity angles may clarify stable facial relationships but cannot override or be averaged with the Primary Identity Anchor. Transfer only the requested makeup, hair, wardrobe, accessory, material, or visual treatment from another person's styling reference; never borrow that person's face, age impression, body, or identity.
 
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
 ## Reference Coverage
 
+Treat visible facial styling, grooming, and hair whose makeup status or source is unknown as Reference Appearance. It is valid evidence for the visible person, but it does not verify an unseen bare-face appearance. Unknown makeup alone is not an Appearance Coverage gap, and final prompts must describe the target transformation without claiming makeup removal to a known natural baseline.
+
+Define Appearance Coverage by the Protected Identity Cues needed for the target. Ask for more evidence or accepted inference only when source styling, filters, face paint, hair, accessories, occlusion, or image quality hide a target-critical cue; clear visible cues require no additional appearance question.
+
 Before generation, record only the coverage needed by the target as `verified`, `described`, `inferred`, or `missing`:
 
 - face identity coverage: visible facial structure and which face angles are actually shown
+- appearance coverage: target-critical Protected Identity Cues visible through the Reference Appearance
 - body-scale coverage: visible shoulder, torso, hip, limb, height, stance, and outfit information
 - angle coverage: frontal, three-quarter, profile, high/low viewpoint, and perspective evidence
 - performance coverage: expression range, weight-bearing pose, action, hands, and prop interaction
@@ -118,11 +125,11 @@ Run this check before generation when the requested output depends on source inf
 - the target requires expression or performance range not demonstrated by the source
 - multiple reference images with unclear roles
 
-If production-critical coverage is missing and the user has not explicitly accepted inference for those gaps, ask one options block before generation. Construct the risk options from the actual coverage gaps and inherit every locked scene, camera, shot, action, expression, and styling choice.
+If production-critical coverage is missing and the user has not explicitly accepted inference for those gaps, ask one options block before generation. Construct the risk options from the actual coverage gaps and inherit every locked scene, camera, shot, action, expression, and styling choice. A bare-face or substantially different facial-styling target may expose missing Appearance Coverage when the source hides cues that target requires; never promise automatic de-makeup or reconstruction.
 
 Offer only relevant paths:
 
-- add real references for the missing body, angle, expression, hand, outfit, or action evidence
+- add real references for the missing appearance, body, angle, expression, hand, outfit, or action evidence
 - describe the missing facts
 - continue with clearly labeled inference and accept the corresponding identity/anatomy/perspective risk
 - use a staged stability pass when it materially reduces risk, while labeling the intermediate body or angle as inferred rather than verified
@@ -136,6 +143,8 @@ For high-risk source-to-target jumps, preserve every locked camera and performan
 Offer a staged stability strategy only when it addresses the actual gap. Choose the intermediate framing, angle, or action from the locked target rather than a fixed half-body recipe, and label all synthetic intermediate body or angle information as inferred rather than verified.
 
 The generated result should feel like the same person in a new scene, not a copy of the source screenshot.
+
+Trigger the existing identity-risk choice when Styling would replace, redraw, or obscure Protected Identity Cues such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Judge the proposed change by cue replacement or visibility, not by whether makeup looks light, natural, bold, or heavy. Preserve identity by default; after explicit risk acceptance, proceed without repeating that same gate and keep the story through compatible non-identity styling details.
 
 ## Face Visibility and Performance Integrity
 
@@ -165,7 +174,9 @@ Use positive, concrete visual direction first. Choose only negative constraints 
 - Composition and camera: no extra people unless requested; no unrequested or projection-inconsistent stretching, crop, or occlusion; preserve the selected viewpoint, perspective strength, face angle, and angle-appropriate feature visibility.
 - Style-specific finish: for photorealistic requests, avoid cheap CG, anime finish, plastic rendering, and unnatural skin; for CG or key art requests, avoid uncanny face drift and identity-losing stylization.
 
-## Revision
+## Identity Review and Revision
+
+When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare only visible Protected Identity Cues and report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, or a distinctive mark. Never provide a biometric score, match or verification claim, or identity guarantee.
 
 If the result is close, revise surgically. Change one target at a time and repeat identity constraints:
 
@@ -174,6 +185,7 @@ If the result is close, revise surgically. Change one target at a time and repea
 - preserve original text unless replacement text is supplied
 - do not regenerate a new concept when the user asked for a correction
 - do not use a style or pose reference to overwrite the Primary Identity Anchor
+- when Styling caused drift, restore only the drifting Protected Identity Cues or remove only the responsible treatment while preserving compatible Story Makeup, scene, Shot, Performance, exact text, wardrobe, First-Pass Finish, and every unrelated lock
 
 Classify geometry revisions before editing:
 
@@ -186,4 +198,4 @@ If a revision request is ambiguous and needs user input, ask with the standard l
 
 Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries and coverage are explicit, reference roles are labeled when multiple inputs exist, inference/risk handling is resolved, locked intent is preserved, and underlying anatomy, projected proportions, pose geometry, target-angle identity readability, and face/body coordination are explicit.
 
-If the generated output is visible, review whether the person still looks like the input reference, face anchors remain recognizable at the selected angle, facial planes agree with head turn and gaze, and there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal.
+If the generated output is visible, also check that facial planes agree with head turn and gaze and that there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal. A visible failure changes only after the user explicitly requests a targeted revision.
