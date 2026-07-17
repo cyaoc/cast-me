@@ -12,9 +12,12 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Do not hardcode an angle, focal length, device, or fixed camera template; generate perspective choices from visible consequences and the user's theme.
 - Strong viewpoints, close camera positions, and deliberate projection exaggeration are valid locked intent, not absolute failure modes.
 - Identity anchors preserve facial structure, not source face direction, shoulder line, crop scale, or selfie perspective.
-- A risk gate handles missing evidence or accepted inference without reopening or silently downgrading locked camera and performance choices.
+- A risk gate handles missing evidence or an explicit Inference Boundary without reopening or silently downgrading locked camera and performance choices.
+- A broad statement such as `I accept lower likeness` or `infer the missing evidence` does not define an Inference Boundary; list the exact missing regions or facts before generation.
 - Never repeat a locked choice. "Use recommended defaults", "you decide", or equivalent wording ends ordinary clarification.
 - Reference-coverage, identity-risk, safety, and exact-text gates remain focused exceptions.
+- Every user-visible Choice Gate contains exactly four scoped paths labeled A/B/C/D. A through C are concrete and valid; when only two substantive resolutions exist, C keeps the current state and stops instead of padding the gate. D is always a localized, gate-specific Custom Path that cannot bypass safety, preserve a physical contradiction, or silently reopen unrelated Explicit Locks.
+- The `D) Custom` placeholder creates no lock or history entry. A concrete custom answer receives the presenting gate's normal validation, lock, and history treatment; only an adopted creative Custom Direction becomes a Shown Direction.
 - Every visible Direction Gate contains three concrete A/B/C directions plus the permanent `D) Custom` option.
 - Every concrete direction shown or internally chosen remains Shown while it is available in the current conversation context. Before presenting automatic recommendations, apply the three-of-six Direction Signature check against the current batch and every available Shown Direction; do not promise exact deduplication after earlier history is unavailable.
 - Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension, never as a later mandatory step or automatic second pass.
@@ -61,7 +64,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[frontal face close-up] Make a full-body poster of the same person running with a sword and shouting, from a close, wide, high camera position with strong near/far exaggeration.`
 
-**Expected:** Lock the running/sword/shouting performance, close/wide/high camera, and strong near/far exaggeration. Record separate coverage for face identity, body scale, alternate angles, and performance/action. Ask one risk-choice gate generated only from the actual missing coverage. Offer relevant real references, user description, accepted inference, or a staged pass that addresses the gap; do not reopen creative direction or perspective, silently change camera, or replace the action with standing. The final prompt must distinguish underlying human anatomy from projected image proportions.
+**Expected:** Lock the running/sword/shouting performance, close/wide/high camera, strong near/far exaggeration, and full-body Shot. Record coverage by evidence type and region: the visible face and upper-body relationships remain verified Visible Body Evidence, while unseen lower body, alternate angles, and performance/action remain missing. Ask one Choice Gate with A) add relevant real evidence, B) describe the missing facts, C) accept a precise Inference Boundary, and D) supply another valid coverage resolution. Preserve the locked full-body Shot; do not offer a fallback crop, body concealment, standing pose, or weaker perspective. Selecting inference authorizes only the listed missing evidence and never reclassifies verified evidence. The final prompt must distinguish verified anatomy from inferred regions and projected image proportions.
 
 ## 6. Exact-text poster delivery
 
@@ -95,7 +98,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 11. Dynamic action from an upper-body reference
 
-**Input:** `[upper-body reference; user accepted body inference] Create a full-body action with a strong body turn and the head following the movement.`
+**Input:** `[upper-body reference; user accepted an Inference Boundary for the missing lower-body and action evidence] Create a full-body action with a strong body turn and the head following the movement.`
 
 **Expected:** Write one coherent pose geometry chain using only the relationships relevant and visible in the chosen action, such as support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props. Those included must agree with the locked camera and perspective; do not require an off-frame hand, a ground contact for an airborne action, or another irrelevant node. Do not substitute generic "natural dynamic pose", a static torso with decorative limbs, a near-camera gaze, or another risk gate.
 
@@ -151,7 +154,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[upper-body portrait] I reject the previous directions. Pick a completely different direction yourself and continue; infer the missing full-body and angle evidence.`
 
-**Expected:** Do not display a Direction Gate. Select one compatible Fresh Direction internally, record it as Shown, apply recommended defaults, and continue. The user's accepted inference resolves that coverage gap, while any new focused identity, coverage, safety, or exact-text gate remains available.
+**Expected:** Do not display a Direction Gate. Select one compatible Fresh Direction internally, record it as Shown, apply recommended defaults, and continue. The user's accepted Inference Boundary resolves only that coverage gap, while any new focused identity, coverage, safety, or exact-text gate remains available.
 
 ## 21. Refresh Exhaustion
 
@@ -235,7 +238,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[reference-coverage gate is unresolved] Before I answer that, give me three new performance choices.`
 
-**Expected:** Refresh only Performance and keep the reference-coverage gate unresolved for return before generation. The topic change does not accept evidence inference, weaken the focused gate, or turn its paths into creative options.
+**Expected:** Refresh only Performance and keep the Reference Coverage gate unresolved for return before generation. The topic change does not define an Inference Boundary, weaken the focused gate, or turn its paths into creative options.
 
 ## 35. Partial Shot reopen preserves an Explicit Lock
 
@@ -405,11 +408,11 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Expected:** Pass Images 1 and 2 as required person image inputs and label every included reference by role. Keep Image 1 as the Primary Identity Anchor; wardrobe, pose, and style references guide only their named roles and never overwrite face identity.
 
-## 63. Accepted inference does not permit text-only identity
+## 63. An Inference Boundary does not permit text-only identity
 
 **Input:** `[attached face image; no body or action reference] Infer the full-body scale, profile angle, and running performance. I accept that risk. Generate now.`
 
-**Expected:** Continue without repeating the accepted coverage gate, but still pass the attached face image as the Primary Identity Anchor. Accepted inference applies only to missing body, angle, and performance evidence; it is not permission to omit the identity image.
+**Expected:** Continue without repeating the accepted coverage gate, but still pass the attached face image as the Primary Identity Anchor. The Inference Boundary applies only to the listed missing body, angle, and performance evidence; it is not permission to omit the identity image.
 
 ## 64. Experimental size uses strict total-pixel area
 
@@ -505,7 +508,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[reference with opaque face paint and a strong beauty filter] Create a bare-face daylight portrait of the same person.`
 
-**Expected:** Mark only the target-critical Protected Identity Cues hidden by the paint or filter as missing Appearance Coverage. Ask one focused gate offering only relevant paths such as a clearer person reference, a user description, or accepted inference; do not classify makeup intensity, promise de-makeup, or invent the hidden face.
+**Expected:** Mark only the target-critical Protected Identity Cues hidden by the paint or filter as missing Appearance Coverage. Ask one focused Choice Gate offering a clearer person reference, a user description, an explicit Inference Boundary, and a scoped Custom Path; do not classify makeup intensity, promise de-makeup, or invent the hidden face.
 
 ## 80. Styling references never become identity evidence
 
@@ -617,6 +620,12 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 98. Close crop to full-body proportion recovery
 
-**Input:** `[face-and-upper-body reference only; body inference accepted; eye-level 9:16 full-body standing on water; no deliberate perspective exaggeration] The result has an oversized head and hair. A partial-crop revision remains head-heavy; restore the full-body water stance and make the head smaller.`
+**Input:** `[face-and-upper-body reference only; lower-body Inference Boundary accepted; eye-level 9:16 full-body standing on water; no deliberate perspective exaggeration] First, a result has one isolated slightly oversized head unit in an otherwise coherent unchanged crop. Later, another result has both an oversized head and flattened visible upper-body volume; a partial-crop revision remains defective and must return to the full-body water stance.`
 
-**Expected:** Preserve source-supported visible head, neck, shoulder, torso, and body-build relationships after accounting for source projection; infer unseen waist, hips, legs, and complete head-to-body proportions as continuous age-consistent natural anatomy. Treat the global head-to-body failure and expansion from a partial crop back to full body as regeneration, not a surgical edit. Regenerate from the Primary Identity Anchor and locked brief; do not reuse outputs carrying the same structural defect as body-scale or composition references. Preserve the water stance, camera, projection, face identity, costume, lighting, text, and background through locks. Review the skull, head, hair, and headwear as one unit relative to the shoulders, torso, hips, and limbs; do not merely shrink the whole figure in the canvas or request a one-step reduction against the failed baseline. Do not claim the proportion is fixed until the revised output passes review.
+**Expected:** Preserve source-supported visible head, neck, shoulder, chest, torso, and body-build relationships after accounting for source projection; infer only the authorized unseen waist, hips, legs, feet, complete head-to-body continuation, and garment hem as continuous age-consistent natural anatomy. Treat the isolated minor head-unit deviation as one surgical revision that resets the skull, head, hair, and headwear together without shrinking the whole figure or changing unrelated locks. Treat linked head-scale and Visible Body Evidence drift, or expansion from a partial crop, as a Structural Scale Failure. Regenerate that case from the Primary Identity Anchor and locked brief without using the defective output as body-scale or composition evidence. Preserve the water stance, camera, projection, face identity, costume, lighting, text, background, and every other lock. Perform at most one automatic correction, run Identity Review once more across the connected head-to-limb scale chain, and report any remaining concrete failure without another retry or a completion claim.
+
+## 99. Visible upper-body evidence survives opaque costume styling
+
+**Input:** `[half-body person reference clearly showing fuller chest volume, shoulder width, and upper-torso build] Create a full-body historical-fantasy portrait in opaque layered clothing. Keep the locked full-body Shot and infer the unseen lower body naturally.`
+
+**Expected:** Treat the clearly shown head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build as verified Visible Body Evidence after accounting for source projection. Name those relationships neutrally and concretely in the production prompt without measurements or erotic emphasis. Set the Inference Boundary only around unseen waist, hips, legs, feet, complete head-to-body continuation, and garment hem. Require the layered costume to drape over and follow the verified body shape rather than flattening, narrowing, enlarging, or replacing it with a generic costume silhouette. Do not ask a body-shape question, claim obscured anatomy is verified, or reopen the locked Shot.

@@ -1,6 +1,6 @@
 # Identity Anchor
 
-This module owns visible identity likeness, Reference Appearance and Appearance Coverage, reference transfer, target-angle face integrity, identity prompt constraints, Identity Review, and identity or geometry revision.
+This module owns visible identity likeness, Visible Body Evidence, Reference Appearance and Appearance Coverage, Reference Coverage and Inference Boundaries, reference transfer, target-angle face integrity, identity prompt constraints, Identity Review, and identity or geometry revision.
 
 ## Priority
 
@@ -24,7 +24,7 @@ Identity is a required readable quality constraint for every person-centered res
 
 Use `user-provided self-reference image` only when the user explicitly says the image is them, a selfie, or their own image. Otherwise use `user-provided person reference image`.
 
-Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. Accepted inference for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
+Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. An Inference Boundary for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
 
 If any person reference required by the resolved Reference Coverage is no longer available to the active image tool, stop before generation and ask only for that image to be reattached. Preserve all Explicit Locks, Derived Locks, accepted risks, and resolved creative choices.
 
@@ -52,8 +52,9 @@ Treat the target-critical subset of these visible identity anchors as Protected 
 - hairstyle and hairline
 - recognizability across different theme-appropriate expressions
 - original wardrobe, headwear, jewelry, and accessories unless the user asks to replace them, including style, color, material, pattern, cut, layers, wearing method, headwear outline, dangling elements, and major structure
-- visible body silhouette and stance when a full-body or three-quarter source provides them
 - distinctive visible styling details
+
+Track clearly shown head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, body build, silhouette, and stance separately as Visible Body Evidence at any source crop.
 
 Redesign temporary reference-photo state after the relevant choice is resolved and when useful for the requested theme:
 
@@ -89,7 +90,9 @@ Avoid:
 
 When the target image needs a different pose, expression, camera angle, crop, or full-body composition, preserve the identity anchors while adapting the face and body naturally to the new state. The source image is not a template for pose, expression, face angle, camera distance, or head-to-body scale unless the user says to copy those details.
 
-For close-up or half-body references used beyond the visible source coverage, state that the input verifies only the shown face, body, and styling evidence. Preserve source-supported visible body relationships—head and neck relative to the shoulders, shoulder width, visible torso shape, and body build—after accounting for the source projection. Infer unseen waist, hips, leg length, and complete head-to-body proportions as continuous age-consistent natural anatomy unless the user explicitly requests stylization. Do not copy the source crop's head size into a wider target. Keep underlying anatomy structurally valid while letting projected sizes follow the locked viewpoint, distance, and perspective strength.
+Treat clearly shown body relationships at any crop as Visible Body Evidence. Preserve them automatically across shot expansion, creative direction, wardrobe, costume, and styling changes without asking another body-shape question. Account for source projection before treating a relationship as structural evidence; anatomy hidden by clothing, crop, pose, occlusion, or unsupported projection remains unknown rather than verified.
+
+For close-up or half-body references used beyond the visible source coverage, state that the input verifies only the shown face, body, and styling evidence. Preserve source-supported head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build after accounting for source projection. Infer only the missing regions authorized by the Inference Boundary—as applicable, unseen waist, hips, legs, feet, complete head-to-body continuation, or garment hem—as continuous age-consistent natural anatomy unless the user explicitly requests stylization. Do not copy the source crop's head size into a wider target. Keep underlying anatomy structurally valid while letting projected sizes follow the locked viewpoint, distance, and perspective strength.
 
 For full-body and three-quarter outputs, distinguish underlying anatomy from projected proportions. Shoulder, torso, hip, limb, and joint relationships must remain valid in world space; apparent head/body size and limb foreshortening may change intentionally with camera projection. Identity similarity must come from facial structure, not arbitrary local enlargement disconnected from that projection.
 
@@ -105,13 +108,13 @@ When editing an existing output, preserve layout, crop, camera angle, body pose,
 
 Treat visible facial styling, grooming, and hair whose makeup status or source is unknown as Reference Appearance. It is valid evidence for the visible person, but it does not verify an unseen bare-face appearance. Unknown makeup alone is not an Appearance Coverage gap, and final prompts must describe the target transformation without claiming makeup removal to a known natural baseline.
 
-Define Appearance Coverage by the Protected Identity Cues needed for the target. Ask for more evidence or accepted inference only when source styling, filters, face paint, hair, accessories, occlusion, or image quality hide a target-critical cue; clear visible cues require no additional appearance question.
+Define Appearance Coverage by the Protected Identity Cues needed for the target. Ask for more evidence or an Inference Boundary only when source styling, filters, face paint, hair, accessories, occlusion, or image quality hide a target-critical cue; clear visible cues require no additional appearance question.
 
-Before generation, record only the coverage needed by the target as `verified`, `described`, `inferred`, or `missing`:
+Before generation, record only the coverage needed by the target as `verified`, `described`, `inferred`, or `missing`, separated by evidence type and visible region:
 
 - face identity coverage: visible facial structure and which face angles are actually shown
 - appearance coverage: target-critical Protected Identity Cues visible through the Reference Appearance
-- body-scale coverage: visible shoulder, torso, hip, limb, height, stance, and outfit information
+- body-scale coverage: visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
 - angle coverage: frontal, three-quarter, profile, high/low viewpoint, and perspective evidence
 - performance coverage: expression range, weight-bearing pose, action, hands, and prop interaction
 
@@ -125,22 +128,19 @@ Run this check before generation when the requested output depends on source inf
 - the target requires expression or performance range not demonstrated by the source
 - multiple reference images with unclear roles
 
-If production-critical coverage is missing and the user has not explicitly accepted inference for those gaps, ask one options block before generation. Construct the risk options from the actual coverage gaps and inherit every locked scene, camera, shot, action, expression, and styling choice. A bare-face or substantially different facial-styling target may expose missing Appearance Coverage when the source hides cues that target requires; never promise automatic de-makeup or reconstruction.
+If production-critical coverage is missing and the user has not explicitly accepted an Inference Boundary for those gaps, ask one Choice Gate before generation. Construct its paths from the actual coverage gaps and inherit every locked scene, camera, Shot, action, expression, and styling choice. A bare-face or substantially different facial-styling target may expose missing Appearance Coverage when the source hides cues that target requires; never promise automatic de-makeup or reconstruction.
 
-Offer only relevant paths:
+Present exactly four relevant paths: A) add real references for the listed missing evidence, B) describe those missing facts, C) accept an explicit Inference Boundary for only those gaps, and D) supply another coherent resolution inside this coverage gate. Preserve the locked Shot, camera, action, styling, and scene; do not introduce a safer crop, body concealment, or other lock change unless the user explicitly reopens it.
 
-- add real references for the missing appearance, body, angle, expression, hand, outfit, or action evidence
-- describe the missing facts
-- continue with clearly labeled inference and accept the corresponding identity/anatomy/perspective risk
-- use a staged stability pass when it materially reduces risk, while labeling the intermediate body or angle as inferred rather than verified
+An Inference Boundary lists the exact missing regions or evidence the user permits CastMe to estimate. Accepting it never reclassifies Visible Body Evidence and never authorizes a different missing region, face or body angle, appearance cue, action, hand interaction, or performance fact.
 
 Recommend the most accurate path that preserves locked intent. Change camera, crop, or action only if the user explicitly reopens it; never introduce that change as a fallback inside the coverage gate.
 
-If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the Primary Identity Anchor. If the user explicitly accepts inference for those gaps, continue without another coverage question unless a new missing dimension becomes central to the request. Make the prompt explicit that inferred body scale, angle, and expression are natural estimates, not verified identity facts.
+If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the Primary Identity Anchor. If the user explicitly accepts an Inference Boundary, continue without another coverage question unless a new missing dimension becomes central to the request. Make the prompt explicit about which evidence remains verified and which authorized regions or facts are natural estimates.
 
-For high-risk source-to-target jumps, preserve every locked camera and performance choice while exposing the missing coverage. Recommend added evidence or user description first; if the user accepts inference, keep the selected shot and label inferred body, angle, and performance facts explicitly.
+For high-risk source-to-target jumps, preserve every locked camera and performance choice while exposing the missing coverage. Recommend added evidence or user description first; if the user accepts an Inference Boundary, keep the selected Shot and label only the authorized body, angle, and performance facts as inferred.
 
-Offer a staged stability strategy only when it addresses the actual gap. Choose the intermediate framing, angle, or action from the locked target rather than a fixed half-body recipe, and label all synthetic intermediate body or angle information as inferred rather than verified.
+Use a staged stability strategy only when the user explicitly requests it or supplies it as a coherent Custom Path. It does not reopen a locked Shot, framing, angle, or action, and all synthetic intermediate evidence remains inferred rather than verified.
 
 The generated result should feel like the same person in a new scene, not a copy of the source screenshot.
 
@@ -168,6 +168,8 @@ Avoid:
 
 Use positive, concrete visual direction first. Choose only negative constraints relevant to the requested output:
 
+State relevant Visible Body Evidence neutrally and concretely in production and revision prompts. When chest volume is clearly shown or explicitly identified, name it directly with the surrounding shoulder and upper-torso relationships. Do not invent measurements, cup sizes, erotic emphasis, or claims about obscured anatomy.
+
 - Face and identity: no identity drift, no underlying face redesign, no target-plane-inconsistent eye or feature deformation, no random facial warping, no waxy or plastic skin, no over-smoothed skin, no automatic beautification into a different person; allow angle- and projection-correct apparent asymmetry.
 - Hands and body: no extra fingers, fused fingers, malformed hands, broken wrists, extra limbs, distorted anatomy, or prominent hands when the hands are not important to the composition.
 - Text, UI, and artifacts: no random text, watermark, fake logo, fake brand, stream UI, stickers, overlays, unreadable microtext, or compression artifacts.
@@ -176,29 +178,31 @@ Use positive, concrete visual direction first. Choose only negative constraints 
 
 ## Identity Review and Revision
 
-When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare only visible Protected Identity Cues and report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, or a distinctive mark. Never provide a biometric score, match or verification claim, or identity guarantee.
+When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare visible Protected Identity Cues, Visible Body Evidence, and the relevant structural scale chain across the shown crop. Report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, a distinctive mark, head-to-neck-to-shoulder scale, chest or torso volume, hips, or limbs. Never provide a biometric score, match or verification claim, or identity guarantee.
 
-If the result is close and the correction stays within the visible crop, revise surgically. Change one target at a time and repeat identity constraints:
+If the result has one isolated minor defect and the correction stays within an otherwise coherent visible crop, revise surgically. Change one target at a time and repeat identity constraints:
 
 - change only the requested issue
 - keep face, pose, composition, crop, palette, text, product placement, and background unchanged unless they are the issue
 - preserve original text unless replacement text is supplied
 - do not regenerate a new concept when the user asked for a correction
 - do not use a style or pose reference to overwrite the Primary Identity Anchor
-- when Styling caused drift, restore only the drifting Protected Identity Cues or remove only the responsible treatment while preserving compatible Story Makeup, scene, Shot, Performance, exact text, wardrobe, First-Pass Finish, and every unrelated lock
+- when Styling caused drift, restore only the drifting Protected Identity Cues and Visible Body Evidence, naming the affected body relationships neutrally and concretely, or remove only the responsible treatment while preserving compatible Story Makeup, scene, Shot, Performance, exact text, wardrobe, First-Pass Finish, and every unrelated lock
 
 Classify geometry revisions before editing:
 
 - for a pasted-frontal-face or face/body mismatch, preserve camera position and perspective strength; correct only neck, head, facial plane, and gaze relationships
 - for a proportion failure, distinguish underlying anatomy discontinuity from intentional projection exaggeration; preserve the chosen near/far size change and fix only random, local, or camera-inconsistent deformation
-- for a minor oversized-head error in an otherwise close result with unchanged crop, reset the skull, head, hair, and headwear as one coherent unit relative to the shoulders, torso, hips, and limbs; do not merely shrink the whole figure in the canvas or ask for the head to be "one step smaller" against the failed baseline
+- for one isolated minor proportion deviation in an otherwise coherent result with unchanged crop, reset the affected coherent unit relative to surrounding anatomy; for a minor oversized-head error, reset the skull, head, hair, and headwear together relative to the shoulders, torso, hips, and limbs without shrinking the whole figure in the canvas or asking for the head to be "one step smaller" against the failed baseline
 
-A global head-to-body proportion failure, or a revision that must expand a partial crop back to full body, is not a surgical correction. Regenerate from the Primary Identity Anchor and locked brief. Do not use an output carrying the same structural defect as a supporting body-scale or composition reference; preserve its valid locks in text instead.
+Multiple connected body-scale failures, or a revision that must expand a partial crop, form a Structural Scale Failure rather than a surgical correction. Regenerate from the Primary Identity Anchor and locked brief. Preserve valid scene, camera, projection, pose, styling, lighting, exact text, background, and output locks in the prompt. Do not use an output carrying the Structural Scale Failure as body-scale or composition evidence.
 
 Never normalize a locked strong perspective while repairing anatomy or coordination.
 
 If a revision request is ambiguous and needs user input, ask with the standard lightweight decision format. Do not ask a bare "how should I revise it?" question.
 
-Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries and coverage are explicit, reference roles are labeled when multiple inputs exist, inference/risk handling is resolved, locked intent is preserved, and underlying anatomy, projected proportions, pose geometry, target-angle identity readability, and face/body coordination are explicit.
+Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries and coverage are explicit, reference roles are labeled when multiple inputs exist, every needed Inference Boundary is resolved, locked intent is preserved, and underlying anatomy, projected proportions, pose geometry, target-angle identity readability, and face/body coordination are explicit.
 
-If the generated output is visible, also check that facial planes agree with head turn and gaze and that there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. For full-body or three-quarter outputs inferred from a close or upper-body anchor, compare the relative scale of the skull, head, hair, and headwear with the shoulders, torso, hips, and limbs rather than the whole subject's size in the canvas. Accepted inference accepts unknown real-world details, not visible doll-like anatomy. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal. Do not call an unambiguous required-quality failure final: apply one appropriate correction, review again, and report honestly if it remains unresolved.
+If the generated output is visible, also check that facial planes agree with head turn and gaze and that there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. For full-body or three-quarter outputs inferred from a close or upper-body anchor, compare the connected scale of the skull, head, hair, and headwear with the neck, shoulders, chest, torso, hips, and limbs rather than the whole subject's size in the canvas. An Inference Boundary accepts unknown real-world details, not visible doll-like anatomy or loss of verified evidence. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal.
+
+Do not call an unambiguous required-quality failure final. Perform at most one automatic correction using the surgical or Structural Scale Failure path above, then run Identity Review once more. If the correction still fails, report the concrete unresolved defect and stop; do not retry again or declare the result final or complete. A passing first result receives no routine second generation or finishing pass.

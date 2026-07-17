@@ -37,9 +37,12 @@ Read any other section only when its choice, risk, research branch, output requi
 - If a gate asks for user input, the complete user-visible response must be only the clarification/options block.
 - Match the user's language in user-visible text; translate English templates before showing them, while preserving exact in-image text, titles, names, and quoted copy. Internal production prompts may use English when useful.
 - Treat English labels in examples as semantic placeholders, not literal output. Localize all user-visible scaffolding to the user's language, including labels equivalent to `I recommend`, `because`, `Options`, `Recommended`, `Custom`, `Reply with`, and default-acceptance phrases. Do not mix English scaffolding into non-English clarification blocks unless the user used those exact words.
-- Every clarification gate must use the same lightweight gstack-style decision format:
+- Every user-visible clarification is a Choice Gate with exactly four labeled paths: A, B, C, and `D) Custom`. A through C must be valid, concrete resolutions inside the gate's scope; when only two substantive resolutions exist, use C to keep the current state and stop instead of inventing a third resolution.
+- The Custom Path accepts a user-supplied resolution only inside the presenting gate's valid scope. It cannot bypass safety, preserve a physical contradiction, or silently reopen unrelated Explicit Locks. Localize D with gate-specific guidance rather than reusing one generic sentence.
+- Merely showing `D) Custom` creates no lock or history entry. Once the user supplies a concrete answer, the owning gate applies its normal validation, lock, and history semantics. An adopted creative Custom Direction becomes a Shown Direction; focused coverage, identity-risk, safety, and exact-text answers remain owned by their gates and do not enter creative history.
+- Every Choice Gate must use the same lightweight gstack-style decision format:
   - start with a localized recommendation sentence: `<localized I recommend>: <recommended path>, <localized because> <one short reason>.`
-  - then a localized options label with 2-4 concrete choices using `A)`, `B)`, `C)`, and optional `D)`, with one choice marked by a localized equivalent of `(Recommended)` when a safe default exists
+  - then a localized options label with the four concrete A/B/C/D paths, with one path marked by a localized equivalent of `(Recommended)` when a safe default exists
   - end with a localized reply instruction showing how to accept the recommendation and how to override specific fields
 - Do not use bare open-ended questions, yes/no-only prompts, or number-only menus for clarification. Give concrete choices, the recommended path, and shorthand examples.
 - Ask missing production-critical choices serially, one unresolved dimension or tightly coupled decision group per turn, with concrete suggestions. Do not hide important choices inside a dense preset when the user has not chosen them.
@@ -56,11 +59,11 @@ Read any other section only when its choice, risk, research branch, output requi
 - Suggested details are not final choices, but later questions must refine or adapt from them instead of restarting with generic menus. When the user accepts recommended defaults, convert relevant suggested details into `locked: derived` decisions; a repeated or overridden value becomes `locked: explicit`.
 - Route any request for more, different, replacement, or new choices through `references/scoped-option-refresh.md`; it owns target priority, recent-gate tracking, delegation, and the no-target fallback. A target resolved as Creative Direction uses Style Refresh, while a precise first-time style request simply locks that theme.
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `generate now`, or an unscoped equivalent of `you decide`. A `you decide` or `pick one` attached to a Scoped Option Refresh delegates only that target area.
-- If the user says `default`, `use recommended defaults`, `generate now`, or an unscoped global equivalent of `you decide`, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated evidence or inference risk.
+- If the user says `default`, `use recommended defaults`, `generate now`, or an unscoped global equivalent of `you decide`, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated Inference Boundary.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks the assistant to decide, or the dimension is irrelevant to the requested output.
 - A creative-direction preview does not resolve First-Pass Finish; it remains `suggested` until resolved, defaulted, or delegated.
-- When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk-choice gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or accepted inference.
-- Do not repeat a risk-choice gate when the user clearly accepted that specific risk, such as `try one version with inferred body and angle`, `I accept lower likeness`, `stronger beauty retouch`, or `bold attempt with the missing evidence inferred`. Continue with the chosen risk and make the prompt explicit about the tradeoff.
+- When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk Choice Gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or define an Inference Boundary.
+- Do not repeat a risk Choice Gate when the user clearly accepted its specific resolution. For inference, require an explicit boundary such as `infer only the unseen waist, hips, legs, and feet` or `infer only the missing profile-angle and sword-hand evidence`; broad statements such as `I accept lower likeness` or `infer the missing evidence` do not define an Inference Boundary. Continue with the chosen risk and make the prompt explicit about the tradeoff.
 - When a general image-generation capability also applies, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
 - Use GPT Image 2 for image generation/editing. In ChatGPT, use its built-in image generation/editing capability; on API surfaces, select `gpt-image-2`.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
@@ -154,9 +157,10 @@ I recommend: keep as much of your original concept as possible in a compliant ed
 Options:
 A) Preserve the original fashion/editorial intent (Recommended) - keep the chosen setting, role, wardrobe category, and visual style; adjust only unsafe pose, transparency, nudity, or body-part emphasis
 B) More conservative variation - more coverage, restrained pose, face identity and styling accuracy prioritized
-C) Custom compliant framing - describe your safe intent while keeping it non-sexual, age-appropriate, and free of nudity, transparent clothing, fetish framing, or intimate/private-room framing
+C) Keep the current request and stop - do not generate or silently rewrite it
+D) Custom - describe another compliant framing that stays non-sexual, age-appropriate, and free of nudity, transparent clothing, fetish framing, or intimate/private-room framing
 
-Reply with A, or reply with "B + use recommended defaults".
+Reply with A, or reply with "D + your compliant framing".
 ```
 
 ## Step 3: Generate

@@ -33,12 +33,12 @@ Treat `you decide`, `pick one`, and equivalent wording as delegation modifiers, 
 
 ## Visible Gate and History
 
-Every visible refreshable creative gate contains exactly three concrete options labeled A through C plus the permanent `D) Custom` option. Use the standard decision format and describe visible outcomes before professional vocabulary.
+Every visible refreshable creative Choice Gate contains exactly three concrete options labeled A through C plus the permanent `D) Custom` Path. Use the standard decision format and describe visible outcomes before professional vocabulary.
 
 Maintain separate Shown Option history for each creative area while it remains available in the current conversation context:
 
 - Record every presented A, B, and C immediately, whether selected or generated.
-- Never record or consume the `D) Custom` placeholder. Record an adopted concrete Custom option in the target area's history.
+- Never record or consume the `D) Custom` placeholder. Record an adopted concrete custom answer in the target area's history.
 - Record an option selected internally during a Delegated Refresh.
 - Keep Creative Direction's Shown Direction history separate; do not mix another area's options into it.
 - Do not add persistence or require prior-session history.

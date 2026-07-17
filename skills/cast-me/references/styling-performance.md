@@ -10,11 +10,13 @@ Treat Character Read as creative intent supplied by the user or story or propose
 
 When styling or performance conflicts with identity or geometry, first simplify only unresolved, unsupported, non-story-critical details. Never alter a locked action, head direction, gaze, hand interaction, or styling choice without a risk-choice gate.
 
+Visible Body Evidence belongs to `identity-anchor.md`, not Styling. Preserve clearly shown shoulder width, chest volume, torso shape, and body build through every wardrobe or costume change. Garments may change fabric, layers, material, and silhouette treatment, but must drape over the verified body shape rather than flatten, narrow, enlarge, or replace it. Do not claim anatomy hidden by clothing, crop, pose, or projection is verified.
+
 Before asking about wardrobe, props, pose, expression, gaze, hands, or facial treatment, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or facial treatment again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
 
 ## Risk and Facial Treatment
 
-When a risk gate is needed, derive its options from the actual unsupported fields and locked intent. Relevant options add evidence or description, accept labeled inference, or stage the work around the actual gap. Do not use a universal stable/bold ladder, and do not treat intentional projected size change under a locked camera as anatomy instability.
+When a risk Choice Gate is needed, derive its paths from the actual unsupported fields and locked intent. Relevant paths add evidence or description, define an explicit Inference Boundary, or use a coherent Custom Path for the actual gap. Do not use a universal stable/bold ladder, and do not treat intentional projected size change under a locked camera as anatomy instability.
 
 Keep physical or depicted makeup, hair, grooming, wardrobe, and accessories in Styling. First-Pass Finish owns how the resolved facial state is lit, colored, textured, retouched, and rendered:
 
@@ -156,6 +158,7 @@ When writing the production prompt, include styling/performance details only whe
 - hair/makeup/grooming constraints, especially if visible identity depends on them
 - Reference Appearance, its unknown source status when relevant, and the concrete target transformation without claiming a verified unseen bare-face baseline
 - Protected Identity Cues to preserve and any accepted styling-related likeness risk
+- Visible Body Evidence the clothing must follow, named neutrally and concretely without measurements or erotic emphasis
 - Story Makeup that must survive First-Pass Finish and series-only Look Continuity with moment-specific evolution
 - facial finish: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details
@@ -165,6 +168,6 @@ When writing the production prompt, include styling/performance details only whe
 
 For fashion, costume, uniform, or character work, name the visible production anchors rather than writing only a label such as "luxury", "cyberpunk", "old money", "warrior", or "professional". Include what is actually visible: silhouette, garment layers, fabric behavior, closures, trims, accessories, makeup/grooming, and how the person performs the role.
 
-Before generation, check that styling/performance choices are explicit enough for the output type, preserve compatible Reference Appearance and target-critical Protected Identity Cues, keep Story Makeup and First-Pass Finish ownership separate, and do not overload the composition with unnecessary wardrobe changes, props, or action complexity.
+Before generation, check that styling/performance choices are explicit enough for the output type, preserve compatible Reference Appearance, target-critical Protected Identity Cues, and Visible Body Evidence, keep Story Makeup and First-Pass Finish ownership separate, and do not overload the composition with unnecessary wardrobe changes, props, or action complexity.
 
-If the generated output is visible, review whether wardrobe/accessories changed as requested, props support the concept, all relevant visible pose relationships are coherent with the camera and action, expression fits the brief, and styling does not change identity.
+If the generated output is visible, review whether wardrobe/accessories changed as requested, clothing follows rather than redesigns Visible Body Evidence, props support the concept, all relevant visible pose relationships are coherent with the camera and action, expression fits the brief, and styling does not change identity.

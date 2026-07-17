@@ -12,6 +12,18 @@ _Avoid_: Primary identity reference, text-only identity description
 A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Risk depends on changing these cues, not on whether styling is labeled light or heavy.
 _Avoid_: Makeup intensity, beauty feature
 
+**Visible Body Evidence**:
+Clearly shown body relationships at any source crop, such as head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build; they are preserved by default and named neutrally and concretely across styling changes without a separate Choice Gate. Obscured or off-frame anatomy is not evidence and must not be guessed as if verified.
+_Avoid_: Full-body identity, inferred anatomy
+
+**Inference Boundary**:
+The explicit set of missing reference evidence that the user permits CastMe to estimate. Accepting inference never reclassifies verified evidence or authorizes guessing a different missing region, angle, appearance cue, or performance fact.
+_Avoid_: Blanket body inference, general likeness risk
+
+**Structural Scale Failure**:
+A result state in which multiple connected body-scale relationships fail together, or a proportion repair requires expanding a partial crop. It is distinct from one isolated, minor proportion deviation inside an otherwise coherent crop.
+_Avoid_: Small local edit, canvas-size problem
+
 **Reference Appearance**:
 The visible facial styling, grooming, and hair state shown by a person reference when its makeup status or source is unknown. It may be preserved or explicitly restyled, but it is not evidence of the person's unseen bare-face appearance.
 _Avoid_: Natural look, bare face, original makeup
@@ -41,7 +53,7 @@ The locked base makeup, hair, wardrobe, and accessories that identify one charac
 _Avoid_: Identical styling state, independent redesign
 
 **Identity Review**:
-A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues. It reports visible drift and never claims a biometric match, similarity score, or identity guarantee.
+A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It reports visible drift and never claims a biometric match, similarity score, or identity guarantee.
 _Avoid_: Face score, biometric verification, identity guarantee
 
 **First-Pass Finish**:
@@ -80,9 +92,17 @@ _Avoid_: Style name
 A concrete direction whose Direction Signature differs from every Shown Direction still available in the current conversation context in at least three parts. It does not promise exact deduplication after earlier history is no longer available.
 _Avoid_: Renamed option, palette swap
 
+**Choice Gate**:
+A user-visible A/B/C/D decision that resolves one scoped choice or tightly coupled group. A through C are valid concrete paths, with an explicit stop path when only two substantive resolutions exist; D is always the Custom Path.
+_Avoid_: Open-ended question, padded preset menu
+
+**Custom Path**:
+The permanent `D) Custom` affordance in every Choice Gate. It accepts a user-supplied resolution only within that gate's valid scope; the placeholder itself creates no lock or history entry.
+_Avoid_: Fourth preset, unrestricted override
+
 **Custom Direction**:
-A concrete direction supplied through the permanent `D) Custom` option. The option itself is never consumed or deduplicated, but an adopted Custom Direction is recorded like any other shown direction.
-_Avoid_: Custom option
+A concrete Creative Direction supplied through the Custom Path. Once adopted, it is recorded like any other shown direction, while the reusable Custom Path remains available.
+_Avoid_: Custom Path, custom option placeholder
 
 **Shown Direction**:
 A concrete A, B, or C option that has been presented to the user, whether or not it was selected or generated. An adopted Custom Direction also becomes a Shown Direction.
