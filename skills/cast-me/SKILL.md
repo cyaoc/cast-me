@@ -1,13 +1,13 @@
 ---
 name: cast-me
-description: Use when the user provides a person screenshot, selfie, portrait, or photo reference and wants a polished final image while preserving the person's visible identity. Supports portraits, professional headshots, cinematic posters, CG or game key art, magazine/editorial images, social avatars, commercial visuals, and other person-centered outputs.
+description: Use when the user provides a person screenshot, selfie, portrait, or photo reference and wants ChatGPT or GPT Image 2 to create a polished final image while preserving the person's visible identity. Supports portraits, professional headshots, cinematic posters, CG or game key art, magazine/editorial images, social avatars, commercial visuals, and other person-centered outputs.
 ---
 
 # CastMe
 
 ## Goal
 
-Turn a user-provided person image into a polished final image while preserving the person's visible identity as much as possible. Act as the coordinating director: resolve the output type and missing creative choices, route identity, composition, and styling/performance work to the right reference modules, then use Codex built-in image generation/editing.
+Turn a user-provided person image into a polished final image while preserving the person's visible identity as much as possible. Act as the coordinating director: resolve the output type and missing creative choices, route identity, composition, and styling/performance work to the right reference modules, then use GPT Image 2 through the current OpenAI image generation/editing surface.
 
 ## Reference Modules
 
@@ -57,12 +57,12 @@ Read any other section only when its choice, risk, research branch, output requi
 - Route any request for more, different, replacement, or new choices through `references/scoped-option-refresh.md`; it owns target priority, recent-gate tracking, delegation, and the no-target fallback. A target resolved as Creative Direction uses Style Refresh, while a precise first-time style request simply locks that theme.
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `generate now`, or an unscoped equivalent of `you decide`. A `you decide` or `pick one` attached to a Scoped Option Refresh delegates only that target area.
 - If the user says `default`, `use recommended defaults`, `generate now`, or an unscoped global equivalent of `you decide`, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated evidence or inference risk.
-- Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks Codex to decide, or the dimension is irrelevant to the requested output.
+- Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks the assistant to decide, or the dimension is irrelevant to the requested output.
 - A creative-direction preview does not resolve First-Pass Finish; it remains `suggested` until resolved, defaulted, or delegated.
 - When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk-choice gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or accepted inference.
 - Do not repeat a risk-choice gate when the user clearly accepted that specific risk, such as `try one version with inferred body and angle`, `I accept lower likeness`, `stronger beauty retouch`, or `bold attempt with the missing evidence inferred`. Continue with the chosen risk and make the prompt explicit about the tradeoff.
-- When `imagegen` also triggers, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
-- Use Codex built-in image generation/editing only.
+- When a general image-generation capability also applies, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
+- Use GPT Image 2 for image generation/editing. In ChatGPT, use its built-in image generation/editing capability; on API surfaces, select `gpt-image-2`.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
 - Treat normal person-centered generation as a final asset across every crop and medium; only an explicit preview, draft, exploration, or high-volume batch request permits a lower-quality trade-off. Do not add a quality question.
 
@@ -130,11 +130,11 @@ Keep ownership clear while routing:
 
 Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, record direction-supplied values as `locked: derived`, and skip them later; the dimension or override the user directly chooses is `locked: explicit`. Never silently lock performance from shot text or lock shot, styling, performance, or First-Pass Finish from a preview. Keep `pose/action + expression + gaze`, `lighting/color/retouch/finish`, and `canvas aspect + safe areas + whether text is required` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
 
-For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
+For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks the assistant to decide.
 
 If a required focused section flags missing coverage or a conflict, follow its one risk-choice gate unless the user already accepted that specific risk. Inherit every locked decision and never restart, reopen, or silently downgrade the brief.
 
-Then wait after each question. Generate only after focused gates are resolved and ordinary choices are resolved, defaulted, overridden, or delegated to Codex.
+Then wait after each question. Generate only after focused gates are resolved and ordinary choices are resolved, defaulted, overridden, or delegated to the assistant.
 
 ## Safety Handling
 
@@ -179,4 +179,4 @@ Generation and review are complete only when:
 
 If the generated output is visible in the current conversation, perform Identity Review first, then review only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
 
-If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible to Codex, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.
+If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible in the current conversation, do not claim visual QA; report the prompt and ask the user to request a revision if the rendered result misses the target.

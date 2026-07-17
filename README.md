@@ -1,12 +1,29 @@
 # CastMe
 
-CastMe is a Codex skill for turning a person reference image into a polished final image while preserving the person's visible identity as much as possible.
+CastMe is an OpenAI Agent Skill for turning a person reference image into a polished final image with ChatGPT and GPT Image 2 while preserving the person's visible identity as much as possible.
 
 It is meant for person-centered outputs such as portraits, professional headshots, social avatars, cinematic posters, editorial images, commercial visuals, and CG or game key art. The skill acts like a visual director: it keeps a complete production checklist, but asks only the choices that matter for this image, explains them through visible examples, and translates them into professional camera, lighting, styling, performance, and delivery direction.
 
+CastMe follows the open Agent Skills format, so the same package can also run in Codex. ChatGPT uses its built-in image generation experience; API-capable hosts should target [`gpt-image-2`](https://developers.openai.com/api/docs/models/gpt-image-2).
+
+## Install in ChatGPT
+
+OpenAI's current ChatGPT flow is:
+
+1. Download this repository, keeping the `skills/cast-me` folder intact.
+2. In ChatGPT, select your profile icon, then **Skills**.
+3. Select **Create** > **Upload from your computer** and upload the CastMe skill package from `skills/cast-me`.
+4. Review the uploaded skill and install it after ChatGPT finishes its safety scan.
+
+ChatGPT's documented flow uploads a local skill package; it does not document direct installation from a GitHub URL.
+
+ChatGPT can use an installed skill automatically when relevant, or you can select it explicitly by `@`-mentioning **CastMe**. Personal Skills are generally available on ChatGPT Business, Enterprise, Healthcare, and Edu; workspace permissions may need to enable Skills and skill uploads. Personal Skills must be added separately on desktop and web/mobile.
+
+See OpenAI's current [Skills in ChatGPT](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) documentation for availability and workspace controls.
+
 ## Install in Codex
 
-This repository is a standalone Codex skill, not a marketplace plugin. With Codex installed, run the bundled skill installer against this GitHub URL:
+The same Agent Skills package also works in Codex. With Codex installed, run the bundled skill installer against this GitHub URL:
 
 **macOS / Linux**
 
@@ -48,7 +65,13 @@ Start a new Codex session after installing or updating, then invoke `$cast-me`.
 
 ## How to Use
 
-Attach a person image and invoke the skill:
+In ChatGPT, attach a person image and `@`-mention CastMe:
+
+```text
+@CastMe [Image] Create a cinematic poster with the title "MIDNIGHT SIGNAL"
+```
+
+In Codex, invoke the same skill with `$cast-me`:
 
 ```text
 $cast-me [Image] Create a cinematic poster with the title "MIDNIGHT SIGNAL"
@@ -57,7 +80,7 @@ $cast-me [Image] Create a cinematic poster with the title "MIDNIGHT SIGNAL"
 You can also describe the output directly:
 
 ```text
-$cast-me [Image] Make this suitable for a LinkedIn profile photo while keeping the same person
+@CastMe [Image] Make this suitable for a LinkedIn profile photo while keeping the same person
 ```
 
 The skill will ask for missing production-critical choices one at a time. Reply with the option letter, or add overrides in the same message:
@@ -113,19 +136,19 @@ These are generated from the requested theme, not fixed angle or lens presets. A
 ## Useful Request Patterns
 
 ```text
-$cast-me [Image] Create a natural-light portrait
+@CastMe [Image] Create a natural-light portrait
 ```
 
 ```text
-$cast-me [Image] Create a vertical fantasy key art image, keep the original outfit and jewelry
+@CastMe [Image] Create a vertical fantasy key art image, keep the original outfit and jewelry
 ```
 
 ```text
-$cast-me [Image] Create a 1:1 social avatar, clean background, no text
+@CastMe [Image] Create a 1:1 social avatar, clean background, no text
 ```
 
 ```text
-$cast-me [Image] Create a movie poster titled "MIDNIGHT SIGNAL"; keep the person recognizable
+@CastMe [Image] Create a movie poster titled "MIDNIGHT SIGNAL"; keep the person recognizable
 ```
 
 Typical routes:
