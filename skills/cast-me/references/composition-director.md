@@ -46,16 +46,7 @@ Quality-example shapes only; adapt them to the brief rather than treating them a
 - mid-century graphic campaign + cut-paper or screen-print construction + one symbolic action + flat poster hierarchy + two-color contrast + imperfect ink texture
 - speculative artifact portrait + sculptural digital realism + a ritual or technical threshold + monumental negative space + material-driven glow and shadow + weathered tactile finish
 
-Generate candidates sequentially. Before presenting a candidate, use the Direction Signature as an internal diversity check: it must differ from every available Shown Direction, including candidates already chosen for the current batch, in at least three parts. A renamed option, palette-only change, creator name, camera brand, lens token, or minor prompt variation is not fresh. Do not promise exact deduplication after earlier conversation history is unavailable.
-
-Track Shown Directions while they remain available in the current conversation context:
-
-- Record every presented A, B, and C immediately, whether selected or generated.
-- Never record or consume the `D) Custom` placeholder. When the user adopts a concrete Custom Direction, derive its Direction Signature and record it.
-- Record a direction selected internally during a Delegated Refresh.
-- Do not add persistence or require prior-session history.
-
-Freshness limits automatic recommendations, not user intent. If the user explicitly restores a Shown Direction, honor it.
+Generate candidates sequentially. Apply the shared available-history and current-batch checks from `scoped-option-refresh.md` using Creative Direction's stricter rule: a candidate differs from each compared Direction Signature in at least three parts. A renamed option, palette-only change, creator name, camera brand, lens token, or minor prompt variation is not fresh.
 
 ### Style Refresh
 
@@ -69,7 +60,7 @@ Route the user's wording precisely:
 - A request that explicitly asks for currentness with words such as current, recent, latest, trending, or this year, or asks for trends tied to a date, is a Trend Refresh. A historical date or era without current/trend intent is an ordinary creative constraint. Use live visual research, extract concrete production anchors, keep source links available, and apply the same freshness threshold. If research is unavailable, say currentness could not be verified; do not guess.
 - If the user delegates with `you decide`, `pick one`, or equivalent wording, perform a Delegated Refresh: bypass the visible Direction Gate, select and record one compatible Fresh Direction, apply recommended defaults, and continue. Focused identity, reference-coverage, safety, and exact-text gates still apply.
 
-If the skill cannot assemble a complete three-direction batch without violating Explicit Locks or the three-part freshness threshold, declare Refresh Exhaustion. Do not display a partial or padded Direction Gate. Identify the single Explicit Lock most responsible and ask with the standard decision format whether to reopen only that dimension. Offer bounded ways to reopen it, plus `D) Custom` and a path that keeps every lock and stops refreshing; never relax unrelated locks or claim that the global creative space is exhausted.
+For Creative Direction Refresh Exhaustion, use `scoped-option-refresh.md` with the three-part Direction Signature threshold.
 
 Use this pattern and adapt the option contents to the user's image and requested output type:
 
