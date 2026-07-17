@@ -16,12 +16,12 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Never repeat a locked choice. "Use recommended defaults", "you decide", or equivalent wording ends ordinary clarification.
 - Reference-coverage, identity-risk, safety, and exact-text gates remain focused exceptions.
 - Every visible Direction Gate contains three concrete A/B/C directions plus the permanent `D) Custom` option.
-- Every concrete direction shown or internally chosen is tracked for the current conversation; automatic recommendations differ from every Shown Direction in at least three of the six Direction Signature parts.
+- Every concrete direction shown or internally chosen remains Shown while it is available in the current conversation context. Before presenting automatic recommendations, apply the three-of-six Direction Signature check against the current batch and every available Shown Direction; do not promise exact deduplication after earlier history is unavailable.
 - Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension, never as a later mandatory step or automatic second pass.
 - When First-Pass Finish is unresolved, the existing lighting/color gate offers exactly three image-specific Finish Directions plus `D) Custom`; each direction describes one coherent visible result rather than a parameter list or palette swap.
 - Route a request for replacement choices to the explicitly named creative area, otherwise the unresolved visible gate, otherwise the most recently presented refreshable gate. Ask one compact scope question only when none of those targets exists.
-- Every visible refreshable creative gate contains three concrete A/B/C options plus the permanent `D) Custom` option. Track all presented concrete options in conversation-local, per-area Shown Option histories; adopted Custom and delegated options count, while the placeholder does not.
-- Outside Creative Direction, every Fresh Option differs from every Shown Option in the same area, including options in the current batch, in at least two owner-specific visible signature parts. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
+- Every visible refreshable creative gate contains three concrete A/B/C options plus the permanent `D) Custom` option. While history is available in the current conversation context, track all presented concrete options in per-area Shown Option histories; adopted Custom and delegated options count, while the placeholder does not.
+- Outside Creative Direction, apply the two-part owner-specific visible-signature check before presenting each Fresh Option, against the current batch and every available Shown Option in the same area. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
 - A Scoped Option Refresh preserves identity, output requirements, unrelated values, and every Explicit Lock. It may reopen only target-area Derived Locks and fields the user explicitly asks to change.
 - Output Type, Role/Costume Version, Safety, reference coverage, identity risk, Perspective Intent classification, and exact-text verification remain focused or classificatory choices rather than novelty menus.
 - Treat every normal person-centered generation as a final asset across crops and media. Only an explicit preview, draft, exploration, or high-volume batch request permits lower quality for speed or usage.
@@ -153,7 +153,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[portrait] Keep the exact scene, composition, action, lighting, palette, medium, and finish, but give me three fresh directions after many prior batches.`
 
-**Expected:** Do not weaken the three-part freshness threshold or silently relax locks. Identify the single Explicit Lock most responsible for leaving fewer than three Fresh Directions and ask whether to reopen only that dimension, using the standard decision format. If the user keeps every lock, stop refreshing instead of offering a non-fresh batch.
+**Expected:** If the skill cannot assemble three directions that satisfy both the three-part freshness threshold and every Explicit Lock, declare Refresh Exhaustion. Do not display a partial or padded Direction Gate. Identify the single Explicit Lock most responsible and ask whether to reopen only that dimension, using the standard decision format with stop and `D) Custom` paths. If the user keeps every lock, stop refreshing instead of offering a non-fresh batch.
 
 ## 22. Explicitly restore a Shown Direction
 
@@ -291,7 +291,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[waist-up crop, eye-level viewpoint, centered placement, flat background, and proportion-first perspective are all Explicit Locks after many Shot batches] Give me three new Shot options without changing anything.`
 
-**Expected:** Keep the two-part Shot freshness threshold. Identify the single Explicit Lock most responsible for leaving fewer than three Fresh Options and ask whether to reopen only that field, while retaining stop and `D) Custom` paths. If every lock stays, stop; do not fabricate a batch or escalate to Style Refresh.
+**Expected:** If the skill cannot assemble three Shot options that satisfy both the two-part Shot freshness threshold and every Explicit Lock, declare Refresh Exhaustion. Do not display a partial or padded Shot gate. Identify the single Explicit Lock most responsible and ask whether to reopen only that field, while retaining stop and `D) Custom` paths. If every lock stays, stop; do not fabricate a batch or escalate to Style Refresh.
 
 ## 45. Focused and classificatory gates do not become novelty menus
 
@@ -376,3 +376,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[person reference; final commercial portrait brief fully resolved] The product is a supplied matte ceramic travel mug; no text is requested. Generate now.`
 
 **Expected:** Put concrete positive direction first, then include approximately three to eight observable failures most likely for this image, such as identity drift, malformed product-hand interaction, changed mug shape, random text, or plastic skin. Keep them inside the ordinary prompt. Do not add a provider-specific `negative_prompt` field, copy the full universal identity/anatomy/text/style list, or rely on `4K`, `8K`, `high quality`, `HDR`, `masterpiece`, or `cinematic` as standalone quality mechanisms.
+
+## 59. Unavailable refresh history is not an exact guarantee
+
+**Input:** `[long conversation; early Shot batches are no longer available in the current context] Give me another Shot batch.`
+
+**Expected:** Apply the two-part Shot freshness check against the three candidates in the new batch and every Shown Shot still available in the current conversation context. Do not claim that the new batch is unique against unavailable history, add persistence or setup, or insert a warning or extra clarification into an otherwise successful refresh.

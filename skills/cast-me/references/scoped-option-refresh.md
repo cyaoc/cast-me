@@ -35,7 +35,7 @@ Treat `you decide`, `pick one`, and equivalent wording as delegation modifiers, 
 
 Every visible refreshable creative gate contains exactly three concrete options labeled A through C plus the permanent `D) Custom` option. Use the standard decision format and describe visible outcomes before professional vocabulary.
 
-Maintain separate Shown Option history for each creative area in the current conversation:
+Maintain separate Shown Option history for each creative area while it remains available in the current conversation context:
 
 - Record every presented A, B, and C immediately, whether selected or generated.
 - Never record or consume the `D) Custom` placeholder. Record an adopted concrete Custom option in the target area's history.
@@ -43,7 +43,7 @@ Maintain separate Shown Option history for each creative area in the current con
 - Keep Creative Direction's Shown Direction history separate; do not mix another area's options into it.
 - Do not add persistence or require prior-session history.
 
-Generate candidates sequentially. Outside Creative Direction, a Fresh Option differs from every Shown Option in the same area, including candidates already chosen for the current batch, in at least two parts of that owner's visible signature. Creative Direction keeps its existing three-of-six Direction Signature rule.
+Generate candidates sequentially. Before presenting a candidate outside Creative Direction, use the owner's visible signature as an internal diversity check: it must differ from every available Shown Option in the same area, including candidates already chosen for the current batch, in at least two parts. Creative Direction keeps its existing three-of-six Direction Signature rule. Do not promise exact deduplication after earlier conversation history is unavailable.
 
 A renamed option, palette-only change, adjective-only change, creator name, equipment token, professional term, or minor prompt rewrite is not fresh by itself. Freshness limits automatic recommendations, not user intent; restore a prior Shown Option when the user explicitly requests it.
 
@@ -57,6 +57,6 @@ Ordinary Scoped Option Refresh does not browse. Only a Style Refresh that explic
 
 ## Refresh Exhaustion
 
-If Explicit Locks leave fewer than three Fresh Options in the target area, keep that area's freshness threshold and identify the single Explicit Lock that most restricts variation. Ask with the standard decision format whether to reopen only that field; retain a `D) Custom` path and a path that keeps every lock and stops refreshing.
+If the skill cannot assemble a complete three-option batch in the target area without violating Explicit Locks or that area's freshness threshold, declare Refresh Exhaustion. Do not display a partial or padded gate. Identify the single Explicit Lock that most restricts variation and ask with the standard decision format whether to reopen only that field; retain a `D) Custom` path and a path that keeps every lock and stops refreshing. Do not claim that the global creative space is exhausted.
 
 If the user keeps every restricting lock, stop. Do not fabricate a new batch, relax unrelated locks, or silently escalate the request into Style Refresh.

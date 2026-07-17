@@ -33,7 +33,7 @@ The six-part description of a concrete direction: production context, medium/era
 _Avoid_: Style name
 
 **Fresh Direction**:
-A concrete direction whose Direction Signature differs from every previously shown concrete direction in at least three parts.
+A concrete direction whose Direction Signature differs from every Shown Direction still available in the current conversation context in at least three parts. It does not promise exact deduplication after earlier history is no longer available.
 _Avoid_: Renamed option, palette swap
 
 **Custom Direction**:
@@ -53,7 +53,7 @@ A concrete refreshable option that has been presented to the user, whether or no
 _Avoid_: Selected option, option label
 
 **Fresh Option**:
-A concrete option that is materially different from every Shown Option in the same creative choice area according to that area's visible signature.
+A concrete option that is materially different from every Shown Option still available in the current conversation context for the same creative choice area, according to that area's visible signature.
 _Avoid_: Renamed option, palette swap
 
 **Direction Atlas**:
@@ -61,7 +61,7 @@ The internal combination vocabulary for producing concrete directions from produ
 _Avoid_: Style menu, prompt gallery
 
 **Refresh Exhaustion**:
-The state in which Explicit Locks leave fewer than three Fresh Options in the requested creative choice area. The skill keeps that area's freshness threshold and asks whether to reopen the single explicit field that most restricts variation.
+The state in which the skill cannot assemble a complete three-option batch for the requested creative choice area without violating Explicit Locks or that area's freshness threshold. It stops the batch and asks whether to reopen the single explicit field that most restricts variation.
 _Avoid_: Silent deduplication fallback
 
 **Direction Gate**:
