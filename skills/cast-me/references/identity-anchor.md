@@ -22,7 +22,7 @@ Treat identity preservation as best effort, not guaranteed. Do not identify the 
 
 Use `user-provided self-reference image` only when the user explicitly says the image is them, a selfie, or their own image. Otherwise use `user-provided person reference image`.
 
-Use the user's person reference as the primary identity reference and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. Accepted inference for missing body, angle, or performance evidence does not permit omitting the primary identity reference.
+Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. Accepted inference for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
 
 If any person reference required by the resolved Reference Coverage is no longer available to the active image tool, stop before generation and ask only for that image to be reattached. Preserve all Explicit Locks, Derived Locks, accepted risks, and resolved creative choices.
 
@@ -95,7 +95,7 @@ For frontal references used in angled, side-facing, action, poster, or cinematic
 
 For reference edits, pass the image being edited as an actual image input and be surgical: state the target transformation first, then name what must remain unchanged. Repeat identity invariants on every edit or revision: same person, same face structure, same age impression, same skin tone, no face redesign, no identity drift, and no automatic beautification into a different person.
 
-If there are multiple reference images, label each one by role, such as `Image 1: primary identity reference`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Do not let a supporting angle, style, costume, pose, product, or lighting reference overwrite or count as evidence for the primary identity reference.
+If there are multiple reference images, label each one by role, such as `Image 1: Primary Identity Anchor`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Do not let a supporting angle, style, costume, pose, product, or lighting reference overwrite or count as evidence for the Primary Identity Anchor.
 
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
@@ -129,7 +129,7 @@ Offer only relevant paths:
 
 Recommend the most accurate path that preserves locked intent. Change camera, crop, or action only if the user explicitly reopens it; never introduce that change as a fallback inside the coverage gate.
 
-If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the primary identity reference. If the user explicitly accepts inference for those gaps, continue without another coverage question unless a new missing dimension becomes central to the request. Make the prompt explicit that inferred body scale, angle, and expression are natural estimates, not verified identity facts.
+If the user supplies real references or descriptions, incorporate only the supplied details and keep the original person image as the Primary Identity Anchor. If the user explicitly accepts inference for those gaps, continue without another coverage question unless a new missing dimension becomes central to the request. Make the prompt explicit that inferred body scale, angle, and expression are natural estimates, not verified identity facts.
 
 For high-risk source-to-target jumps, preserve every locked camera and performance choice while exposing the missing coverage. Recommend added evidence or user description first; if the user accepts inference, keep the selected shot and label inferred body, angle, and performance facts explicitly.
 
@@ -173,7 +173,7 @@ If the result is close, revise surgically. Change one target at a time and repea
 - keep face, pose, composition, crop, palette, text, product placement, and background unchanged unless they are the issue
 - preserve original text unless replacement text is supplied
 - do not regenerate a new concept when the user asked for a correction
-- do not use a style or pose reference to overwrite the primary identity reference
+- do not use a style or pose reference to overwrite the Primary Identity Anchor
 
 Classify geometry revisions before editing:
 

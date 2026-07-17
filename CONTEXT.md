@@ -4,6 +4,10 @@ This context describes how the skill preserves a person's identity while guiding
 
 ## Language
 
+**Primary Identity Anchor**:
+The actual person reference image that authoritatively anchors face identity for generation or editing. Supporting images and text may add evidence but never replace or override it.
+_Avoid_: Primary identity reference, text-only identity description
+
 **First-Pass Finish**:
 The generation-time visual finish that resolves lighting/color, identity-safe retouching, texture, and final image character in the original image request. It is not a later edit of an exported file.
 _Avoid_: Post-processing, second pass
