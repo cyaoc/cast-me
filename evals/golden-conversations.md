@@ -24,9 +24,11 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Outside Creative Direction, apply the two-part owner-specific visible-signature check before presenting each Fresh Option, against the current batch and every available Shown Option in the same area. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
 - A Scoped Option Refresh preserves identity, output requirements, unrelated values, and every Explicit Lock. It may reopen only target-area Derived Locks and fields the user explicitly asks to change.
 - Output Type, Role/Costume Version, Safety, reference coverage, identity risk, Perspective Intent classification, and exact-text verification remain focused or classificatory choices rather than novelty menus.
+- Every identity-preserving generation or edit passes each required person reference as an actual image input. Text may explain a reference role but never replaces the Primary Identity Anchor.
 - Treat every normal person-centered generation as a final asset across crops and media. Only an explicit preview, draft, exploration, or high-volume batch request permits lower quality for speed or usage.
-- For a final asset, request `quality=high` and the highest stable, non-experimental size compatible with the chosen aspect ratio only when the active surface exposes those real controls. Otherwise continue without another gate and never claim an unverified quality setting or pixel size.
+- For a final asset, request `quality=high` and the highest stable size at or below 3,686,400 total pixels compatible with the chosen aspect ratio only when the active surface exposes those real controls. A controllable request above that threshold gets one concise experimental warning and proceeds without a confirmation gate. Otherwise continue without another gate and never claim an unverified quality setting or pixel size.
 - Give every final output one clear First Read at its intended display size. Supporting scene, text, product, effects, and texture reinforce that priority; impact intensity follows the intended use rather than defaulting every medium to cinematic drama.
+- Review First Read and overall hierarchy at the intended display size, then inspect only present high-risk face, hand/prop, and exact-text regions at the original available resolution. Never claim a check when the output or sufficient inspection resolution is unavailable.
 - Build every final production prompt from concrete brief-specific positive direction, then approximately three to eight observable current failure constraints in the ordinary prompt. Never use a fixed quality suffix, provider-specific negative-prompt field, or universal negative-word dump.
 
 ## 1. Vague professional avatar
@@ -327,13 +329,13 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[person reference; final 4:5 photographic brief fully resolved] Generate now. The active surface exposes no quality or size control.`
 
-**Expected:** Continue generation without another user question. Keep the final-asset intent concrete through composition, motivated light, believable materials and texture, and First-Pass Finish, but do not claim that `quality=high`, 2K, 4K, or any exact pixel size was applied. Do not insert generic quality words as substitute controls.
+**Expected:** Continue generation without another user question. Keep the final-asset intent concrete through composition, motivated light, believable materials and texture, and First-Pass Finish, but leave exact size and application of the experimental-size rule unverified. Do not claim that `quality=high`, 2K, 4K, or any exact pixel size was applied, and do not insert generic quality words as substitute controls.
 
 ## 51. Explicit 4K remains experimental and verifiable
 
 **Input:** `[face, three-quarter, and full-body references; final 16:9 poster brief fully resolved] I need true 4K delivery. The active surface exposes no size control and output dimensions cannot be verified.`
 
-**Expected:** Treat 4K as an explicit experimental delivery requirement, not the ordinary default. Continue only with honest capability language: do not claim 4K, set an invented generated resolution, or imply an automatic upscale. A 4K claim is allowed only after a compatible real size was requested and the resulting pixel dimensions were verified.
+**Expected:** Treat 4K as one example of an explicit experimental-size delivery requirement, not the ordinary default. Continue only with honest capability language: do not claim 4K, set an invented generated resolution, or imply an automatic upscale. A 4K claim is allowed only after a compatible real size was requested and the resulting pixel dimensions were verified.
 
 ## 52. Natural photographic First Read stays believable
 
@@ -382,3 +384,63 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[long conversation; early Shot batches are no longer available in the current context] Give me another Shot batch.`
 
 **Expected:** Apply the two-part Shot freshness check against the three candidates in the new batch and every Shown Shot still available in the current conversation context. Do not claim that the new batch is unique against unavailable history, add persistence or setup, or insert a warning or extra clarification into an otherwise successful refresh.
+
+## 60. Accessible identity reference remains an image input
+
+**Input:** `[attached person image; portrait brief fully resolved] Use recommended defaults and generate now.`
+
+**Expected:** Pass the attached person reference to the active generation surface as an actual image input and identify it as the Primary Identity Anchor. A textual identity summary may support the production prompt but must not replace the image.
+
+## 61. Required identity image is no longer tool-accessible
+
+**Input:** `[the person reference is visible in old conversation history but the active image tool cannot include it; all creative choices and accepted risks are resolved] Generate now.`
+
+**Expected:** Stop before generation and ask only for the missing person reference to be reattached. Do not generate from its text description, reopen creative choices, repeat risk gates, or discard Explicit Locks, Derived Locks, and accepted risks.
+
+## 62. Multiple reference roles remain distinct at generation
+
+**Input:** `[Image 1: face identity; Image 2: required profile angle of the same person; Image 3: wardrobe; Image 4: pose; Image 5: style; all choices resolved] Generate the locked profile portrait.`
+
+**Expected:** Pass Images 1 and 2 as required person image inputs and label every included reference by role. Keep Image 1 as the Primary Identity Anchor; wardrobe, pose, and style references guide only their named roles and never overwrite face identity.
+
+## 63. Accepted inference does not permit text-only identity
+
+**Input:** `[attached face image; no body or action reference] Infer the full-body scale, profile angle, and running performance. I accept that risk. Generate now.`
+
+**Expected:** Continue without repeating the accepted coverage gate, but still pass the attached face image as the Primary Identity Anchor. Accepted inference applies only to missing body, angle, and performance evidence; it is not permission to omit the identity image.
+
+## 64. Experimental size uses strict total-pixel area
+
+**Input:** `[final briefs resolved; real size control available] Compare requested outputs of 2560x1440, 2561x1440, 2048x1152, 2048x2048, and 3840x2160.`
+
+**Expected:** Treat exactly 3,686,400 pixels as non-experimental. Treat every larger area as experimental, including 2561x1440, 2048x2048, and 3840x2160; keep 2048x1152 eligible as a stable-size candidate when supported. Classify by total area rather than an edge label such as 2K or 4K.
+
+## 65. Explicit controllable experimental size warns and proceeds
+
+**Input:** `[person reference; final square portrait brief resolved; real size control available] Generate at 2048x2048.`
+
+**Expected:** State concisely that the requested size is experimental, then proceed with the controllable request. Do not ask for confirmation, add a quality questionnaire, substitute a smaller size, or schedule an automatic retry or upscale.
+
+## 66. Exact size is claimed only after inspection
+
+**Input:** `[generated asset requested at 2048x1152] Deliver the result as exactly 2048x1152.`
+
+**Expected:** Claim the exact dimensions only if the generated asset itself was inspected and measured at 2048x1152. A requested control value or prompt phrase alone is not verification; otherwise mark the dimensions unverified.
+
+## 67. Review uses intended and original scales
+
+**Input:** `[visible final poster at original resolution; intended mobile display size known; the face, one hand holding a supplied prop, and exact title "ASH HARBOR" are visible] Review the result.`
+
+**Expected:** Judge First Read, hierarchy, composition, and readability at the intended mobile display size. Then inspect the face and identity geometry, visible hand/prop contact, and every title character at the original available resolution. Skip any high-risk region not present rather than running a fixed checklist.
+
+## 68. Strong-angle review preserves natural asymmetry
+
+**Input:** `[visible profile portrait at original resolution] Review the face before delivery.`
+
+**Expected:** Judge facial coherence against the locked profile angle, projection, head turn, and gaze. Accept angle-correct feature visibility and natural facial asymmetry; do not demand bilateral symmetry, reveal the far eye, rotate the face toward camera, or redesign it as frontal.
+
+## 69. Unavailable evidence limits review claims
+
+**Input:** `[case A: generated result is not visible; case B: a result is visible only as a thumbnail too small to inspect the face and exact text] Report final QA.`
+
+**Expected:** In case A, report visual QA as unavailable. In case B, report First Read only if the thumbnail supports that check and mark face identity, geometry, and exact text unverified because the required inspection resolution is unavailable. Do not claim checks based on the prompt or requested controls.
