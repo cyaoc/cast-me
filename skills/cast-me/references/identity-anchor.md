@@ -22,7 +22,7 @@ Treat identity preservation as best effort, not guaranteed. Do not identify the 
 
 Use `user-provided self-reference image` only when the user explicitly says the image is them, a selfie, or their own image. Otherwise use `user-provided person reference image`.
 
-Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. Accepted inference for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
+Use the user's person reference as the primary identity reference and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. Accepted inference for missing body, angle, or performance evidence does not permit omitting the primary identity reference.
 
 If any person reference required by the resolved Reference Coverage is no longer available to the active image tool, stop before generation and ask only for that image to be reattached. Preserve all Explicit Locks, Derived Locks, accepted risks, and resolved creative choices.
 
@@ -95,7 +95,7 @@ For frontal references used in angled, side-facing, action, poster, or cinematic
 
 For reference edits, pass the image being edited as an actual image input and be surgical: state the target transformation first, then name what must remain unchanged. Repeat identity invariants on every edit or revision: same person, same face structure, same age impression, same skin tone, no face redesign, no identity drift, and no automatic beautification into a different person.
 
-If there are multiple reference images, label each one by role, such as `Image 1: Primary Identity Anchor`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Do not let a supporting angle, style, costume, pose, product, or lighting reference overwrite or count as evidence for the Primary Identity Anchor.
+If there are multiple reference images, label each one by role, such as `Image 1: primary identity reference`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Do not let a supporting angle, style, costume, pose, product, or lighting reference overwrite or count as evidence for the primary identity reference.
 
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
@@ -186,4 +186,4 @@ If a revision request is ambiguous and needs user input, ask with the standard l
 
 Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries and coverage are explicit, reference roles are labeled when multiple inputs exist, inference/risk handling is resolved, locked intent is preserved, and underlying anatomy, projected proportions, pose geometry, target-angle identity readability, and face/body coordination are explicit.
 
-If the generated output is visible, inspect the face at the original available resolution and review whether the person still looks like the input reference, face anchors remain recognizable at the selected angle, facial planes agree with head turn and gaze, and there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal. If the face is not available at sufficient inspection resolution, mark identity and facial geometry unverified.
+If the generated output is visible, review whether the person still looks like the input reference, face anchors remain recognizable at the selected angle, facial planes agree with head turn and gaze, and there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal.

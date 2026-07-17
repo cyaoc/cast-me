@@ -164,7 +164,7 @@ Before generation, load the mandatory final-prompt sections and every active con
 
 Complete means all production-critical choices are resolved for the chosen output, not that every possible field is present. Do not use a short generic summary. Do not replace the production prompt with a compact config block. Omit irrelevant dimensions instead of inventing filler.
 
-Pass the image being edited and every person reference required by the resolved Reference Coverage to the active generation surface as actual image inputs, with the Primary Identity Anchor and every supporting role labeled clearly. A text description may support the prompt but never replaces a required identity image. If a required image cannot be included, stop and ask only for that image to be reattached while preserving all resolved choices, locks, and accepted risks.
+Include every image required by the resolved Reference Coverage as an actual image input; text never substitutes for a required identity image. If one is unavailable, follow the focused reattachment rule in `identity-anchor.md`.
 
 Generation and review are complete only when:
 

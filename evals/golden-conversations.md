@@ -24,9 +24,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Outside Creative Direction, apply the two-part owner-specific visible-signature check before presenting each Fresh Option, against the current batch and every available Shown Option in the same area. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
 - A Scoped Option Refresh preserves identity, output requirements, unrelated values, and every Explicit Lock. It may reopen only target-area Derived Locks and fields the user explicitly asks to change.
 - Output Type, Role/Costume Version, Safety, reference coverage, identity risk, Perspective Intent classification, and exact-text verification remain focused or classificatory choices rather than novelty menus.
-- Every identity-preserving generation or edit passes each required person reference as an actual image input. Text may explain a reference role but never replaces the Primary Identity Anchor.
+- Every identity-preserving generation or edit passes each required person reference as an actual image input. Text may explain a reference role but never replaces the primary identity reference.
 - Treat every normal person-centered generation as a final asset across crops and media. Only an explicit preview, draft, exploration, or high-volume batch request permits lower quality for speed or usage.
-- For a final asset, request `quality=high` and the highest stable size at or below 3,686,400 total pixels compatible with the chosen aspect ratio only when the active surface exposes those real controls. A controllable request above that threshold gets one concise experimental warning and proceeds without a confirmation gate. Otherwise continue without another gate and never claim an unverified quality setting or pixel size.
+- For a final asset, request `quality=high` when a real quality control exists and, independently, the highest stable size at or below 3,686,400 total pixels compatible with the chosen aspect ratio when a real size control exists. A controllable request above that threshold gets one concise experimental warning and proceeds without a confirmation gate. Continue when either control is absent and never claim its unverified setting.
 - Give every final output one clear First Read at its intended display size. Supporting scene, text, product, effects, and texture reinforce that priority; impact intensity follows the intended use rather than defaulting every medium to cinematic drama.
 - Review First Read and overall hierarchy at the intended display size, then inspect only present high-risk face, hand/prop, and exact-text regions at the original available resolution. Never claim a check when the output or sufficient inspection resolution is unavailable.
 - Build every final production prompt from concrete brief-specific positive direction, then approximately three to eight observable current failure constraints in the ordinary prompt. Never use a fixed quality suffix, provider-specific negative-prompt field, or universal negative-word dump.
@@ -389,7 +389,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[attached person image; portrait brief fully resolved] Use recommended defaults and generate now.`
 
-**Expected:** Pass the attached person reference to the active generation surface as an actual image input and identify it as the Primary Identity Anchor. A textual identity summary may support the production prompt but must not replace the image.
+**Expected:** Pass the attached person reference to the active generation surface as an actual image input and identify it as the primary identity reference. A textual identity summary may support the production prompt but must not replace the image.
 
 ## 61. Required identity image is no longer tool-accessible
 
@@ -401,13 +401,13 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[Image 1: face identity; Image 2: required profile angle of the same person; Image 3: wardrobe; Image 4: pose; Image 5: style; all choices resolved] Generate the locked profile portrait.`
 
-**Expected:** Pass Images 1 and 2 as required person image inputs and label every included reference by role. Keep Image 1 as the Primary Identity Anchor; wardrobe, pose, and style references guide only their named roles and never overwrite face identity.
+**Expected:** Pass Images 1 and 2 as required person image inputs and label every included reference by role. Keep Image 1 as the primary identity reference; wardrobe, pose, and style references guide only their named roles and never overwrite face identity.
 
 ## 63. Accepted inference does not permit text-only identity
 
 **Input:** `[attached face image; no body or action reference] Infer the full-body scale, profile angle, and running performance. I accept that risk. Generate now.`
 
-**Expected:** Continue without repeating the accepted coverage gate, but still pass the attached face image as the Primary Identity Anchor. Accepted inference applies only to missing body, angle, and performance evidence; it is not permission to omit the identity image.
+**Expected:** Continue without repeating the accepted coverage gate, but still pass the attached face image as the primary identity reference. Accepted inference applies only to missing body, angle, and performance evidence; it is not permission to omit the identity image.
 
 ## 64. Experimental size uses strict total-pixel area
 
@@ -444,3 +444,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[case A: generated result is not visible; case B: a result is visible only as a thumbnail too small to inspect the face and exact text] Report final QA.`
 
 **Expected:** In case A, report visual QA as unavailable. In case B, report First Read only if the thumbnail supports that check and mark face identity, geometry, and exact text unverified because the required inspection resolution is unavailable. Do not claim checks based on the prompt or requested controls.
+
+## 70. Quality and size controls remain independent
+
+**Input:** `[case A: final asset on a surface with size control but no quality control; case B: final asset on a surface with quality control but no size control] Generate now.`
+
+**Expected:** In case A, apply the stable or experimental size rule while leaving `quality=high` unverified. In case B, request `quality=high` while leaving exact size and experimental-size application unverified. In both cases continue without another gate and never imply that one control's absence disables or verifies the other.
