@@ -89,7 +89,7 @@ Avoid:
 
 When the target image needs a different pose, expression, camera angle, crop, or full-body composition, preserve the identity anchors while adapting the face and body naturally to the new state. The source image is not a template for pose, expression, face angle, camera distance, or head-to-body scale unless the user says to copy those details.
 
-For close-up or half-body references used beyond the visible source coverage, state that the input verifies only the shown face, body, and styling evidence. Do not copy the source crop's head size into a wider target. Keep underlying anatomy structurally valid while letting projected sizes follow the locked viewpoint, distance, and perspective strength.
+For close-up or half-body references used beyond the visible source coverage, state that the input verifies only the shown face, body, and styling evidence. Preserve source-supported visible body relationships—head and neck relative to the shoulders, shoulder width, visible torso shape, and body build—after accounting for the source projection. Infer unseen waist, hips, leg length, and complete head-to-body proportions as continuous age-consistent natural anatomy unless the user explicitly requests stylization. Do not copy the source crop's head size into a wider target. Keep underlying anatomy structurally valid while letting projected sizes follow the locked viewpoint, distance, and perspective strength.
 
 For full-body and three-quarter outputs, distinguish underlying anatomy from projected proportions. Shoulder, torso, hip, limb, and joint relationships must remain valid in world space; apparent head/body size and limb foreshortening may change intentionally with camera projection. Identity similarity must come from facial structure, not arbitrary local enlargement disconnected from that projection.
 
@@ -178,7 +178,7 @@ Use positive, concrete visual direction first. Choose only negative constraints 
 
 When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare only visible Protected Identity Cues and report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, or a distinctive mark. Never provide a biometric score, match or verification claim, or identity guarantee.
 
-If the result is close, revise surgically. Change one target at a time and repeat identity constraints:
+If the result is close and the correction stays within the visible crop, revise surgically. Change one target at a time and repeat identity constraints:
 
 - change only the requested issue
 - keep face, pose, composition, crop, palette, text, product placement, and background unchanged unless they are the issue
@@ -191,6 +191,9 @@ Classify geometry revisions before editing:
 
 - for a pasted-frontal-face or face/body mismatch, preserve camera position and perspective strength; correct only neck, head, facial plane, and gaze relationships
 - for a proportion failure, distinguish underlying anatomy discontinuity from intentional projection exaggeration; preserve the chosen near/far size change and fix only random, local, or camera-inconsistent deformation
+- for a minor oversized-head error in an otherwise close result with unchanged crop, reset the skull, head, hair, and headwear as one coherent unit relative to the shoulders, torso, hips, and limbs; do not merely shrink the whole figure in the canvas or ask for the head to be "one step smaller" against the failed baseline
+
+A global head-to-body proportion failure, or a revision that must expand a partial crop back to full body, is not a surgical correction. Regenerate from the Primary Identity Anchor and locked brief. Do not use an output carrying the same structural defect as a supporting body-scale or composition reference; preserve its valid locks in text instead.
 
 Never normalize a locked strong perspective while repairing anatomy or coordination.
 
@@ -198,4 +201,4 @@ If a revision request is ambiguous and needs user input, ask with the standard l
 
 Before generation, check that identity lock names the person's face as the anchor, reference transfer boundaries and coverage are explicit, reference roles are labeled when multiple inputs exist, inference/risk handling is resolved, locked intent is preserved, and underlying anatomy, projected proportions, pose geometry, target-angle identity readability, and face/body coordination are explicit.
 
-If the generated output is visible, also check that facial planes agree with head turn and gaze and that there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal. A visible failure changes only after the user explicitly requests a targeted revision.
+If the generated output is visible, also check that facial planes agree with head turn and gaze and that there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. For full-body or three-quarter outputs inferred from a close or upper-body anchor, compare the relative scale of the skull, head, hair, and headwear with the shoulders, torso, hips, and limbs rather than the whole subject's size in the canvas. Accepted inference accepts unknown real-world details, not visible doll-like anatomy. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal. Do not call an unambiguous required-quality failure final: apply one appropriate correction, review again, and report honestly if it remains unresolved.

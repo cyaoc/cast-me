@@ -614,3 +614,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[visible result] The eyebrow shape, contour, skin tone, and hairline drifted. Restore those identity cues but keep the injury makeup and everything else.`
 
 **Expected:** Enter the targeted revision flow and restore only the named Protected Identity Cues or remove only their responsible styling treatment. Preserve compatible Story Makeup, scene, Shot, Performance, exact text, wardrobe, First Read, First-Pass Finish, and every unrelated lock; do not regenerate a new concept.
+
+## 98. Close crop to full-body proportion recovery
+
+**Input:** `[face-and-upper-body reference only; body inference accepted; eye-level 9:16 full-body standing on water; no deliberate perspective exaggeration] The result has an oversized head and hair. A partial-crop revision remains head-heavy; restore the full-body water stance and make the head smaller.`
+
+**Expected:** Preserve source-supported visible head, neck, shoulder, torso, and body-build relationships after accounting for source projection; infer unseen waist, hips, legs, and complete head-to-body proportions as continuous age-consistent natural anatomy. Treat the global head-to-body failure and expansion from a partial crop back to full body as regeneration, not a surgical edit. Regenerate from the Primary Identity Anchor and locked brief; do not reuse outputs carrying the same structural defect as body-scale or composition references. Preserve the water stance, camera, projection, face identity, costume, lighting, text, and background through locks. Review the skull, head, hair, and headwear as one unit relative to the shoulders, torso, hips, and limbs; do not merely shrink the whole figure in the canvas or request a one-step reduction against the failed baseline. Do not claim the proportion is fixed until the revised output passes review.
