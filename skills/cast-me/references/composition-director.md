@@ -190,7 +190,7 @@ Enter a targeted finish revision only after an explicit user request for one con
 
 ## Art Direction and Physical World
 
-Treat art direction as internal synthesis of the locked world, shot, styling, and lighting, not as another user gate. If a required choice is unresolved, route it to its owning dimension.
+Treat art direction as internal synthesis of the locked world, shot, performance, styling, and lighting into Physical Scene Coherence, not as another user gate. If a required choice is unresolved, route it to its owning dimension.
 
 When the setting matters, define time/weather, believable spatial logic, foreground/midground/background roles, surface age and material behavior, one primary story clue, and silhouette/color separation between wardrobe and background.
 
@@ -213,7 +213,9 @@ Use these cross-output rules when writing the final production prompt:
 
 - Build concrete positive direction first, in this order when relevant: intended use; identity and reference boundaries; First Read; composition and action; medium-specific materials and texture; motivated lighting and color; First-Pass Finish; text and delivery constraints; then likely failure constraints.
 - Put canvas, aspect ratio, crop, and layout before subject detail when structure matters.
-- If required in-image text exists, quote every exact string and specify its hierarchy, such as title, subtitle, CTA, price/date, label, or fine print.
+- If required in-image text exists, treat the user's listed copy as the allowed-text set. Quote and enumerate every string once verbatim, give each its role and hierarchy, a brief-compatible type style, color, relative size, and precise spatial region/alignment, and explicitly forbid any other text when the set is complete.
+- Derive ordinary missing text treatment from intended use, creative direction, layout, First Read, palette, and intended display size. Prefer a type category or visible typographic character over an invented named font, and relative scale over a point-size guarantee; preserve an exact font or brand specification only when the user or an authoritative reference supplies it, and preserve user-supplied numeric size as layout intent without claiming the generated asset was measured to it.
+- Preserve user-supplied typography as Explicit Locks and preserve an authoritative reference's specification within its stated role. Do not add a routine typography gate; ask one focused confirmation only when missing treatment would materially change explicit brand or creative intent, or when supplied typography instructions conflict.
 - State scene density with concrete objects, surfaces, spatial layers, and environmental details rather than empty adjectives.
 - State the First Read and supporting hierarchy in concrete composition, contrast, scale, focus, action, or spacing terms.
 - Keep materials, lighting, palette, and camera/capture context as separate controls.
@@ -245,7 +247,7 @@ Avoid stock-photo posing, dramatic costume changes, fantasy scenes, heavy styliz
 
 Use one identity-preserving hero face or silhouette as the First Read, a second-read story world or conflict, title-safe composition when needed, deliberate color contrast, atmospheric depth, and restrained supporting effects. Pass the three-glance test: the hero reads first, the narrative world reads second, and close texture rewards inspection.
 
-Only include text if the user provides exact text. If text treatment is unresolved and relevant to the output, ask in the aspect/text clarification. If the user accepts defaults or text is not relevant, specify no text. When text exists, define promotional hierarchy and readability distance rather than placing all text at equal weight.
+Only include text if the user provides exact text. Derive ordinary missing treatment internally; ask in the aspect/text clarification only for a material brand/creative decision or conflicting typography instructions. If text is not relevant, specify no text. When text exists, define promotional hierarchy and readability distance rather than placing all text at equal weight.
 
 ### CG or Game Key Art
 
@@ -257,7 +259,7 @@ Do not over-stylize the face until the person becomes unrecognizable.
 
 Express a brief-specific point of view through pose, gaze, styling, composition, palette, negative space, and tactile textile, paper, print, or photographic texture. Avoid generic luxury cues and cover-template polish.
 
-Only include typography with exact user-provided copy. If text treatment is unresolved and relevant to the output, ask in the aspect/text clarification. If the user accepts defaults or text is not relevant, specify no text. Keep typography-safe negative space and avoid fake magazine cover clutter.
+Only include typography with exact user-provided copy. Derive ordinary missing treatment internally; ask in the aspect/text clarification only for a material brand/creative decision or conflicting typography instructions. If text is not relevant, specify no text. Keep typography-safe negative space and avoid fake magazine cover clutter.
 
 ### Social Avatar
 
@@ -281,7 +283,7 @@ When use or platform is known, form a recommended canvas aspect ratio, safe area
 
 Treat layout structure, subject/text-safe placement, safe areas/readability, and required variant organization as the Layout visible signature. When a visible Layout gate is needed, use `scoped-option-refresh.md`, while preserving exact text, explicit aspect ratio, and hard delivery requirements.
 
-Verify exact text character by character. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
+Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 
 For a requested series, also lock the continuity facts that must not drift: wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment. Do not add this contract to a single image.
 
@@ -306,7 +308,7 @@ Consider these dimensions when relevant:
 - composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
 - identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
 - lighting/color/retouch/finish: motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture; final image character; only materially useful controls
-- output contract: canvas aspect, platform readability, safe areas, exact-text verification, and required variants
+- output contract: canvas aspect, platform readability, safe areas, allowed-text set and treatment, exact-text verification, and required variants
 - negative constraints: approximately three to eight observable failure modes most likely for the current output
 
 The expanded prompt should be theme-adaptive. Do not reuse examples such as forests, temples, cyberpunk, saints, warriors, or luxury studios unless the user chose that direction. Delete rows that do not help the specific output.
@@ -331,12 +333,16 @@ Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / rep
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
 Lighting/color/retouch/finish: <coherent First-Pass Finish; motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture and final image character; only materially useful production controls>
-Text: <exact text in straight quotes; hierarchy and placement; or "no text">
+Text: <complete allowed-text set in straight quotes; each string's role/hierarchy, type style, color, relative size, and precise region/alignment; forbid any other text when complete; or "no text">
 Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
 Continuity invariants (series only): <identity, wardrobe, hair/makeup, prop state, weather/wetness, light direction, location geography, and color treatment that must not drift>
 Constraints: <approximately three to eight observable failure modes most likely for this output, selected from the active identity, anatomy, projection, hand/prop, text, material, layout, or finish risks>
 ```
 
-Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task.
+Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task. Also verify Physical Scene Coherence across the resolved setting and time/weather, Shot and perspective, Performance and pose geometry, Styling and materials including their response to the environment and light, and lighting and finish.
+
+Resolve Suggested and Derived conflicts internally, preserving compatible parts and the closest coherent expression of the selected direction. Preserve an Explicit Lock over a conflicting non-explicit value. A later Explicit instruction that clearly reopens or replaces an earlier choice updates that earlier choice without another question.
+
+If two physically incompatible Explicit Locks must both otherwise remain and neither overrides the other, ask exactly one focused confirmation in the standard decision format: state the conflict concretely, recommend one coherent resolution, and offer only the direct coherent alternative rather than inventing another creative path. After the answer, preserve every unrelated lock, accepted risk, reference decision, and output requirement, then continue from the existing generation state without repeating resolved questions. Physical Scene Coherence supplements rather than replaces the existing identity, reference-coverage, anatomy, projection, pose, safety, exact-text, refresh, and targeted-revision gates.
 
 If the generated output is visible, first review First Read, hierarchy, composition, and intended-use readability at the target display size. Then inspect only relevant high-risk regions at the original available resolution: face identity and geometry; visible hands and prop interactions; and required exact text character by character. Skip absent regions. If the output or the resolution needed for a check is unavailable, mark that review unavailable or unverified instead of inferring it from the prompt.

@@ -30,6 +30,8 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Give every final output one clear First Read at its intended display size. Supporting scene, text, product, effects, and texture reinforce that priority; impact intensity follows the intended use rather than defaulting every medium to cinematic drama.
 - Review First Read and overall hierarchy at the intended display size, then inspect only present high-risk face, hand/prop, and exact-text regions at the original available resolution. Never claim a check when the output or sufficient inspection resolution is unavailable.
 - Build every final production prompt from concrete brief-specific positive direction, then approximately three to eight observable current failure constraints in the ordinary prompt. Never use a fixed quality suffix, provider-specific negative-prompt field, or universal negative-word dump.
+- For exact copy, derive ordinary missing typography internally. The production prompt must enumerate the complete allowed-text set and give every string a role/hierarchy, compatible type character, color, relative size, and precise region/alignment; forbid additional text when the set is complete.
+- Before generation, require Physical Scene Coherence across setting and time/weather, Shot and perspective, Performance, Styling/materials, and lighting/finish. Reconcile Suggested and Derived conflicts internally, honor clear later Explicit overrides, and ask once only for incompatible Explicit Locks with no override relationship.
 
 ## 1. Vague professional avatar
 
@@ -65,7 +67,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[portrait] Create a 9:16 character poster titled "归途".`
 
-**Expected:** Resolve direction, shot, styling/version if ambiguous, performance, and lighting without combining them into one package. Reserve a readable title-safe region and verify `归途` character by character. If a targeted text revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery.
+**Expected:** Resolve direction, shot, styling/version if ambiguous, performance, and lighting without combining them into one package. Do not add a routine typography question. In the production prompt, preserve `归途` verbatim as the complete allowed-text set; identify it as the title; derive a direction-compatible type character, color, dominant relative size, and precise title-safe region/alignment; and forbid all other text. Verify `归途` character by character without applying Latin-only capitalization or spelling advice. If a targeted text revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery.
 
 ## 7. Series continuity
 
@@ -450,3 +452,39 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[case A: final asset on a surface with size control but no quality control; case B: final asset on a surface with quality control but no size control] Generate now.`
 
 **Expected:** In case A, apply the stable or experimental size rule while leaving `quality=high` unverified. In case B, request `quality=high` while leaving exact size and experimental-size application unverified. In both cases continue without another gate and never imply that one control's absence disables or verifies the other.
+
+## 71. Multiple exact strings form one allowed-text set
+
+**Input:** `[person and product references; commercial brief resolved] Create the final campaign visual with title "MOVE LIGHT", subtitle "Everyday carry", and CTA "SHOP NOW". These are the only words. Use recommended defaults.`
+
+**Expected:** Generate without a typography question. Enumerate all three strings once as the complete allowed-text set, preserve each verbatim, assign each its own semantic role, hierarchy, compatible type character, color, relative size, and precise region/alignment, and forbid every other word, logo, label, and filler string. The prohibition must not exclude or alter any requested copy.
+
+## 72. Brand-critical typography gets one focused question
+
+**Input:** `[person reference; campaign brief otherwise resolved] Use the exact title "NORTHLINE" and our house typography, but the supplied references contain two incompatible brand type systems and do not identify which one governs this campaign.`
+
+**Expected:** Ask exactly one focused typography confirmation using the standard decision format, recommend the treatment that best fits the locked campaign direction, and offer the other supplied brand treatment as the direct alternative. Preserve every unrelated lock and do not expand the question into an ordinary font, color, size, or placement questionnaire.
+
+## 73. Non-explicit scene conflict resolves internally
+
+**Input:** `[rainy-night station direction is locked; Shot, Styling, Performance, canvas, references, and text are resolved; a Suggested or Derived finish calls for hard direct noon sunlight] Use recommended defaults and generate now.`
+
+**Expected:** Preserve the rainy-night direction, reconcile the non-explicit finish to motivated night lighting and wet-material response, and generate without another gate. Keep compatible finish character and every unrelated lock; do not combine night rain with direct noon sun or reopen the Finish gate.
+
+## 74. Clear later Explicit instruction overrides the earlier choice
+
+**Input:** `[rainy-night scene was previously locked; all other choices resolved] Change the scene to dry noon instead and keep everything else. Generate now.`
+
+**Expected:** Treat the later instruction as an explicit reopening and replacement of the earlier time/weather choice. Update the scene, reconcile lighting, finish, and material response to dry noon, preserve every compatible unrelated lock, and generate without a conflict confirmation or repeated question.
+
+## 75. Incompatible Explicit Locks get one coherence confirmation
+
+**Input:** `[person references; rainy-night weather, hard direct overhead noon sunlight, waist-up low viewpoint, leftward gaze, red wool coat, exact title "LAST TRAIN", 9:16 canvas, and Natural Retouch are all Explicit Locks; no instruction overrides another] Generate now.`
+
+**Expected:** Stop for exactly one focused Physical Scene Coherence confirmation. State the rainy-night versus direct-noon conflict concretely, recommend one coherent resolution, offer only the direct coherent alternative rather than inventing a third creative path, and preserve the Shot, gaze, coat, exact text, canvas, Natural Retouch, references, accepted risks, and every other unrelated lock. Do not add a separate review stage or restart the brief.
+
+## 76. Coherence confirmation resumes the existing generation state
+
+**Input:** `[continuation of scenario 75] Keep rainy night and adapt the light to motivated station fixtures and reflected wet-platform light.`
+
+**Expected:** Record the selected resolution, retain every unrelated Explicit Lock, Derived Lock, accepted risk, reference role, and output requirement from the existing decision state, then continue directly to generation readiness. Do not repeat creative direction, Shot, Styling, Performance, Finish, reference, exact-text, canvas, or output questions.

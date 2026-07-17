@@ -24,6 +24,10 @@ _Avoid_: Automatic beautification, skin replacement
 The one person, face, silhouette, action, emotion, product, or message that must register first at the intended display size. Supporting elements reinforce it rather than compete with it.
 _Avoid_: Generic visual impact, universal drama
 
+**Physical Scene Coherence**:
+The state in which the resolved setting, time/weather, shot/perspective, performance, styling/materials, and lighting/finish can coexist as one internally coherent scene.
+_Avoid_: Cross-dimensional consistency check, consistency review
+
 **Style Refresh**:
 A user-requested reopening of creative direction and its derived scene, lighting/color, finish, and unlocked composition suggestions. It preserves identity and output constraints plus every Explicit Lock unless the user reopens them.
 _Avoid_: Full restart, reroll

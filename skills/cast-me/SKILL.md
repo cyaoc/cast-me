@@ -96,7 +96,7 @@ Supported output types:
 - commercial campaign visual
 - custom themed image
 
-Resolve canvas aspect ratio, safe areas, and text treatment through the adaptive clarification ladder when they are not stated. Shot direction owns how much of the person appears in frame. Platform conventions such as square avatar, vertical poster, or no text are recommendations to offer, not silent assumptions. If the user accepts defaults, use the safest platform convention. If there is required in-image text, keep it exact and wrap it in straight quotes.
+Resolve canvas aspect ratio, safe areas, and whether text is required through the adaptive clarification ladder when they are not stated. Shot direction owns how much of the person appears in frame. Platform conventions such as square avatar, vertical poster, or no text are recommendations to offer, not silent assumptions. If the user accepts defaults, use the safest platform convention. If there is required in-image text, keep it exact and wrap it in straight quotes; derive ordinary missing typography and placement internally, and ask only when the missing treatment could materially change explicit brand or creative intent or supplied typography conflicts.
 
 ## Step 2: Resolve Brief and Creative Direction
 
@@ -108,7 +108,7 @@ Use this adaptive clarification ladder as an internal routing order for missing 
 2. creative direction / scene concept
 3. shot/perspective direction: composition, camera position/distance/angle, projection character, subject blocking, and background relationship
 4. wardrobe, headwear, jewelry, accessory, makeup, hair, and prop treatment
-5. canvas aspect ratio, safe areas, variants, and text treatment
+5. canvas aspect ratio, safe areas, variants, and whether text is required; route only material brand/creative ambiguity or supplied typography conflicts to a focused text confirmation
 6. performance direction: pose/action, expression, gaze, hands, and energy level
 7. lighting/color/retouch/finish
 8. avoid-list and theme-breaking elements
@@ -124,10 +124,10 @@ Keep ownership clear while routing:
 - styling owns wardrobe, hair, makeup, accessories, and props
 - performance owns pose/action, expression, gaze, mouth state, hands, and energy
 - lighting/color/retouch/finish owns motivated light, contrast, palette, identity-safe facial or material treatment, texture, and final image character
-- art direction internally reconciles the locked world, shot, styling, and lighting into one physical scene; it is not a separate user gate
+- art direction internally verifies Physical Scene Coherence across the resolved setting/time/weather, shot/perspective, performance, styling/materials, and lighting/finish; it is not a separate user gate
 - output contract owns canvas aspect ratio, safe areas, platform variants, exact text, and platform readability
 
-Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, record direction-supplied values as `locked: derived`, and skip them later; the dimension or override the user directly chooses is `locked: explicit`. Never silently lock performance from shot text or lock shot, styling, performance, or First-Pass Finish from a preview. Keep `pose/action + expression + gaze`, `lighting/color/retouch/finish`, and `canvas aspect + safe areas + text treatment` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
+Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, record direction-supplied values as `locked: derived`, and skip them later; the dimension or override the user directly chooses is `locked: explicit`. Never silently lock performance from shot text or lock shot, styling, performance, or First-Pass Finish from a preview. Keep `pose/action + expression + gaze`, `lighting/color/retouch/finish`, and `canvas aspect + safe areas + whether text is required` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
 
 For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks Codex to decide.
 
