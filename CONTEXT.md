@@ -9,7 +9,7 @@ The actual person reference image that authoritatively anchors face identity for
 _Avoid_: Primary identity reference, text-only identity description
 
 **Protected Identity Cue**:
-A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Risk depends on changing these cues, not on whether styling is labeled light or heavy.
+A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Risk depends on changing these cues, not on whether styling is labeled light or heavy; accepting a change to one cue does not waive unrelated identity cues.
 _Avoid_: Makeup intensity, beauty feature
 
 **Visible Body Evidence**:
@@ -53,7 +53,7 @@ The locked base makeup, hair, wardrobe, and accessories that identify one charac
 _Avoid_: Identical styling state, independent redesign
 
 **Identity Review**:
-A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It reports visible drift and never claims a biometric match, similarity score, or identity guarantee.
+A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It distinguishes a coherent local defect from identity-wide drift, treats a result that is unreliable identity evidence as incomplete, and never claims a biometric match, similarity score, or identity guarantee.
 _Avoid_: Face score, biometric verification, identity guarantee
 
 **First-Pass Finish**:
@@ -93,7 +93,7 @@ A concrete direction whose Direction Signature differs from every Shown Directio
 _Avoid_: Renamed option, palette swap
 
 **Choice Gate**:
-A user-visible A/B/C/D decision that resolves one scoped choice or tightly coupled group. A through C are valid concrete paths, with an explicit stop path when only two substantive resolutions exist; D is always the Custom Path.
+A user-visible A/B/C/D decision that resolves one scoped choice or tightly coupled group. A through C are valid concrete paths, with an explicit stop path when only two substantive resolutions exist; D is always the Custom Path, and any recommendation inherits current locks and known identity or geometry risk rather than optimizing its scope in isolation.
 _Avoid_: Open-ended question, padded preset menu
 
 **Custom Path**:
