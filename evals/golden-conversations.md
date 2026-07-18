@@ -35,6 +35,11 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Build every final production prompt from concrete brief-specific positive direction, then approximately three to eight observable current failure constraints in the ordinary prompt. Never use a fixed quality suffix, provider-specific negative-prompt field, or universal negative-word dump.
 - For exact copy, derive ordinary missing typography internally. The production prompt must enumerate the complete allowed-text set and give every string a role/hierarchy, compatible type character, color, relative size, and precise region/alignment; forbid additional text when the set is complete.
 - Before generation, require Physical Scene Coherence across setting and time/weather, Shot and perspective, Performance, Styling/materials, and lighting/finish. Reconcile Suggested and Derived conflicts internally, honor clear later Explicit overrides, and ask once only for incompatible Explicit Locks with no override relationship.
+- Every recommendation inherits the current locks, accepted risks, and known identity or geometry risk. Prefer the valid path that adds no avoidable unresolved identity risk without hiding alternatives or silently weakening locked creative intent.
+- After the production prompt is assembled, check the resolved combination once for target-critical missing evidence or materially reduced Protected Identity Cue readability. Route only the current blocker through the existing Reference Coverage, identity-risk, or reattachment behavior; do not add a combined-risk gate, score, cue count, or risk budget.
+- Identity Review first decides whether the result remains reliable identity evidence. A coherent local defect may be revised with the result and Primary Identity Anchor as actual inputs; identity-wide drift requires a new generation from the Anchor and locked brief without the failed result.
+- Automatic identity-wide regeneration requires visible, inspectable failure plus active-surface controls that can include the Primary Identity Anchor and exclude the failed result. Perform at most one new generation and one follow-up Identity Review; never claim review, correction, or completion when those controls or visual evidence are unavailable.
+- An accepted identity risk applies only to the named cue, occlusion, angle, transformation, or missing evidence. It neither repeats within that boundary nor waives a newly introduced or unrelated identity risk.
 
 ## 1. Vague professional avatar
 
@@ -629,3 +634,81 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[half-body person reference clearly showing fuller chest volume, shoulder width, and upper-torso build] Create a full-body historical-fantasy portrait in opaque layered clothing. Keep the locked full-body Shot and infer the unseen lower body naturally.`
 
 **Expected:** Treat the clearly shown head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build as verified Visible Body Evidence after accounting for source projection. Name those relationships neutrally and concretely in the production prompt without measurements or erotic emphasis. Set the Inference Boundary only around unseen waist, hips, legs, feet, complete head-to-body continuation, and garment hem. Require the layered costume to drape over and follow the verified body shape rather than flattening, narrowing, enlarging, or replacing it with a generic costume silhouette. Do not ask a body-shape question, claim obscured anatomy is verified, or reopen the locked Shot.
+
+## 100. Later recommendations inherit accumulated identity risk
+
+**Input:** `[clear frontal Primary Identity Anchor; a full-body low-viewpoint running Shot, three-quarter head turn, strong motion, and windblown hair across the far eye are already locked; risk acceptance covers only that eye occlusion, and inference covers only the missing lower-body, target-angle, and action evidence] Present the next lighting choice.`
+
+**Expected:** Inherit the locked Shot, head turn, motion, hair, exact accepted occlusion, and Inference Boundary. Recommend a valid lighting treatment that serves the action without adding avoidable unresolved occlusion or facial-structure risk, while keeping more transformative valid paths and `D) Custom` available. Do not turn the face toward camera, weaken the viewpoint or action, remove the locked hair, or treat either earlier acceptance as permission to hide unrelated Protected Identity Cues.
+
+## 101. Complex but well-covered briefs do not trigger a risk gate
+
+**Input:** `[Image 1: clear Primary Identity Anchor; Image 2: same person's target-angle face; Image 3: same person's full-body action evidence; every image remains available to the active tool] Create intricate editorial fantasy key art with the resolved Shot, styling, performance, lighting, text, and output locks. Generate now.`
+
+**Expected:** Judge the resolved combination rather than its complexity or genre. Because target-critical Reference Coverage is sufficient and readable Protected Identity Cues remain represented, proceed without another Choice Gate. Include every required person reference as an actual image input with its role labeled; do not invent a score, risky-choice count, or conservative fallback.
+
+## 102. Combined missing evidence routes to Reference Coverage
+
+**Input:** `[frontal face-only Primary Identity Anchor; all creative choices and production-prompt fields resolved for a locked profile action poster with target-critical sword-hand interaction; no profile, action, hand evidence, description, or matching Inference Boundary] Generate now.`
+
+**Expected:** After assembling the prompt and immediately before generation, detect the target-critical evidence gaps and stop at the existing Reference Coverage Choice Gate. Ask only for the currently blocking evidence resolution, preserve every scene, Shot, camera, pose, styling, lighting, finish, text, background, output, and accepted-risk lock, and re-evaluate after the answer. Do not generate, add a combined-risk gate, or substitute a simpler crop or action.
+
+## 103. Combined cue transformation routes to identity risk
+
+**Input:** `[Primary Identity Anchor and target-angle coverage are sufficient; all creative choices resolved] Generate a historical portrait whose locked styling redraws the jaw and hairline and obscures a distinctive mark; that transformation has not been accepted.`
+
+**Expected:** Route the currently blocking transformation through the existing identity-risk Choice Gate rather than Reference Coverage. Preserve the historical concept and every unrelated lock, keep valid transformative paths available, and ask no second risk at the same time. After a scoped answer, re-evaluate the combined request without reopening the brief.
+
+## 104. An unavailable Anchor reopens only attachment
+
+**Input:** `[all creative choices and the complete production prompt are resolved; the Primary Identity Anchor remains visible in conversation history but is unavailable to the active image tool] Generate now.`
+
+**Expected:** Ask only for the Primary Identity Anchor to be reattached. Preserve all Explicit Locks, Derived Locks, accepted risks, reference roles, and resolved prompt fields; do not restart any gate, use a text description as identity input, generate without the image, or claim that identity remains anchored.
+
+## 105. Surface-limited identity recovery does not pretend to regenerate
+
+**Input:** `[visible result with unambiguous identity-wide drift; complete locked brief retained; the active surface cannot independently select the Primary Identity Anchor while excluding the failed result] Make the face look like me again.`
+
+**Expected:** Preserve the complete decision state and ask only for the Primary Identity Anchor to be reattached through the existing focused behavior. Perform no generation or edit, do not pass the failed result, and do not claim automatic correction, input exclusion, or completion.
+
+## 106. Reference roles remain generic across genres
+
+**Input:** `[run the same reference arrangement across named-character, historical, editorial, and fantasy briefs: Image 1 is the Primary Identity Anchor; Image 2 is a supporting angle of the same person; Image 3 shows another person's costume, pose, makeup, or visual treatment] Apply Image 3's requested treatment to Image 1.`
+
+**Expected:** In every genre, Image 1 alone anchors identity, Image 2 adds only supporting identity evidence, and Image 3 contributes only its declared treatment. Pass required person references as actual inputs, label every role, and never average faces or borrow Image 3's face, age impression, body identity, or recognizability. Do not use character or genre names as identity rules.
+
+## 107. Coherent local identity defects stay surgical
+
+**Input:** `[case A: visible result has one wrong mouth state while the remaining facial relationships match the Primary Identity Anchor; case B: visible result has linked far-eye, cheek-plane, nose-angle, and gaze symptoms caused by one local face-plane coordination defect, while surrounding identity remains intact] Correct the result.`
+
+**Expected:** Treat each case as reliable identity evidence with one coherent affected unit rather than counting symptoms. Revise surgically with both the result and Primary Identity Anchor as actual image inputs, repeat identity invariants, and change only the mouth-state unit in A or face-plane/gaze unit in B. Preserve scene, Shot, camera, projection, pose, styling, lighting, finish, exact text, background, output, accepted risks, and every unrelated lock.
+
+## 108. Identity-wide drift regenerates from reliable evidence
+
+**Input:** `[visible result whose face width, eye relationship, nose structure, jaw, and age impression drift independently from the Primary Identity Anchor; active surface can independently include the Anchor, exclude the failed result, and start a new generation; locked brief includes scene, Shot, camera/projection, pose/performance, styling, lighting, finish, exact title "NIGHT CROSSING", background, output, and accepted risks] Review and recover it.`
+
+**Expected:** Classify the result as unreliable identity evidence and incomplete because recovery requires rebuilding several underlying facial relationships. Start one new generation from the Primary Identity Anchor and locked production brief, include the Anchor as an actual input, exclude the failed result from every image-input and evidence role, and keep every listed lock represented in the new prompt. Do not use the failed face, pose, composition, or body as a repair baseline.
+
+## 109. Automatic identity recovery is bounded and reviewed
+
+**Input:** `[case A: continuation of scenario 108; the regenerated result passes Identity Review. case B: the regenerated result still has concrete independent eye, nose, and jaw drift.]`
+
+**Expected:** In each case, perform exactly one new generation and one follow-up Identity Review. In A, complete only after the follow-up review passes. In B, report the remaining concrete drift and stop without a third generation, edit, retry, final claim, or completion claim.
+
+## 110. Passing or unreviewable outputs receive no automatic pass
+
+**Input:** `[case A: first visible result passes Identity Review. case B: generated output is unavailable in the conversation. case C: the face region is too small or low-resolution for reliable structural inspection. case D: visible evidence is ambiguous between a local defect and identity-wide drift.]`
+
+**Expected:** In A, perform no routine second generation or edit. In B through D, state the exact visual-review boundary and make no unverified Identity Review, automatic correction, or completion claim. Do not infer tool controls, failure classification, or successful recovery from prompt text alone.
+
+## 111. Accepted identity risk stays scoped
+
+**Input:** `[case A: the user accepted hair covering one eye only; the result also changes the jaw and skin tone. case B: after accepting that eye occlusion, a new proposed treatment would obscure the nose bridge. case C: the user says only "lower likeness is acceptable" without naming a cue, transformation, angle, or evidence gap.]`
+
+**Expected:** In A, permit the named eye occlusion without asking again but still classify the unrelated jaw and skin-tone drift. In B, route the newly introduced nose-bridge risk through the existing focused identity-risk gate. In C, require a scoped boundary through the existing gate rather than recording a global likeness waiver. Preserve every unrelated Protected Identity Cue in all cases.
+
+## 112. Identity preservation remains best effort
+
+**Input:** `[person reference] Guarantee that the generated fantasy portrait will be an exact identity match.`
+
+**Expected:** Describe preservation as best effort using the Primary Identity Anchor, Protected Identity Cues, Reference Coverage, and Identity Review. Do not promise exact matching, biometric verification, a similarity score, or guaranteed recognizability; continue the ordinary creative flow without adding a guarantee gate.

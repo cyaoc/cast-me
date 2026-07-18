@@ -24,7 +24,7 @@ Identity is a required readable quality constraint for every person-centered res
 
 Use `user-provided self-reference image` only when the user explicitly says the image is them, a selfie, or their own image. Otherwise use `user-provided person reference image`.
 
-Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. An Inference Boundary for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
+Use the user's person reference as the Primary Identity Anchor and pass it to every identity-preserving generation or revision as an actual image input. Text may describe visible evidence or disambiguate roles, but it never replaces that image. An Inference Boundary for missing body, angle, or performance evidence does not permit omitting the Primary Identity Anchor.
 
 If any person reference required by the resolved Reference Coverage is no longer available to the active image tool, stop before generation and ask only for that image to be reattached. Preserve all Explicit Locks, Derived Locks, accepted risks, and resolved creative choices.
 
@@ -144,7 +144,7 @@ Use a staged stability strategy only when the user explicitly requests it or sup
 
 The generated result should feel like the same person in a new scene, not a copy of the source screenshot.
 
-Trigger the existing identity-risk choice when Styling would replace, redraw, or obscure Protected Identity Cues such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Judge the proposed change by cue replacement or visibility, not by whether makeup looks light, natural, bold, or heavy. Preserve identity by default; after explicit risk acceptance, proceed without repeating that same gate and keep the story through compatible non-identity styling details.
+Trigger the existing identity-risk choice when Styling would replace, redraw, or obscure Protected Identity Cues such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Judge the proposed change by cue replacement or visibility, not by whether makeup looks light, natural, bold, or heavy. Preserve identity by default; after explicit risk acceptance, scope it to the named cue, occlusion, angle, or transformation and proceed without repeating that same gate. Keep unrelated cues protected, treat a newly introduced risk as unresolved, and keep the story through compatible non-identity styling details.
 
 ## Face Visibility and Performance Integrity
 
@@ -180,7 +180,9 @@ State relevant Visible Body Evidence neutrally and concretely in production and 
 
 When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare visible Protected Identity Cues, Visible Body Evidence, and the relevant structural scale chain across the shown crop. Report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, a distinctive mark, head-to-neck-to-shoulder scale, chest or torso volume, hips, or limbs. Never provide a biometric score, match or verification claim, or identity guarantee.
 
-If the result has one isolated minor defect and the correction stays within an otherwise coherent visible crop, revise surgically. Change one target at a time and repeat identity constraints:
+First decide whether the result remains reliable identity evidence. A defect is local when its correction can be expressed as one coherent affected unit and the surrounding identity relationships remain valid; several symptoms from one face-plane, gaze, mouth, hair, or local styling cause may still be one local defect. Identity-wide drift exists when restoring the person requires rebuilding several underlying facial relationships and the failed result can no longer serve as reliable identity evidence. Judge structure and repair scope rather than counting symptoms, and do not treat angle-correct asymmetry or an explicitly accepted scoped change as failure.
+
+If the result remains reliable identity evidence and the correction stays within an otherwise coherent visible crop, revise surgically. Pass both the result being edited and the Primary Identity Anchor as actual image inputs, change only the coherent affected unit, and repeat identity constraints:
 
 - change only the requested issue
 - keep face, pose, composition, crop, palette, text, product placement, and background unchanged unless they are the issue
@@ -195,7 +197,9 @@ Classify geometry revisions before editing:
 - for a proportion failure, distinguish underlying anatomy discontinuity from intentional projection exaggeration; preserve the chosen near/far size change and fix only random, local, or camera-inconsistent deformation
 - for one isolated minor proportion deviation in an otherwise coherent result with unchanged crop, reset the affected coherent unit relative to surrounding anatomy; for a minor oversized-head error, reset the skull, head, hair, and headwear together relative to the shoulders, torso, hips, and limbs without shrinking the whole figure in the canvas or asking for the head to be "one step smaller" against the failed baseline
 
-Multiple connected body-scale failures, or a revision that must expand a partial crop, form a Structural Scale Failure rather than a surgical correction. Regenerate from the Primary Identity Anchor and locked brief. Preserve valid scene, camera, projection, pose, styling, lighting, exact text, background, and output locks in the prompt. Do not use an output carrying the Structural Scale Failure as body-scale or composition evidence.
+Multiple connected body-scale failures, or a revision that must expand a partial crop, form a Structural Scale Failure rather than a surgical correction. Regenerate from the Primary Identity Anchor and locked brief. Preserve valid scene, Shot, camera, projection, pose, Performance, Styling, lighting, First-Pass Finish, exact text, background, output, and accepted-risk locks in the prompt. Do not use an output carrying the Structural Scale Failure as body-scale or composition evidence.
+
+A result with identity-wide drift is incomplete. Regenerate from the Primary Identity Anchor and locked production brief only when the active generation surface can independently include the Anchor as an actual image input, exclude the failed result, and initiate a new generation. Do not include the failed result as an image input or use it as identity, face-geometry, pose, composition, or body evidence. Preserve valid scene, Shot, camera, projection, pose, Performance, Styling, lighting, First-Pass Finish, exact text, background, output, and accepted-risk locks in the new prompt. If the surface cannot perform the required input selection, preserve the complete decision state and ask only for the Primary Identity Anchor to be reattached.
 
 Never normalize a locked strong perspective while repairing anatomy or coordination.
 
@@ -205,4 +209,6 @@ Before generation, check that identity lock names the person's face as the ancho
 
 If the generated output is visible, also check that facial planes agree with head turn and gaze and that there are no projection-inconsistent face deformations, malformed hands, or obvious AI tells. For full-body or three-quarter outputs inferred from a close or upper-body anchor, compare the connected scale of the skull, head, hair, and headwear with the neck, shoulders, chest, torso, hips, and limbs rather than the whole subject's size in the canvas. An Inference Boundary accepts unknown real-world details, not visible doll-like anatomy or loss of verified evidence. Preserve natural and angle-correct asymmetry rather than treating bilateral symmetry as a quality goal.
 
-Do not call an unambiguous required-quality failure final. Perform at most one automatic correction using the surgical or Structural Scale Failure path above, then run Identity Review once more. If the correction still fails, report the concrete unresolved defect and stop; do not retry again or declare the result final or complete. A passing first result receives no routine second generation or finishing pass.
+Do not call an unambiguous required-quality failure final. Perform one automatic correction, and never more than one, using the appropriate path above only when the result is visible and inspectable and the active surface can execute the required input selection and generation or edit. Then run Identity Review once more. If the correction still fails, report the concrete unresolved defect and stop; do not retry again or declare the result final or complete.
+
+Do not automatically correct when the output is unavailable, the relevant face region cannot be inspected reliably, the review is ambiguous, or the first result passes. State the review boundary truthfully; never claim an input control, correction, or completion that was not verified. A passing first result receives no routine second generation or finishing pass.
