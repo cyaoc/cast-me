@@ -102,6 +102,8 @@ For reference edits, pass the image being edited as an actual image input and be
 
 If there are multiple reference images, label each one by role, such as `Image 1: Primary Identity Anchor`, `Image 2: side/profile person reference`, `Image 3: full-body scale or outfit`, `Image 4: style reference`, `Image 5: product or logo`. Pass every person reference required for the target as an actual image input and say exactly how all included references interact. Supporting identity angles may clarify stable facial relationships but cannot override or be averaged with the Primary Identity Anchor. Transfer only the requested makeup, hair, wardrobe, accessory, material, or visual treatment from another person's styling reference; never borrow that person's face, age impression, body, or identity.
 
+A named character, canon description, or visual-research source supplies only the requested hair, makeup, costume, accessory, prop, and performance anchors. It never supplies face identity or competes with the Primary Identity Anchor.
+
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
 ## Reference Coverage
@@ -168,6 +170,8 @@ Avoid:
 
 Use positive, concrete visual direction first. Choose only negative constraints relevant to the requested output:
 
+Do not paste the complete Protected Identity Cue catalog into every prompt. State the Primary Identity Anchor's role and same-person invariant, then name only target-critical or visibly drifting cues. Keep ordinary negative constraints within the adaptive approximately three-to-eight range owned by composition `Prompt Structure` instead of adding a universal identity-failure dump.
+
 State relevant Visible Body Evidence neutrally and concretely in production and revision prompts. When chest volume is clearly shown or explicitly identified, name it directly with the surrounding shoulder and upper-torso relationships. Do not invent measurements, cup sizes, erotic emphasis, or claims about obscured anatomy.
 
 - Face and identity: no identity drift, no underlying face redesign, no target-plane-inconsistent eye or feature deformation, no random facial warping, no waxy or plastic skin, no over-smoothed skin, no automatic beautification into a different person; allow angle- and projection-correct apparent asymmetry.
@@ -180,9 +184,21 @@ State relevant Visible Body Evidence neutrally and concretely in production and 
 
 When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare visible Protected Identity Cues, Visible Body Evidence, and the relevant structural scale chain across the shown crop. Report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, a distinctive mark, head-to-neck-to-shoulder scale, chest or torso volume, hips, or limbs. Never provide a biometric score, match or verification claim, or identity guarantee.
 
+A likeness complaint triggers this review but does not determine its outcome. Make both the result and Primary Identity Anchor available to the reviewing model in the same review context before classifying the defect; do not classify from the user's wording, the production prompt, or memory of an earlier image alone. If either image or the relevant region is unavailable, state the review boundary instead of choosing a recovery path.
+
 First decide whether the result remains reliable identity evidence. A defect is local when its correction can be expressed as one coherent affected unit and the surrounding identity relationships remain valid; several symptoms from one face-plane, gaze, mouth, hair, or local styling cause may still be one local defect. Identity-wide drift exists when restoring the person requires rebuilding several underlying facial relationships and the failed result can no longer serve as reliable identity evidence. Judge structure and repair scope rather than counting symptoms, and do not treat angle-correct asymmetry or an explicitly accepted scoped change as failure.
 
-If the result remains reliable identity evidence and the correction stays within an otherwise coherent visible crop, revise surgically. Pass both the result being edited and the Primary Identity Anchor as actual image inputs, change only the coherent affected unit, and repeat identity constraints:
+Choose the operation from both result reliability and the total requested change:
+
+| Result and requested scope | Operation | Actual image inputs |
+| --- | --- | --- |
+| Reliable identity evidence; one coherent local correction | Surgical edit | Result being edited plus Primary Identity Anchor |
+| Likeness repair plus pose, action, camera, crop, or other whole-image geometry change | New generation from the locked brief | Primary Identity Anchor plus only required reliable supporting person references; exclude the result |
+| Identity-wide drift | New generation from the locked brief | Primary Identity Anchor plus only required reliable supporting person references; exclude the failed result |
+
+Use either new-generation row only when the active surface can independently select those inputs and initiate a new generation. Otherwise preserve the complete decision state and ask only for the Primary Identity Anchor to be reattached.
+
+For the surgical row, change only the coherent affected unit and repeat identity constraints:
 
 - change only the requested issue
 - keep face, pose, composition, crop, palette, text, product placement, and background unchanged unless they are the issue

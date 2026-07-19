@@ -38,6 +38,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Every recommendation inherits the current locks, accepted risks, and known identity or geometry risk. Prefer the valid path that adds no avoidable unresolved identity risk without hiding alternatives or silently weakening locked creative intent.
 - After the production prompt is assembled, check the resolved combination once for target-critical missing evidence or materially reduced Protected Identity Cue readability. Route only the current blocker through the existing Reference Coverage, identity-risk, or reattachment behavior; do not add a combined-risk gate, score, cue count, or risk budget.
 - Identity Review first decides whether the result remains reliable identity evidence. A coherent local defect may be revised with the result and Primary Identity Anchor as actual inputs; identity-wide drift requires a new generation from the Anchor and locked brief without the failed result.
+- A likeness complaint triggers Identity Review but does not prove a local defect. Compare the visible result directly with the Primary Identity Anchor before choosing edit versus regeneration; when likeness repair is combined with a non-local pose, action, camera, crop, or whole-image geometry change, regenerate from reliable identity evidence instead of calling the operation surgical.
 - Automatic identity-wide regeneration requires visible, inspectable failure plus active-surface controls that can include the Primary Identity Anchor and exclude the failed result. Perform at most one new generation and one follow-up Identity Review; never claim review, correction, or completion when those controls or visual evidence are unavailable.
 - An accepted identity risk applies only to the named cue, occlusion, angle, transformation, or missing evidence. It neither repeats within that boundary nor waives a newly introduced or unrelated identity risk.
 
@@ -685,9 +686,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 108. Identity-wide drift regenerates from reliable evidence
 
-**Input:** `[visible result whose face width, eye relationship, nose structure, jaw, and age impression drift independently from the Primary Identity Anchor; active surface can independently include the Anchor, exclude the failed result, and start a new generation; locked brief includes scene, Shot, camera/projection, pose/performance, styling, lighting, finish, exact title "NIGHT CROSSING", background, output, and accepted risks] Review and recover it.`
+**Input:** `[the visible result and Primary Identity Anchor are available for direct comparison; the result's face width, eye relationship, nose structure, jaw, and age impression drift independently; active surface can independently include the Anchor, exclude the failed result, and start a new generation; locked brief includes scene, Shot, camera/projection, styling, lighting, finish, exact title "NIGHT CROSSING", background, output, and accepted risks] The user says, "调整人物动作、现在脸部失真了," and requests a more natural pose.`
 
-**Expected:** Classify the result as unreliable identity evidence and incomplete because recovery requires rebuilding several underlying facial relationships. Start one new generation from the Primary Identity Anchor and locked production brief, include the Anchor as an actual input, exclude the failed result from every image-input and evidence role, and keep every listed lock represented in the new prompt. Do not use the failed face, pose, composition, or body as a repair baseline.
+**Expected:** Treat the user's wording as a request for Identity Review, not as proof of a surgical defect. Compare the result directly with the Primary Identity Anchor, classify it as unreliable identity evidence and incomplete because recovery requires rebuilding several underlying facial relationships, and treat the requested pose change as non-local. Start one new generation from the Primary Identity Anchor and locked production brief, include the new natural pose, include the Anchor as an actual input, exclude the failed result from every image-input and evidence role, and keep every other listed lock represented in the new prompt. Do not use the failed face, pose, composition, or body as a repair baseline.
 
 ## 109. Automatic identity recovery is bounded and reviewed
 
@@ -697,9 +698,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 110. Passing or unreviewable outputs receive no automatic pass
 
-**Input:** `[case A: first visible result passes Identity Review. case B: generated output is unavailable in the conversation. case C: the face region is too small or low-resolution for reliable structural inspection. case D: visible evidence is ambiguous between a local defect and identity-wide drift.]`
+**Input:** `[case A: first visible result passes Identity Review. case B: generated output is unavailable in the conversation. case C: the face region is too small or low-resolution for reliable structural inspection. case D: visible evidence is ambiguous between a local defect and identity-wide drift. case E: before delivery, direct comparison with the Primary Identity Anchor shows unambiguous identity-wide drift in the first visible result.]`
 
-**Expected:** In A, perform no routine second generation or edit. In B through D, state the exact visual-review boundary and make no unverified Identity Review, automatic correction, or completion claim. Do not infer tool controls, failure classification, or successful recovery from prompt text alone.
+**Expected:** In A, perform no routine second generation or edit. In B through D, state the exact visual-review boundary and make no unverified Identity Review, automatic correction, or completion claim. In E, do not present the result as final or offer "make the face more like the reference" as an optional tweak; mark it incomplete and follow the identity-wide recovery path. Do not infer tool controls, failure classification, or successful recovery from prompt text alone.
 
 ## 111. Accepted identity risk stays scoped
 

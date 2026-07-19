@@ -190,4 +190,6 @@ If the generated output is visible in the current conversation, perform Identity
 
 Follow the local-defect and identity-wide recovery paths in `identity-anchor.md`. Invoke a recovery path only when the active generation surface exposes and executes its required actual-image controls; never infer those controls from prompt wording.
 
-If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible, the relevant region cannot be inspected reliably, or the review is ambiguous, do not claim visual QA or automatic correction; report the review boundary truthfully.
+A user report that the face is distorted or no longer looks like the person triggers Identity Review; the wording does not itself classify the defect as local. Use the narrow-revision path only after the result remains reliable identity evidence and the requested change is one coherent local unit. Likeness repair combined with a pose, action, camera, crop, or other whole-image geometry change is not narrow; route it through the recovery rules and preserve the requested change as a lock in any new generation.
+
+If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible, the Primary Identity Anchor or relevant region cannot be inspected reliably, or the review is ambiguous, do not claim visual QA or automatic correction; report the review boundary truthfully.
