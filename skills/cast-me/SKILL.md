@@ -43,7 +43,7 @@ Read any other section only when its choice, risk, research branch, output requi
 - Every Choice Gate must use the same lightweight gstack-style decision format:
   - start with a localized recommendation sentence: `<localized I recommend>: <recommended path>, <localized because> <one short reason>.`
   - then a localized options label with the four concrete A/B/C/D paths, with one path marked by a localized equivalent of `(Recommended)` when a safe default exists
-  - end with a localized reply instruction showing how to accept the recommendation and how to override specific fields
+  - end with a localized reply instruction showing how to accept the recommendation and how to override specific fields; for an ordinary creative gate, show both the bare recommended path and the same path plus a localized equivalent of `use recommended defaults`, which delegates every remaining ordinary creative choice without bypassing a focused gate
 - Do not use bare open-ended questions, yes/no-only prompts, or number-only menus for clarification. Give concrete choices, the recommended path, and shorthand examples.
 - Ask missing production-critical choices serially, one unresolved dimension or tightly coupled decision group per turn, with concrete suggestions. Do not hide important choices inside a dense preset when the user has not chosen them.
 - Do not create nested menus. A follow-up must ask the next missing decision, not route the user into another category menu. The only exception is one compact refresh-scope gate when the user asks for more choices without an explicit, unresolved, or recent refreshable target.
