@@ -183,6 +183,7 @@ Generation and review are complete only when:
 - every required focused gate is resolved
 - every required identity image is included as an actual image input
 - locked user intent is unchanged
+- every visible, inspectable result passes Identity Review against the Primary Identity Anchor; an unavailable, ambiguous, or failed review receives no final or completion claim
 - the results of every module whose sections contributed to generation or revision are represented in the production prompt or revision
 - claims about tool controls, output quality, size, text, and visual review are truthful and verified where required
 
@@ -190,7 +191,7 @@ Generation and review are complete only when:
 
 If the generated output is visible in the current conversation, perform Identity Review first, then review only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
 
-Identity Review is a completion prerequisite. A clear face, natural pose, clean background, absent watermark, or absent livestream UI does not establish identity preservation. Compare the result directly with the Primary Identity Anchor first, report concrete Protected Identity Cue drift, and classify whether the result remains reliable identity evidence. Review other visual-quality areas only after identity passes; an identity-wide or unresolved result is incomplete and must not be announced as final.
+Compare the result directly with the Primary Identity Anchor first. A clear face, natural pose, clean background, absent watermark, or absent livestream UI establishes only that review can proceed. Report concrete Protected Identity Cue drift, decide whether Identity Review passes, and, on failure, classify whether the result remains reliable identity evidence. Review other visual-quality areas only after identity passes.
 
 Follow the local-defect and identity-wide recovery paths in `identity-anchor.md`. Invoke a recovery path only when the active generation surface exposes and executes its required actual-image controls; never infer those controls from prompt wording.
 

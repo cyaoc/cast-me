@@ -53,7 +53,7 @@ The locked base makeup, hair, wardrobe, and accessories that identify one charac
 _Avoid_: Identical styling state, independent redesign
 
 **Identity Review**:
-A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It distinguishes a coherent local defect from identity-wide drift, treats a result that is unreliable identity evidence as incomplete, and never claims a biometric match, similarity score, or identity guarantee.
+A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It first decides completion: a result passes only when no source-supported Protected Identity Cue shows material, unaccepted drift after accounting for locked target conditions and accepted risk; recognizability alone does not pass. On failure, result reliability decides only whether one coherent local correction may reuse the result or identity-wide regeneration is required. It never claims a biometric match, similarity score, or identity guarantee.
 _Avoid_: Face score, biometric verification, identity guarantee
 
 **First-Pass Finish**:
