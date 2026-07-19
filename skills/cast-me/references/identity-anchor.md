@@ -104,6 +104,8 @@ If there are multiple reference images, label each one by role, such as `Image 1
 
 A named character, canon description, or visual-research source supplies only the requested hair, makeup, costume, accessory, prop, and performance anchors. It never supplies face identity or competes with the Primary Identity Anchor.
 
+Before writing the final production prompt, inspect the Primary Identity Anchor and describe its visible identity structure concretely when the source supports it. Cover the face outline and jaw transition, eye shape and relative size, brow-eye relationship, nose root/bridge/tip and alar width, lip thickness/cupid's bow/mouth corners, chin and jawline, skin tone and texture, age impression, hairline, and distinctive visible marks as relevant to the target. Use only source-observed details; mark a target-critical cue as unverified when it is hidden, too small, filtered, occluded, or ambiguous, and use Reference Coverage when necessary. `Same person`, `preserve the face`, or `preserve eye shape` alone is insufficient when the reference visibly supports a concrete description. This is prompt detail, not a new user questionnaire or persistent identity profile.
+
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
 ## Reference Coverage
@@ -170,6 +172,8 @@ Avoid:
 
 Use positive, concrete visual direction first. Choose only negative constraints relevant to the requested output:
 
+Place concrete source-observed identity constraints before styling and finish instructions. They take priority over generic adjectives such as `polished`, `fresh`, `defined`, `beautiful`, or `cosplay`. Scope those adjectives to grooming, makeup application, lighting, color, materials, or performance; they must not imply larger or rounder eyes, a narrower jaw, a thinner nose, fuller lips, smoother skin, or a younger age impression. Makeup changes pigment, line, texture, and grooming around the existing face; it does not redraw the underlying facial geometry.
+
 Do not paste the complete Protected Identity Cue catalog into every prompt. State the Primary Identity Anchor's role and same-person invariant, then name only target-critical or visibly drifting cues. Keep ordinary negative constraints within the adaptive approximately three-to-eight range owned by composition `Prompt Structure` instead of adding a universal identity-failure dump.
 
 State relevant Visible Body Evidence neutrally and concretely in production and revision prompts. When chest volume is clearly shown or explicitly identified, name it directly with the surrounding shoulder and upper-torso relationships. Do not invent measurements, cup sizes, erotic emphasis, or claims about obscured anatomy.
@@ -183,6 +187,8 @@ State relevant Visible Body Evidence neutrally and concretely in production and 
 ## Identity Review and Revision
 
 When a generated result is visible, perform Identity Review against the Primary Identity Anchor at the locked face angle. Compare visible Protected Identity Cues, Visible Body Evidence, and the relevant structural scale chain across the shown crop. Report concrete drift, such as facial relationships, eyebrow shape, contour, skin tone, age impression, hairline, a distinctive mark, head-to-neck-to-shoulder scale, chest or torso volume, hips, or limbs. Never provide a biometric score, match or verification claim, or identity guarantee.
+
+Identity Review is a completion prerequisite, not an optional visual-quality check. A clear face, natural pose, clean background, missing watermark, or absent livestream UI proves only that the image is inspectable; it does not prove identity preservation. Compare the result with the Primary Identity Anchor first, decide whether it remains reliable identity evidence, and only after identity passes review hands, text, UI, wardrobe, background, and other module-owned details.
 
 A likeness complaint triggers this review but does not determine its outcome. Make both the result and Primary Identity Anchor available to the reviewing model in the same review context before classifying the defect; do not classify from the user's wording, the production prompt, or memory of an earlier image alone. If either image or the relevant region is unavailable, state the review boundary instead of choosing a recovery path.
 

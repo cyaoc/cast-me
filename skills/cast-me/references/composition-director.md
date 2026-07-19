@@ -96,6 +96,8 @@ Do not translate cinematic, premium, relaxed, or story-driven into color grading
 
 Shot direction owns scene framing, subject scale/body cutoff, camera position/distance/viewpoint, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship. It does not own pose/action, expression, gaze, mouth state, hands, or energy; route those to `styling-performance.md`. Any performance detail previewed here remains suggested until its own dimension is chosen.
 
+Before generation, verify that every Explicit wardrobe and body-cutoff/crop lock can coexist. A garment outside the crop may remain an off-frame lock, but it must not be described as visible. If the user requires it to appear, reopen the crop explicitly through the existing Physical Scene Coherence confirmation. Phrases such as `where the crop allows`, `as visible`, or `if possible` do not resolve an Explicit Lock conflict.
+
 If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If subject scale/body cutoff, camera distance, or angle is already locked, ask only the unresolved shot part, such as placement or background relationship.
 
 Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A/B/C to the current scene, locks, and Shown Option history through `scoped-option-refresh.md`.
@@ -181,6 +183,8 @@ Treat overall feeling, lighting/contrast, person-environment color relationship,
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
 For realistic portraits, professional headshots, social avatars, photographic editorials, and photographic commercial visuals, use Natural Retouch when defaults are accepted: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark and every Story Makeup lock from Styling, including intentional fatigue, weathering, injury, dirt, grooming, wet hair, cosmetic treatment, or breakdown. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
+
+Natural Retouch is not a second beauty-filter pass over a filtered, livestream, or screenshot reference. It must not enlarge or round the eyes, narrow the nose or jaw, fill the lips, erase pores or fine lines, or make the person appear younger. If a requested finish would change those structures, route it through the existing identity-risk Choice Gate.
 
 Treat explicit `no retouch`, preservation requests, named facial marks, and Story Makeup as locks. Keep global exposure, color, contrast, grain, sharpness, and environmental texture separately controllable. Use `styling-performance.md` to distinguish physical or depicted styling from finish treatment and route identity-changing treatment through the existing identity risk-choice gate. Selecting or refreshing First-Pass Finish never reopens Styling.
 
@@ -299,7 +303,7 @@ Omit irrelevant dimensions instead of inventing filler. Never keep placeholder r
 
 Consider these dimensions when relevant:
 
-- identity priority: same person, face anchor, no face redesign
+- identity priority: same person, face anchor, source-observed facial structure, no face redesign
 - reference transfer boundaries: identity anchors to preserve; temporary source state not to copy, such as pose, expression, face angle, crop scale, selfie perspective, screenshot artifacts, or lighting
 - reference coverage: which required face, body-scale, angle, and performance facts are verified, described, inferred, or missing
 - shot direction: portrait or director plan covering composition, camera distance/angle, subject blocking, and background relationship
@@ -330,7 +334,7 @@ Directorial intent: <first audience impression; decisive moment; what is happeni
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>
 Perspective contract: <underlying anatomy; projected proportions; which near/far enlargement and foreshortening are intentional; which random or camera-inconsistent deformation is forbidden>
-Subject identity/anatomy: <identity readability at the target face angle; angle-correct facial planes; valid world-space head, shoulder, torso, hip, limb, and joint structure>
+Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed facial structure; verified, described, inferred, or missing evidence; identity readability at the target face angle; angle-correct facial planes; valid world-space head, shoulder, torso, hip, limb, and joint structure>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include Character Read, makeup/hair/grooming, Story Makeup, important materials, and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
@@ -344,8 +348,10 @@ Constraints: <approximately three to eight observable failure modes most likely 
 
 Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task. Also verify Physical Scene Coherence across the resolved setting and time/weather, Shot and perspective, Performance and pose geometry, Styling and materials including their response to the environment and light, and lighting and finish.
 
+As part of that existing pre-generation check, verify crop visibility: every Explicit wardrobe/body-cutoff requirement is visible, intentionally off-frame, or resolved through a focused coherence confirmation. If resolving the conflict expands the crop beyond the reference, run the existing Reference Coverage check for the newly exposed body, angle, or performance evidence before generation.
+
 Resolve Suggested and Derived conflicts internally, preserving compatible parts and the closest coherent expression of the selected direction. Preserve an Explicit Lock over a conflicting non-explicit value. A later Explicit instruction that clearly reopens or replaces an earlier choice updates that earlier choice without another question.
 
 If two physically incompatible Explicit Locks must both otherwise remain and neither overrides the other, ask exactly one focused confirmation in the standard decision format: state the conflict concretely, recommend one coherent resolution, and offer only the direct coherent alternative rather than inventing another creative path. After the answer, preserve every unrelated lock, accepted risk, reference decision, and output requirement, then continue from the existing generation state without repeating resolved questions. Physical Scene Coherence supplements rather than replaces the existing identity, reference-coverage, anatomy, projection, pose, safety, exact-text, refresh, and targeted-revision gates.
 
-If the generated output is visible, first review First Read, hierarchy, composition, and intended-use readability at the target display size. Then inspect only relevant high-risk regions at the original available resolution: face identity and geometry; visible hands and prop interactions; and required exact text character by character. Skip absent regions. If the output or the resolution needed for a check is unavailable, mark that review unavailable or unverified instead of inferring it from the prompt.
+If the generated output is visible, perform Identity Review first. After identity passes, review First Read, hierarchy, composition, and intended-use readability at the target display size. Then inspect only relevant high-risk regions at the original available resolution: face identity and geometry; visible hands and prop interactions; and required exact text character by character. Skip absent regions. If the output or the resolution needed for a check is unavailable, mark that review unavailable or unverified instead of inferring it from the prompt.

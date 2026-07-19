@@ -38,6 +38,8 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Every recommendation inherits the current locks, accepted risks, and known identity or geometry risk. Prefer the valid path that adds no avoidable unresolved identity risk without hiding alternatives or silently weakening locked creative intent.
 - After the production prompt is assembled, check the resolved combination once for target-critical missing evidence or materially reduced Protected Identity Cue readability. Route only the current blocker through the existing Reference Coverage, identity-risk, or reattachment behavior; do not add a combined-risk gate, score, cue count, or risk budget.
 - Identity Review first decides whether the result remains reliable identity evidence. A coherent local defect may be revised with the result and Primary Identity Anchor as actual inputs; identity-wide drift requires a new generation from the Anchor and locked brief without the failed result.
+- When the Primary Identity Anchor visibly supports them, the final prompt describes concrete source-observed facial relationships before styling and finish. Generic identity phrases do not replace those details, and character references contribute only hair, makeup, wardrobe, accessories, props, and performance.
+- Before generation, every Explicit wardrobe/body-cutoff requirement must be visible, intentionally off-frame, or resolved through the existing Physical Scene Coherence confirmation. `Where the crop allows` is not a resolution; expanding the crop can trigger Reference Coverage for newly exposed evidence.
 - A likeness complaint triggers Identity Review but does not prove a local defect. Compare the visible result directly with the Primary Identity Anchor before choosing edit versus regeneration; when likeness repair is combined with a non-local pose, action, camera, crop, or whole-image geometry change, regenerate from reliable identity evidence instead of calling the operation surgical.
 - Automatic identity-wide regeneration requires visible, inspectable failure plus active-surface controls that can include the Primary Identity Anchor and exclude the failed result. Perform at most one new generation and one follow-up Identity Review; never claim review, correction, or completion when those controls or visual evidence are unavailable.
 - An accepted identity risk applies only to the named cue, occlusion, angle, transformation, or missing evidence. It neither repeats within that boundary nor waives a newly introduced or unrelated identity risk.
@@ -713,3 +715,39 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[person reference] Guarantee that the generated fantasy portrait will be an exact identity match.`
 
 **Expected:** Describe preservation as best effort using the Primary Identity Anchor, Protected Identity Cues, Reference Coverage, and Identity Review. Do not promise exact matching, biometric verification, a similarity score, or guaranteed recognizability; continue the ordinary creative flow without adding a guarantee gate.
+
+## 113. Source-observed identity details outrank generic styling
+
+**Input:** `[clear Primary Identity Anchor; visible source cues include a softly oval face with a rounded jaw transition, horizontally almond-shaped eyes, a soft nose bridge with retained tip and alar width, a relatively thin upper lip, and a mature age impression] Apply a new hairstyle and makeup while keeping me recognizable.`
+
+**Expected:** Put the source-observed facial relationships into the production prompt before styling and finish. Preserve them at the target angle without inventing measurements or asking the user to fill out an identity questionnaire. Do not rely only on `same person` or `preserve eye shape`, and do not let the hairstyle or makeup redraw the face.
+
+## 114. Named-character styling never supplies the face
+
+**Input:** `[clear Primary Identity Anchor] Create a live-action Xia He-inspired look with long pink hair, the costume, pink-red makeup, and restrained confidence.`
+
+**Expected:** Use the character only for hair, wardrobe, makeup color/application, and performance. Keep the Primary Identity Anchor authoritative for facial outline, eye shape and size, nose, lips, jaw, skin texture, age impression, and body identity. Do not create a generic idealized live-action cosplay face or encode a Xia He-specific identity exception.
+
+## 115. Makeup adjectives stay within styling scope
+
+**Input:** `[clear Primary Identity Anchor] Use polished cosplay makeup, defined eyes, fresh skin, and a soft pink-red lip while keeping my face.`
+
+**Expected:** Interpret `defined eyes` as clearer makeup around the existing eyes, `soft pink-red lip` as color without lip-geometry changes, and `fresh skin` as clean grooming and finish without age reduction or a second beauty-filter pass. Preserve eye shape, brow-eye relationship, nose, lips, jaw, pores, and age impression.
+
+## 116. Crop and wardrobe locks require coherence confirmation
+
+**Input:** `[upper-body Primary Identity Anchor] Use a chest-up composition; the high-waisted denim shorts must be visible; vertical 9:16.`
+
+**Expected:** Stop before generation at the existing Physical Scene Coherence confirmation. State that chest-up framing cannot show high-waisted shorts, and do not use `where the crop allows` to resolve it. Offer the direct crop/visibility resolutions while preserving every unrelated lock; do not silently expand to the waist or hips.
+
+## 117. Crop expansion exposes new reference coverage
+
+**Input:** `[face-and-chest-up Primary Identity Anchor] Expand the crop to show the waist and shorts after resolving the crop conflict.`
+
+**Expected:** Preserve verified face, neck, shoulder, chest, and visible upper-torso relationships. Mark the newly exposed waist, hips, legs, and garment continuation as missing or inferred, then use the existing Reference Coverage Choice Gate and an exact Inference Boundary before generation. Do not copy the source crop's head-to-body ratio or treat the expanded body as verified.
+
+## 118. Clean presentation does not pass Identity Review
+
+**Input:** `[visible result and Primary Identity Anchor] The face is clear, the pose is natural, there is no watermark or livestream UI, but the face contour, eye relationship, nose, lips, skin texture, and age impression all drifted. Review and deliver the result.`
+
+**Expected:** Compare the result with the Primary Identity Anchor first, report the concrete independent cue drift, and classify the result as identity-wide drift and incomplete. Do not declare it final because the face is visible and the presentation is clean. Exclude the failed result from identity, face, pose, body, and composition evidence; use the existing bounded recovery or reattachment path according to active-surface capability.

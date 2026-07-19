@@ -24,6 +24,8 @@ Keep physical or depicted makeup, hair, grooming, wardrobe, and accessories in S
 - Bold color, texture, localized treatment, complexion cleanup, or grooming polish may proceed without another gate while Protected Identity Cues remain unchanged and readable.
 - Natural-looking contour, grooming, hair, coverage, or other treatment requires the existing identity risk-choice gate when it would replace, redraw, or obscure Protected Identity Cues. The same gate applies to requested changes in face or body structure, intrinsic features, skin tone, ethnicity impression, body shape, hairline, distinctive marks, or apparent age. Do not add a beauty-specific workflow or classify risk by makeup intensity.
 
+Words such as `defined eyes`, `fresh skin`, `polished cosplay makeup`, or `soft pink-red lips` must be scoped to makeup application, color, grooming, or finish. They do not authorize changing eye shape or size, brow-eye spacing, nose structure, lip geometry, skin texture, or age impression. Apply makeup around the existing Protected Identity Cues.
+
 ## Category Routing
 
 When the requested image has a clear genre, route styling and performance through the closest category instead of using generic fashion or cinematic language:
@@ -146,6 +148,8 @@ Use reliable visual sources first: official character pages, publisher/studio/ga
 - signature accessories, symbols, props, weapons, tools, or motifs
 - makeup, facial styling, posture, and recognizable attitude
 - palette, lighting genre, world context, and details that must not be added
+
+For named-character styling, keep the transfer boundary explicit. Character references may provide hair color/shape, wardrobe silhouette and materials, makeup colors and application, accessories, props, and performance. They must not provide facial outline, eye shape or size, eyelid structure, eye spacing, nose structure, lip geometry, skin tone, age impression, body identity, or a generic idealized live-action cosplay face. A character's recognizable attitude means performance, posture, gaze, or expression rather than a replacement face.
 
 If the character, uniform, role, or costume has multiple major variants, ask the user to choose the version with the standard decision format before generation. Do not rely on memory for niche, current, or visually complex characters. If online research is unavailable or inconclusive, ask the user for reference images or a styling brief instead of guessing. If web research was used, keep source links available for the response.
 

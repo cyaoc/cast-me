@@ -170,6 +170,8 @@ Before generation, load the mandatory final-prompt sections and every active con
 
 Complete means all production-critical choices are resolved for the chosen output, not that every possible field is present. Do not use a short generic summary. Do not replace the production prompt with a compact config block. Omit irrelevant dimensions instead of inventing filler.
 
+Before generation, the prompt must contain concrete source-observed identity details whenever the Primary Identity Anchor visibly supports them. Put those details before named-character styling, makeup, lighting, and finish instructions. Generic phrases such as `same person` or `preserve eye shape` do not replace a visible description of the relevant facial relationships. If the crop or styling choice conflicts with an Explicit wardrobe or composition lock, resolve the existing Physical Scene Coherence confirmation before calling the image tool; never let `where the crop allows` silently choose a priority.
+
 After the production prompt is assembled and immediately before generation, evaluate the resolved combination once: whether it materially reduces the readability of target-critical Protected Identity Cues or depends on target-critical Reference Coverage that remains missing. This is an internal check, not a new stage, score, cue count, risk budget, or user-visible gate.
 
 Route only the current blocker through existing behavior: reattach an unavailable Primary Identity Anchor, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate after the focused answer, and do not repeat an accepted risk inside its exact boundary.
@@ -187,6 +189,8 @@ Generation and review are complete only when:
 ## Step 4: Review or Revise
 
 If the generated output is visible in the current conversation, perform Identity Review first, then review only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
+
+Identity Review is a completion prerequisite. A clear face, natural pose, clean background, absent watermark, or absent livestream UI does not establish identity preservation. Compare the result directly with the Primary Identity Anchor first, report concrete Protected Identity Cue drift, and classify whether the result remains reliable identity evidence. Review other visual-quality areas only after identity passes; an identity-wide or unresolved result is incomplete and must not be announced as final.
 
 Follow the local-defect and identity-wide recovery paths in `identity-anchor.md`. Invoke a recovery path only when the active generation surface exposes and executes its required actual-image controls; never infer those controls from prompt wording.
 
