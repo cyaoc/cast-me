@@ -134,11 +134,9 @@ Keep ownership clear while routing:
 
 Prefer one owned dimension per question. Combine across modules only when the visible choice is genuinely inseparable, such as a full-body walking frame or a decisive moment defined by a specific action. Name every field the option resolves, record direction-supplied values as `locked: derived`, and skip them later; the dimension or override the user directly chooses is `locked: explicit`. Never silently lock performance from shot text or lock shot, styling, performance, or First-Pass Finish from a preview. Keep `pose/action + expression + gaze`, `lighting/color/retouch/finish`, and `canvas aspect + safe areas + whether text is required` as normal coupled groups. Ask the avoid-list only for user exclusions, real theme ambiguity, or a likely theme-breaking element that output-adaptive constraints cannot safely handle.
 
-For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially. Do not proceed until the user chooses, supplies their own direction, accepts recommended defaults, or explicitly asks the assistant to decide.
+For all output types, collect enough brief detail before generation to support a detailed production prompt. If multiple important choices are missing, ask them serially.
 
 If a required focused section flags missing coverage or a conflict, follow its one risk-choice gate unless the user already accepted that specific risk. Inherit every locked decision and never restart, reopen, or silently downgrade the brief.
-
-Then wait after each question. Generate only after focused gates are resolved and ordinary choices are resolved, defaulted, overridden, or delegated to the assistant.
 
 ## Safety Handling
 
@@ -164,19 +162,23 @@ D) Custom - describe another compliant framing that stays non-sexual, age-approp
 Reply with A, or reply with "D + your compliant framing".
 ```
 
+## CHECKPOINT: Ready to Generate
+
+This is an internal execution checkpoint, not a user-visible stage, score, or additional gate.
+
+**STOP:** Do not call the image tool until every item below is true:
+
+- ordinary choices are resolved, defaulted, overridden, or delegated, and every focused coverage, identity-risk, safety, exact-text, or Physical Scene Coherence gate is resolved; never let `where the crop allows` silently choose between conflicting Explicit Locks
+- the Primary Identity Anchor, the image being edited when applicable, and every person reference required by Reference Coverage are available to the active image surface as actual image inputs; text does not substitute for them
+- the mandatory final-prompt sections and every active conditional section from the routing table are loaded
+- the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description
+- one final internal check confirms that the resolved combination neither materially reduces target-critical Protected Identity Cue readability nor depends on target-critical Reference Coverage that remains missing
+
+If any item fails, route only the current blocker through existing behavior: reattach an unavailable Primary Identity Anchor, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate this checkpoint after the focused answer, and do not repeat an accepted risk inside its exact boundary.
+
 ## Step 3: Generate
 
-Before generation, load the mandatory final-prompt sections and every active conditional section from the routing table. Build a complete, concrete production prompt from their results.
-
-Complete means all production-critical choices are resolved for the chosen output, not that every possible field is present. Do not use a short generic summary. Do not replace the production prompt with a compact config block. Omit irrelevant dimensions instead of inventing filler.
-
-Before generation, the prompt must contain concrete source-observed identity details whenever the Primary Identity Anchor visibly supports them. Put those details before named-character styling, makeup, lighting, and finish instructions. Generic phrases such as `same person` or `preserve eye shape` do not replace a visible description of the relevant facial relationships. If the crop or styling choice conflicts with an Explicit wardrobe or composition lock, resolve the existing Physical Scene Coherence confirmation before calling the image tool; never let `where the crop allows` silently choose a priority.
-
-After the production prompt is assembled and immediately before generation, evaluate the resolved combination once: whether it materially reduces the readability of target-critical Protected Identity Cues or depends on target-critical Reference Coverage that remains missing. This is an internal check, not a new stage, score, cue count, risk budget, or user-visible gate.
-
-Route only the current blocker through existing behavior: reattach an unavailable Primary Identity Anchor, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate after the focused answer, and do not repeat an accepted risk inside its exact boundary.
-
-Include the image being edited and every person reference required by the resolved Reference Coverage as actual image inputs; text never substitutes for a required identity image. If one is unavailable, follow the focused reattachment rule in `identity-anchor.md`.
+After the checkpoint passes, use the assembled production prompt. Do not replace it with a short generic summary or compact config block.
 
 Generation and review are complete only when:
 
