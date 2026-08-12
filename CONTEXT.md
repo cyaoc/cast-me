@@ -8,6 +8,10 @@ This context describes how the skill preserves a person's identity while guiding
 The actual person reference image that authoritatively anchors face identity for generation or editing. Supporting images and text may add evidence but never replace or override it.
 _Avoid_: Primary identity reference, text-only identity description
 
+**Character Sheet**:
+The locked drawn design of a person — proportions, face construction, hair, eye rendering, wardrobe, palette, and line and shading treatment — produced once and supplied as an image input to every independently generated application of that character. It governs how the person is drawn and never serves as identity evidence.
+_Avoid_: Character anchor, identity anchor, style reference
+
 **Protected Identity Cue**:
 A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Which characteristics qualify resolves against the request's Medium Contract rather than a fixed catalog, so a characteristic the selected medium cannot express is not protected for that request, while one that carries recognition in its place is weighted more heavily. A cue is structural when it is a bone-structure or facial-geometry relationship; that classification is fixed and medium-independent, and only a cue's state under the Medium Contract varies by request. Risk depends on changing these cues, not on whether styling is labeled light or heavy; accepting a change to one cue does not waive unrelated identity cues.
 _Avoid_: Makeup intensity, beauty feature

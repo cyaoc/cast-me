@@ -120,6 +120,14 @@ Before writing the final production prompt, inspect the Primary Identity Anchor 
 
 When editing an existing output, preserve layout, crop, camera angle, body pose, hand placement, text, product placement, and background unless the user asked to change one of them. If exact text exists in the image and the user did not request replacement, say to preserve the original text verbatim.
 
+## Character Sheet
+
+When a request explicitly needs a reusable drawn character or at least two images of the same drawn character, generate exactly one Character Sheet before any application. Generate it from the Primary Identity Anchor as an actual, explicitly labeled image input. Do not introduce a Character Sheet for an unrelated one-off drawn image.
+
+Treat the Character Sheet as a locked produced artifact, never as identity evidence. For every application, supply and explicitly label both the Primary Identity Anchor and Character Sheet as actual image inputs, and state their roles: the Anchor governs who the person is; the sheet governs how that person is drawn. The complete fixed root for each application includes both artifacts and any required reliable supporting person reference.
+
+Regenerate a failing Character Sheet from its own complete fixed root and locked sheet brief, excluding the failed sheet; never edit it because every application reuses it. Regenerate a failing application from its complete fixed root and locked application brief, excluding the failed application; the generated sheet among its inputs disqualifies surgical editing, including as the automatic correction operation. When the user explicitly insists on a local application edit, recommend regeneration but preserve the direct-edit boundary: use only the application plus the Primary Identity Anchor as actual image inputs, without adding the Character Sheet again.
+
 ## Reference Coverage
 
 Treat visible facial styling, grooming, and hair whose makeup status or source is unknown as Reference Appearance. It is valid evidence for the visible person, but it does not verify an unseen bare-face appearance. Unknown makeup alone is not an Appearance Coverage gap, and final prompts must describe the target transformation without claiming makeup removal to a known natural baseline.

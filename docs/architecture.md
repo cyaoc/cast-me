@@ -1,7 +1,7 @@
 # CastMe 架构、职责与端到端流程地图
 
 > 文档类型：当前架构（As-Is）与优化导航（To-Be Compass）
-> 基线：`main` 分支，提交 `f4caa4b`，2026-07-20
+> 基线：`feat/anime-adaptation` 分支，2026-08-12
 > 阅读顺序：系统与模块 → 总流程 → 端到端场景 → 路由参考 → Golden 覆盖 → 优化方向
 
 ## 0. 系统本质
@@ -22,8 +22,8 @@ flowchart LR
     subgraph PKG["运行时包：skills/cast-me"]
         META["agents/openai.yaml<br/>发现与默认入口"]
         K["SKILL.md<br/>协调、路由、状态、生命周期"]
-        I["Identity Anchor<br/>身份与证据"]
-        C["Composition Director<br/>方向、镜头、成片与提示词"]
+        I["Identity Anchor<br/>身份、证据与固定根"]
+        C["Composition Director<br/>方向、镜头、Character Sheet 与提示词"]
         S["Styling & Performance<br/>造型与表演"]
         R["Scoped Option Refresh<br/>局部刷新与新鲜度"]
         META --> K
@@ -66,10 +66,10 @@ flowchart TB
     K["协调 Module：SKILL.md"]
 
     subgraph ID["Identity Anchor"]
-        I1["Primary Identity Anchor"]
+        I1["Primary Identity Anchor<br/>Character Sheet 角色边界"]
         I2["Reference Transfer / Coverage"]
         I3["Protected Identity Cue / Medium Contract<br/>Visible Body Evidence"]
-        I4["Identity Review / Recovery"]
+        I4["Identity Review / Fixed-root Recovery"]
     end
 
     subgraph COMP["Composition Director"]
@@ -108,8 +108,8 @@ flowchart TB
 | Module | Interface 输入 | 拥有 | 明确不拥有 | 输出 |
 | --- | --- | --- | --- | --- |
 | `SKILL.md` | 用户请求、参考图、对话状态、宿主能力 | 路由、Gate 格式、状态、生命周期、安全异常、完成条件 | 各视觉领域的具体生产知识 | 下一道问题、生产提示词、调用或停止说明 |
-| `identity-anchor.md` | 人物图、已锁媒介/请求变形、目标角度/身体/动作、可见结果 | 身份锚、证据、Medium Contract、Coverage、Inference Boundary、Identity Review、Uneven Stylization 与恢复分类 | 具体镜头、造型、表演选项 | 身份约束、媒介通道记录、证据状态、风险 Gate、恢复路径 |
-| `composition-director.md` | 用途、方向、画布、镜头、成片要求 | First Read、方向、镜头、透视、成片质量、Finish、布局、文字、提示词结构 | 妆发服装与表演内容 | 构图与成片贡献、输出合约、提示词骨架 |
+| `identity-anchor.md` | 人物图、已锁媒介/请求变形、目标角度/身体/动作、可见结果 | 身份锚、证据、Medium Contract、Character Sheet 角色、Coverage、Inference Boundary、Identity Review 与固定根恢复 | 具体镜头、造型、表演选项 | 身份约束、媒介通道记录、证据状态、风险 Gate、实际输入与恢复路径 |
+| `composition-director.md` | 用途、方向、画布、镜头、成片要求 | First Read、方向、镜头、透视、成片质量、Character Sheet 设计锁、Finish、布局、文字、提示词结构 | 妆发服装与表演内容 | 构图与成片贡献、输出合约、提示词骨架 |
 | `styling-performance.md` | 角色/故事、妆发服装、道具、动作 | Styling Direction、Character Read、Story Makeup、Look Continuity、表演、姿态、视觉研究 | 裁切、相机位置、背景空间、身份证据本身 | 造型表演贡献、研究锚点、姿态链 |
 | `scoped-option-refresh.md` | 更多、换一批、换某项、你决定 | 刷新目标、最近 Gate、分区历史、新鲜度、委派、耗尽 | 目标区域的具体候选内容 | 新批次、内部选项或重开一个限制锁的 Gate |
 | 宿主图像 Adapter | 提示词、实际图像、可用控制 | 执行生成或编辑 | CastMe 领域决策与完成判断 | 图像及可验证的能力、尺寸信息 |
@@ -123,11 +123,12 @@ flowchart TB
 | 安全 | `SKILL.md` 异常分支 | 不是普通创意维度 |
 | Physical Scene Coherence | Composition 内部检查 | 不是新的用户 Gate |
 | Medium Contract | Identity Anchor + 既有非摄影 Output Recipe | 不增加问题、Gate、Module、流程阶段或运行时组件 |
+| Character Sheet | Identity Anchor 的实际输入/固定根规则 + Composition 的设计与应用提示词 | 是普通锁定产物，不增加 Module、Agent、Gate 或持久角色库；无连续性要求的单张绘图不使用 |
 | Identity Review | Identity Anchor | 身份通过与恢复分类由同一所有者判断 |
 | Look Continuity | Styling，仅系列任务 | 单张图不创建连续性状态 |
 | 质量与尺寸 | Composition + 宿主事实 | 不添加质量问卷，不声称不可验证的控制 |
 
-这些边界对应现有 ADR：身份优先于未确认的故事变换；妆容留在 Styling；风险由 Protected Identity Cue 是否被替换或遮挡触发；Character Read 是创意意图；Story Makeup 必须穿过 Finish；优先加深现有 Styling 和 Identity Module；身份约束通过已锁媒介的 Medium Contract 解析，而不是把摄影规则放宽成非摄影豁免。
+这些边界对应现有 ADR：身份优先于未确认的故事变换；妆容留在 Styling；风险由 Protected Identity Cue 是否被替换或遮挡触发；Character Read 是创意意图；Story Makeup 必须穿过 Finish；优先加深现有 Styling 和 Identity Module；身份约束通过已锁媒介的 Medium Contract 解析；复用绘制角色先生成一个锁定 Character Sheet，再让应用从 Sheet 与 Anchor 独立分支。
 
 ## 2. 共享决策状态与用户 Interface
 
@@ -144,6 +145,7 @@ flowchart LR
     STATE --- RISK["已接受风险<br/>只覆盖已命名范围"]
     STATE --- COVER["Reference Coverage<br/>verified / described / inferred / missing"]
     STATE --- MEDIUM["Medium Contract<br/>每个 cue = open / transferred / closed"]
+    STATE --- ROOT["Fixed root<br/>Anchor + 必需参考 + 锁定产物"]
     STATE --- HIST["分区 Shown Option<br/>最近 refreshable Gate"]
 
     STATE --> ROUTE["选择下一位所有者"]
@@ -162,6 +164,7 @@ flowchart LR
 | `explicit` | 用户明确重开该字段 | `unresolved` |
 | 已锁媒介与请求变形 | Creative Direction 锁定 | 解析并记录一次请求级 Medium Contract |
 | 已有 Medium Contract | Style / Scoped Refresh 明确重开媒介或请求变形 | 重新解析；只有 closed 集合改变才再次披露 |
+| 可复用绘制角色或同一绘制角色至少两张图 | 生成前 | 先从 Anchor 生成并锁定一个 Character Sheet；每个应用的固定根加入该 Sheet |
 
 `locked: explicit` 始终优先于冲突的非显式值。Medium Contract 只读取已锁媒介与用户明确请求的变形；灯光、构图、遮挡、分辨率和其他场景条件不参与解析。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
 
@@ -194,7 +197,7 @@ flowchart TD
     FOCUSED --> P3
     P4 -- 否 --> P5["P5 按稳定标题加载活跃所有者章节"]
     P5 --> P6["P6 合成生产提示词<br/>身份在前；检查 Physical Scene Coherence 和组合风险"]
-    P6 --> P7["P7 实际输入与宿主能力<br/>附上必需人物图；只使用真实控制"]
+    P6 --> P7["P7 实际输入与宿主能力<br/>附上完整固定根；只使用真实控制"]
     P7 --> P8["P8 生成或编辑"]
     P8 --> P9{"P9 Identity Review 是否通过？"}
     P9 -- 是 --> P10{"P10 活跃所有者审查是否通过？"}
@@ -207,12 +210,12 @@ flowchart TD
     ONCE --> P9
 ```
 
-Medium Contract 不增加 P 编号：Identity Anchor 在 P3 的创意方向锁定媒介时解析并记录一次，在 P6 前仅当 photographic default 所保护的通道被关闭时显示一条非提问式说明；P6 的生产提示词不包含 closed-channel 陈述，P9 的 Identity Review 读取同一记录，重生成也不重新解析。
+Medium Contract 不增加 P 编号：Identity Anchor 在 P3 的创意方向锁定媒介时解析并记录一次，在 P6 前仅当 photographic default 所保护的通道被关闭时显示一条非提问式说明；P6 的生产提示词不包含 closed-channel 陈述，P9 的 Identity Review 读取同一记录，重生成也不重新解析。Character Sheet 也不增加 P 编号或新 Module：它只在连续性条件命中时把 P6–P8 分成先生成 Sheet、再从 Anchor + Sheet 独立生成应用的两段。
 
 ### 完成条件
 
 - 所有必需聚焦 Gate 已解决。
-- 每张必需人物参考都作为实际图像输入传入。
+- 每张必需人物参考和当前操作需要的锁定产物都作为实际图像输入传入。
 - 用户锁定意图没有被静默改变。
 - 必要的 closed-channel 说明已在生成前显示，且没有进入生产提示词。
 - 可见且可检查的结果通过 Identity Review。
@@ -377,37 +380,45 @@ flowchart TD
     EVOLVE --> OTHER["分别锁定其他系列不变量<br/>道具状态、光向、地点地理、色彩处理"]
     OTHER --> EACH["P3/P4<br/>对每张图单独解决决定性时刻、Shot、Performance 和必要 Coverage"]
     EACH --> P["P5/P6<br/>每张图生成完整提示词；共同锁 + 当前图变化"]
-    P --> I["P7/P8<br/>每次都实际传入 Anchor 和当前需要的可靠参考并生成"]
+    P --> DRAWN{"可复用绘制角色<br/>或同一绘制角色至少两张图？"}
+    DRAWN -- 否 --> I["P7/P8<br/>每次传入完整固定根并独立生成"]
+    DRAWN -- 是 --> SHEET["P7/P8 在任何应用前<br/>从 Anchor 生成一次干净背景 Character Sheet<br/>锁定并加入应用固定根"]
+    SHEET --> A1["应用 1<br/>Anchor + Sheet + 应用 1 完整 Brief"]
+    SHEET --> A2["应用 2<br/>Anchor + Sheet + 应用 2 完整 Brief"]
+    SHEET -. 同一固定根 .-> AN["应用 N（若有）<br/>Anchor + Sheet + 当前应用完整 Brief"]
     I --> R["P9/P10<br/>每张先做 Identity Review，再审当前图与跨图连续性"]
-    R --> MORE{"还有下一张？"}
-    MORE -- 是 --> EACH
-    MORE -- 否 --> O["P11<br/>整组通过才完成"]
+    A1 --> R
+    A2 --> R
+    AN --> R
+    R --> O["P11<br/>整组通过才完成"]
 ```
 
-单张图片不创建 Look Continuity；连续性表示可信的状态演化，不要求每个时刻视觉条件完全相同。
+Character Sheet 在干净背景上锁定比例、脸部构造、头发、眼睛画法、服装、色板、线条和阴影处理。每个应用都明确标注 Anchor 与 Sheet：Anchor 决定是谁，Sheet 决定如何画且绝不提供身份证据；提示词禁止重新设计角色。应用 1、应用 2 和任何后续应用从同一固定根独立分支，彼此不作输入，并分别保留场景、表情、视线、姿态、相机和输出锁。无连续性要求的单张绘图不创建 Sheet；单张图片也不创建 Look Continuity。
 
 ### F8. 局部修复、身份漂移与重生成
 
 ```mermaid
 flowchart TD
-    U["输入<br/>可见结果 + Primary Identity Anchor + 修改请求或质量失败"] --> AVAILABLE{"P1/P9<br/>结果、Anchor 和相关区域是否同时可见可查？"}
+    U["输入<br/>可见结果 + 完整固定根 + 修改请求或质量失败"] --> AVAILABLE{"P1/P9<br/>结果、Anchor 和相关区域是否同时可见可查？"}
     AVAILABLE -- 否 --> B["P11<br/>说明审查边界，不声称通过、修复或完成"]
     AVAILABLE -- 是 --> IR{"Identity Review 是否通过？"}
     IR -- 是 --> OWNER["P10<br/>只审查参与过的其他所有者"]
     OWNER --> PASS{"全部通过？"}
     PASS -- 是 --> O["P11 最终结果"]
-    PASS -- 否 --> OWNERSCOPE{"失败能否表达为一个连贯窄修改？"}
-    OWNERSCOPE -- 是 --> LOCAL["按失败项所有者执行窄修改<br/>只改该问题并附上所需实际参考"]
-    OWNERSCOPE -- 否 --> WIDE
-    IR -- 否 --> RELIABLE{"不是 Uneven Stylization，且失败结果仍是可靠身份基线，且总修改仅一个连贯局部单元？"}
-    RELIABLE -- 是 --> EDIT["Surgical Edit<br/>输入 = 失败结果 + Anchor；只改该单元"]
-    RELIABLE -- 否 --> WIDE["身份整体漂移、Structural Scale Failure、Uneven Stylization<br/>或同时要求姿态、相机、裁切等非局部变化"]
-    WIDE --> CAP{"宿主能否包含 Anchor、排除失败图并启动新生成？"}
+    PASS -- 否 --> SCOPE
+    IR -- 否 --> SCOPE{"结果是否可靠、缺陷是否为一个连贯局部单元？"}
+    SCOPE -- 否 --> WIDE["身份整体漂移、Structural Scale Failure、Uneven Stylization<br/>或同时要求姿态、相机、裁切等非局部变化"]
+    SCOPE -- 是 --> DIRECT{"用户是否明确坚持编辑这个结果<br/>且它不是下游复用的锁定产物？"}
+    DIRECT -- 是 --> EDIT["Direct Edit<br/>输入 = 结果 + Anchor；不重复加入锁定产物"]
+    DIRECT -- 否 --> FRESH{"当前 exchange 生成、可见、无 generated input<br/>且不是复用产物？"}
+    FRESH -- 是 --> EDIT
+    FRESH -- 否 --> WIDE
+    WIDE --> CAP{"宿主能否包含完整固定根、排除失败图并启动新生成？"}
     CAP -- 否 --> REATTACH["保留所有锁，只请求重附 Anchor"]
-    CAP -- 是 --> REGEN["从 Anchor + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
-    LOCAL --> ONCE["最多一次自动修正"]
+    CAP -- 是 --> REGEN["从完整固定根 + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
     EDIT --> ONCE
     REGEN --> ONCE
+    ONCE["最多一次自动修正"]
     ONCE --> AGAIN["再做一次 Identity Review"]
     AGAIN --> END{"通过？"}
     END -- 是 --> OWNER
@@ -415,6 +426,8 @@ flowchart TD
 ```
 
 Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或修正理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。
+
+固定根由 Primary Identity Anchor、必需可靠人物参考和每张图都复用的锁定产物组成，修正时不随失败结果增长。Character Sheet 是应用固定根中的锁定产物；失败应用必须从 Anchor + Sheet + 完整应用 Brief 重生成，失败 Sheet 必须从它自己的固定根 + Sheet Brief 重生成，两者都排除失败图。用户明确坚持局部编辑某个应用时，先建议重生成，但仍允许只以该应用 + Anchor 直接编辑，不再次加入 Sheet；复用的 Sheet 本身始终不可编辑。
 
 Uneven Stylization 即使人物仍可识别且身份通道无漂移也让 Identity Review 失败，并且从不走 Surgical Edit。宿主能力允许时，用同一次有上限的新生成从 Primary Identity Anchor 和完整锁定 Brief 同时处理它与可能并存的身份漂移；只附必需且可靠的支持参考，失败图不进入任何图像输入或身份、脸、姿态、身体、构图等证据角色。Composition 的非摄影配方为皮肤、头发、眼睛、服装、灯光和背景逐项正面重述所选媒介，不描述失败图哪些表面仍是摄影处理，也不用负面指令表达其消失。
 
@@ -455,6 +468,7 @@ flowchart TD
 | --- | --- | --- |
 | 普通人物图生成 | Identity：`Priority`、`Reference Transfer`、`Reference Coverage` | 无 |
 | 非摄影媒介或明确请求变形 | Identity：`Reference Transfer` 中的 Medium Contract、`Identity Prompt Constraints`；Composition：对应 `Output Recipes` | 使用 Identity 已解析的请求级记录；Composition 不重新解析，也不把 closed-channel 说明写入提示词；Uneven Stylization 重生成时为每个可见表面写正面媒介语言 |
+| 可复用绘制角色或同一绘制角色至少两张图 | Identity：`Character Sheet`；Composition：`Character Sheet Applications` | Sheet 先于任何应用；应用实际输入都标注 Anchor 与 Sheet，并彼此独立 |
 | 写最终提示词前 | Identity：`Identity Prompt Constraints`；Composition：`Final-Asset Quality`、`First-Pass Finish`、`Prompt Structure` | 所有当前活跃所有者章节 |
 | 创意方向、First Read、决定性时刻 | Composition：`Creative Direction`、`Directorial Intent and Decisive Moment` | 需要选项时加 `Direction Atlas and Freshness`；刷新时加 `Style Refresh` |
 | 镜头、透视、相机、投影 | Composition：`Shot Direction` | 按需加 `Perspective Intent`、`Camera and Capture Plan`；侧脸/动作/强透视加身份与姿态章节 |
@@ -471,7 +485,7 @@ flowchart TD
 ### 提示词合成顺序
 
 1. 用途、画布、布局。
-2. Primary Identity Anchor、源图可见身份结构、Reference Transfer、Coverage，以及 Medium Contract 留下的 open / transferred 通道；closed-channel 记录不进入提示词。
+2. Primary Identity Anchor、源图可见身份结构、Reference Transfer、Coverage，以及 Medium Contract 留下的 open / transferred 通道；应用随后标注 Character Sheet 的绘制设计角色，绝不把它当身份证据；closed-channel 记录不进入提示词。
 3. 已锁意图、First Read、创意方向和决定性时刻。
 4. Shot、相机/透视、世界空间人体与投影比例。
 5. Styling、Performance、Props、Pose Geometry。
@@ -496,7 +510,7 @@ flowchart TD
 | 需要精确尺寸 | 实际检查输出像素后才能声称 |
 | 结果不可见或分辨率不足 | 对相应审查标记 unavailable / unverified |
 
-## 6. Golden 1–127 覆盖矩阵
+## 6. Golden 1–138 覆盖矩阵
 
 每个编号在下表恰好出现一次，表示它的主要端到端流程族；Shared Checks 仍横跨全部流程。场景可以触及多个 Module，但不需要复制多张完整图。
 
@@ -545,6 +559,11 @@ flowchart TD
 | 123-124 | F1 | 请求变形与年龄解释测试、媒介表面处理 |
 | 125-126 | F8 | structural-open 边界、transferred 识别与缩略图 silhouette 下限 |
 | 127 | F8 | Uneven Stylization 独立失败并从 Anchor 重生成，不做 Surgical Edit |
+| 128-131 | F8 | 固定根重生成、generated input 新鲜度、复用产物与未知 provenance |
+| 132 | F7 | 多轮修改和系列图片不增长 generated-input chain |
+| 133-136 | F8 | 清理请求与自动修正沿完整固定根重生成 |
+| 137 | F7 | 一个 Character Sheet 锚定两个独立且不同的应用 |
+| 138 | F8 | 应用、Character Sheet 与用户坚持局部编辑的固定根恢复边界 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -566,15 +585,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 3,976 词 |
-| `composition-director.md` | 6,038 词 |
-| `identity-anchor.md` | 4,961 词 |
+| `SKILL.md` | 4,043 词 |
+| `composition-director.md` | 6,240 词 |
+| `identity-anchor.md` | 5,657 词 |
 | `styling-performance.md` | 2,656 词 |
 | `scoped-option-refresh.md` | 788 词 |
-| 运行时 Markdown 合计 | 18,419 词 |
-| `CONTEXT.md` | 37 个规范术语，1,804 词 |
-| `docs/adr/` | 7 条 ADR |
-| `golden-conversations.md` | 127 个场景，13,053 词 |
+| 运行时 Markdown 合计 | 19,384 词 |
+| `CONTEXT.md` | 38 个规范术语，1,864 词 |
+| `docs/adr/` | 8 条 ADR |
+| `golden-conversations.md` | 138 个场景，15,033 词 |
 
 ### 优化优先级
 

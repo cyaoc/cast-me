@@ -297,6 +297,12 @@ Treat layout structure, subject/text-safe placement, safe areas/readability, and
 
 Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 
+### Character Sheet Applications
+
+Build the Character Sheet on a clean background and lock its proportions, face construction, hair, eye rendering, wardrobe, palette, line treatment, and shading treatment. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
+
+Generate every application independently from the same Primary Identity Anchor and Character Sheet. Never pass one application into another or otherwise grow the image-input chain. Preserve each application's own scene, expression, gaze, pose, camera, and output locks; the sheet controls the drawn design, not the application's staging or performance.
+
 For a requested series, generate each image from the request's complete fixed root and its locked brief rather than from the preceding output. Use the written Look Continuity to lock the base makeup, hair, wardrobe, and accessories, then record explicit per-image story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, and costume damage. Separately preserve existing series invariants such as prop state, light direction, location geography, and color treatment. Continuity means coherent evolution, not identical condition; do not add these contracts to a single image.
 
 ## Prompt Structure
