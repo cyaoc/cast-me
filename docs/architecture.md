@@ -68,7 +68,7 @@ flowchart TB
     subgraph ID["Identity Anchor"]
         I1["Primary Identity Anchor"]
         I2["Reference Transfer / Coverage"]
-        I3["Protected Identity Cue / Visible Body Evidence"]
+        I3["Protected Identity Cue / Medium Contract<br/>Visible Body Evidence"]
         I4["Identity Review / Recovery"]
     end
 
@@ -108,7 +108,7 @@ flowchart TB
 | Module | Interface 输入 | 拥有 | 明确不拥有 | 输出 |
 | --- | --- | --- | --- | --- |
 | `SKILL.md` | 用户请求、参考图、对话状态、宿主能力 | 路由、Gate 格式、状态、生命周期、安全异常、完成条件 | 各视觉领域的具体生产知识 | 下一道问题、生产提示词、调用或停止说明 |
-| `identity-anchor.md` | 人物图、目标角度/身体/动作、可见结果 | 身份锚、证据、Coverage、Inference Boundary、Identity Review、恢复分类 | 具体镜头、造型、表演选项 | 身份约束、证据状态、风险 Gate、恢复路径 |
+| `identity-anchor.md` | 人物图、已锁媒介/请求变形、目标角度/身体/动作、可见结果 | 身份锚、证据、Medium Contract、Coverage、Inference Boundary、Identity Review、恢复分类 | 具体镜头、造型、表演选项 | 身份约束、媒介通道记录、证据状态、风险 Gate、恢复路径 |
 | `composition-director.md` | 用途、方向、画布、镜头、成片要求 | First Read、方向、镜头、透视、成片质量、Finish、布局、文字、提示词结构 | 妆发服装与表演内容 | 构图与成片贡献、输出合约、提示词骨架 |
 | `styling-performance.md` | 角色/故事、妆发服装、道具、动作 | Styling Direction、Character Read、Story Makeup、Look Continuity、表演、姿态、视觉研究 | 裁切、相机位置、背景空间、身份证据本身 | 造型表演贡献、研究锚点、姿态链 |
 | `scoped-option-refresh.md` | 更多、换一批、换某项、你决定 | 刷新目标、最近 Gate、分区历史、新鲜度、委派、耗尽 | 目标区域的具体候选内容 | 新批次、内部选项或重开一个限制锁的 Gate |
@@ -122,11 +122,12 @@ flowchart TB
 | 润饰和成片 | `First-Pass Finish` | 第一次生成时完成，不建立强制后处理流程 |
 | 安全 | `SKILL.md` 异常分支 | 不是普通创意维度 |
 | Physical Scene Coherence | Composition 内部检查 | 不是新的用户 Gate |
+| Medium Contract | Identity Anchor + 既有非摄影 Output Recipe | 不增加问题、Gate、Module、流程阶段或运行时组件 |
 | Identity Review | Identity Anchor | 身份通过与恢复分类由同一所有者判断 |
 | Look Continuity | Styling，仅系列任务 | 单张图不创建连续性状态 |
 | 质量与尺寸 | Composition + 宿主事实 | 不添加质量问卷，不声称不可验证的控制 |
 
-这些边界对应现有 ADR：身份优先于未确认的故事变换；妆容留在 Styling；风险由 Protected Identity Cue 是否被替换或遮挡触发；Character Read 是创意意图；Story Makeup 必须穿过 Finish；优先加深现有 Styling 和 Identity Module。
+这些边界对应现有 ADR：身份优先于未确认的故事变换；妆容留在 Styling；风险由 Protected Identity Cue 是否被替换或遮挡触发；Character Read 是创意意图；Story Makeup 必须穿过 Finish；优先加深现有 Styling 和 Identity Module；身份约束通过已锁媒介的 Medium Contract 解析，而不是把摄影规则放宽成非摄影豁免。
 
 ## 2. 共享决策状态与用户 Interface
 
@@ -142,6 +143,7 @@ flowchart LR
     STATE --- U["unresolved<br/>仍缺且影响生产"]
     STATE --- RISK["已接受风险<br/>只覆盖已命名范围"]
     STATE --- COVER["Reference Coverage<br/>verified / described / inferred / missing"]
+    STATE --- MEDIUM["Medium Contract<br/>每个 cue = open / transferred / closed"]
     STATE --- HIST["分区 Shown Option<br/>最近 refreshable Gate"]
 
     STATE --> ROUTE["选择下一位所有者"]
@@ -158,8 +160,10 @@ flowchart LR
 | `suggested` / `derived` | 用户重复、细化或覆盖 | `locked: explicit` |
 | `derived` | Scoped Refresh 命中其所属区域 | `unresolved` |
 | `explicit` | 用户明确重开该字段 | `unresolved` |
+| 已锁媒介与请求变形 | Creative Direction 锁定 | 解析并记录一次请求级 Medium Contract |
+| 已有 Medium Contract | Style / Scoped Refresh 明确重开媒介或请求变形 | 重新解析；只有 closed 集合改变才再次披露 |
 
-`locked: explicit` 始终优先于冲突的非显式值。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换或缺失证据，不是全局免责。
+`locked: explicit` 始终优先于冲突的非显式值。Medium Contract 只读取已锁媒介与用户明确请求的变形；灯光、构图、遮挡、分辨率和其他场景条件不参与解析。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
 
 ### Choice Gate 合约
 
@@ -203,11 +207,14 @@ flowchart TD
     ONCE --> P9
 ```
 
+Medium Contract 不增加 P 编号：Identity Anchor 在 P3 的创意方向锁定媒介时解析并记录一次，在 P6 前仅当 photographic default 所保护的通道被关闭时显示一条非提问式说明；P6 的生产提示词不包含 closed-channel 陈述，P9 的 Identity Review 读取同一记录，重生成也不重新解析。
+
 ### 完成条件
 
 - 所有必需聚焦 Gate 已解决。
 - 每张必需人物参考都作为实际图像输入传入。
 - 用户锁定意图没有被静默改变。
+- 必要的 closed-channel 说明已在生成前显示，且没有进入生产提示词。
 - 可见且可检查的结果通过 Identity Review。
 - 本次参与生成或修改的所有者贡献都体现在提示词或修改中。
 - 对质量、尺寸、文字、工具控制和视觉检查的声称都可验证。
@@ -335,6 +342,8 @@ flowchart TD
 
 Creative Direction 使用六段 Direction Signature，至少三段不同；其他区域使用所有者可见签名，至少两部分不同。重命名、只换色板、形容词或设备词不算 Fresh Option。询问新选项本身不会生成或修改图片。
 
+只有刷新明确重开媒介或请求变形时，Identity Anchor 才重新解析 Medium Contract；Finish、Shot、Styling、Performance、Layout 等其他刷新继续复用原记录。closed 集合未改变时不重复说明。
+
 ### F6. 精确文字与场景冲突
 
 ```mermaid
@@ -405,7 +414,7 @@ flowchart TD
     END -- 否 --> STOP["报告具体未解决缺陷并停止<br/>不再重试，不宣称完成"]
 ```
 
-Identity Review 先判断是否完成，再决定恢复范围。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。
+Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或修正理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。
 
 F8 是主流程的窄修改例外：已有可见结果时直接从 P9 审查开始，不重新走普通创意澄清；只有需要全新生成时才复用锁定 Brief 和正确实际输入回到生成步骤。
 
@@ -443,6 +452,7 @@ flowchart TD
 | 活跃条件 | 必读章节 | 条件追加 |
 | --- | --- | --- |
 | 普通人物图生成 | Identity：`Priority`、`Reference Transfer`、`Reference Coverage` | 无 |
+| 非摄影媒介或明确请求变形 | Identity：`Reference Transfer` 中的 Medium Contract、`Identity Prompt Constraints`；Composition：对应 `Output Recipes` | 使用 Identity 已解析的请求级记录；Composition 不重新解析，也不把 closed-channel 说明写入提示词 |
 | 写最终提示词前 | Identity：`Identity Prompt Constraints`；Composition：`Final-Asset Quality`、`First-Pass Finish`、`Prompt Structure` | 所有当前活跃所有者章节 |
 | 创意方向、First Read、决定性时刻 | Composition：`Creative Direction`、`Directorial Intent and Decisive Moment` | 需要选项时加 `Direction Atlas and Freshness`；刷新时加 `Style Refresh` |
 | 镜头、透视、相机、投影 | Composition：`Shot Direction` | 按需加 `Perspective Intent`、`Camera and Capture Plan`；侧脸/动作/强透视加身份与姿态章节 |
@@ -459,7 +469,7 @@ flowchart TD
 ### 提示词合成顺序
 
 1. 用途、画布、布局。
-2. Primary Identity Anchor、源图可见身份结构、Reference Transfer 与 Coverage。
+2. Primary Identity Anchor、源图可见身份结构、Reference Transfer、Coverage，以及 Medium Contract 留下的 open / transferred 通道；closed-channel 记录不进入提示词。
 3. 已锁意图、First Read、创意方向和决定性时刻。
 4. Shot、相机/透视、世界空间人体与投影比例。
 5. Styling、Performance、Props、Pose Geometry。
@@ -484,7 +494,7 @@ flowchart TD
 | 需要精确尺寸 | 实际检查输出像素后才能声称 |
 | 结果不可见或分辨率不足 | 对相应审查标记 unavailable / unverified |
 
-## 6. Golden 1–121 覆盖矩阵
+## 6. Golden 1–126 覆盖矩阵
 
 每个编号在下表恰好出现一次，表示它的主要端到端流程族；Shared Checks 仍横跨全部流程。场景可以触及多个 Module，但不需要复制多张完整图。
 
@@ -529,6 +539,9 @@ flowchart TD
 | 119 | F2 | 普通 Gate 的全局默认捷径 |
 | 120 | F3 | 可靠来源解决角色版本 |
 | 121 | F8 | Cosplay 执行干净也不能掩盖身份整体漂移 |
+| 122 | F5 | Medium Contract 请求级记录、closed-channel 披露与刷新边界 |
+| 123-124 | F1 | 请求变形与年龄解释测试、媒介表面处理 |
+| 125-126 | F8 | structural-open 边界、transferred 识别与缩略图 silhouette 下限 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -550,15 +563,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,039 词 |
-| `composition-director.md` | 5,877 词 |
-| `identity-anchor.md` | 4,097 词 |
+| `SKILL.md` | 3,976 词 |
+| `composition-director.md` | 5,995 词 |
+| `identity-anchor.md` | 4,792 词 |
 | `styling-performance.md` | 2,656 词 |
 | `scoped-option-refresh.md` | 788 词 |
-| 运行时 Markdown 合计 | 17,457 词 |
-| `CONTEXT.md` | 35 个规范术语，1,543 词 |
-| `docs/adr/` | 6 条 ADR |
-| `golden-conversations.md` | 121 个场景，11,901 词 |
+| 运行时 Markdown 合计 | 18,207 词 |
+| `CONTEXT.md` | 36 个规范术语，1,747 词 |
+| `docs/adr/` | 7 条 ADR |
+| `golden-conversations.md` | 126 个场景，12,798 词 |
 
 ### 优化优先级
 

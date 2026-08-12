@@ -9,8 +9,12 @@ The actual person reference image that authoritatively anchors face identity for
 _Avoid_: Primary identity reference, text-only identity description
 
 **Protected Identity Cue**:
-A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Risk depends on changing these cues, not on whether styling is labeled light or heavy; accepting a change to one cue does not waive unrelated identity cues.
+A visible structural, surface, or external characteristic whose replacement or occlusion could materially reduce recognizability, such as facial relationships, skin tone, age impression, hairline, or a distinctive mark. Which characteristics qualify resolves against the request's Medium Contract rather than a fixed catalog, so a characteristic the selected medium cannot express is not protected for that request, while one that carries recognition in its place is weighted more heavily. A cue is structural when it is a bone-structure or facial-geometry relationship; that classification is fixed and medium-independent, and only a cue's state under the Medium Contract varies by request. Risk depends on changing these cues, not on whether styling is labeled light or heavy; accepting a change to one cue does not waive unrelated identity cues.
 _Avoid_: Makeup intensity, beauty feature
+
+**Medium Contract**:
+The identity channels the selected medium and deformation level can actually express, resolved from the direction already locked rather than asked as a separate choice. It resolves each Protected Identity Cue to one of three states: open, drawn as the person's own quantity and therefore comparable against the Primary Identity Anchor for drift; transferred, shaped by the medium's convention yet still carrying recognition in place of channels the medium has closed, and weighted up accordingly; and closed, not expressible in this medium, excluded from drift judgment, and disclosed before generation.
+_Avoid_: Style preset, medium label, drawn-media exemption
 
 **Visible Body Evidence**:
 Clearly shown body relationships at any source crop, such as head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build; they are preserved by default and named neutrally and concretely across styling changes without a separate Choice Gate. Obscured or off-frame anatomy is not evidence and must not be guessed as if verified.
@@ -53,7 +57,7 @@ The locked base makeup, hair, wardrobe, and accessories that identify one charac
 _Avoid_: Identical styling state, independent redesign
 
 **Identity Review**:
-A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It first decides completion: a result passes only when no source-supported Protected Identity Cue shows material, unaccepted drift after accounting for locked target conditions and accepted risk; recognizability alone does not pass. On failure, result reliability decides only whether one coherent local correction may reuse the result or identity-wide regeneration is required. It never claims a biometric match, similarity score, or identity guarantee.
+A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It first decides completion: a result passes only when no source-supported Protected Identity Cue shows material, unaccepted drift after accounting for locked target conditions and accepted risk; recognizability alone does not pass while the request's Medium Contract leaves any structural Protected Identity Cue open. Where it leaves none open, recognition through the transferred cues decides completion, and the figure must stay identifiable in silhouette at thumbnail size. On failure, result reliability decides only whether one coherent local correction may reuse the result or identity-wide regeneration is required. It never claims a biometric match, similarity score, or identity guarantee.
 _Avoid_: Face score, biometric verification, identity guarantee
 
 **First-Pass Finish**:

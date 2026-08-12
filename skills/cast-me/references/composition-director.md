@@ -153,7 +153,7 @@ Translate the selected shot into an internal capture plan using controls that ch
 
 - camera height, angle, subject distance, and perspective character
 - wide environmental feel, natural perspective, or telephoto-like compression
-- underlying human anatomy: the person's world-space head, shoulders, torso, hips, limbs, and joints remain structurally valid
+- underlying body structure: the person's world-space head, shoulders, torso, hips, limbs, and joints remain anatomically valid except where the resolved Medium Contract explains explicitly requested deformation; every relationship remains internally coherent
 - projected image proportions: apparent size and foreshortening follow distance, viewpoint, and the selected perspective strength
 - focus placement and shallow, moderate, or deep depth distribution
 - frozen action, natural motion blur, or long-exposure character when motion matters
@@ -210,7 +210,7 @@ Prefer two or three details that explain the moment over decorative clutter. Eve
 - define forbidden palette/mood when the theme depends on color discipline
 - separate materials, lighting, and palette instead of compressing them into "premium"
 - include a few concrete, story-bearing scene details when the background matters; do not meet a detail count by adding clutter
-- avoid default AI tells: purple-blue glow, random orbs or blobs, automatic centered hero layouts, generic beige/brass "premium" styling, fake brand logos, unreadable microtext, stock-photo cliches, cheap plastic CG, over-smoothed skin, and template-like card/poster layouts
+- avoid default AI tells: purple-blue glow, random orbs or blobs, automatic centered hero layouts, generic beige/brass "premium" styling, fake brand logos, unreadable microtext, stock-photo cliches, cheap plastic CG, photographic over-smoothed skin or surface treatment unexplained by the selected medium, and template-like card/poster layouts
 - use typography only when it has a job and exact user copy exists
 
 ## Prompt Craft Rules
@@ -281,7 +281,9 @@ Do not invent brand names, slogans, logos, or product claims.
 
 ### Illustration or Other Non-Photographic Output
 
-Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
+Apply the request-wide Medium Contract already resolved by Identity Anchor; do not resolve it again from the prompt or generated result. Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the open and transferred channels in the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
+
+Never copy the closed-channel record or its visible disclosure into the production prompt. When a closed area needs representation, state positively what the selected medium renders rather than naming what it omits.
 
 ## Layout and Output Contract
 
@@ -327,14 +329,14 @@ Layout contract: <subject placement, negative space, text-safe areas, panel/regi
 Input image: reference for the person's visible identity
 Primary request: <user request>
 Identity and reference transfer: <same person; face anchors; temporary source pose/angle/crop/perspective not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
-Locked intent and quality constraints: <camera perspective, projection strength, action, head direction, gaze, and other locked choices that cannot change silently; identity, anatomy, projection, and pose quality required inside them>
+Locked intent and quality constraints: <camera perspective, projection strength, requested deformation, action, head direction, gaze, and other locked choices that cannot change silently; identity, body coherence within the selected medium, projection, and pose quality required inside them>
 First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>
-Perspective contract: <underlying anatomy; projected proportions; which near/far enlargement and foreshortening are intentional; which random or camera-inconsistent deformation is forbidden>
-Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed facial structure; verified, described, inferred, or missing evidence; identity readability at the target face angle; angle-correct facial planes; valid world-space head, shoulder, torso, hip, limb, and joint structure>
+Perspective contract: <underlying anatomy or positively described requested medium deformation; projected proportions; which requested or near/far enlargement and foreshortening are intentional; which random, camera-inconsistent, or unrequested deformation is forbidden>
+Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed identity details the medium preserves as the person's own or uses for recognition; verified, described, inferred, or missing evidence; identity readability at the target face angle; angle-correct facial planes; anatomically valid or coherently requested world-space head, shoulder, torso, hip, limb, and joint structure>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include Character Read, makeup/hair/grooming, Story Makeup, important materials, and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
@@ -346,7 +348,7 @@ Other series invariants: <identity, prop state, light direction, location geogra
 Constraints: <approximately three to eight observable failure modes most likely for this output, selected from the active identity, anatomy, projection, hand/prop, text, material, layout, or finish risks>
 ```
 
-Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task. Also verify Physical Scene Coherence across the resolved setting and time/weather, Shot and perspective, Performance and pose geometry, Styling and materials including their response to the environment and light, and lighting and finish.
+Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy or Medium Contract-explained deformation, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task. Also verify Physical Scene Coherence across the resolved setting and time/weather, Shot and perspective, Performance and pose geometry, Styling and materials including their response to the environment and light, and lighting and finish.
 
 As part of that existing pre-generation check, verify crop visibility: every Explicit wardrobe/body-cutoff requirement is visible, intentionally off-frame, or resolved through a focused coherence confirmation. If resolving the conflict expands the crop beyond the reference, run the existing Reference Coverage check for the newly exposed body, angle, or performance evidence before generation.
 
