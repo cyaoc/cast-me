@@ -128,7 +128,7 @@ Adapt the concrete head-to-body proportion behind A/B/C to the intended use inst
 
 Disclose that roughly four-to-five-head proportions conventionally read as a child rather than mild deformation. When an adult explicitly selects a tier with a younger read, record that consequence as locked intent; it does not authorize any other age change.
 
-A directly selected tier or concrete Custom deformation becomes an Explicit Lock; an explicitly delegated recommendation becomes a Derived Lock. Only that resolved choice enters the request-wide Medium Contract. The Character Sheet and every application use the same record; do not resolve another tier from a later prompt or result.
+Only a directly selected A/B/C tier or concrete Custom deformation becomes an Explicit Lock and enters the request-wide Medium Contract. Recommended defaults, `you decide`, the Character Sheet, and later applications cannot select or re-resolve it.
 
 Resolve channels and Visible Body Evidence from the selected concrete proportion, not from the tier word alone:
 

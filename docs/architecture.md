@@ -145,7 +145,7 @@ flowchart LR
     STATE --- U["unresolved<br/>仍缺且影响生产"]
     STATE --- RISK["已接受风险<br/>只覆盖已命名范围"]
     STATE --- COVER["Reference Coverage<br/>verified / described / inferred / missing"]
-    STATE --- TIER["Deformation Tier<br/>conservative / standard / strong / Custom<br/>选择或显式委派 + 用途适配比例"]
+    STATE --- TIER["Deformation Tier<br/>conservative / standard / strong / Custom<br/>显式选择 + 用途适配比例"]
     STATE --- MEDIUM["Medium Contract<br/>每个 cue = open / transferred / closed"]
     STATE --- ROOT["Fixed root<br/>Anchor + 必需参考 + 锁定产物"]
     STATE --- HIST["分区 Shown Option<br/>最近 refreshable Gate"]
@@ -167,7 +167,7 @@ flowchart LR
 | `explicit` | 用户明确重开该字段 | `unresolved` |
 | 已锁摄影媒介 | Creative Direction 锁定 | 按既有 photographic default 解析一次请求级 Medium Contract，不需要 Deformation Tier |
 | 已锁绘制媒介、Deformation Tier 未解决 | 进入下一项普通选择 | 显示 A `conservative` / B `standard` / C `strong` / D Custom 的本地化 Gate；每项给出按用途适配的具体比例与可见后果 |
-| 已锁媒介 + 已选择/显式委派 Tier 或具体 Custom 变形 | 当前选择完成 | 解析并记录一次请求级 Medium Contract 与身体证据梯度 |
+| 已锁媒介 + 显式选择 Tier 或具体 Custom 变形 | 当前选择完成 | 解析并记录一次请求级 Medium Contract 与身体证据梯度 |
 | 已有 Medium Contract | Style / Scoped Refresh 明确重开媒介或 Deformation Tier | 重新解析；只有 closed 集合改变才再次披露 |
 | 可复用绘制角色或同一绘制角色至少两张图 | 生成前 | 先从 Anchor 生成并锁定一个 Character Sheet；每个应用的固定根加入该 Sheet |
 
@@ -182,7 +182,7 @@ flowchart LR
 3. 永久存在的 `D) Custom`，只允许在当前 Gate 范围内自定义。
 4. 回复示例同时展示裸推荐项，以及推荐项加本地化 `use recommended defaults`。
 
-D 占位符本身不创建锁或历史；具体 Custom 答案才由当前 Gate 校验。裸字母只解决当前选项拥有的字段。全局 `you decide` 结束普通澄清，但不会绕过 Reference Coverage、身份风险、安全或精确文字 Gate。
+D 占位符本身不创建锁或历史；具体 Custom 答案才由当前 Gate 校验。裸字母只解决当前选项拥有的字段。全局 `you decide` 结束普通澄清，但不会绕过 Reference Coverage、身份风险、安全、精确文字或未选择的 Deformation Tier Gate。
 
 Deformation Tier 复用该 Interface，但它不是每次重写的风格菜单：A/B/C 始终按 `conservative`、`standard`、`strong` 的语义顺序出现，显示标签本地化；每项的具体头身比例和圆润度、简化、五官位置、手部与身体曲线后果按用途适配。身体证据取舍写入同一道 Gate，不另问身体形状。
 
@@ -224,7 +224,7 @@ Deformation Tier 和 Medium Contract 不增加 P 编号：绘制角色在 P3 通
 - 所有必需聚焦 Gate 已解决。
 - 每张必需人物参考和当前操作需要的锁定产物都作为实际图像输入传入。
 - 用户锁定意图没有被静默改变。
-- 绘制角色已有选择或显式委派的 Deformation Tier/具体 Custom 变形，且整项请求只使用同一份 Medium Contract 与身体证据梯度。
+- 绘制角色已有用户显式选择的 A/B/C Deformation Tier 或具体 Custom 变形，且整项请求只使用同一份 Medium Contract 与身体证据梯度。
 - 必要的 closed-channel 说明已在生成前显示，且没有进入生产提示词。
 - 可见且可检查的结果通过 Identity Review。
 - 本次参与生成或修改的所有者贡献都体现在提示词或修改中。
@@ -268,9 +268,9 @@ flowchart TD
 ```mermaid
 flowchart TD
     U["输入<br/>人物图 + 已明确要求 + 全局 you decide / use recommended defaults"] --> E["P1/P2<br/>用户已写明的用途、服装、文字等记录为 Explicit Locks"]
-    E --> D["P3<br/>普通 suggested / unresolved 采用推荐结果并记录 Derived Locks"]
-    D --> BLOCK{"P4 是否有 Coverage、身份风险、安全或精确文字阻塞？"}
-    BLOCK -- 是 --> G["只显示该聚焦 A/B/C/D Gate<br/>回答后不重开普通问题"]
+    E --> D["P3<br/>普通 suggested / unresolved 采用推荐结果并记录 Derived Locks<br/>Deformation Tier 除外"]
+    D --> BLOCK{"P4 绘制角色的 Tier 是否尚未显式选择，<br/>或仍有 Coverage、身份风险、安全、精确文字阻塞？"}
+    BLOCK -- 是 --> G["只显示未选择的 Tier Gate 或当前聚焦 Gate<br/>回答后不重开普通问题"]
     G --> BLOCK
     BLOCK -- 否 --> LOAD["P5<br/>只加载实际需要的 Identity、Composition、Styling 章节"]
     LOAD --> P["P6<br/>合成完整提示词；显式锁优先，默认只补空缺"]
@@ -598,12 +598,12 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,124 词 |
+| `SKILL.md` | 4,135 词 |
 | `composition-director.md` | 6,365 词 |
-| `identity-anchor.md` | 6,224 词 |
+| `identity-anchor.md` | 6,209 词 |
 | `styling-performance.md` | 2,795 词 |
 | `scoped-option-refresh.md` | 788 词 |
-| 运行时 Markdown 合计 | 20,296 词 |
+| 运行时 Markdown 合计 | 20,292 词 |
 | `CONTEXT.md` | 39 个规范术语，1,919 词 |
 | `docs/adr/` | 8 条 ADR |
 | `golden-conversations.md` | 141 个场景，15,628 词 |
