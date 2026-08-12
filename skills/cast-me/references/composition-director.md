@@ -1,6 +1,6 @@
 # Composition Director
 
-This module owns creative direction, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
+This module owns creative direction, drawn style axes and starting vocabulary, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
 
 ## Creative Direction
 
@@ -26,6 +26,47 @@ Resolve creative direction whenever it is still production-critical. Do not forc
 If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly three concrete directions labeled A through C plus the permanent `D) Custom` option.
 
 For drawn output, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and optical finish; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with three visible outcomes adapted to the current brief plus `D) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
+
+### Drawn Style Axes
+
+Express every drawn rendering treatment through six separately recorded axes. A choice on one axis never resolves another axis, Deformation Tier, stylization intensity, or optical finish.
+
+| Axis | Visible controls |
+| --- | --- |
+| Line | Contour/boundary/detail weight hierarchy; uniform-to-varied weight; tapered or untapered ends; line colour; full line, minimal coloured line, or no line |
+| Surface coloring | Concrete shading-layer count and hard, soft, or ambiguous boundaries between layers |
+| Colour logic | Shared character palette slots without a fixed slot count; consistency across a set and distinguishability where characters coexist; scene-wide time, weather, or mood shifts |
+| Eye rendering | Highlight count and placement; iris-gradient direction and optional radial texture; lash colour; hard or soft iris-to-sclera boundary |
+| Texture | Material or paper character; for screentone, its placement plus visibly coarse/medium/fine frequency, sparse/medium/dense coverage, dot shape, and angle rather than unsupported numeric screen settings |
+| Background | Its own mark/edge language, detail density, and value/colour organization, independent of the character's line, surface coloring, colour logic, eye rendering, and texture |
+
+For colour logic, treat shadow derivation as an overridable default rather than a rule: lower brightness while holding or slightly increasing saturation and usually shifting hue cooler; skin may shift warmer to retain blood tone. Avoid pure black shadows and tint nominally white items enough for their shadow layer to remain visible. Surface coloring still owns how many shading layers exist and how their boundaries meet.
+
+For a requested set, carry one shared character palette-slot specification across every image. Different shading-layer counts do not change those shared colours, their consistency, or their distinguishability.
+
+Route a request naming one axis through the existing Scoped Option Refresh behavior. Reopen only that axis's Derived Locks and fields the user explicitly asks to change; preserve every other axis and unrelated lock. A background-only refresh changes background treatment without changing character rendering. Use the controls in that axis's table row as its visible signature, and do not turn the six axes into six mandatory questions.
+
+### Drawn Style Starting Vocabulary
+
+Use these recognizable looks only as non-exclusive starting vocabulary. Always state the visible axis choices; the name alone is not a production direction and never selects Deformation Tier or stylization intensity.
+
+| Starting look | Visible starting features |
+| --- | --- |
+| Flat cel | Prominent full line, solid fills, one hard-edged shadow layer, restrained surface texture |
+| Semi-gradient | Line and solid base fills with the stated shadow layers softened into the base colour |
+| Thick-painted | Opaque layered colour, ambiguous shadow boundaries, brush texture, and little or no main line |
+| Watercolour | Soft boundaries, lightened or coloured line, deliberately uneven translucent washes, and paper texture |
+| Lineless | Form separated by colour and value, with no contour and only minimal coloured line at essential features |
+| Monochrome screentone | Monochrome colour logic, line-led forms, and explicitly described screentone standing in for shading |
+| Toon-shaded three-dimensional | Drawn contour around three-dimensional form with two or three discrete colour steps |
+
+When the user asks only for `anime`, do not choose one look. Present exactly three relevant A/B/C starting points from this vocabulary plus `D) Custom` in the existing localized Choice Gate, and define each through visible features rather than its label. Refresh provides other valid directions; never show a nested seven-item catalog. The looks may be combined or overridden axis by axis, and none is a quality tier. Do not rank them, claim which one will render better, or offer grisaille or an unsupported coined term as a finished look; grisaille is a working method whose visible destination belongs under thick-painted treatment.
+
+Translate an artist, school, or other style name into concrete visible choices across the six axes and optical finish before production. Never pass an artist or school name into the production prompt. If a term is unfamiliar, unsupported, or has no reliable visible definition, do not invent one or collapse it into a default; use the existing Choice Gate to offer three relevant visible-feature starting points plus `D) Custom`.
+
+When another person's artwork or photo is supplied as a style reference, label that role and extract only its rendering treatment into the six axes and optical finish. Identity Anchor owns the prohibition on transferring that person's identity, age impression, or body evidence.
+
+When the selected texture uses dense high-frequency micro-structure, disclose the current model-artifact risk before production as time-stamped information: as of the 2026-08-12 public-information review, GPT Image 2 still had a publicly reported tiling or visible-noise risk in dense high-frequency detail, and no official fix announcement was found. State this as a review-date boundary, not a permanent limitation. Do not turn it into a quality ranking, a per-look reachability claim, or a claim that another look will produce a better result.
 
 When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
 
@@ -59,7 +100,7 @@ Preserve the separately recorded stylization intensity through every Style Refre
 Route the user's wording precisely:
 
 - An ordinary request for more or different directions uses the Direction Atlas and conversation-local history without browsing.
-- `Only change the visual style` reopens medium/era, lighting/color, material treatment, and finish. Preserve scene, action, composition, subject placement, and every unrelated Explicit Lock.
+- `Only change the visual style` reopens medium/era, drawn style axes, lighting/color, material treatment, and optical finish. Preserve scene, action, composition, subject placement, stylization intensity, and every unrelated Explicit Lock.
 - `Completely change the direction` reopens creative direction and its derived scene, unlocked composition suggestions, lighting/color, and finish. Preserve identity, output requirements, exact text, and every unrelated Explicit Lock.
 - A request that explicitly asks for currentness with words such as current, recent, latest, trending, or this year, or asks for trends tied to a date, is a Trend Refresh. A historical date or era without current/trend intent is an ordinary creative constraint. Use live visual research, extract concrete production anchors, keep source links available, and apply the same freshness threshold. If research is unavailable, say currentness could not be verified; do not guess.
 - If the user delegates with `you decide`, `pick one`, or equivalent wording, perform a Delegated Refresh: bypass the visible Direction Gate, select and record one compatible Fresh Direction, apply recommended defaults, and continue. Focused identity, reference-coverage, safety, and exact-text gates still apply.
@@ -182,7 +223,7 @@ Resolve it in this order: honor an explicit finish; after accepted recommended d
 
 When the gate is needed, present exactly three image-specific Finish Directions labeled A through C plus `D) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
 
-Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`.
+Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`. For drawn output, keep the separately recorded Texture axis out of this signature; optical-finish variation uses diffusion, bloom, flare, bokeh, and eye-highlight strength instead.
 
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
@@ -195,6 +236,12 @@ Treat explicit `no retouch`, preservation requests, named facial marks, and Stor
 For CG, game key art, illustration, and other non-photographic outputs, adapt face, surface, texture, material, and final image character to the selected medium without forcing photographic retouching vocabulary or irrelevant controls. Any filter or grading treatment must follow the locked creative direction and motivated lighting/color logic. Do not rely on camera brands, precise light power, empty LUT names, fixed presets, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
 
 Keep the separately recorded stylization intensity independent of the selected rendering look, surface coloring, and optical finish. Do not carry Natural Retouch instructions such as preserving every pore or other photographic surface detail into a drawing when they conflict with the selected medium.
+
+For drawn output, optical finish owns light diffusion, bloom, lens-flare shape, bokeh shape, and eye-highlight strength. It remains independent of surface coloring: flat cel or graduated coloring may each combine with heavy diffusion or no diffusion without changing shading-layer count or boundary treatment. Eye rendering owns highlight count and placement; optical finish owns only their strength. Refreshing surface coloring, colour logic, or optical finish reopens only the named area unless the user explicitly reopens another.
+
+The drawn Texture axis owns material marks, paper character, and screentone. Optical finish does not absorb or reclassify them.
+
+Express retro or modern treatment through the character's colour logic and optical finish while preserving the selected painting technique. Any reduced period palette applies only to the character layer, never automatically to the background or whole image.
 
 Enter a targeted finish revision only after an explicit user request for one concrete visible failure, such as plastic skin, a color cast, crushed shadows, clipped highlights, excessive smoothing, or oversharpening. Route the operation through Identity Anchor's fixed-root recovery rules, repeat the identity invariants, and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other unrelated lock. Do not schedule another generation or editing pass.
 
@@ -233,6 +280,7 @@ Use these cross-output rules when writing the final production prompt:
 - State scene density with concrete objects, surfaces, spatial layers, and environmental details rather than empty adjectives.
 - State the First Read and supporting hierarchy in concrete composition, contrast, scale, focus, action, or spacing terms.
 - Keep materials, lighting, palette, and camera/capture context as separate controls.
+- For drawn output, replace artist, school, unfamiliar, or unsupported style labels with concrete six-axis and optical-finish anchors before production; never let a label stand in for visible direction.
 - For posters, covers, editorials, and commercial visuals, use the three-glance test: first glance reads the hero subject or silhouette, second glance reads the world or message, third glance rewards inspection with texture and detail.
 - For layouts with annotations, labels, panels, UI, diagrams, or multi-image boards, define fixed regions, panel roles, labels, spacing, and readability constraints before style detail.
 - End with one ordinary `Constraints` block containing approximately three to eight distinct, observable failure modes for the current output. Keep lower-risk positive locks in their owning prompt slots instead of repeating them as negatives; do not create a provider-specific negative-prompt field or reuse a universal list.
@@ -291,6 +339,8 @@ Do not invent brand names, slogans, logos, or product claims.
 
 Apply the request-wide Medium Contract already resolved by Identity Anchor; do not resolve it again from the prompt or generated result. For a drawn character, also apply the explicitly selected Deformation Tier or Custom deformation without inferring another one. Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the open and transferred channels in the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
 
+State the selected rendering treatment through concrete line, surface-coloring, colour-logic, eye-rendering, texture, and background directions; a starting-look name never replaces those features. Keep the background treatment independent from the character treatment, and keep optical finish separate from shading-layer count and boundary treatment.
+
 For a drawn character, state the selected concrete head-to-body convention positively together with its roundness, simplification, feature placement, hand treatment, and body-curvature treatment. Carry tier-resolved Visible Body Evidence unchanged or in simplified form wherever the proportion can express it, using the existing neutral relationship language. For the shortest proportion, describe the compact drawing convention it can express; keep the source-figure loss disclosure before generation and out of the prompt. Do not assemble a prompt that combines emphasized adult body characteristics with a child-reading proportion; return to Deformation Tier and move the proportion while preserving the body request.
 
 Translate the selected stylization intensity into a brief-specific distance from photography while preserving the locked Deformation Tier and rendering look. At the low end, keep the result an actual drawing by converting skin, hair, eyes, wardrobe, lighting, shading, and background coherently into the selected medium. At the high end, build from the Primary Identity Anchor and the Medium Contract's open and transferred channels rather than substituting a generic anime face. When stronger intensity is requested, direct the next visible increase instead of asking for maximum or extreme stylization in one step.
@@ -309,7 +359,7 @@ Verify exact text character by character without applying capitalization or lett
 
 ### Character Sheet Applications
 
-Build the Character Sheet on a clean background and lock its proportions from the already selected Deformation Tier or Custom deformation, plus face construction, hair, eye rendering, wardrobe, palette, line treatment, and shading treatment. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
+Build the Character Sheet on a clean background and lock its proportions from the already selected Deformation Tier or Custom deformation, plus face construction, hair, eye rendering, wardrobe, palette/colour logic, line treatment, surface-coloring/shading treatment, and texture. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
 
 Generate every application independently from the same Primary Identity Anchor and Character Sheet. Never pass one application into another or otherwise grow the image-input chain. Preserve each application's own scene, expression, gaze, pose, camera, and output locks; the sheet controls the drawn design, not the application's staging or performance.
 
@@ -335,6 +385,7 @@ Consider these dimensions when relevant:
 - world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
 - composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
 - identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
+- drawn style axes: concrete line, surface-coloring, colour-logic, eye-rendering, texture, and background treatment, with any named starting look translated into those visible features
 - lighting/color/retouch/finish: motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture; final image character; only materially useful controls
 - output contract: canvas aspect, platform readability, safe areas, allowed-text set and treatment, exact-text verification, and required variants
 - negative constraints: approximately three to eight observable failure modes most likely for the current output
@@ -352,6 +403,7 @@ Identity and reference transfer: <same person; face anchors; temporary source po
 Locked intent and quality constraints: <camera perspective, projection strength, requested deformation, action, head direction, gaze, and other locked choices that cannot change silently; identity, body coherence within the selected medium, projection, and pose quality required inside them>
 First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
+Drawn style axes (drawn output only): <line; surface-coloring layer count and boundaries; colour logic; eye rendering; texture; independent background treatment; no artist or school name>
 Drawn stylization intensity (drawn output only): <separately recorded visible distance from photography; coherent conversion target across skin, hair, eyes, wardrobe, lighting, shading, and background; preserve the selected Deformation Tier and rendering look>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
