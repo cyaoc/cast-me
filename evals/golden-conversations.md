@@ -41,7 +41,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - When the Primary Identity Anchor visibly supports them, the final prompt describes concrete source-observed facial relationships before styling and finish. Generic identity phrases do not replace those details, and character references contribute only hair, makeup, wardrobe, accessories, props, and performance.
 - Before generation, every Explicit wardrobe/body-cutoff requirement must be visible, intentionally off-frame, or resolved through the existing Physical Scene Coherence confirmation. `Where the crop allows` is not a resolution; expanding the crop can trigger Reference Coverage for newly exposed evidence.
 - A likeness complaint triggers Identity Review but does not prove a local defect. Compare the visible result directly with the Primary Identity Anchor before choosing recovery. Regeneration from the request's fixed root and locked brief, excluding the failed result, is the default; use a surgical edit only for one coherent local defect on a freshly generated ordinary result that remains reliable evidence. If the user explicitly requests direct edit, keep it available with the result and Primary Identity Anchor as its image inputs.
-- Automatic identity-wide regeneration requires visible, inspectable failure plus active-surface controls that can include the Primary Identity Anchor and exclude the failed result. Perform at most one new generation and one follow-up Identity Review; never claim review, correction, or completion when those controls or visual evidence are unavailable.
+- Automatic correction requires a visible, inspectable failure plus verified active-surface controls that can execute the required image-input selection and generation or edit. Use surgical edit only for a freshly generated ordinary result that remains reliable identity evidence, has one coherent local defect, and will not be reused as a locked produced artifact; regenerate every other eligible failure once from the complete fixed root and locked brief, excluding the failed result from every image-input and evidence role. Perform exactly one correction operation and one follow-up Identity Review; never claim review, correction, or completion when those controls or visual evidence are unavailable.
 - An accepted identity risk applies only to the named cue, occlusion, angle, transformation, or missing evidence. It neither repeats within that boundary nor waives a newly introduced or unrelated identity risk.
 
 ## 1. Vague professional avatar
@@ -696,7 +696,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[case A: continuation of scenario 108; the regenerated result passes Identity Review. case B: the regenerated result still has concrete independent eye, nose, and jaw drift.]`
 
-**Expected:** In each case, perform exactly one new generation and one follow-up Identity Review. In A, complete only after the follow-up review passes. In B, report the remaining concrete drift and stop without a third generation, edit, retry, final claim, or completion claim.
+**Expected:** In each case, perform exactly one automatic correction operation: one new generation from the complete fixed root and locked brief, excluding the failed result from every image-input and evidence role, followed by exactly one Identity Review. In A, complete only after the follow-up review passes. In B, report the remaining concrete drift and stop without a second correction, edit, generation, retry, final claim, or completion claim.
 
 ## 110. Passing or unreviewable outputs receive no automatic pass
 
@@ -826,9 +826,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 131. Unknown provenance defaults to regeneration
 
-**Input:** `[the visible result, request fixed root, and accumulated locked brief are available, but the current exchange no longer establishes the complete image-input set that produced the result] Make one more change.`
+**Input:** `[the visible result, request fixed root, and accumulated locked brief are available, but the current exchange no longer establishes the complete image-input set that produced the result. case A: the user says, "Make one more change." case B: before delivery, an unambiguous required-quality failure would otherwise qualify for automatic surgical correction, and the active surface can independently select the fixed-root inputs, exclude the failed result, and start a new generation.]`
 
-**Expected:** Recommend regeneration from the complete fixed root and accumulated locked brief, excluding the current result, without claiming to know whether or how often it was edited. Do not invent or require a counter, ledger, scratchpad, hook, service, file, database, read-state tracker, edit threshold, safe-edit count, or remaining-edits figure. Keep direct edit available only when the user explicitly requests it.
+**Expected:** In A, recommend regeneration from the complete fixed root and accumulated locked brief, excluding the current result; keep direct edit available only when the user explicitly requests it. In B, perform exactly one such regeneration and exactly one follow-up Identity Review; if it still fails, report the concrete unresolved defect and stop without a second correction or completion claim. In both cases, do not claim to know whether or how often the result was edited, and do not invent or require a counter, ledger, scratchpad, hook, service, file, database, read-state tracker, edit threshold, safe-edit count, or remaining-edits figure.
 
 ## 132. Multi-round and series work do not chain generated edits
 
@@ -841,3 +841,21 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[a visible generated result, complete fixed root, and accumulated locked brief are available] This looks dirty and noisy after the changes. Clean it up, denoise it, and sharpen it; tell me how much degradation remains.`
 
 **Expected:** Recommend regeneration from the complete fixed root plus the accumulated locked brief and exclude the current result. Do not perform a cleanup, denoising, sharpening, restoration, or generic quality-improvement edit; do not instruct the model to refer to an earlier cleaner image. Make no verdict or detection claim about noise, artifacts, dirtiness, or degradation; make no removal claim, quality-metric claim, numeric threshold, count, tally, or remaining-edits figure.
+
+## 134. Automatic correction does not re-edit an edited result
+
+**Input:** `[before delivery, an unambiguous required-quality failure triggers automatic correction; the visible, inspectable failed result was already edited, but it remains reliable identity evidence with one coherent local defect; the complete request fixed root and locked brief remain available; the active surface can independently select the fixed-root inputs, exclude the failed result, and start a new generation] Correct it automatically.
+
+**Expected:** Perform exactly one new generation from the complete fixed root and locked brief, excluding the failed result from every image-input and identity, face, pose, body, composition, or other evidence role. Then perform exactly one follow-up Identity Review. If the regenerated result still fails, report the concrete unresolved defect and stop without a second correction, edit, generation, retry, final claim, or completion claim.
+
+## 135. Automatic correction carries generated fixed-root artifacts
+
+**Input:** `[before delivery, an unambiguous required-quality failure triggers automatic correction; CastMe produced the visible, inspectable failed result in the current exchange from the Primary Identity Anchor plus a generated locked produced artifact required by every image in the request; the result remains reliable identity evidence with one coherent local defect; the active surface can independently select the fixed-root inputs, exclude the failed result, and start a new generation] Correct it automatically.
+
+**Expected:** The Primary Identity Anchor among the producing inputs does not make the result freshly generated because another input was generated. Perform exactly one new generation carrying the complete locked brief and complete fixed root, including both the Anchor and required locked produced artifact, while excluding the failed result from every image-input and identity, face, pose, body, composition, or other evidence role. Then perform exactly one follow-up Identity Review. If the regenerated result still fails, report the concrete unresolved defect and stop without a second correction, edit, generation, retry, final claim, or completion claim.
+
+## 136. Automatic correction regenerates reusable artifacts
+
+**Input:** `[before delivery, an unambiguous required-quality failure triggers automatic correction; CastMe produced the visible, inspectable locked produced artifact in the current exchange from image inputs none of which was generated; downstream images will reuse it; the artifact remains reliable identity evidence with one coherent local defect; its complete fixed root and locked brief remain available; the active surface can independently select the fixed-root inputs, exclude the failed artifact, and start a new generation] Correct it automatically.
+
+**Expected:** Treat the artifact's downstream reuse as disqualifying even though it otherwise meets the freshness and local-defect conditions. Perform exactly one new generation from the artifact's complete fixed root and locked brief, excluding the failed artifact from every image-input and identity, face, pose, body, composition, or other evidence role. Then perform exactly one follow-up Identity Review. If the regenerated artifact still fails, report the concrete unresolved defect and stop without a second correction, edit, generation, retry, final claim, or completion claim.
