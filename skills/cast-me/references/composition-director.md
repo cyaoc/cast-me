@@ -190,7 +190,9 @@ Treat explicit `no retouch`, preservation requests, named facial marks, and Stor
 
 For CG, game key art, illustration, and other non-photographic outputs, adapt face, surface, texture, material, and final image character to the selected medium without forcing photographic retouching vocabulary or irrelevant controls. Any filter or grading treatment must follow the locked creative direction and motivated lighting/color logic. Do not rely on camera brands, precise light power, empty LUT names, fixed presets, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
 
-Enter a targeted finish revision only after an explicit user request for one concrete visible failure, such as plastic skin, a color cast, crushed shadows, clipped highlights, excessive smoothing, or oversharpening. Repeat the identity invariants and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other unrelated lock. Do not schedule another generation or editing pass.
+Enter a targeted finish revision only after an explicit user request for one concrete visible failure, such as plastic skin, a color cast, crushed shadows, clipped highlights, excessive smoothing, or oversharpening. Route the operation through Identity Anchor's fixed-root recovery rules, repeat the identity invariants, and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other unrelated lock. Do not schedule a routine follow-up pass.
+
+Treat cleanup, denoising, sharpening, restoration, or generic quality-improvement requests as fixed-root regeneration requests, not cleanup edits or evidence that CastMe can diagnose degradation. Regenerate from the complete fixed root and accumulated locked brief while excluding the current result. Do not substitute an earlier-image reminder, appearance judgment, quality metric, or numeric edit threshold. Never claim that noise, artifacts, dirtiness, or degradation were detected or removed, and never show a count, tally, safe-edit number, or remaining-edits figure.
 
 ## Art Direction and Physical World
 
@@ -295,7 +297,7 @@ Treat layout structure, subject/text-safe placement, safe areas/readability, and
 
 Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 
-For a requested series, use Look Continuity to lock the base makeup, hair, wardrobe, and accessories, then record explicit per-image story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, and costume damage. Separately preserve existing series invariants such as prop state, light direction, location geography, and color treatment. Continuity means coherent evolution, not identical condition; do not add these contracts to a single image.
+For a requested series, generate each image from the request's complete fixed root and its locked brief rather than from the preceding output. Use the written Look Continuity to lock the base makeup, hair, wardrobe, and accessories, then record explicit per-image story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, and costume damage. Separately preserve existing series invariants such as prop state, light direction, location geography, and color treatment. Continuity means coherent evolution, not identical condition; do not add these contracts to a single image.
 
 ## Prompt Structure
 

@@ -40,7 +40,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - Identity Review first decides completion on the channels the resolved Medium Contract leaves open or transferred. Recognizability is insufficient while any structural Protected Identity Cue remains open and has material, unaccepted drift after accounting for locked target conditions and accepted risk; when none remains open, recognition through transferred cues decides completion and thumbnail-size filled-silhouette readability is additionally required. Only after failure does result reliability choose one coherent local correction versus identity-wide regeneration from the Primary Identity Anchor and locked brief without the failed result.
 - When the Primary Identity Anchor visibly supports them, the final prompt describes concrete source-observed facial relationships before styling and finish. Generic identity phrases do not replace those details, and character references contribute only hair, makeup, wardrobe, accessories, props, and performance.
 - Before generation, every Explicit wardrobe/body-cutoff requirement must be visible, intentionally off-frame, or resolved through the existing Physical Scene Coherence confirmation. `Where the crop allows` is not a resolution; expanding the crop can trigger Reference Coverage for newly exposed evidence.
-- A likeness complaint triggers Identity Review but does not prove a local defect. Compare the visible result directly with the Primary Identity Anchor before choosing edit versus regeneration; when likeness repair is combined with a non-local pose, action, camera, crop, or whole-image geometry change, regenerate from reliable identity evidence instead of calling the operation surgical.
+- A likeness complaint triggers Identity Review but does not prove a local defect. Compare the visible result directly with the Primary Identity Anchor before choosing recovery. Regeneration from the request's fixed root and locked brief, excluding the failed result, is the default; use a surgical edit only for one coherent local defect on a freshly generated ordinary result that remains reliable evidence. If the user explicitly requests direct edit, keep it available with the result and Primary Identity Anchor as its image inputs.
 - Automatic identity-wide regeneration requires visible, inspectable failure plus active-surface controls that can include the Primary Identity Anchor and exclude the failed result. Perform at most one new generation and one follow-up Identity Review; never claim review, correction, or completion when those controls or visual evidence are unavailable.
 - An accepted identity risk applies only to the named cue, occlusion, angle, transformation, or missing evidence. It neither repeats within that boundary nor waives a newly introduced or unrelated identity risk.
 
@@ -682,9 +682,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 107. Coherent local identity defects stay surgical
 
-**Input:** `[case A: visible result has one wrong mouth state while the remaining facial relationships match the Primary Identity Anchor; case B: visible result has linked far-eye, cheek-plane, nose-angle, and gaze symptoms caused by one local face-plane coordination defect, while surrounding identity remains intact] Correct the result.`
+**Input:** `[in both cases, CastMe produced the visible ordinary result in the current exchange from image inputs none of which was generated, and the result will not be reused as a locked produced artifact. case A: the result has one wrong mouth state while the remaining facial relationships match the Primary Identity Anchor; case B: the result has linked far-eye, cheek-plane, nose-angle, and gaze symptoms caused by one local face-plane coordination defect, while surrounding identity remains intact] Correct the result.`
 
-**Expected:** Treat each case as reliable identity evidence with one coherent affected unit rather than counting symptoms. Revise surgically with both the result and Primary Identity Anchor as actual image inputs, repeat identity invariants, and change only the mouth-state unit in A or face-plane/gaze unit in B. Preserve scene, Shot, camera, projection, pose, styling, lighting, finish, exact text, background, output, accepted risks, and every unrelated lock.
+**Expected:** Treat each freshly generated ordinary result as the proportionate exception to default regeneration: it remains reliable identity evidence with one coherent affected unit rather than a symptom count. Revise surgically with only the result and Primary Identity Anchor as actual image inputs, repeat identity invariants, and change only the mouth-state unit in A or face-plane/gaze unit in B. Preserve scene, Shot, camera, projection, pose, styling, lighting, finish, exact text, background, output, accepted risks, and every unrelated lock.
 
 ## 108. Identity-wide drift regenerates from reliable evidence
 
@@ -805,3 +805,39 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[the visible result, Primary Identity Anchor, and locked brief are available; the selected medium is a hand-drawn ink-and-watercolor illustration; the eyes and hair use that medium while the skin and lighting remain photographic; the locked brief includes pose, composition, crop, wardrobe, lighting, background, exact text, output, and accepted risks; the active surface can include the Anchor, exclude the failed result, and start a new generation. case A: likeness and every judged identity channel remain intact. case B: the same uneven treatment appears together with identity-wide drift.] Review and correct the result.`
 
 **Expected:** Fail Identity Review for Uneven Stylization in both cases even though A remains recognizable and has no identity drift. Use exactly one new generation, never a surgical edit; in B, use that same regeneration to address both failures. Start from the Primary Identity Anchor and complete locked brief, include the Anchor and only required reliable supporting references as actual image inputs, and exclude the failed result from every image-input and identity, face, pose, body, composition, or other evidence role. Restate the selected ink-and-watercolor medium positively for skin, hair, eyes, wardrobe, lighting, and background without naming the photographic surfaces or phrasing their absence as a negative instruction. Preserve every valid lock, then perform exactly one follow-up Identity Review. If the required input controls are unavailable, preserve the complete decision state and stop at the existing reattachment path; if the corrected result still fails, report the remaining defect and stop without another correction or completion claim.
+
+## 128. Later revisions restart from the fixed root
+
+**Input:** `[the visible result is already the product of an edit; the request's fixed root and complete locked brief remain available; the brief has accumulated scene, Shot, camera, pose, Styling, lighting, finish, exact-text, background, output, and accepted-risk locks] Make another change to the result. Run case A where the user does not specify an operation and case B where the user explicitly asks to edit this exact result.`
+
+**Expected:** In A, recommend a new generation from the complete fixed root plus the locked brief, excluding the current result, and carry every accumulated lock instead of restarting the creative flow. Keep direct edit available rather than creating a gate or prohibition. In B, honor the explicit edit request through the existing direct-edit path.
+
+## 129. Generated inputs do not qualify a result as fresh
+
+**Input:** `[the visible result was produced in the current exchange from the Primary Identity Anchor plus a generated locked produced artifact that every image in the request uses; it otherwise remains reliable evidence with one coherent local defect. case A: correct the result without an operation request. case B: the user explicitly says to edit this exact result.]`
+
+**Expected:** Do not call the result freshly generated merely because the Primary Identity Anchor was among its inputs; the generated artifact makes the producing operation's complete image-input set ineligible. In A, recommend regeneration from the complete fixed root, including the Anchor and locked produced artifact, with the locked brief and without the failed result. In B, keep direct edit available and use only the result being edited plus the Primary Identity Anchor as actual image inputs; do not add the locked produced artifact whose design is already present in the result.
+
+## 130. Locked produced artifacts are regenerated
+
+**Input:** `[CastMe produced a locked artifact in the current exchange from image inputs none of which was generated; every later image in the request will reuse the artifact; the artifact remains reliable evidence but has one coherent local defect] Correct the artifact.`
+
+**Expected:** Regenerate the artifact from its own complete fixed root and locked brief, excluding the failed artifact. Never surgically edit a locked produced artifact that downstream images reuse, even though it otherwise meets the freshness and local-defect conditions. Preserve the corrected artifact's role in the fixed root for later images.
+
+## 131. Unknown provenance defaults to regeneration
+
+**Input:** `[the visible result, request fixed root, and accumulated locked brief are available, but the current exchange no longer establishes the complete image-input set that produced the result] Make one more change.`
+
+**Expected:** Recommend regeneration from the complete fixed root and accumulated locked brief, excluding the current result, without claiming to know whether or how often it was edited. Do not invent or require a counter, ledger, scratchpad, hook, service, file, database, read-state tracker, edit threshold, safe-edit count, or remaining-edits figure. Keep direct edit available only when the user explicitly requests it.
+
+## 132. Multi-round and series work do not chain generated edits
+
+**Input:** `[the request's fixed root and locked brief remain available. case A: after the first result, the user successively requests three more changes without explicitly asking to edit an exact output. case B: the user requests a related-image series with locked Look Continuity and per-image story-state changes.]`
+
+**Expected:** In A, start every new operation from the complete fixed root plus the brief carrying all locks accumulated through that round; exclude each preceding output rather than feeding one generated revision into the next. In B, generate every image independently from the same complete fixed root and its per-image locked brief; carry base makeup, hair, wardrobe, accessories, and other series invariants through written Look Continuity rather than the preceding image. Do not use an earlier-image reminder as a substitute for changing the actual image inputs.
+
+## 133. Cleanup requests restart instead of judging degradation
+
+**Input:** `[a visible generated result, complete fixed root, and accumulated locked brief are available] This looks dirty and noisy after the changes. Clean it up, denoise it, and sharpen it; tell me how much degradation remains.`
+
+**Expected:** Recommend regeneration from the complete fixed root plus the accumulated locked brief and exclude the current result. Do not perform a cleanup, denoising, sharpening, restoration, or generic quality-improvement edit; do not instruct the model to refer to an earlier cleaner image. Make no verdict or detection claim about noise, artifacts, dirtiness, or degradation; make no removal claim, quality-metric claim, numeric threshold, count, tally, or remaining-edits figure.
