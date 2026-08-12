@@ -25,6 +25,8 @@ Resolve creative direction whenever it is still production-critical. Do not forc
 
 If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly three concrete directions labeled A through C plus the permanent `D) Custom` option.
 
+For drawn output, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and optical finish; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with three visible outcomes adapted to the current brief plus `D) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
+
 When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
 
 ### Direction Atlas and Freshness
@@ -51,6 +53,8 @@ Generate candidates sequentially. Apply the shared available-history and current
 ### Style Refresh
 
 A Style Refresh reopens the selected creative direction and may reopen only direction-owned `locked: derived` values. Preserve identity, output requirements, and unrelated `locked: explicit` values such as aspect ratio, exact text, wardrobe, action, gaze, or composition unless the user explicitly reopens them.
+
+Preserve the separately recorded stylization intensity through every Style Refresh unless the user explicitly reopens intensity itself. Reopening the rendering look, surface coloring, or optical finish never reopens or re-resolves intensity.
 
 Route the user's wording precisely:
 
@@ -190,6 +194,8 @@ Treat explicit `no retouch`, preservation requests, named facial marks, and Stor
 
 For CG, game key art, illustration, and other non-photographic outputs, adapt face, surface, texture, material, and final image character to the selected medium without forcing photographic retouching vocabulary or irrelevant controls. Any filter or grading treatment must follow the locked creative direction and motivated lighting/color logic. Do not rely on camera brands, precise light power, empty LUT names, fixed presets, or generic terms such as "8K", "HDR", and "masterpiece" to create professional results.
 
+Keep the separately recorded stylization intensity independent of the selected rendering look, surface coloring, and optical finish. Do not carry Natural Retouch instructions such as preserving every pore or other photographic surface detail into a drawing when they conflict with the selected medium.
+
 Enter a targeted finish revision only after an explicit user request for one concrete visible failure, such as plastic skin, a color cast, crushed shadows, clipped highlights, excessive smoothing, or oversharpening. Route the operation through Identity Anchor's fixed-root recovery rules, repeat the identity invariants, and preserve composition, crop, camera, pose, expression, gaze, wardrobe, text, product placement, background, and every other unrelated lock. Do not schedule another generation or editing pass.
 
 Treat cleanup, denoising, sharpening, restoration, or generic quality-improvement requests as fixed-root regeneration requests, not cleanup edits or evidence that CastMe can diagnose degradation. Regenerate from the complete fixed root and accumulated locked brief while excluding the current result. Do not substitute an earlier-image reminder, appearance judgment, quality metric, or numeric edit threshold. Never claim that noise, artifacts, dirtiness, or degradation were detected or removed, and never show a count, tally, safe-edit number, or remaining-edits figure.
@@ -287,6 +293,8 @@ Apply the request-wide Medium Contract already resolved by Identity Anchor; do n
 
 For a drawn character, state the selected concrete head-to-body convention positively together with its roundness, simplification, feature placement, hand treatment, and body-curvature treatment. Carry tier-resolved Visible Body Evidence unchanged or in simplified form wherever the proportion can express it, using the existing neutral relationship language. For the shortest proportion, describe the compact drawing convention it can express; keep the source-figure loss disclosure before generation and out of the prompt. Do not assemble a prompt that combines emphasized adult body characteristics with a child-reading proportion; return to Deformation Tier and move the proportion while preserving the body request.
 
+Translate the selected stylization intensity into a brief-specific distance from photography while preserving the locked Deformation Tier and rendering look. At the low end, keep the result an actual drawing by converting skin, hair, eyes, wardrobe, lighting, shading, and background coherently into the selected medium. At the high end, build from the Primary Identity Anchor and the Medium Contract's open and transferred channels rather than substituting a generic anime face. When stronger intensity is requested, direct the next visible increase instead of asking for maximum or extreme stylization in one step.
+
 When regenerating Uneven Stylization, restate the selected medium positively for every visible surface: skin, hair, eyes, wardrobe, lighting, and background. Describe only the intended treatment; do not name which surfaces in the failed result remained photographic or turn their absence into negative instructions.
 
 Never copy the closed-channel record or its visible disclosure into the production prompt. When a closed area needs representation, state positively what the selected medium renders rather than naming what it omits.
@@ -344,6 +352,7 @@ Identity and reference transfer: <same person; face anchors; temporary source po
 Locked intent and quality constraints: <camera perspective, projection strength, requested deformation, action, head direction, gaze, and other locked choices that cannot change silently; identity, body coherence within the selected medium, projection, and pose quality required inside them>
 First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
+Drawn stylization intensity (drawn output only): <separately recorded visible distance from photography; coherent conversion target across skin, hair, eyes, wardrobe, lighting, shading, and background; preserve the selected Deformation Tier and rendering look>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>

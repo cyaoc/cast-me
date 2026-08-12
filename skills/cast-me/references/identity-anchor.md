@@ -6,7 +6,7 @@ This module owns visible identity likeness, Visible Body Evidence, Reference App
 
 Separate locked user intent from quality constraints.
 
-Locked intent includes every selected scene, shot, camera perspective, projection strength, action, head direction, gaze, styling, and output requirement. Do not silently change it.
+Locked intent includes every selected scene, shot, camera perspective, projection strength, action, head direction, gaze, styling, rendering look, drawn-output stylization intensity, and output requirement. Do not silently change it.
 
 Within that intent, apply quality priorities:
 
@@ -232,7 +232,9 @@ When a generated result is visible, read the request-wide Medium Contract record
 
 Identity Review first decides completion, then recovery scope. Judge only open and transferred channels. A review passes only when no source-supported open cue shows material, unaccepted drift after accounting for the locked face angle, projection, expression, lighting, styling, requested deformation, and accepted risk, and transferred cues carry the required recognition. While any structural cue remains open, review stays cue-level and recognizability alone is insufficient. When none remains open, recognition through transferred cues decides completion, with one hard additional requirement: the figure's filled silhouette must remain identifiable at thumbnail size. Read this switch from the pre-generation channel record; silhouette readability never feeds back into channel resolution. Do not fail or correct a result merely because a closed cue is absent.
 
-Also fail completion for Uneven Stylization: some visible features are fully converted to the selected medium while others remain photographic. This failure is independent of likeness and applies even when every judged identity channel otherwise passes.
+For drawn output, also compare the result with the separately recorded stylization intensity. Fail either uniform end: a photograph carrying only a drawing-filter treatment, or a fully drawn result that substitutes a generic anime face for the Primary Identity Anchor and the Medium Contract's open and transferred channels. Treat both as failures of the selected intensity or its execution, and preserve the locked Deformation Tier and rendering look during recovery.
+
+Also fail completion for Uneven Stylization: some visible features are fully converted to the selected medium while others remain photographic. This failure is independent of likeness and applies even when every judged identity channel otherwise passes. A uniformly filtered photograph and a uniformly drawn generic face are the two stylization-intensity failures above, not this mixed-surface state.
 
 A clear face, natural pose, clean background, missing watermark, or absent livestream UI proves only that the image is inspectable. Compare the result with the Primary Identity Anchor first, and only after identity passes review hands, text, UI, wardrobe, background, and other module-owned details. Accepted risk from the Medium Contract is limited to its closed channels; every unrelated open or transferred cue remains protected. Keep identity preservation best effort without a score, biometric claim, similarity measure, or guarantee.
 
