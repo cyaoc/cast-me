@@ -25,8 +25,8 @@ Route reference reading by stable Markdown heading. Prefer reading only the name
 | Story-driven styling, Delegated Styling, Character Read, Story Makeup, or Look Continuity | `references/styling-performance.md`: `Ownership`, `Risk and Facial Treatment`, `Styling Direction`, and `Prompt Contributions`; add identity `Reference Coverage` when source styling may hide target-critical identity cues |
 | Pose, action, expression, gaze, hands, or performance | `references/styling-performance.md`: `Performance Direction` and, for non-trivial action, `Pose Geometry`; add identity `Face Visibility and Performance Integrity` when the face angle or performance affects identity readability |
 | Named character, uniform, historical dress, or other canon-dependent styling | `references/styling-performance.md`: `Role, Costume, and Visual Research` |
-| Exact text, layout, platform delivery, variants, or a requested series | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
-| Reusable drawn character or at least two images of the same drawn character | `references/identity-anchor.md`: `Character Sheet`; `references/composition-director.md`: `Character Sheet Applications`; add the ordinary sections needed by each application |
+| Exact text, layout, platform delivery, variants, transparency, or a requested set, series, or multi-angle sheet | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
+| Drawn set, series, reusable character design, multi-angle sheet, second or later image of the same character, or a supplied Character Sheet | `references/identity-anchor.md`: `Character Sheet`; `references/composition-director.md`: `Character Sheet Applications`; add the ordinary sections needed by each application |
 | Presenting or replacing a refreshable creative gate | `references/scoped-option-refresh.md`: `Scope` and `Visible Gate and History`; add `Route the Target`, `Locks and Continuity`, or `Refresh Exhaustion` when active, plus the section that owns the target creative area |
 | Reviewing a visible result | Read identity `Identity Review and Revision` first, then only the owner sections that contributed to generation or revision and their final review checks; composition review checks are in `Prompt Structure`, and styling/performance review checks are in `Prompt Contributions` |
 | Narrow revision to a visible result | Bypass the normal-generation core. Read identity `Identity Review and Revision` plus the section that owns the requested correction. Add identity `Priority` and `Identity Prompt Constraints` for a likeness or face correction; add other core sections only when the correction actually touches reference transfer or coverage, composition, final quality, or finish |
@@ -179,7 +179,9 @@ This is an internal execution checkpoint, not a user-visible stage, score, or ad
 - for a drawn character, the user explicitly selected an A/B/C Deformation Tier or supplied a concrete Custom deformation, and it is recorded in the request-wide Medium Contract
 - for drawn output, one concrete stylization-intensity decision is resolved and recorded separately from Deformation Tier, rendering look, surface coloring, and optical finish
 - for drawn output, the rendering treatment is concrete across line, surface coloring, colour logic, eye rendering, texture, and background; optical finish remains separate, and no artist, school, unfamiliar, or unsupported style label substitutes for those visible anchors
-- for a Character Sheet request, the current operation has its required fixed-root inputs: the sheet generation has the Primary Identity Anchor, and every application generation has both the Anchor and the already generated Character Sheet
+- for any continuity-triggering drawn request, the current operation has its required fixed-root inputs: a new Character Sheet generation has the Primary Identity Anchor, while every application or batch operation has both the Anchor and the supplied or already generated Character Sheet
+- for a continuity-triggering drawn set, series, or multi-angle request, use one planned batch only when the active surface verifiably exposes that operation for the complete set; otherwise every item has its own locked brief and independently uses the same complete fixed root
+- for a drawn set, the request is single-person, the item order or layout and required matching dimensions are locked, and any transparency request has the current model limitation stated with downstream cutout recorded before generation
 - the mandatory final-prompt sections and every active conditional section from the routing table are loaded
 - the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description
 - one final internal check confirms that the resolved combination neither materially reduces target-critical Protected Identity Cue readability nor depends on target-critical Reference Coverage that remains missing
@@ -197,7 +199,8 @@ Generation and review are complete only when:
 - locked user intent is unchanged
 - every visible, inspectable result passes Identity Review against the Primary Identity Anchor; an unavailable, ambiguous, or failed review receives no final or completion claim
 - the results of every module whose sections contributed to generation or revision are represented in the production prompt or revision
-- claims about tool controls, output quality, size, text, and visual review are truthful and verified where required
+- every delivered set member's required dimensions and output organization are verified from the actual results
+- claims about tool controls, batch routing, output quality, size, text, and visual review are truthful and verified where required
 
 ## Step 4: Review or Revise
 

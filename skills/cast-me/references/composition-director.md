@@ -357,11 +357,21 @@ Treat layout structure, subject/text-safe placement, safe areas/readability, and
 
 Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 
+For a set or multi-angle sheet, lock the complete item order or panel organization and the required matching pixel dimensions before generation. Before delivery, inspect every actual result and fail the output contract on any mismatched dimensions, missing item, or wrong organization; do not let an automatic crop pass silently or claim a matching set. Use only the existing fixed-root recovery when its required controls are available.
+
+When transparent stickers are requested, state before generation that GPT Image 2 does not currently support transparent backgrounds and record downstream cutout as a delivery requirement. Do not promise an alpha channel or add an automated cutout workflow.
+
 ### Character Sheet Applications
 
-Build the Character Sheet on a clean background and lock its proportions from the already selected Deformation Tier or Custom deformation, plus face construction, hair, eye rendering, wardrobe, palette/colour logic, line treatment, surface-coloring/shading treatment, and texture. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
+When no Character Sheet was supplied, build one on a clean background and lock its proportions from the already selected Deformation Tier or Custom deformation, plus face construction, hair, eye rendering, wardrobe, palette/colour logic, line treatment, surface-coloring/shading treatment, and texture. Use a supplied sheet as the same locked rendering-design input without inferring Deformation Tier or the request-wide Medium Contract from it. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
 
-Generate every application independently from the same Primary Identity Anchor and Character Sheet. Never pass one application into another or otherwise grow the image-input chain. Preserve each application's own scene, expression, gaze, pose, camera, and output locks; the sheet controls the drawn design, not the application's staging or performance.
+For a sticker set, series, or multi-angle request, first plan the complete item list and every per-item locked brief. Use one batch operation only when the active surface verifiably exposes it for the complete requested set. Supply the Primary Identity Anchor, Character Sheet, request-wide Medium Contract, shared character palette and design locks, and all per-item briefs to that one operation; no batch member may serve as another member's input or evidence.
+
+When that capability is unavailable, generate every item independently from the same Primary Identity Anchor and Character Sheet, the same request-wide Medium Contract and shared character locks, and its own locked brief. Never pass one item into another or otherwise grow the image-input chain. In either route, preserve each item's own scene, expression, gaze, pose, angle, camera, story state, and output locks; the sheet controls the drawn design, not the item's staging or performance.
+
+State which route the active operation actually used. Do not infer batch support from a product tier or claim batch consistency, a success rate, or a usable-image count that the operation did not verify.
+
+This drawn-set route supports one person only. For a multi-person drawn request, state the unsupported boundary before generation and stop rather than producing a blended identity. Keep drawn likeness best effort without a similarity score, identity or batch-consistency guarantee, or persistent character library.
 
 For a requested series, generate each image from the request's complete fixed root and its locked brief rather than from the preceding output. Use the written Look Continuity to lock the base makeup, hair, wardrobe, and accessories, then record explicit per-image story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, and costume damage. Separately preserve existing series invariants such as prop state, light direction, location geography, and color treatment. Continuity means coherent evolution, not identical condition; do not add these contracts to a single image.
 
