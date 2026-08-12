@@ -216,15 +216,15 @@ Define the request's fixed root as the actual image inputs every generation for 
 
 For recovery, treat a result as freshly generated only when CastMe produced it in the current exchange, can still see it, and no image input to that producing operation was itself generated. Evaluate the operation's complete image-input set; the Primary Identity Anchor appearing among those inputs is not sufficient. If the current exchange does not establish that provenance, recommend regeneration from the fixed root without claiming to know the result's history or adding a counter, ledger, scratchpad, hook, service, file, database, or read-state tracker.
 
-Regeneration from the fixed root is the default recovery. Use surgical edit only as the proportionate exception for one coherent local defect on a freshly generated ordinary result that remains reliable evidence and will not be reused as a locked produced artifact. Never edit a locked produced artifact that later images reuse; regenerate that artifact from its own fixed root even when it otherwise qualifies for the surgical exception.
+For user-requested recovery, regeneration from the fixed root is the default. Use surgical edit only as the proportionate exception for one coherent local defect on a freshly generated ordinary result that remains reliable evidence and will not be reused as a locked produced artifact. Never edit a locked produced artifact that later images reuse; regenerate that artifact from its own fixed root even when it otherwise qualifies for the surgical exception. Freshness and reuse role choose the requested operation after Identity Review; they do not change its result-reliability classification or the bounded automatic-correction contract below.
 
 When the user requests another change to a result that is not freshly generated, recommend regeneration from the fixed root with every accumulated lock, while keeping direct edit available when explicitly requested. For that explicit edit, preserve the existing actual-image inputs: the result being edited plus the Primary Identity Anchor. Do not add a locked produced artifact whose design is already present in the result. This explicit-edit availability never permits editing a locked produced artifact reused downstream.
 
-Choose the operation from result reliability, freshness, reuse role, and the total requested change:
+Keep the existing recovery operations and automatic-correction routing below. For user-requested recovery, apply the freshness and reuse rule above before using the surgical row.
 
 | Result and requested scope | Operation | Actual image inputs |
 | --- | --- | --- |
-| Failed review; freshly generated ordinary result; reliable identity evidence; one coherent local correction | Surgical edit | Result being edited plus Primary Identity Anchor |
+| Failed review; reliable identity evidence; one coherent local correction | Surgical edit | Result being edited plus Primary Identity Anchor |
 | Failed review; Uneven Stylization, with or without identity drift | New generation from the complete fixed root and locked brief | Complete fixed root; exclude the failed result |
 | Failed review; likeness repair plus pose, action, camera, crop, or other whole-image geometry change | New generation from the complete fixed root and locked brief | Complete fixed root; exclude the failed result |
 | Failed review; identity-wide drift | New generation from the complete fixed root and locked brief | Complete fixed root; exclude the failed result |
