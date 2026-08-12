@@ -48,7 +48,7 @@ Route a request naming one axis through the existing Scoped Option Refresh behav
 
 ### Drawn Style Starting Vocabulary
 
-Use these recognizable looks only as non-exclusive starting vocabulary. Always state the visible axis choices; the name alone is not a production direction and never selects Deformation Tier or stylization intensity.
+Use these recognizable looks only as non-exclusive starting vocabulary. Always state the visible axis choices; the name alone is not a production direction and never selects Deformation Tier or stylization intensity. Selecting a look records only the visible axis features stated by that option under the ordinary selected-option lock rules; any unmentioned axis remains unresolved.
 
 | Starting look | Visible starting features |
 | --- | --- |
@@ -223,7 +223,7 @@ Resolve it in this order: honor an explicit finish; after accepted recommended d
 
 When the gate is needed, present exactly three image-specific Finish Directions labeled A through C plus `D) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
 
-Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`. For drawn output, keep the separately recorded Texture axis out of this signature; optical-finish variation uses diffusion, bloom, flare, bokeh, and eye-highlight strength instead.
+Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`. For drawn output, keep the selected Texture-axis values locked during a finish refresh: First-Pass Finish realizes them but does not reselect them, while optical variation uses diffusion, bloom, flare, bokeh, and eye-highlight strength.
 
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
@@ -237,9 +237,9 @@ For CG, game key art, illustration, and other non-photographic outputs, adapt fa
 
 Keep the separately recorded stylization intensity independent of the selected rendering look, surface coloring, and optical finish. Do not carry Natural Retouch instructions such as preserving every pore or other photographic surface detail into a drawing when they conflict with the selected medium.
 
-For drawn output, optical finish owns light diffusion, bloom, lens-flare shape, bokeh shape, and eye-highlight strength. It remains independent of surface coloring: flat cel or graduated coloring may each combine with heavy diffusion or no diffusion without changing shading-layer count or boundary treatment. Eye rendering owns highlight count and placement; optical finish owns only their strength. Refreshing surface coloring, colour logic, or optical finish reopens only the named area unless the user explicitly reopens another.
+Within First-Pass Finish, drawn optical controls are light diffusion, bloom, lens-flare shape, bokeh shape, and eye-highlight strength. They remain independent of surface coloring: flat cel or graduated coloring may each combine with heavy diffusion or no diffusion without changing shading-layer count or boundary treatment. Eye rendering owns highlight count and placement; the optical controls own only their strength. Refreshing surface coloring, colour logic, or optical finish reopens only the named area unless the user explicitly reopens another.
 
-The drawn Texture axis owns material marks, paper character, and screentone. Optical finish does not absorb or reclassify them.
+The drawn Texture axis records material marks, paper character, and screentone. First-Pass Finish still owns their generation-time rendering and final image character; its optical controls do not reselect or reclassify them.
 
 Express retro or modern treatment through the character's colour logic and optical finish while preserving the selected painting technique. Any reduced period palette applies only to the character layer, never automatically to the background or whole image.
 
