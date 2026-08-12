@@ -12,6 +12,12 @@ When styling or performance conflicts with identity or geometry, first simplify 
 
 Visible Body Evidence belongs to `identity-anchor.md`, not Styling. Preserve clearly shown shoulder width, chest volume, torso shape, and body build through every wardrobe or costume change. Garments may change fabric, layers, material, and silhouette treatment, but must drape over the verified body shape rather than flatten, narrow, enlarge, or replace it. Do not claim anatomy hidden by clothing, crop, pose, or projection is verified.
 
+For a drawn character, follow the body-evidence treatment already resolved by Deformation Tier: unchanged, simplified, or unavailable at the shortest proportion. Do not ask another body-shape question, use clothing to flatten evidence the tier can carry, or use clothing to restore a figure the tier cannot carry.
+
+If emphasized adult body characteristics conflict with a child-reading proportion, preserve the body request and route back to Deformation Tier for a non-child-reading proportion. Do not combine the two or silently moderate the requested body characteristics.
+
+Deformation may make hairstyle outline and characteristic wardrobe more important transferred recognition channels, but they remain Styling-owned and user-changeable. Identity Anchor still owns eye shape, physical distinctive marks, channel resolution, and review weight; Styling makes the selected hair and wardrobe concrete without redefining identity evidence.
+
 Before asking about wardrobe, props, pose, expression, gaze, hands, or facial treatment, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or facial treatment again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
 
 ## Risk and Facial Treatment
@@ -162,7 +168,7 @@ When writing the production prompt, include styling/performance details only whe
 - hair/makeup/grooming constraints, especially if visible identity depends on them
 - Reference Appearance, its unknown source status when relevant, and the concrete target transformation without claiming a verified unseen bare-face baseline
 - Protected Identity Cues to preserve and any accepted styling-related likeness risk
-- Visible Body Evidence the clothing must follow, named neutrally and concretely without measurements or erotic emphasis
+- Visible Body Evidence the clothing must follow, named neutrally and concretely without measurements or erotic emphasis; when supported, relate chest volume to the shoulders and upper torso
 - Story Makeup that must survive First-Pass Finish and series-only Look Continuity with moment-specific evolution
 - facial finish: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details

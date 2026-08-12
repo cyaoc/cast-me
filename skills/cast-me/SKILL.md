@@ -20,6 +20,7 @@ Route reference reading by stable Markdown heading. Prefer reading only the name
 | Creative direction, First Read, or decisive moment | `references/composition-director.md`: `Creative Direction` and `Directorial Intent and Decisive Moment`; add `Direction Atlas and Freshness` when options are needed and `Style Refresh` when that branch is active |
 | Shot, perspective, camera, or projection | `references/composition-director.md`: `Shot Direction`; add `Perspective Intent` and `Camera and Capture Plan` when relevant. For side-facing identity, action, or strong perspective, also add identity `Face Visibility and Performance Integrity` and styling/performance `Pose Geometry` as relevant |
 | Physical world, taste, prompt craft, or medium-specific output guidance | `references/composition-director.md`: the relevant `Art Direction and Physical World`, `Taste Rules`, `Prompt Craft Rules`, or matching subsection under `Output Recipes` |
+| Drawn character or requested drawn deformation | `references/identity-anchor.md`: `Reference Transfer` and `Deformation Tier`; `references/composition-director.md`: `Illustration or Other Non-Photographic Output` |
 | Wardrobe, headwear, jewelry, accessories, makeup, hair, or props | `references/styling-performance.md`: the relevant `Ownership`, `Risk and Facial Treatment`, `Category Routing`, `Styling Direction`, or `Props` |
 | Story-driven styling, Delegated Styling, Character Read, Story Makeup, or Look Continuity | `references/styling-performance.md`: `Ownership`, `Risk and Facial Treatment`, `Styling Direction`, and `Prompt Contributions`; add identity `Reference Coverage` when source styling may hide target-critical identity cues |
 | Pose, action, expression, gaze, hands, or performance | `references/styling-performance.md`: `Performance Direction` and, for non-trivial action, `Pose Geometry`; add identity `Face Visibility and Performance Integrity` when the face angle or performance affects identity readability |
@@ -149,6 +150,8 @@ Treat safety as exception handling, not as a normal creative dimension.
 - If generation is blocked or refused, say the model/tool blocked it, do not silently switch wardrobe/crop/pose/concept, and offer revisions that preserve the original setting, role, wardrobe category, and visual style as much as safely possible.
 - Keep safety handling tool-agnostic. Do not make platform-specific policy claims, and do not silently rewrite the user's requested wardrobe, crop, pose, concept, or visual style.
 
+For a drawn character, do not combine emphasized adult body characteristics with a child-reading proportion. Preserve the requested body treatment and return to Deformation Tier for a non-child-reading proportion rather than silently moderating the body request.
+
 When a safety option is necessary, use the standard options format:
 
 ```text
@@ -171,6 +174,7 @@ This is an internal execution checkpoint, not a user-visible stage, score, or ad
 
 - ordinary choices are resolved, defaulted, overridden, or delegated, and every focused coverage, identity-risk, safety, exact-text, or Physical Scene Coherence gate is resolved; never let `where the crop allows` silently choose between conflicting Explicit Locks
 - the Primary Identity Anchor, the image being edited when applicable, and every person reference required by Reference Coverage are available to the active image surface as actual image inputs; text does not substitute for them
+- for a drawn character, a Deformation Tier or concrete Custom deformation is selected or explicitly delegated and recorded in the request-wide Medium Contract
 - for a Character Sheet request, the current operation has its required fixed-root inputs: the sheet generation has the Primary Identity Anchor, and every application generation has both the Anchor and the already generated Character Sheet
 - the mandatory final-prompt sections and every active conditional section from the routing table are loaded
 - the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description

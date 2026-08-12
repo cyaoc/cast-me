@@ -283,7 +283,9 @@ Do not invent brand names, slogans, logos, or product claims.
 
 ### Illustration or Other Non-Photographic Output
 
-Apply the request-wide Medium Contract already resolved by Identity Anchor; do not resolve it again from the prompt or generated result. Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the open and transferred channels in the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
+Apply the request-wide Medium Contract already resolved by Identity Anchor; do not resolve it again from the prompt or generated result. For a drawn character, also apply the explicitly selected Deformation Tier or Custom deformation without inferring another one. Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the open and transferred channels in the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
+
+For a drawn character, state the selected concrete head-to-body convention positively together with its roundness, simplification, feature placement, hand treatment, and body-curvature treatment. Carry tier-resolved Visible Body Evidence unchanged or in simplified form wherever the proportion can express it, using the existing neutral relationship language. For the shortest proportion, describe the compact drawing convention it can express; keep the source-figure loss disclosure before generation and out of the prompt. Do not assemble a prompt that combines emphasized adult body characteristics with a child-reading proportion; return to Deformation Tier and move the proportion while preserving the body request.
 
 When regenerating Uneven Stylization, restate the selected medium positively for every visible surface: skin, hair, eyes, wardrobe, lighting, and background. Describe only the intended treatment; do not name which surfaces in the failed result remained photographic or turn their absence into negative instructions.
 
@@ -299,7 +301,7 @@ Verify exact text character by character without applying capitalization or lett
 
 ### Character Sheet Applications
 
-Build the Character Sheet on a clean background and lock its proportions, face construction, hair, eye rendering, wardrobe, palette, line treatment, and shading treatment. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
+Build the Character Sheet on a clean background and lock its proportions from the already selected Deformation Tier or Custom deformation, plus face construction, hair, eye rendering, wardrobe, palette, line treatment, and shading treatment. In every application prompt, state the labeled Anchor and sheet roles and tell the model not to redesign the character.
 
 Generate every application independently from the same Primary Identity Anchor and Character Sheet. Never pass one application into another or otherwise grow the image-input chain. Preserve each application's own scene, expression, gaze, pose, camera, and output locks; the sheet controls the drawn design, not the application's staging or performance.
 

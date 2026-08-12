@@ -20,6 +20,10 @@ _Avoid_: Makeup intensity, beauty feature
 The identity channels the selected medium and deformation level can actually express, resolved from the direction already locked rather than asked as a separate choice. It resolves each Protected Identity Cue to one of three states: open, drawn as the person's own quantity and therefore comparable against the Primary Identity Anchor for drift; transferred, shaped by the medium's convention yet still carrying recognition in place of channels the medium has closed, and weighted up accordingly; and closed, not expressible in this medium, excluded from drift judgment, and disclosed before generation.
 _Avoid_: Style preset, medium label, drawn-media exemption
 
+**Deformation Tier**:
+The selected degree of drawn deformation, presented as three fixed semantic labels whose concrete proportions vary with the intended use. It resolves the request's Medium Contract and therefore decides which identity channels remain open, which carry recognition in their place, and which are disclosed as closed.
+_Avoid_: Style level, chibi mode, stylization intensity
+
 **Visible Body Evidence**:
 Clearly shown body relationships at any source crop, such as head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build; they are preserved by default and named neutrally and concretely across styling changes without a separate Choice Gate. Obscured or off-frame anatomy is not evidence and must not be guessed as if verified.
 _Avoid_: Full-body identity, inferred anatomy
