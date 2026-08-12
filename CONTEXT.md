@@ -28,6 +28,10 @@ _Avoid_: Blanket body inference, general likeness risk
 A result state in which multiple connected body-scale relationships fail together, or a proportion repair requires expanding a partial crop. It is distinct from one isolated, minor proportion deviation inside an otherwise coherent crop.
 _Avoid_: Small local edit, canvas-size problem
 
+**Uneven Stylization**:
+A result state in which some features are fully converted to the selected medium while others remain photographic, such as drawn eyes and hair over photographic skin and lighting. It fails completion independently of likeness, so a result that still reads clearly as the person fails on this ground alone.
+_Avoid_: Style inconsistency, half-rendered image
+
 **Reference Appearance**:
 The visible facial styling, grooming, and hair state shown by a person reference when its makeup status or source is unknown. It may be preserved or explicitly restyled, but it is not evidence of the person's unseen bare-face appearance.
 _Avoid_: Natural look, bare face, original makeup

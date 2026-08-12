@@ -108,7 +108,7 @@ flowchart TB
 | Module | Interface 输入 | 拥有 | 明确不拥有 | 输出 |
 | --- | --- | --- | --- | --- |
 | `SKILL.md` | 用户请求、参考图、对话状态、宿主能力 | 路由、Gate 格式、状态、生命周期、安全异常、完成条件 | 各视觉领域的具体生产知识 | 下一道问题、生产提示词、调用或停止说明 |
-| `identity-anchor.md` | 人物图、已锁媒介/请求变形、目标角度/身体/动作、可见结果 | 身份锚、证据、Medium Contract、Coverage、Inference Boundary、Identity Review、恢复分类 | 具体镜头、造型、表演选项 | 身份约束、媒介通道记录、证据状态、风险 Gate、恢复路径 |
+| `identity-anchor.md` | 人物图、已锁媒介/请求变形、目标角度/身体/动作、可见结果 | 身份锚、证据、Medium Contract、Coverage、Inference Boundary、Identity Review、Uneven Stylization 与恢复分类 | 具体镜头、造型、表演选项 | 身份约束、媒介通道记录、证据状态、风险 Gate、恢复路径 |
 | `composition-director.md` | 用途、方向、画布、镜头、成片要求 | First Read、方向、镜头、透视、成片质量、Finish、布局、文字、提示词结构 | 妆发服装与表演内容 | 构图与成片贡献、输出合约、提示词骨架 |
 | `styling-performance.md` | 角色/故事、妆发服装、道具、动作 | Styling Direction、Character Read、Story Makeup、Look Continuity、表演、姿态、视觉研究 | 裁切、相机位置、背景空间、身份证据本身 | 造型表演贡献、研究锚点、姿态链 |
 | `scoped-option-refresh.md` | 更多、换一批、换某项、你决定 | 刷新目标、最近 Gate、分区历史、新鲜度、委派、耗尽 | 目标区域的具体候选内容 | 新批次、内部选项或重开一个限制锁的 Gate |
@@ -399,12 +399,12 @@ flowchart TD
     PASS -- 否 --> OWNERSCOPE{"失败能否表达为一个连贯窄修改？"}
     OWNERSCOPE -- 是 --> LOCAL["按失败项所有者执行窄修改<br/>只改该问题并附上所需实际参考"]
     OWNERSCOPE -- 否 --> WIDE
-    IR -- 否 --> RELIABLE{"失败结果仍是可靠身份基线，且总修改仅一个连贯局部单元？"}
+    IR -- 否 --> RELIABLE{"不是 Uneven Stylization，且失败结果仍是可靠身份基线，且总修改仅一个连贯局部单元？"}
     RELIABLE -- 是 --> EDIT["Surgical Edit<br/>输入 = 失败结果 + Anchor；只改该单元"]
-    RELIABLE -- 否 --> WIDE["身份整体漂移、Structural Scale Failure<br/>或同时要求姿态、相机、裁切等非局部变化"]
+    RELIABLE -- 否 --> WIDE["身份整体漂移、Structural Scale Failure、Uneven Stylization<br/>或同时要求姿态、相机、裁切等非局部变化"]
     WIDE --> CAP{"宿主能否包含 Anchor、排除失败图并启动新生成？"}
     CAP -- 否 --> REATTACH["保留所有锁，只请求重附 Anchor"]
-    CAP -- 是 --> REGEN["从 Anchor + 锁定 Brief 新生成<br/>失败图不得作为身份、脸、姿态、身体或构图证据"]
+    CAP -- 是 --> REGEN["从 Anchor + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
     LOCAL --> ONCE["最多一次自动修正"]
     EDIT --> ONCE
     REGEN --> ONCE
@@ -415,6 +415,8 @@ flowchart TD
 ```
 
 Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或修正理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。
+
+Uneven Stylization 即使人物仍可识别且身份通道无漂移也让 Identity Review 失败，并且从不走 Surgical Edit。宿主能力允许时，用同一次有上限的新生成从 Primary Identity Anchor 和完整锁定 Brief 同时处理它与可能并存的身份漂移；只附必需且可靠的支持参考，失败图不进入任何图像输入或身份、脸、姿态、身体、构图等证据角色。Composition 的非摄影配方为皮肤、头发、眼睛、服装、灯光和背景逐项正面重述所选媒介，不描述失败图哪些表面仍是摄影处理，也不用负面指令表达其消失。
 
 F8 是主流程的窄修改例外：已有可见结果时直接从 P9 审查开始，不重新走普通创意澄清；只有需要全新生成时才复用锁定 Brief 和正确实际输入回到生成步骤。
 
@@ -452,7 +454,7 @@ flowchart TD
 | 活跃条件 | 必读章节 | 条件追加 |
 | --- | --- | --- |
 | 普通人物图生成 | Identity：`Priority`、`Reference Transfer`、`Reference Coverage` | 无 |
-| 非摄影媒介或明确请求变形 | Identity：`Reference Transfer` 中的 Medium Contract、`Identity Prompt Constraints`；Composition：对应 `Output Recipes` | 使用 Identity 已解析的请求级记录；Composition 不重新解析，也不把 closed-channel 说明写入提示词 |
+| 非摄影媒介或明确请求变形 | Identity：`Reference Transfer` 中的 Medium Contract、`Identity Prompt Constraints`；Composition：对应 `Output Recipes` | 使用 Identity 已解析的请求级记录；Composition 不重新解析，也不把 closed-channel 说明写入提示词；Uneven Stylization 重生成时为每个可见表面写正面媒介语言 |
 | 写最终提示词前 | Identity：`Identity Prompt Constraints`；Composition：`Final-Asset Quality`、`First-Pass Finish`、`Prompt Structure` | 所有当前活跃所有者章节 |
 | 创意方向、First Read、决定性时刻 | Composition：`Creative Direction`、`Directorial Intent and Decisive Moment` | 需要选项时加 `Direction Atlas and Freshness`；刷新时加 `Style Refresh` |
 | 镜头、透视、相机、投影 | Composition：`Shot Direction` | 按需加 `Perspective Intent`、`Camera and Capture Plan`；侧脸/动作/强透视加身份与姿态章节 |
@@ -494,7 +496,7 @@ flowchart TD
 | 需要精确尺寸 | 实际检查输出像素后才能声称 |
 | 结果不可见或分辨率不足 | 对相应审查标记 unavailable / unverified |
 
-## 6. Golden 1–126 覆盖矩阵
+## 6. Golden 1–127 覆盖矩阵
 
 每个编号在下表恰好出现一次，表示它的主要端到端流程族；Shared Checks 仍横跨全部流程。场景可以触及多个 Module，但不需要复制多张完整图。
 
@@ -542,6 +544,7 @@ flowchart TD
 | 122 | F5 | Medium Contract 请求级记录、closed-channel 披露与刷新边界 |
 | 123-124 | F1 | 请求变形与年龄解释测试、媒介表面处理 |
 | 125-126 | F8 | structural-open 边界、transferred 识别与缩略图 silhouette 下限 |
+| 127 | F8 | Uneven Stylization 独立失败并从 Anchor 重生成，不做 Surgical Edit |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -564,14 +567,14 @@ flowchart TD
 | 资产 | 当前规模 |
 | --- | ---: |
 | `SKILL.md` | 3,976 词 |
-| `composition-director.md` | 5,995 词 |
-| `identity-anchor.md` | 4,792 词 |
+| `composition-director.md` | 6,038 词 |
+| `identity-anchor.md` | 4,961 词 |
 | `styling-performance.md` | 2,656 词 |
 | `scoped-option-refresh.md` | 788 词 |
-| 运行时 Markdown 合计 | 18,207 词 |
-| `CONTEXT.md` | 36 个规范术语，1,747 词 |
+| 运行时 Markdown 合计 | 18,419 词 |
+| `CONTEXT.md` | 37 个规范术语，1,804 词 |
 | `docs/adr/` | 7 条 ADR |
-| `golden-conversations.md` | 126 个场景，12,798 词 |
+| `golden-conversations.md` | 127 个场景，13,053 词 |
 
 ### 优化优先级
 

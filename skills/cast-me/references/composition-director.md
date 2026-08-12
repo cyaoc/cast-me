@@ -283,6 +283,8 @@ Do not invent brand names, slogans, logos, or product claims.
 
 Apply the request-wide Medium Contract already resolved by Identity Anchor; do not resolve it again from the prompt or generated result. Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the open and transferred channels in the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
 
+When regenerating Uneven Stylization, restate the selected medium positively for every visible surface: skin, hair, eyes, wardrobe, lighting, and background. Describe only the intended treatment; do not name which surfaces in the failed result remained photographic or turn their absence into negative instructions.
+
 Never copy the closed-channel record or its visible disclosure into the production prompt. When a closed area needs representation, state positively what the selected medium renders rather than naming what it omits.
 
 ## Layout and Output Contract
