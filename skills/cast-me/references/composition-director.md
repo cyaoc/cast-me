@@ -369,6 +369,8 @@ For a sticker set, series, or multi-angle request, first plan the complete item 
 
 When that capability is unavailable, generate every item independently from the same Primary Identity Anchor and Character Sheet, the same request-wide Medium Contract and shared character locks, and its own locked brief. Never pass one item into another or otherwise grow the image-input chain. In either route, preserve each item's own scene, expression, gaze, pose or action, face angle, camera angle, lighting, story state, and output locks; the sheet controls the drawn design, not the item's staging or performance, and its conservative presentation does not constrain an application.
 
+When a Recovery Offer selects individual regeneration for members that failed after one planned batch, disclose that those regenerations are outside the original batch and that their consistency with the passing members is best effort. After acceptance, regenerate each accepted member independently from the same Primary Identity Anchor and Character Sheet, request-wide Medium Contract and shared character locks, and that member's own locked brief; never claim batch consistency for it.
+
 State which route the active operation actually used. Do not infer batch support from a product tier or claim batch consistency, a success rate, or a usable-image count that the operation did not verify.
 
 This drawn-set route supports one person only. For a multi-person drawn request, state the unsupported boundary before generation and stop rather than producing a blended identity. Keep drawn likeness best effort without a similarity score, identity or batch-consistency guarantee, or persistent character library.
