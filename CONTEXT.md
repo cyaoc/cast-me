@@ -76,6 +76,10 @@ _Avoid_: Identical styling state, independent redesign
 A structured visual comparison of a result against the Primary Identity Anchor through its Protected Identity Cues, Visible Body Evidence, and relevant structural scale relationships. It first decides completion: a result passes only when no source-supported Protected Identity Cue shows material, unaccepted drift after accounting for locked target conditions and accepted risk; recognizability alone does not pass while the request's Medium Contract leaves any structural Protected Identity Cue open. Where it leaves none open, recognition through the transferred cues decides completion, and the figure must stay identifiable in silhouette at thumbnail size. On failure, result reliability decides only whether one coherent local correction may reuse the result or identity-wide regeneration is required. It never claims a biometric match, similarity score, or identity guarantee.
 _Avoid_: Face score, biometric verification, identity guarantee
 
+**Recovery Offer**:
+What CastMe delivers in place of a repair when a visible result unambiguously fails required quality: the concrete defect, the recovery operation the existing contracts select for that result and why, and the statement that it has not been performed. It never accompanies a completion claim. A multi-item request receives one offer for the whole request — a single shared cause with the operation it selects where several items inherit one, otherwise one entry per failing item — and a single user instruction may accept all of it, part of it, or none.
+_Avoid_: Choice Gate, auto-repair, retry prompt
+
 **First-Pass Finish**:
 The generation-time visual finish that resolves lighting/color, identity-safe retouching, texture, and final image character in the original image request. It is not a later edit of an exported file.
 _Avoid_: Post-processing, second pass

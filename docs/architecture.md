@@ -234,10 +234,15 @@ flowchart TD
     P10 -- 是 --> P11["P11 最终结果"]
     P10 -- 否 --> RECOVERY["恢复分类<br/>窄修改或重新生成"]
     P9 -- 否 --> RECOVERY
-    RECOVERY --> CAPABLE{"结果可见且宿主可执行正确输入选择？"}
+    RECOVERY --> CAPABLE{"结果可见且宿主可执行所选操作的正确输入？"}
     CAPABLE -- 否 --> STOP["保留决策状态，说明边界或只请求重附<br/>固定根中宿主无法选择的图像"]
-    CAPABLE -- 是 --> ONCE["每张待审结果各一次自动修正"]
-    ONCE --> P9
+    CAPABLE -- 用户已请求恢复 --> RUN["P8 执行所选恢复操作"]
+    CAPABLE -- 用户尚未请求恢复 --> OFFER["Recovery Offer<br/>缺陷 + 所选操作与原因 + 尚未执行"]
+    OFFER --> WAIT["停止，不生成或编辑；等待用户决定"]
+    WAIT -. 用户随后请求恢复 .-> RUN
+    RUN --> FOLLOW{"P9 follow-up Identity Review 是否通过？"}
+    FOLLOW -- 是 --> P10
+    FOLLOW -- 否 --> REPORT["报告具体剩余缺陷并停止<br/>不宣称完成"]
 ```
 
 Deformation Tier、Medium Contract、绘制风格化强度和六轴渲染都不增加 P 编号：绘制角色在 P3 通过既有 Choice Gate 显式选择按用途适配的比例，单独记录一个具体强度结果，并让六轴渲染具体到可见后果。Identity Anchor 随后只用已锁媒介与已记录的 Tier/Custom 解析一次请求级 Medium Contract 和身体证据梯度。在 P6 前，closed channel 与最短比例造成的源图身形损失只做非提问式说明；dense high-frequency texture 的当前模型 artifact 风险按最近复核日期说明，不写成永久缺陷。P6 分开写比例、强度、六轴与 First-Pass Finish 的绘制 optical controls，艺术家/流派/陌生风格名不能代替可见锚点；P9 读取同一记录，Character Sheet、应用和重生成都不重新推断。Character Sheet 也不增加 P 编号或新 Module：连续性条件命中时，使用用户提供的 Sheet，或先从 Anchor 生成一个；P7 验证完整 set 的批次能力，能执行才走一次计划批次，否则所有应用从 Anchor + Sheet 独立分支。
@@ -460,33 +465,35 @@ flowchart TD
     PASS -- 是 --> O["P11 最终结果"]
     PASS -- 否 --> SCOPE
     IR -- 否 --> SHARED{"同一套图中多张出现同一缺陷？"}
-    SHARED -- 是 --> CAUSE["归因 Character Sheet 或锁定 Brief<br/>只报告一次共同原因，不逐张消耗修正机会"]
+    SHARED -- 是 --> CAUSE["归因 Character Sheet 或锁定 Brief<br/>只报告一次共同原因"]
     SHARED -- 否 --> SCOPE{"结果是否可靠、缺陷是否为一个连贯局部单元？"}
     SCOPE -- 否 --> WIDE["身份整体漂移、Structural Scale Failure、Uneven Stylization、均匀强度端点失败<br/>或同时要求姿态、相机、裁切等非局部变化"]
     SCOPE -- 是 --> DIRECT{"用户是否明确坚持编辑这个结果<br/>且它不是下游复用的锁定产物？"}
-    DIRECT -- 是 --> EDIT["Surgical Edit<br/>输入 = 结果 + Anchor；不重复加入锁定产物"]
+    DIRECT -- 是 --> EDIT["选择 Surgical Edit<br/>输入 = 结果 + Anchor；不重复加入锁定产物"]
     DIRECT -- 否 --> FRESH{"当前 exchange 生成、可见、无 generated input<br/>且不是复用产物？"}
     FRESH -- 是 --> EDIT
     FRESH -- 否 --> WIDE
-    WIDE --> CAP{"宿主能否包含完整固定根、排除失败图并启动新生成？"}
+    WIDE --> REGEN["选择从完整固定根 + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
+    EDIT --> CAP{"宿主能否执行所选操作的实际输入控制？"}
+    REGEN --> CAP
     CAP -- 否 --> REATTACH["保留所有锁，只请求重附固定根中<br/>宿主无法选择的图像"]
-    CAP -- 是 --> REGEN["从完整固定根 + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
-    EDIT --> ONCE
-    REGEN --> ONCE
-    ONCE["每张待审结果各一次自动修正"]
-    ONCE --> AGAIN["再做一次 Identity Review"]
+    CAP -- 用户尚未请求恢复 --> OFFER["Recovery Offer<br/>具体缺陷 + 所选操作与原因 + 尚未执行"]
+    OFFER --> WAIT["标记未完成并停止；不生成或编辑"]
+    WAIT -. 用户随后请求恢复 .-> RUN
+    CAP -- 用户已请求恢复 --> RUN["执行所选恢复操作"]
+    RUN --> AGAIN["做一次 follow-up Identity Review"]
     AGAIN --> END{"通过？"}
     END -- 是 --> OWNER
-    END -- 否 --> STOP["报告该结果的未解决缺陷并停止修正它<br/>不再对该结果重试，不宣称完成"]
+    END -- 否 --> STOP["报告该结果的具体剩余缺陷并停止<br/>不宣称完成"]
 ```
 
-Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或修正理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。自动修正上限按每个待审可见结果计：一次操作加一次复审后停止修正该结果；同请求里先前修正过另一张图，不消耗当前这张的一次机会，且不为此保留计数或记录。一套图中多张出现同一缺陷时，归因为 Character Sheet 或锁定 Brief 失败——每次重生成都会继承它——只报告一次共同原因，不逐张消耗各自的修正机会。
+Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或恢复理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。单个可见、可查且明确失败的结果先完成恢复分类；若用户尚未请求恢复且宿主能执行所选操作，就交付 Recovery Offer，说明具体缺陷、所选操作与原因、尚未执行，并标记未完成后停止。Recovery Offer 不是 Choice Gate。只有用户请求恢复后才执行该操作，再做一次 follow-up Identity Review；仍失败就报告具体剩余缺陷并停止，不宣称完成。一套图中多张出现同一缺陷时，仍归因为 Character Sheet 或锁定 Brief 失败——每次重生成都会继承它——并只报告一次共同原因。
 
 绘制角色还读取单独记录的风格化强度，并在两个均匀端点失败：整张图只是加了绘制滤镜的照片，或整张图已经绘制化却以通用动漫脸替换 Anchor 与 Medium Contract 的 open / transferred 通道。两者都是所选强度或执行失败，修正时保留 Deformation Tier 与渲染 look；增加强度只指导下一个可见增量，不写成一步最大化。它们都不是 Uneven Stylization。
 
 固定根由 Primary Identity Anchor、必需可靠人物参考和每张图都复用的锁定产物组成，修正时不随失败结果增长。Character Sheet 是应用固定根中的锁定产物；失败应用必须从 Anchor + Sheet + 完整应用 Brief 重生成，失败 Sheet 必须从它自己的固定根 + Sheet Brief 重生成，两者都排除失败图。用户明确坚持局部编辑某个应用时，先建议重生成，但仍允许只以该应用 + Anchor 直接编辑，不再次加入 Sheet；复用的 Sheet 本身始终不可编辑。
 
-Uneven Stylization 只指部分表面已转换、部分仍摄影化的混合状态；即使人物仍可识别且身份通道无漂移也让 Identity Review 失败，并且从不走 Surgical Edit。宿主能力允许时，用同一次有上限的新生成从完整固定根和完整锁定 Brief 同时处理它与可能并存的身份漂移；固定根包含 Anchor、必需且可靠的支持人物参考，以及请求中每张图都复用的 Character Sheet 等锁定产物，失败图不进入任何图像输入或身份、脸、姿态、身体、构图等证据角色。Composition 的非摄影配方为皮肤、头发、眼睛、服装、灯光和背景逐项正面重述所选媒介，不描述失败图哪些表面仍是摄影处理，也不用负面指令表达其消失。
+Uneven Stylization 只指部分表面已转换、部分仍摄影化的混合状态；即使人物仍可识别且身份通道无漂移也让 Identity Review 失败，并且从不走 Surgical Edit。宿主能力允许时，Recovery Offer 选择从完整固定根和完整锁定 Brief 新生成；用户请求恢复后，该生成同时处理它与可能并存的身份漂移。固定根包含 Anchor、必需且可靠的支持人物参考，以及请求中每张图都复用的 Character Sheet 等锁定产物，失败图不进入任何图像输入或身份、脸、姿态、身体、构图等证据角色。Composition 的非摄影配方为皮肤、头发、眼睛、服装、灯光和背景逐项正面重述所选媒介，不描述失败图哪些表面仍是摄影处理，也不用负面指令表达其消失。
 
 F8 是主流程的窄修改例外：已有可见结果时直接从 P9 审查开始，不重新走普通创意澄清；只有需要全新生成时才复用锁定 Brief 和正确实际输入回到生成步骤。
 
@@ -503,7 +510,7 @@ flowchart TD
     CHOICE -- 是 --> NORMAL
     NORMAL --> P["P5/P6<br/>在保留已确认意图的前提下合成提示词"]
     P --> CAP{"P7 宿主是否真实支持所需图像输入、批次、编辑、新生成、质量、尺寸或检查？"}
-    CAP -- 否 --> LIMIT["继续可执行部分或请求重附 Anchor<br/>不声称批次、high、精确尺寸、输入排除、视觉 QA 或自动修正"]
+    CAP -- 否 --> LIMIT["继续可执行部分或请求重附 Anchor<br/>不声称批次、high、精确尺寸、输入排除或视觉 QA"]
     CAP -- 是 --> GEN["P8 生成"]
     LIMIT --> POSSIBLE{"仍可安全且诚实地生成？"}
     POSSIBLE -- 否 --> STOP
@@ -610,22 +617,26 @@ flowchart TD
 | 100-103 | F4 | 累积风险、充分证据、组合 Coverage 与组合 cue 变换 |
 | 104-105 | F9 | Anchor 不可用、宿主受限时不伪装重生成 |
 | 106 | F3 | 跨类型参考角色保持通用 |
-| 107-112 | F8 | 局部/整体身份失败、自动恢复上限、风险范围与尽力而为 |
+| 107-108 | F8 | 用户明确请求的局部/整体身份恢复 |
+| 109 | F8 | 用户接受 Recovery Offer 后才执行恢复；复审通过才完成，仍失败就具体报告并停止 |
+| 110 | F8 | 通过或不可查结果不伪装完成；失败结果的 Recovery Offer 不得退化成完成后的可选美容微调 |
+| 111-112 | F8 | 风险范围与尽力而为 |
 | 113-115 | F3 | 源图身份细节优先、角色不供脸、妆容形容词不改结构 |
 | 116-117 | F6 | 裁切与服装锁冲突、扩裁触发新 Coverage |
-| 118 | F8 | 干净呈现不能替代 Identity Review |
+| 118 | F8 | 干净呈现不能替代 Identity Review；明确失败只交付 Recovery Offer 或走重附边界 |
 | 119 | F2 | 普通 Gate 的全局默认捷径 |
 | 120 | F3 | 可靠来源解决角色版本 |
-| 121 | F8 | Cosplay 执行干净也不能掩盖身份整体漂移 |
+| 121 | F8 | Cosplay 执行干净也不能掩盖身份整体漂移；宿主可执行时给 Recovery Offer，否则只请求重附 Anchor |
 | 122 | F5 | Medium Contract 请求级记录、closed-channel 披露与刷新边界 |
 | 123-124 | F1 | 请求变形与年龄解释测试、媒介表面处理 |
 | 125-126 | F8 | structural-open 边界、transferred 识别与缩略图 silhouette 下限 |
-| 127 | F8 | Uneven Stylization 独立失败并从完整固定根重生成，不做 Surgical Edit |
-| 128-131 | F8 | 固定根重生成、generated input 新鲜度、复用产物与未知 provenance |
+| 127 | F8 | Uneven Stylization 独立失败；先给 Recovery Offer，用户接受后才从完整固定根重生成 |
+| 128-130 | F8 | 固定根重生成、generated input 新鲜度与复用产物 |
+| 131 | F8 | 未知 provenance 的 Recovery Offer 选择固定根重生成，用户接受后执行且不引入计数 |
 | 132 | F7 | 多轮修改和系列图片不增长 generated-input chain |
-| 133-136 | F8 | 清理请求与自动修正沿完整固定根重生成 |
+| 133-136 | F8 | 清理建议与用户接受 Recovery Offer 后沿完整固定根重生成 |
 | 137 | F7 | 一个 Character Sheet 锚定两个独立且不同的应用 |
-| 138 | F8 | 应用、Character Sheet 与用户坚持局部编辑的固定根恢复边界；每张待审结果各自一次自动修正；同缺陷不逐张消耗 |
+| 138 | F8 | 应用与 Character Sheet 先给 Recovery Offer、用户接受后按各自固定根恢复；显式局部编辑与宿主重附边界不变；同缺陷只报告共同原因 |
 | 139 | F1 | Deformation Tier 在不同用途保持稳定语义顺序并适配具体比例；manga/cartoon 同样开门且只有用户直选进合约 |
 | 140 | F7 | Tier 解析一次身份通道与完整身体证据梯度，并由 Sheet 与应用复用 |
 | 141 | F9 | 年轻观感、成熟曲线说明与 child-reading / adult-emphasis 冲突解析；中性承载不算强调 |
@@ -639,7 +650,7 @@ flowchart TD
 | 149 | F9 | 组图尺寸/组织、透明 cutout、尽力而为与多人绘制停止边界 |
 | 150 | F7 | Character Sheet 保守锁定源头呈现，但不约束应用的表情、动作、角度与灯光 |
 | 151 | F7 | mannerism 按变形与用途加权，单图只是假定且不进入 Identity Review 失败条件 |
-| 152 | F8 | 普通 Identity Review 不判定 noise / dirtiness / degradation，也不展示计数或剩余次数 |
+| 152 | F8 | 普通 Identity Review 不判定 noise / dirtiness / degradation；局部失败给 Recovery Offer 且不展示计数或剩余次数 |
 | 153 | F8 | 无连续性的单张绘制图仍可走 surgical 修复 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
@@ -662,15 +673,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,547 词 |
+| `SKILL.md` | 4,620 词 |
 | `composition-director.md` | 8,248 词 |
-| `identity-anchor.md` | 6,859 词 |
+| `identity-anchor.md` | 6,872 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 23,460 词 |
-| `CONTEXT.md` | 40 个规范术语，1,977 词 |
-| `docs/adr/` | 8 条 ADR |
-| `golden-conversations.md` | 153 个场景，18,436 词 |
+| 运行时 Markdown 合计 | 23,546 词 |
+| `CONTEXT.md` | 41 个规范术语，2,078 词 |
+| `docs/adr/` | 9 条 ADR |
+| `golden-conversations.md` | 153 个场景，18,718 词 |
 
 ### 优化优先级
 
