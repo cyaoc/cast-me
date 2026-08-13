@@ -348,7 +348,7 @@ flowchart TD
     R --> PASS{"全部通过？"}
     PASS -- 是 --> O["P11 完成"]
     PASS -- 否 --> FAIL{"是否为多处相连比例错误、身份整体漂移或需扩展裁切？"}
-    FAIL -- 否 --> LOCAL["一个可靠局部缺陷<br/>进入 F8 Surgical Edit"]
+    FAIL -- 否 --> LOCAL["一个可靠局部缺陷<br/>进入 F8 恢复分类"]
     FAIL -- 是 --> REGEN["Structural Scale Failure / 非局部失败<br/>从 Anchor + 锁定 Brief 重生成，失败图不得作为比例或构图证据"]
 ```
 
@@ -661,10 +661,10 @@ flowchart TD
 | --- | ---: |
 | `SKILL.md` | 4,582 词 |
 | `composition-director.md` | 8,196 词 |
-| `identity-anchor.md` | 6,712 词 |
+| `identity-anchor.md` | 6,704 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 23,296 词 |
+| 运行时 Markdown 合计 | 23,288 词 |
 | `CONTEXT.md` | 39 个规范术语，1,936 词 |
 | `docs/adr/` | 8 条 ADR |
 | `golden-conversations.md` | 152 个场景，18,054 词 |

@@ -41,7 +41,7 @@ Do not add a visual dirtiness check. Degradation is precisely the failure that n
 5. As a user in that situation, I still want the direct edit available if I ask for it, so that the recommendation does not become a restriction.
 6. As a user whose result fails Identity Review with identity-wide drift, I want regeneration from my original photo, so that the failed face is not the raw material for its own repair.
 7. As a user receiving the one automatic correction, I want it to regenerate rather than edit whenever the failing result was not just produced from my photograph, so that the skill never lengthens the chain on its own initiative.
-8. As a user, I do not want more than one automatic correction, so that recovery stays bounded.
+8. As a user, I do not want more than one automatic correction on the same result, so that recovery stays bounded.
 9. As a user with a mole, scar, freckles, or an under-eye shadow, I want those details to survive revision, so that the features that make me recognizable are not quietly simplified away.
 10. As a user, I do not want the skill to add a judgment about whether my image looks noisy, so that it does not report a verdict it cannot reliably make.
 11. As a user, I do not want the skill to claim it removed noise or improved image cleanliness, so that its completion claims stay truthful.
