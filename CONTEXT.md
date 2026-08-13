@@ -8,6 +8,10 @@ This context describes how the skill preserves a person's identity while guiding
 The actual person reference image that authoritatively anchors face identity for generation or editing. Supporting images and text may add evidence but never replace or override it.
 _Avoid_: Primary identity reference, text-only identity description
 
+**Drawn Character**:
+A request that wants the person drawn as a character rather than as a one-off picture in a named non-photographic medium. Naming a medium does not by itself make the request one.
+_Avoid_: Anime request, illustration request, drawn-media exemption
+
 **Character Sheet**:
 The locked drawn design of a person — proportions, face construction, hair, eye rendering, wardrobe, palette and colour logic, line and shading treatment, and texture — produced once and supplied as an image input to every independently generated application of that character. It governs how the person is drawn and never serves as identity evidence.
 _Avoid_: Character anchor, identity anchor, style reference

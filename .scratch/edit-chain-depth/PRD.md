@@ -107,7 +107,8 @@ Do not add a visual dirtiness check. Degradation is precisely the failure that n
 - Add a series scenario asserting that each image derives from the Primary Identity Anchor rather than from the previous output, with continuity carried by the brief.
 - Add a scenario in which the user asks the skill to clean up or sharpen a dirty-looking result. Assert that the skill does not attempt a cleanup edit, does not claim noise removal, and offers regeneration from the Primary Identity Anchor instead.
 - Add a scenario asserting that no review output contains a noise, dirtiness, or degradation verdict, and that no count, tally, or remaining-edits figure is shown to the user.
-- Preserve `Identity-wide drift regenerates from reliable evidence`, `Automatic identity recovery is bounded and reviewed`, `Passing or unreviewable outputs receive no automatic pass`, `Surface-limited identity recovery does not pretend to regenerate`, and the existing Structural Scale Failure recovery unchanged. Each already avoids the chain, and none of them should shift.
+- Preserve `Identity-wide drift regenerates from reliable evidence`, `Passing or unreviewable outputs receive no automatic pass`, `Surface-limited identity recovery does not pretend to regenerate`, and the existing Structural Scale Failure recovery unchanged. Each already avoids the chain, and none of them should shift.
+- Modify Golden 109, `Automatic identity recovery is bounded and reviewed`, so the existing trigger and one-correction bound remain intact while the operation obeys freshness and fixed-root routing.
 - Verify by inspection that no numeric depth threshold appears anywhere in the implementation or the scenarios.
 - Run the existing structural skill validator afterwards as a packaging and reference-integrity check.
 
@@ -125,7 +126,7 @@ Do not add a visual dirtiness check. Degradation is precisely the failure that n
 - Relaxing the existing single-automatic-correction bound, or adding retries. Counting that bound per visible result under review rather than per request is a clarification of an ambiguous scope, not a relaxation; see Further Notes.
 - Model parameters, API integration, or controls the active generation surface does not expose.
 - Medium-specific behavior. This specification applies identically to photographic and non-photographic work.
-- Batch generation and multi-panel sheets, which are specified separately.
+- Batch generation and multi-panel sheets, which are specified separately. A set of several results that fail on the same inherited defect is part of that batch concern, not a relaxation of this bound.
 
 ## Further Notes
 
