@@ -108,6 +108,12 @@ Pose/action options must cover body direction, gaze, mouth state, and energy lev
 
 Treat action/body direction, expression/mouth, gaze, hands/prop interaction, and energy as the Performance visible signature. When several choices fit or the user requests a Scoped Option Refresh, use `scoped-option-refresh.md`.
 
+Treat a characteristic expression or mannerism as recognition evidence only when it is useful for the selected Deformation Tier and use. Weight it strongly for a strongly deformed sticker set when reduced static structural channels and an audience likely to know the person make it useful. Keep its weight low for social avatars, equal-proportion drawn portraits, and other outputs where static structure remains available or the audience may not know the person.
+
+A Character Sheet's conservative expression and presentation do not constrain application performance. Preserve each application's locked expression, gaze, pose or action, and face angle instead of copying the sheet.
+
+Record an expression, gaze, posture, or hand position seen in one photograph explicitly as an assumption, never as a fact about the person's habits. Do not derive Character Read, personality, profession, relationships, or inner traits from it, and do not create a mannerism profile or another gate.
+
 Describe performance choices as visible behavior, not acting jargon: where the body turns, what the hands do, where the eyes land, whether the mouth is relaxed or active, and how restrained or forceful the moment feels. For example, distinguish a quiet pause with gaze beyond camera from an engaged task with hands occupied or a stronger action with accepted identity/anatomy risk. Adapt the behavior to the locked decisive moment.
 
 Selecting performance does not lock framing, camera, background, lighting, or color. If those dimensions are unresolved, keep any previewed details suggested for their own later questions.
