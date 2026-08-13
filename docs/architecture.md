@@ -236,7 +236,7 @@ flowchart TD
     P9 -- 否 --> RECOVERY
     RECOVERY --> CAPABLE{"结果可见且宿主可执行正确输入选择？"}
     CAPABLE -- 否 --> STOP["保留决策状态，说明边界或只请求重附<br/>固定根中宿主无法选择的图像"]
-    CAPABLE -- 是 --> ONCE["最多一次自动修正"]
+    CAPABLE -- 是 --> ONCE["每张待审结果各一次自动修正"]
     ONCE --> P9
 ```
 
@@ -462,7 +462,7 @@ flowchart TD
     IR -- 否 --> SCOPE{"结果是否可靠、缺陷是否为一个连贯局部单元？"}
     SCOPE -- 否 --> WIDE["身份整体漂移、Structural Scale Failure、Uneven Stylization、均匀强度端点失败<br/>或同时要求姿态、相机、裁切等非局部变化"]
     SCOPE -- 是 --> DIRECT{"用户是否明确坚持编辑这个结果<br/>且它不是下游复用的锁定产物？"}
-    DIRECT -- 是 --> EDIT["Direct Edit<br/>输入 = 结果 + Anchor；不重复加入锁定产物"]
+    DIRECT -- 是 --> EDIT["Surgical Edit<br/>输入 = 结果 + Anchor；不重复加入锁定产物"]
     DIRECT -- 否 --> FRESH{"当前 exchange 生成、可见、无 generated input<br/>且不是复用产物？"}
     FRESH -- 是 --> EDIT
     FRESH -- 否 --> WIDE
@@ -471,14 +471,14 @@ flowchart TD
     CAP -- 是 --> REGEN["从完整固定根 + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
     EDIT --> ONCE
     REGEN --> ONCE
-    ONCE["最多一次自动修正"]
+    ONCE["每张待审结果各一次自动修正"]
     ONCE --> AGAIN["再做一次 Identity Review"]
     AGAIN --> END{"通过？"}
     END -- 是 --> OWNER
-    END -- 否 --> STOP["报告具体未解决缺陷并停止<br/>不再重试，不宣称完成"]
+    END -- 否 --> STOP["报告该结果的未解决缺陷并停止修正它<br/>不再对该结果重试，不宣称完成"]
 ```
 
-Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或修正理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。自动修正上限按整项请求计：一次操作加一次复审后停止；同请求里先前修正过另一张图，已消耗该配额。
+Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或修正理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。自动修正上限按每个待审可见结果计：一次操作加一次复审后停止修正该结果；同请求里先前修正过另一张图，不消耗当前这张的一次机会，且不为此保留计数或记录。
 
 绘制角色还读取单独记录的风格化强度，并在两个均匀端点失败：整张图只是加了绘制滤镜的照片，或整张图已经绘制化却以通用动漫脸替换 Anchor 与 Medium Contract 的 open / transferred 通道。两者都是所选强度或执行失败，修正时保留 Deformation Tier 与渲染 look；增加强度只指导下一个可见增量，不写成一步最大化。它们都不是 Uneven Stylization。
 
@@ -661,13 +661,13 @@ flowchart TD
 | --- | ---: |
 | `SKILL.md` | 4,582 词 |
 | `composition-director.md` | 8,196 词 |
-| `identity-anchor.md` | 6,656 词 |
+| `identity-anchor.md` | 6,712 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 23,240 词 |
+| 运行时 Markdown 合计 | 23,296 词 |
 | `CONTEXT.md` | 39 个规范术语，1,936 词 |
 | `docs/adr/` | 8 条 ADR |
-| `golden-conversations.md` | 152 个场景，18,027 词 |
+| `golden-conversations.md` | 152 个场景，18,054 词 |
 
 ### 优化优先级
 
