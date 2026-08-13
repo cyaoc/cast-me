@@ -12,7 +12,7 @@ When styling or performance conflicts with identity or geometry, first simplify 
 
 Visible Body Evidence belongs to `identity-anchor.md`, not Styling. Preserve clearly shown shoulder width, chest volume, torso shape, and body build through every wardrobe or costume change. Garments may change fabric, layers, material, and silhouette treatment, but must drape over the verified body shape rather than flatten, narrow, enlarge, or replace it. Do not claim anatomy hidden by clothing, crop, pose, or projection is verified.
 
-For a drawn character, follow the body-evidence treatment already resolved by Deformation Tier: unchanged, simplified, or unavailable at the shortest proportion. Do not ask another body-shape question, use clothing to flatten evidence the tier can carry, or use clothing to restore a figure the tier cannot carry.
+For a Drawn Character, follow the body-evidence treatment already resolved by Deformation Tier: unchanged, simplified, or unavailable at the shortest proportion. Do not ask another body-shape question, use clothing to flatten evidence the tier can carry, or use clothing to restore a figure the tier cannot carry.
 
 If emphasized adult body characteristics conflict with a child-reading proportion, preserve the body request and route back to Deformation Tier for a non-child-reading proportion. Do not combine the two or silently moderate the requested body characteristics.
 
