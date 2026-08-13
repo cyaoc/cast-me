@@ -132,7 +132,7 @@ flowchart TB
 | Look Continuity | Styling，仅系列任务 | 单张图不创建连续性状态 |
 | 质量、尺寸与批次事实 | Composition + 宿主事实 | 不添加质量问卷，不声称不可验证的控制、批次一致性、成功率或可用图数量 |
 
-这些边界对应现有 ADR：身份优先于未确认的故事变换；妆容留在 Styling；风险由 Protected Identity Cue 是否被替换或遮挡触发；Character Read 是创意意图；Story Makeup 必须穿过 Finish；优先加深现有 Styling 和 Identity Module；身份约束通过已锁媒介与显式 Deformation Tier 的 Medium Contract 解析；复用绘制角色使用一个锁定 Character Sheet，没有提供时先从 Anchor 生成，再让应用从 Sheet 与 Anchor 分支。
+这些边界对应现有 ADR：身份优先于未确认的故事变换；妆容留在 Styling；风险由 Protected Identity Cue 是否被替换或遮挡触发；Character Read 是创意意图；Story Makeup 必须穿过 Finish；优先加深现有 Styling 和 Identity Module；身份约束通过 Medium Contract 解析，后续 Deformation Tier 能力把绘制角色的解析时点收窄到媒介与显式 Tier/Custom 变形都已锁定之后；复用绘制角色使用一个锁定 Character Sheet，没有提供时先从 Anchor 生成，再让应用从 Sheet 与 Anchor 分支。
 
 ## 2. 共享决策状态与用户 Interface
 
@@ -234,7 +234,7 @@ flowchart TD
     P10 -- 否 --> RECOVERY["恢复分类<br/>窄修改或重新生成"]
     P9 -- 否 --> RECOVERY
     RECOVERY --> CAPABLE{"结果可见且宿主可执行正确输入选择？"}
-    CAPABLE -- 否 --> STOP["保留决策状态，说明边界或只请求重附 Anchor"]
+    CAPABLE -- 否 --> STOP["保留决策状态，说明边界或只请求重附<br/>固定根中宿主无法选择的图像"]
     CAPABLE -- 是 --> ONCE["最多一次自动修正"]
     ONCE --> P9
 ```
@@ -466,7 +466,7 @@ flowchart TD
     FRESH -- 是 --> EDIT
     FRESH -- 否 --> WIDE
     WIDE --> CAP{"宿主能否包含完整固定根、排除失败图并启动新生成？"}
-    CAP -- 否 --> REATTACH["保留所有锁，只请求重附 Anchor"]
+    CAP -- 否 --> REATTACH["保留所有锁，只请求重附固定根中<br/>宿主无法选择的图像"]
     CAP -- 是 --> REGEN["从完整固定根 + 锁定 Brief 新生成<br/>失败图不得作为任何图像输入或证据"]
     EDIT --> ONCE
     REGEN --> ONCE
@@ -483,7 +483,7 @@ Identity Review 先读取生成前记录的 Medium Contract，再判断是否完
 
 固定根由 Primary Identity Anchor、必需可靠人物参考和每张图都复用的锁定产物组成，修正时不随失败结果增长。Character Sheet 是应用固定根中的锁定产物；失败应用必须从 Anchor + Sheet + 完整应用 Brief 重生成，失败 Sheet 必须从它自己的固定根 + Sheet Brief 重生成，两者都排除失败图。用户明确坚持局部编辑某个应用时，先建议重生成，但仍允许只以该应用 + Anchor 直接编辑，不再次加入 Sheet；复用的 Sheet 本身始终不可编辑。
 
-Uneven Stylization 只指部分表面已转换、部分仍摄影化的混合状态；即使人物仍可识别且身份通道无漂移也让 Identity Review 失败，并且从不走 Surgical Edit。宿主能力允许时，用同一次有上限的新生成从 Primary Identity Anchor 和完整锁定 Brief 同时处理它与可能并存的身份漂移；只附必需且可靠的支持参考，失败图不进入任何图像输入或身份、脸、姿态、身体、构图等证据角色。Composition 的非摄影配方为皮肤、头发、眼睛、服装、灯光和背景逐项正面重述所选媒介，不描述失败图哪些表面仍是摄影处理，也不用负面指令表达其消失。
+Uneven Stylization 只指部分表面已转换、部分仍摄影化的混合状态；即使人物仍可识别且身份通道无漂移也让 Identity Review 失败，并且从不走 Surgical Edit。宿主能力允许时，用同一次有上限的新生成从完整固定根和完整锁定 Brief 同时处理它与可能并存的身份漂移；固定根包含 Anchor、必需且可靠的支持人物参考，以及请求中每张图都复用的 Character Sheet 等锁定产物，失败图不进入任何图像输入或身份、脸、姿态、身体、构图等证据角色。Composition 的非摄影配方为皮肤、头发、眼睛、服装、灯光和背景逐项正面重述所选媒介，不描述失败图哪些表面仍是摄影处理，也不用负面指令表达其消失。
 
 F8 是主流程的窄修改例外：已有可见结果时直接从 P9 审查开始，不重新走普通创意澄清；只有需要全新生成时才复用锁定 Brief 和正确实际输入回到生成步骤。
 
@@ -657,15 +657,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,476 词 |
-| `composition-director.md` | 8,141 词 |
-| `identity-anchor.md` | 6,456 词 |
+| `SKILL.md` | 4,481 词 |
+| `composition-director.md` | 8,169 词 |
+| `identity-anchor.md` | 6,486 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 22,879 词 |
-| `CONTEXT.md` | 39 个规范术语，1,919 词 |
+| 运行时 Markdown 合计 | 22,942 词 |
+| `CONTEXT.md` | 39 个规范术语，1,936 词 |
 | `docs/adr/` | 8 条 ADR |
-| `golden-conversations.md` | 151 个场景，17,590 词 |
+| `golden-conversations.md` | 151 个场景，17,746 词 |
 
 ### 优化优先级
 

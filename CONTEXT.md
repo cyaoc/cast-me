@@ -9,7 +9,7 @@ The actual person reference image that authoritatively anchors face identity for
 _Avoid_: Primary identity reference, text-only identity description
 
 **Character Sheet**:
-The locked drawn design of a person — proportions, face construction, hair, eye rendering, wardrobe, palette, and line and shading treatment — produced once and supplied as an image input to every independently generated application of that character. It governs how the person is drawn and never serves as identity evidence.
+The locked drawn design of a person — proportions, face construction, hair, eye rendering, wardrobe, palette and colour logic, line and shading treatment, and texture — produced once and supplied as an image input to every independently generated application of that character. It governs how the person is drawn and never serves as identity evidence.
 _Avoid_: Character anchor, identity anchor, style reference
 
 **Protected Identity Cue**:
@@ -21,7 +21,7 @@ The identity channels the selected medium and deformation level can actually exp
 _Avoid_: Style preset, medium label, drawn-media exemption
 
 **Deformation Tier**:
-The selected degree of drawn deformation, presented as three fixed semantic labels whose concrete proportions vary with the intended use. It resolves the request's Medium Contract and therefore decides which identity channels remain open, which carry recognition in their place, and which are disclosed as closed.
+The selected degree of drawn deformation, presented as three fixed semantic labels whose concrete proportions vary with the intended use. It resolves the request's Medium Contract and therefore decides which identity channels remain open, which carry recognition in their place, and which are disclosed as closed. It governs proportion and shape, not the separate ordinary decision about stylization intensity.
 _Avoid_: Style level, chibi mode, stylization intensity
 
 **Visible Body Evidence**:

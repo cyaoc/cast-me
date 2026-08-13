@@ -258,12 +258,12 @@ Keep the existing recovery operations and automatic-correction routing below. Fo
 
 | Result and requested scope | Operation | Actual image inputs |
 | --- | --- | --- |
-| Failed review; reliable identity evidence; one coherent local correction | Surgical edit | Result being edited plus Primary Identity Anchor |
+| Failed review; reliable identity evidence; one coherent local correction | Surgical edit, only when the freshness and reuse rules above permit it | Result being edited plus Primary Identity Anchor |
 | Failed review; Uneven Stylization, with or without identity drift | New generation from the complete fixed root and locked brief | Complete fixed root; exclude the failed result |
 | Failed review; likeness repair plus pose, action, camera, crop, or other whole-image geometry change | New generation from the complete fixed root and locked brief | Complete fixed root; exclude the failed result |
 | Failed review; identity-wide drift | New generation from the complete fixed root and locked brief | Complete fixed root; exclude the failed result |
 
-Use a new-generation row only when the active surface can independently select those inputs and initiate a new generation. Otherwise preserve the complete decision state and ask only for the Primary Identity Anchor to be reattached.
+Use a new-generation row only when the active surface can independently select those inputs and initiate a new generation. Otherwise preserve the complete decision state and ask only for each fixed-root image that the active surface cannot select to be reattached; do not reduce a multi-image fixed root to the Primary Identity Anchor alone.
 
 For the surgical row, change only the coherent affected unit and repeat identity constraints:
 
@@ -284,7 +284,7 @@ Multiple connected body-scale failures, or a revision that must expand a partial
 
 Uneven Stylization is never a surgical correction. Use the single bounded new generation from the complete fixed root and locked brief. Exclude the failed result from every image-input and identity, face, pose, body, composition, or other evidence role. When identity drift occurs with it, address both in that same regeneration rather than spending the correction on either failure alone. Apply Composition's non-photographic recipe to restate the selected medium positively across every visible surface; do not identify which surfaces remained photographic or phrase their absence as a negative instruction.
 
-A result with identity-wide drift is incomplete. Regenerate from the complete fixed root and locked production brief only when the active generation surface can independently include the fixed-root images as actual inputs, exclude the failed result, and initiate a new generation. Do not include the failed result as an image input or use it as identity, face-geometry, pose, composition, or body evidence. Preserve valid scene, Shot, camera, projection, pose, Performance, Styling, lighting, First-Pass Finish, exact text, background, output, and accepted-risk locks in the new prompt. If the surface cannot perform the required input selection, preserve the complete decision state and ask only for the Primary Identity Anchor to be reattached.
+A result with identity-wide drift is incomplete. Regenerate from the complete fixed root and locked production brief only when the active generation surface can independently include the fixed-root images as actual inputs, exclude the failed result, and initiate a new generation. Do not include the failed result as an image input or use it as identity, face-geometry, pose, composition, or body evidence. Preserve valid scene, Shot, camera, projection, pose, Performance, Styling, lighting, First-Pass Finish, exact text, background, output, and accepted-risk locks in the new prompt. If the surface cannot perform the required input selection, preserve the complete decision state and ask only for each fixed-root image it cannot select to be reattached.
 
 Recovery must change the actual image inputs. Never substitute a prompt instruction to refer to an earlier result in the conversation.
 

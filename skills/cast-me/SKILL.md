@@ -186,7 +186,7 @@ This is an internal execution checkpoint, not a user-visible stage, score, or ad
 - the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description
 - one final internal check confirms that the resolved combination neither materially reduces target-critical Protected Identity Cue readability nor depends on target-critical Reference Coverage that remains missing
 
-If any item fails, route only the current blocker through existing behavior: reattach an unavailable Primary Identity Anchor, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate this checkpoint after the focused answer, and do not repeat an accepted risk inside its exact boundary.
+If any item fails, route only the current blocker through existing behavior: reattach each unavailable image required by the operation's complete fixed root, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate this checkpoint after the focused answer, and do not repeat an accepted risk inside its exact boundary.
 
 ## Step 3: Generate
 
