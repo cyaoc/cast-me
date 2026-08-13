@@ -468,6 +468,8 @@ flowchart TD
     MULTI -- 否 --> EACH["为每个失败项运行现有分类"]
     MULTI -- 是 --> SHARED{"是否有可支持的共同原因？"}
     SHARED -- 是 --> CAUSE["归因 Character Sheet 或锁定 Brief<br/>只报告一次共同原因"]
+    CAUSE --> SHAREDOP["选择先从 Sheet 固定根 + 锁定 Sheet Brief<br/>重生成 Sheet，再从新 Sheet 重生成项"]
+    SHAREDOP --> CAP
     SHARED -- 否 --> UNSHARED["明确不主张共同原因"]
     UNSHARED --> EACH
     EACH --> SCOPE{"结果是否可靠、缺陷是否为一个连贯局部单元？"}
@@ -481,18 +483,24 @@ flowchart TD
     EDIT --> CAP{"宿主能否执行所选操作的实际输入控制？"}
     REGEN --> CAP
     CAP -- 否 --> REATTACH["保留所有锁，只请求重附固定根中<br/>宿主无法选择的图像"]
-    CAP -- 用户尚未请求恢复 --> COLLECT["收集每个失败项<br/>具体缺陷 + 所选操作与原因"]
+    CAP -- 用户尚未请求恢复或共同原因范围未决 --> COLLECT["收集请求级共同原因或每个失败项<br/>具体缺陷 + 所选操作与原因"]
     COLLECT --> OFFER["一份 Recovery Offer<br/>整项请求 + 尚未执行"]
-    OFFER --> WAIT["标记未完成并停止；不生成或编辑"]
+    OFFER --> OFFERKIND{"是否为共同原因？"}
+    OFFERKIND -- 否 --> WAIT["标记未完成并停止；不生成或编辑"]
+    OFFERKIND -- 是 --> GATE["重建范围 Choice Gate<br/>A 全部 / B 仅失败项 / C 停止 / D Custom"]
+    GATE -- C 停止 --> DELIVER["零次生成；通过项原样交付<br/>失败项保持未完成"]
+    GATE -. 用户选择 A、B 或有效 D .-> RUN
     WAIT -. 用户随后请求恢复 .-> RUN
-    CAP -- 用户已请求恢复 --> RUN["只执行用户已接受项的所选恢复操作"]
+    CAP -- 无共同原因且用户已请求恢复 --> RUN["只执行用户已接受范围的所选恢复操作"]
     RUN --> AGAIN["做一次 follow-up Identity Review"]
     AGAIN --> END{"通过？"}
     END -- 是 --> OWNER
     END -- 否 --> STOP["报告该结果的具体剩余缺陷并停止<br/>不宣称完成"]
 ```
 
-Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或恢复理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。每个可见、可查且明确失败的结果都先完成恢复分类；若用户尚未请求恢复且宿主能执行所选操作，就交付 Recovery Offer，说明具体缺陷、所选操作与原因、尚未执行，并标记未完成后停止。Recovery Offer 不是 Choice Gate。只有用户请求恢复后才执行该操作，再做一次 follow-up Identity Review；仍失败就报告具体剩余缺陷并停止，不宣称完成。同一请求有多个失败项且无法支持共同原因时，先把每项分类到所选操作，再收进一份请求级 Recovery Offer；明确不主张共同原因，每项分别写具体缺陷与操作，一条用户指令可以接受全部、点名子集或全部不接受，不逐项追问，也不要求重述请求。一套图中多张出现同一缺陷时，仍归因为 Character Sheet 或锁定 Brief 失败——每次重生成都会继承它——并只报告一次共同原因。
+Identity Review 先读取生成前记录的 Medium Contract，再判断是否完成并决定恢复范围。它只审 open 与 transferred 通道：任一 structural cue 仍 open 时，recognizability 不能替代逐 cue 审查；没有 structural cue open 时，transferred cues 的识别性决定完成，并额外要求缩略图尺寸的 filled silhouette 可辨。closed cue 的缺席本身不是失败或恢复理由。妆容、服装或场景做得漂亮不代表身份通过；“用户说不像”也不会自动证明它只是局部缺陷。每个可见、可查且明确失败的结果都先完成恢复分类；若用户尚未请求恢复且宿主能执行所选操作，就交付 Recovery Offer，说明具体缺陷、所选操作与原因、尚未执行，并标记未完成后停止。普通单项或无共同原因的 Recovery Offer 不是 Choice Gate；只有共同原因分支继续进入下述范围 Gate。只有用户请求恢复且范围已明确后才执行，再做一次 follow-up Identity Review；仍失败就报告具体剩余缺陷并停止，不宣称完成。同一请求有多个失败项且无法支持共同原因时，先把每项分类到所选操作，再收进一份请求级 Recovery Offer；明确不主张共同原因，每项分别写具体缺陷与操作，一条用户指令可以接受全部、点名子集或全部不接受，不逐项追问，也不要求重述请求。
+
+一套图中多张出现同一缺陷时，仍归因为 Character Sheet 或锁定 Brief 失败——每次重生成都会继承它——并只报告一次共同原因。该原因选择先从 Sheet 自己的完整固定根和锁定 Sheet Brief 重生成 Sheet，再从新 Sheet 重生成项；Offer 明说两步都尚未执行。新 Sheet 不是旧 Sheet 的补丁，保留旧 Sheet 所生成的项不会再共享新 Sheet 的锁。因此这里只显示一个无默认推荐的本地化 A/B/C/D Choice Gate，并用当前请求的实际数量写成本：A 为一张新 Sheet 加全部项，B 为一张新 Sheet 加失败项且接受同一套图存在两个角色版本，C 为零次生成并原样交付通过项，D 只允许用户在本次重建范围内点名其他子集并在执行前写出一张 Sheet 加所选项的成本。四条路径都不重开创意选择、已解析 Medium Contract 或无关 Explicit Locks，不恢复自动修复，Custom 也不能绕过安全。
 
 绘制角色还读取单独记录的风格化强度，并在两个均匀端点失败：整张图只是加了绘制滤镜的照片，或整张图已经绘制化却以通用动漫脸替换 Anchor 与 Medium Contract 的 open / transferred 通道。两者都是所选强度或执行失败，修正时保留 Deformation Tier 与渲染 look；增加强度只指导下一个可见增量，不写成一步最大化。它们都不是 Uneven Stylization。
 
@@ -641,7 +649,7 @@ flowchart TD
 | 132 | F7 | 多轮修改和系列图片不增长 generated-input chain |
 | 133-136 | F8 | 清理建议与用户接受 Recovery Offer 后沿完整固定根重生成 |
 | 137 | F7 | 一个 Character Sheet 锚定两个独立且不同的应用 |
-| 138 | F8 | 应用与 Character Sheet 先给 Recovery Offer、用户接受后按各自固定根恢复；显式局部编辑与宿主重附边界不变；同缺陷只报告共同原因 |
+| 138 | F8 | 应用与 Character Sheet 先给 Recovery Offer、用户接受后按各自固定根恢复；显式局部编辑与宿主重附边界不变；同缺陷只报告共同原因并以 Sheet 后项的操作进入四路径范围 Gate |
 | 139 | F1 | Deformation Tier 在不同用途保持稳定语义顺序并适配具体比例；manga/cartoon 同样开门且只有用户直选进合约 |
 | 140 | F7 | Tier 解析一次身份通道与完整身体证据梯度，并由 Sheet 与应用复用 |
 | 141 | F9 | 年轻观感、成熟曲线说明与 child-reading / adult-emphasis 冲突解析；中性承载不算强调 |
@@ -679,15 +687,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,620 词 |
+| `SKILL.md` | 4,650 词 |
 | `composition-director.md` | 8,318 词 |
-| `identity-anchor.md` | 7,027 词 |
+| `identity-anchor.md` | 7,208 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 23,771 词 |
+| 运行时 Markdown 合计 | 23,982 词 |
 | `CONTEXT.md` | 41 个规范术语，2,078 词 |
 | `docs/adr/` | 9 条 ADR |
-| `golden-conversations.md` | 154 个场景，19,055 词 |
+| `golden-conversations.md` | 154 个场景，19,402 词 |
 
 ### 优化优先级
 
