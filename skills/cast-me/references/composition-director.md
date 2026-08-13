@@ -25,11 +25,11 @@ Resolve creative direction whenever it is still production-critical. Do not forc
 
 If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly three concrete directions labeled A through C plus the permanent `D) Custom` option.
 
-For drawn output, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and optical finish; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with three visible outcomes adapted to the current brief plus `D) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
+For a drawn character, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and optical finish; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with three visible outcomes adapted to the current brief plus `D) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
 
 ### Drawn Style Axes
 
-Express every drawn rendering treatment through six separately recorded axes. A choice on one axis never resolves another axis, Deformation Tier, stylization intensity, or optical finish.
+Express a drawn character's rendering treatment through six separately recorded axes. A choice on one axis never resolves another axis, Deformation Tier, stylization intensity, or optical finish. A one-off illustration that is not a drawn character uses the Illustration or Other Non-Photographic Output recipe without this axis gate.
 
 | Axis | Visible controls |
 | --- | --- |
@@ -223,7 +223,7 @@ Resolve it in this order: honor an explicit finish; after accepted recommended d
 
 When the gate is needed, present exactly three image-specific Finish Directions labeled A through C plus `D) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
 
-Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`. For drawn output, keep the selected Texture-axis values locked during a finish refresh: First-Pass Finish realizes them but does not reselect them, while optical variation uses diffusion, bloom, flare, bokeh, and eye-highlight strength.
+Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`. For a drawn character, keep the selected Texture-axis values locked during a finish refresh: First-Pass Finish realizes them but does not reselect them, while optical variation uses diffusion, bloom, flare, bokeh, and eye-highlight strength.
 
 Translate the selected direction into only production controls that materially affect the image. Lighting must remain motivated by the scene; resolve its believable source, direction, height, apparent size, softness, falloff, face exposure, fill or negative fill, catchlight, and subject/background separation only when relevant. Likewise, exposure, white balance, highlight/shadow behavior, local contrast, grain, halation, sharpness, and material rendering are optional controls, not required fields. Name equipment, a modifier, or a shaping method only when it clarifies a visible effect.
 
@@ -280,7 +280,7 @@ Use these cross-output rules when writing the final production prompt:
 - State scene density with concrete objects, surfaces, spatial layers, and environmental details rather than empty adjectives.
 - State the First Read and supporting hierarchy in concrete composition, contrast, scale, focus, action, or spacing terms.
 - Keep materials, lighting, palette, and camera/capture context as separate controls.
-- For drawn output, replace artist, school, unfamiliar, or unsupported style labels with concrete six-axis and optical-finish anchors before production; never let a label stand in for visible direction.
+- For a drawn character, replace artist, school, unfamiliar, or unsupported style labels with concrete six-axis and optical-finish anchors before production; never let a label stand in for visible direction.
 - For posters, covers, editorials, and commercial visuals, use the three-glance test: first glance reads the hero subject or silhouette, second glance reads the world or message, third glance rewards inspection with texture and detail.
 - For layouts with annotations, labels, panels, UI, diagrams, or multi-image boards, define fixed regions, panel roles, labels, spacing, and readability constraints before style detail.
 - End with one ordinary `Constraints` block containing approximately three to eight distinct, observable failure modes for the current output. Keep lower-risk positive locks in their owning prompt slots instead of repeating them as negatives; do not create a provider-specific negative-prompt field or reuse a universal list.
@@ -339,7 +339,7 @@ Do not invent brand names, slogans, logos, or product claims.
 
 Apply the request-wide Medium Contract already resolved by Identity Anchor; do not resolve it again from the prompt or generated result. For a drawn character, also apply the explicitly selected Deformation Tier or Custom deformation without inferring another one. Name the intended medium and use medium-coherent line, brush, paper, print, paint, collage, or mixed-material characteristics. Preserve identity through the open and transferred channels in the medium's actual shape and texture language rather than drifting into accidental photorealism or plastic 3D treatment.
 
-State the selected rendering treatment through concrete line, surface-coloring, colour-logic, eye-rendering, texture, and background directions; a starting-look name never replaces those features. Keep the background treatment independent from the character treatment, and keep optical finish separate from shading-layer count and boundary treatment.
+State a drawn character's selected rendering treatment through concrete line, surface-coloring, colour-logic, eye-rendering, texture, and background directions; a starting-look name never replaces those features. Keep the background treatment independent from the character treatment, and keep optical finish separate from shading-layer count and boundary treatment.
 
 For a drawn character, state the selected concrete head-to-body convention positively together with its roundness, simplification, feature placement, hand treatment, and body-curvature treatment. Carry tier-resolved Visible Body Evidence unchanged or in simplified form wherever the proportion can express it, using the existing neutral relationship language. For the shortest proportion, describe the compact drawing convention it can express; keep the source-figure loss disclosure before generation and out of the prompt. Do not assemble a prompt that combines emphasized adult body characteristics with a child-reading proportion; return to Deformation Tier and move the proportion while preserving the body request.
 
@@ -413,8 +413,8 @@ Identity and reference transfer: <same person; face anchors; temporary source po
 Locked intent and quality constraints: <camera perspective, projection strength, requested deformation, action, head direction, gaze, and other locked choices that cannot change silently; identity, body coherence within the selected medium, projection, and pose quality required inside them>
 First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
-Drawn style axes (drawn output only): <line; surface-coloring layer count and boundaries; colour logic; eye rendering; texture; independent background treatment; no artist or school name>
-Drawn stylization intensity (drawn output only): <separately recorded visible distance from photography; coherent conversion target across skin, hair, eyes, wardrobe, lighting, shading, and background; preserve the selected Deformation Tier and rendering look>
+Drawn style axes (drawn character only): <line; surface-coloring layer count and boundaries; colour logic; eye rendering; texture; independent background treatment; no artist or school name>
+Drawn stylization intensity (drawn character only): <separately recorded visible distance from photography; coherent conversion target across skin, hair, eyes, wardrobe, lighting, shading, and background; preserve the selected Deformation Tier and rendering look>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>
