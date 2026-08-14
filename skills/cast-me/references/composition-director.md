@@ -1,6 +1,6 @@
 # Composition Director
 
-This module owns creative direction, Drawn Motion Convention, drawn style axes and starting vocabulary, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
+This module owns creative direction, Drawn Motion Convention, drawn style axes and starting vocabulary, Style Readout, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
 
 ## Creative Direction
 
@@ -73,6 +73,18 @@ Translate an artist, school, or other style name into concrete visible choices a
 When another person's artwork or photo is supplied as a style reference, label that role and extract only its rendering treatment into the six axes and First-Pass Finish optical controls. Identity Anchor owns the prohibition on transferring that person's identity, age impression, or body evidence.
 
 When the selected texture uses dense high-frequency micro-structure, disclose the current model-artifact risk before production as time-stamped information: as of the 2026-08-12 public-information review, GPT Image 2 still had a publicly reported tiling or visible-noise risk in dense high-frequency detail, and no official fix announcement was found. State this as a review-date boundary, not a permanent limitation. Do not turn it into a quality ranking, a per-look reachability claim, or a claim that another look will produce a better result.
+
+### Style Readout
+
+Deliver a localized Style Readout in the same response as the first result under each style state. It is a disclosure carried by the result, never a Choice Gate, extra turn, or account of how the image was made.
+
+For a Drawn Character, the style state is the exact combination of the six locked axes, Deformation Tier, and stylization intensity. On its first result, report the locked values under the same localized axis names that Scoped Option Refresh accepts — line, surface coloring, colour logic, eye rendering, texture, and background — followed by Deformation Tier and stylization intensity. Describe each value by its visible effect rather than an opaque production label. Never include an artist or school name.
+
+Deliver one readout for a whole set, not one per item, and suppress it on later results while that combination holds. After a single-axis Scoped Option Refresh, the first result of the new state reports only that axis and its new locked visible value; do not repeat the unchanged axes, tier, or intensity. A style state reached through multiple changes receives the full readout on its first result.
+
+For photographic output, use the same once-per-state and changed-control-only behavior, but report only the two or three locked First-Pass Finish controls that materially changed the look. Do not use the six drawn axes or reproduce a Direction Signature.
+
+Read only the locked decision record; do not inspect the image to construct the readout. It makes no completion, likeness, quality, or correspondence claim. Identity Review, including its Uneven Stylization check, separately decides whether the visible result matches those decisions.
 
 When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
 

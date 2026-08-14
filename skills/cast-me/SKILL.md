@@ -28,6 +28,7 @@ Route reference reading by stable Markdown heading. Prefer reading only the name
 | Exact text, layout, platform delivery, variants, transparency, or a requested set, series, or multi-angle sheet | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
 | Drawn set, series, reusable character design, multi-angle sheet, second or later image of the same character, or a supplied Character Sheet | `references/identity-anchor.md`: `Character Sheet`; `references/composition-director.md`: `Character Sheet Applications`; add the ordinary sections needed by each application |
 | Presenting or replacing a refreshable creative gate | `references/scoped-option-refresh.md`: `Scope` and `Visible Gate and History`; add `Route the Target`, `Locks and Continuity`, or `Refresh Exhaustion` when active, plus the section that owns the target creative area |
+| Delivering a visible result or set | `references/composition-director.md`: `Style Readout`; load this result disclosure independently from the review route below |
 | Reviewing a visible result | Read identity `Identity Review and Revision` first, then only the owner sections that contributed to generation or revision and their final review checks; composition review checks are in `Prompt Structure`, and styling/performance review checks are in `Prompt Contributions` |
 | Narrow revision to a visible result | Bypass the normal-generation core. Read identity `Identity Review and Revision` plus the section that owns the requested correction. Add identity `Priority` and `Identity Prompt Constraints` for a likeness or face correction; add other core sections only when the correction actually touches reference transfer or coverage, composition, final quality, or finish |
 
@@ -193,6 +194,8 @@ If any item fails, route only the current blocker through existing behavior: rea
 
 After the checkpoint passes, use the assembled production prompt. Do not replace it with a short generic summary or compact config block.
 
+Apply Composition's Style Readout contract to every visible result before the response ends. When a readout is due for the current style state, deliver it in the same response from the locked decision record; it never substantiates Identity Review or any likeness, quality, or visual-completion claim.
+
 Generation and review are complete only when:
 
 - every required focused gate is resolved
@@ -201,6 +204,7 @@ Generation and review are complete only when:
 - every visible, inspectable result passes Identity Review against the Primary Identity Anchor; an unavailable, ambiguous, or failed review receives no final or completion claim
 - the results of every module whose sections contributed to generation or revision are represented in the production prompt or revision
 - every delivered set member's required dimensions and output organization are verified from the actual results
+- any Style Readout due for the current style state was delivered with the result from the locked record rather than visual inspection
 - claims about tool controls, batch routing, output quality, size, text, and visual review are truthful and verified where required
 
 ## Step 4: Review or Revise
