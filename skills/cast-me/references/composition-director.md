@@ -8,11 +8,11 @@ After the output type is known, infer the design read:
 
 - audience and use case
 - mood words from the user
-- the First Read: the one person, face, silhouette, action, emotion, product, or message that should register first at the intended display size
-- the decisive moment for story-bearing images: what is happening now, what just happened or may happen next, and what the audience should feel first
+- the First Read
+- the Decisive Moment for story-bearing images
 - reference-image role
 - platform or crop needs
-- shot direction: composition, camera distance/angle, subject blocking, and background relationship
+- shot direction
 - styling/performance needs routed through `styling-performance.md`
 - reference transfer boundaries: what identity anchors to preserve and what temporary reference state to redesign for the theme
 - whether the image should feel photographic, editorial, cinematic, commercial, CG, or social-native
@@ -105,7 +105,6 @@ Quality-example shapes only; adapt them to the brief rather than treating them a
 
 - contemporary documentary editorial + tactile 35mm observation + a public-space transition + layered off-center framing + available mixed light + restrained grain
 - mid-century graphic campaign + cut-paper or screen-print construction + one symbolic action + flat poster hierarchy + two-color contrast + imperfect ink texture
-- speculative artifact portrait + sculptural digital realism + a ritual or technical threshold + monumental negative space + material-driven glow and shadow + weathered tactile finish
 
 Generate candidates sequentially. Apply the shared available-history and current-batch checks from `scoped-option-refresh.md` using Creative Direction's stricter rule: a candidate differs from each compared Direction Signature in at least three parts. A renamed option, palette-only change, creator name, camera brand, lens token, or minor prompt variation is not fresh.
 
@@ -181,21 +180,9 @@ D) Custom - say how much of the body to show, whether the camera looks from abov
 Reply with A, or reply with "B + camera near eye level + person on the right + deep station background".
 ```
 
-For cinematic posters, editorial/magazine images, commercial campaign visuals, CG/game key art, full-body/action outputs, story-heavy concepts, product/prop interaction, or requests for a filmic/editorial/high-fashion/hero image, ask a fuller Director Shot Plan unless already specified:
+For cinematic posters, editorial/magazine images, commercial campaign visuals, CG/game key art, full-body/action outputs, story-heavy concepts, product/prop interaction, or requests for a filmic/editorial/high-fashion/hero image, ask a fuller Director Shot Plan unless already specified, extending the same gate shape to cover spatial layers and any title or background space.
 
-```text
-I recommend: show the person from the upper body to mid-thigh, because both the face and the story world remain easy to read.
-
-Options:
-A) Upper body to mid-thigh (Recommended) - person reads first, one clear background layer supports the story, and room can remain for a title
-B) Whole body in the setting - show something near the camera, the person, and a deeper background; body-reference requirements are higher
-C) Move closer to face and shoulders - emotion reads first and only a few background clues remain
-D) Custom - say how much body to show, whether the camera looks from above/level/below, where the person sits, and where title or background space should remain
-
-Reply with A, or reply with "B + camera near waist height + long station platform behind + title space above".
-```
-
-For a Drawn Character whose locked proportion collapses the crop ladder, resolve subject scale internally and ask only the shot parts that still vary. At a roughly two-and-a-half-head sticker proportion the waist-up, mid-thigh, and whole-body labels all deliver the same compact full figure, so the remaining question is placement and background:
+When a Drawn Character's locked proportion collapses the crop ladder, the same rule produces a different gate. At a roughly two-and-a-half-head sticker proportion the waist-up, mid-thigh, and whole-body labels all deliver the same compact full figure, so the remaining question is placement and background:
 
 ```text
 I recommend: stand the figure alone on a clean field, because the sticker has to read at chat size and the pose is what carries it.
@@ -209,7 +196,7 @@ D) Custom - say what sits behind the figure, where it sits in frame, and how muc
 Reply with A, or reply with "B + warm halo + figure slightly left".
 ```
 
-Subject scale is not offered here because the locked proportion already decided it. Do not reopen Deformation Tier to create a crop choice.
+Do not reopen Deformation Tier to create a crop choice.
 
 ## Perspective Intent
 
@@ -419,25 +406,7 @@ After the user chooses a direction or supplies enough brief detail, write a comp
 
 Omit irrelevant dimensions instead of inventing filler. Never keep placeholder rows, empty labels, generic no-op values, or fields that do not help the current request.
 
-Consider these dimensions when relevant:
-
-- identity priority: same person, face anchor, source-observed facial structure, no face redesign
-- reference transfer boundaries: identity anchors to preserve; temporary source state not to copy, such as pose, expression, face angle, crop scale, selfie perspective, screenshot artifacts, or lighting
-- reference coverage: which required face, body-scale, angle, and performance facts are verified, described, inferred, or missing
-- shot direction: portrait or director plan covering composition, camera distance/angle, subject blocking, and background relationship
-- directorial intent: the first audience impression and decisive moment when the image carries a story
-- First Read: the one person, face, silhouette, action, emotion, product, or message that registers first at the intended display size, plus its supporting hierarchy
-- styling/performance: Character Read, wardrobe/accessory structure, hair/makeup, Story Makeup, props, pose/action, expression, gaze, hands, and energy level from `styling-performance.md`
-- world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
-- composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
-- identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
-- drawn motion convention: speed lines, afterimage, explicitly selected repeated limb positions, or a held freeze when movement treatment matters
-- drawn style axes: concrete line, surface-coloring, colour-logic, eye-rendering, texture, and background treatment, with any named starting look translated into those visible features
-- lighting/color/retouch/finish: motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture; final image character; only materially useful controls
-- output contract: canvas aspect, platform readability, safe areas, allowed-text set and treatment, exact-text verification, and required variants
-- negative constraints: approximately three to eight observable failure modes most likely for the current output
-
-The expanded prompt should be theme-adaptive. Do not reuse examples such as forests, temples, cyberpunk, saints, warriors, or luxury studios unless the user chose that direction. Delete rows that do not help the specific output.
+The expanded prompt should be theme-adaptive. Do not reuse examples such as forests, temples, cyberpunk, saints, warriors, or luxury studios unless the user chose that direction.
 
 ```text
 Use case: identity-preserve
@@ -446,18 +415,18 @@ Canvas/aspect: <ratio, crop, platform, or size intent>
 Layout contract: <subject placement, negative space, text-safe areas, panel/region structure, or "simple single-image layout">
 Input image: reference for the person's visible identity
 Primary request: <user request>
-Identity and reference transfer: <same person; face anchors; temporary source pose/angle/crop/perspective not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
+Identity and reference transfer: <same person; face anchors; source-observed facial structure with no face redesign; temporary source pose/expression/angle/crop/perspective, selfie or screenshot capture artifacts, and source lighting not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
 Locked intent and quality constraints: <camera perspective, projection strength, requested deformation, action, head direction, gaze, and other locked choices that cannot change silently; identity, body coherence within the selected medium, projection, and pose quality required inside them>
 First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
-Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
+Creative direction: <style, hero hierarchy, mood, and world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic>
 Drawn style axes (Drawn Character only): <line; surface-coloring layer count and boundaries; colour logic; eye rendering; texture; independent background treatment; no artist or school name>
 Drawn stylization intensity (Drawn Character only): <separately recorded visible distance from photography; coherent conversion target across skin, hair, eyes, wardrobe, lighting, shading, and background; preserve the selected Deformation Tier and rendering look>
 Drawn Motion Convention (Drawn Character when motion treatment matters): <selected speed lines, afterimage, repeated limb positions, held freeze, or another concrete visible convention; repeated limbs only when explicitly selected>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
-Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
+Shot direction: <portrait shot direction or director shot plan; subject scale/body cutoff, composition, camera distance/angle, subject blocking, and background relationship>
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, photographic motion treatment when relevant, and only useful numeric cues tied to visible results>
 Perspective contract: <underlying anatomy or positively described requested medium deformation; projected proportions; which requested or near/far enlargement and foreshortening are intentional; which random, camera-inconsistent, or unrequested deformation is forbidden>
-Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed identity details the medium preserves as the person's own or uses for recognition; verified, described, inferred, or missing evidence; identity readability at the target face angle; angle-correct facial planes; anatomically valid or coherently requested world-space head, shoulder, torso, hip, limb, and joint structure>
+Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed identity details the medium preserves as the person's own or uses for recognition; verified, described, inferred, or missing evidence; identity readability at the target face angle rather than rotating the person back toward camera; angle-correct facial planes; anatomically valid or coherently requested world-space head, shoulder, torso, hip, limb, and joint structure>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include Character Read, makeup/hair/grooming, Story Makeup, important materials, and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and separate visible left/right hand positions, body-relative orientations, thumb sides, props, and follow-through; all aligned with the locked camera>
@@ -469,7 +438,7 @@ Other series invariants: <identity, prop state, light direction, location geogra
 Constraints: <approximately three to eight observable failure modes most likely for this output, selected from the active identity, anatomy, projection, hand/prop, text, material, layout, or finish risks>
 ```
 
-Before generation, check that output/canvas, reference coverage, locked intent, shot, perspective contract, target-angle identity, underlying anatomy or Medium Contract-explained deformation, projected proportions, pose geometry, styling/performance, lighting/color/retouch/finish, text/output contract, and adaptive negatives are concrete enough for the task. Also verify Physical Scene Coherence across the resolved setting and time/weather, Shot and perspective, Performance and pose geometry, Styling and materials including their response to the environment and light, and lighting and finish.
+Before generation, check that every slot used above is concrete enough for the task. Also verify Physical Scene Coherence across the resolved setting and time/weather, Shot and perspective, Performance and pose geometry, Styling and materials including their response to the environment and light, and lighting and finish.
 
 As part of that existing pre-generation check, verify crop visibility: every Explicit wardrobe/body-cutoff requirement is visible, intentionally off-frame, or resolved through a focused coherence confirmation. If resolving the conflict expands the crop beyond the reference, run the existing Reference Coverage check for the newly exposed body, angle, or performance evidence before generation.
 

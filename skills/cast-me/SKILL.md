@@ -192,7 +192,7 @@ If any item fails, route only the current blocker through existing behavior: rea
 
 ## Step 3: Generate
 
-After the checkpoint passes, use the assembled production prompt. Do not replace it with a short generic summary or compact config block.
+After the checkpoint passes, use the assembled production prompt as Composition assembled it.
 
 Apply Composition's Style Readout contract to every visible result before the response ends. When a readout is due for the current style state, deliver it in the same response from the locked decision record; it never substantiates Identity Review or any likeness, quality, or visual-completion claim.
 
