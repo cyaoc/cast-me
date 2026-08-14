@@ -132,9 +132,12 @@ For non-trivial action, write one coherent chain using only the links relevant a
 - torso/ribcage and shoulder rotation
 - neck, head turn, and tilt
 - facial plane and gaze
-- hands, props, and follow-through
+- left hand: visible position, orientation relative to the body, thumb side, prop relationship, and follow-through
+- right hand: visible position, orientation relative to the body, thumb side, prop relationship, and follow-through
 
 Every link must agree with the locked camera and perspective. Do not write only "natural dynamic pose", attach decorative limbs to a static torso, or turn the head independently of neck and shoulders.
+
+When both hands are visible and performing, state the anatomical count positively as exactly two — one left and one right — and keep their positions, orientations relative to the body, and thumb sides distinct. Preserve thumb side as the minimum chirality anchor at every simplification level, including the strongest deformation; the finger-articulation avoidance below still applies. Only an explicitly selected Drawn Motion Convention of repeated limb positions may depict additional positions of those two hands; no other path may add a hand. Never substitute another action, a simpler gesture, or a safer crop for a locked action to avoid this requirement.
 
 For high-risk source-to-target jumps, simplify only unresolved, unsupported, and non-story-critical performance details. Never change a locked action, head direction, gaze, framing, or camera intent without a risk-choice gate. Prefer simpler hands, props, or expression only when those fields remain unresolved or the user selects that tradeoff.
 
@@ -179,7 +182,7 @@ When writing the production prompt, include styling/performance details only whe
 - facial finish: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details
 - prop purpose, hand relationship, and hand complexity
-- pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, hand/prop, and energy relationships
+- pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, each visible left- or right-hand position, body-relative orientation, thumb side, prop, and energy relationships
 - forbidden styling, props, expressions, or performance notes
 
 For fashion, costume, uniform, or character work, name the visible production anchors rather than writing only a label such as "luxury", "cyberpunk", "old money", "warrior", or "professional". Include what is actually visible: silhouette, garment layers, fabric behavior, closures, trims, accessories, makeup/grooming, and how the person performs the role.

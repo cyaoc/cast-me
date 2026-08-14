@@ -1,6 +1,6 @@
 # Composition Director
 
-This module owns creative direction, drawn style axes and starting vocabulary, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
+This module owns creative direction, Drawn Motion Convention, drawn style axes and starting vocabulary, composition, camera and projection, final-asset quality, First-Pass Finish, layout and delivery, output guidance, and final prompt structure.
 
 ## Creative Direction
 
@@ -26,6 +26,12 @@ Resolve creative direction whenever it is still production-critical. Do not forc
 If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly three concrete directions labeled A through C plus the permanent `D) Custom` option.
 
 For a Drawn Character, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and First-Pass Finish optical controls; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with three visible outcomes adapted to the current brief plus `D) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
+
+### Drawn Motion Convention
+
+When movement treatment materially changes a Drawn Character, record one ordinary visible production decision using concrete treatments such as speed lines, an afterimage, repeated limb positions, or a held freeze. If it remains production-critical and unresolved, use the existing localized Choice Gate with three brief-specific visible outcomes plus `D) Custom`; this vocabulary is not a fixed catalog. Repeated limb positions require an explicit user selection and are the only convention that may depict additional positions of the same anatomical limbs. Never let a default, delegation, or another convention add a hand, and never change a locked action, gesture, or crop to avoid its geometry.
+
+Drawn Motion Convention is separate from the photographic motion treatment in Camera and Capture Plan. It neither resolves nor is resolved by Deformation Tier, stylization intensity, any drawn style axis, or First-Pass Finish.
 
 ### Drawn Style Axes
 
@@ -203,9 +209,11 @@ Translate the selected shot into an internal capture plan using controls that ch
 - underlying body structure: the person's world-space head, shoulders, torso, hips, limbs, and joints remain anatomically valid except where the resolved Medium Contract explains explicitly requested deformation; every relationship remains internally coherent
 - projected image proportions: apparent size and foreshortening follow distance, viewpoint, and the selected perspective strength
 - focus placement and shallow, moderate, or deep depth distribution
-- frozen action, natural motion blur, or long-exposure character when motion matters
+- for photographic capture, frozen action, natural motion blur, or long-exposure character when motion matters
 
 Focal length, aperture, shutter speed, ISO, white balance, format, or equipment names are optional aesthetic vocabulary, not required fields. Tie each one used to a visible consequence. If the user asks for parameter styling, label numbers as approximate visual cues; never claim a physically valid exposure or lighting rig from the generation brief alone.
+
+Photographic motion treatment does not resolve or replace a Drawn Character's separately recorded Drawn Motion Convention.
 
 ## Final-Asset Quality
 
@@ -399,6 +407,7 @@ Consider these dimensions when relevant:
 - world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic
 - composition/camera: subject scale/body cutoff, subject placement, camera height/distance, perspective character, allowed projection exaggeration, focus/depth distribution, and motion treatment
 - identity readability: facial structure remains recognizable at the target face angle without rotating the person back toward camera
+- drawn motion convention: speed lines, afterimage, explicitly selected repeated limb positions, or a held freeze when movement treatment matters
 - drawn style axes: concrete line, surface-coloring, colour-logic, eye-rendering, texture, and background treatment, with any named starting look translated into those visible features
 - lighting/color/retouch/finish: motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment; relevant texture; final image character; only materially useful controls
 - output contract: canvas aspect, platform readability, safe areas, allowed-text set and treatment, exact-text verification, and required variants
@@ -419,14 +428,15 @@ First Read: <the one person, face, silhouette, action, emotion, product, or mess
 Creative direction: <style, world/setting, hero hierarchy, mood, and useful scene details>
 Drawn style axes (Drawn Character only): <line; surface-coloring layer count and boundaries; colour logic; eye rendering; texture; independent background treatment; no artist or school name>
 Drawn stylization intensity (Drawn Character only): <separately recorded visible distance from photography; coherent conversion target across skin, hair, eyes, wardrobe, lighting, shading, and background; preserve the selected Deformation Tier and rendering look>
+Drawn Motion Convention (Drawn Character when motion treatment matters): <selected speed lines, afterimage, repeated limb positions, held freeze, or another concrete visible convention; repeated limbs only when explicitly selected>
 Directorial intent: <first audience impression; decisive moment; what is happening now; one or two details that carry the story>
 Shot direction: <portrait shot direction or director shot plan; composition, camera distance/angle, subject blocking, and background relationship>
-Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, motion treatment when relevant, and only useful numeric cues tied to visible results>
+Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, photographic motion treatment when relevant, and only useful numeric cues tied to visible results>
 Perspective contract: <underlying anatomy or positively described requested medium deformation; projected proportions; which requested or near/far enlargement and foreshortening are intentional; which random, camera-inconsistent, or unrequested deformation is forbidden>
 Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed identity details the medium preserves as the person's own or uses for recognition; verified, described, inferred, or missing evidence; identity readability at the target face angle; angle-correct facial planes; anatomically valid or coherently requested world-space head, shoulder, torso, hip, limb, and joint structure>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include Character Read, makeup/hair/grooming, Story Makeup, important materials, and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
-Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and hands/props; all aligned with the locked camera>
+Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and separate visible left/right hand positions, body-relative orientations, thumb sides, props, and follow-through; all aligned with the locked camera>
 Lighting/color/retouch/finish: <coherent First-Pass Finish; motivated light and contrast; person/environment color relationship; identity-safe facial treatment or medium-specific face/material treatment that preserves Story Makeup; relevant texture and final image character; only materially useful production controls>
 Text: <complete allowed-text set in straight quotes; each string's role/hierarchy, type style, color, relative size, and precise region/alignment; forbid any other text when complete; or "no text">
 Output contract: <intended platform, canvas aspect, safe areas, small-size readability, exact-text check, and required variants>
