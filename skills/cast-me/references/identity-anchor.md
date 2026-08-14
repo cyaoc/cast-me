@@ -162,7 +162,7 @@ Before generation, record only the coverage needed by the target as `verified`, 
 
 - face identity coverage: visible facial structure and which face angles are actually shown
 - appearance coverage: target-critical Protected Identity Cues visible through the Reference Appearance
-- body-scale coverage: for channels and production facts the resolved Medium Contract still expresses, visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
+- body-scale coverage: for identity channels the resolved Medium Contract does not close, plus other production facts the target proportion still expresses, visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
 - angle coverage: frontal, three-quarter, profile, high/low viewpoint, and perspective evidence
 - performance coverage: expression range, weight-bearing pose, action, hands, and prop interaction
 

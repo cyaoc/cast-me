@@ -691,10 +691,10 @@ flowchart TD
 | --- | ---: |
 | `SKILL.md` | 4,664 词 |
 | `composition-director.md` | 8,413 词 |
-| `identity-anchor.md` | 7,338 词 |
+| `identity-anchor.md` | 7,346 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 24,221 词 |
+| 运行时 Markdown 合计 | 24,229 词 |
 | `CONTEXT.md` | 43 个规范术语，2,224 词 |
 | `docs/adr/` | 11 条 ADR |
 | `golden-conversations.md` | 156 个场景，19,742 词 |
