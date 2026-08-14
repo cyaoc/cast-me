@@ -138,6 +138,8 @@ Resolve channels and Visible Body Evidence from the selected concrete proportion
 - At the second-shortest coherent proportion, describe chest, waist, and hip curvature explicitly in the tier option or Custom resolution when the source supports it, and disclose that carrying this curvature creates a more-mature read.
 - The shortest coherent proportion cannot carry a source-supported figure. Disclose that loss in the tier choice and, after selection, one plain pre-generation statement; do not restore the figure silently in the prompt.
 
+Record both results in the request-wide Medium Contract: the per-cue channel states, and one Visible Body Evidence carriage state of carried, simplified, or not carried. Visible Body Evidence is not a Protected Identity Cue, so it never reaches a channel state; this carriage state is how the contract expresses what the proportion can hold.
+
 This gradient belongs to Deformation Tier. Do not ask a separate body-shape question, and do not let a Character Sheet or later application resolve it again. If the user wants both the shortest proportion and a source-supported figure, keep the figure requirement and offer a less-deformed tier that can carry it. Carrying the figure the source already shows, described neutrally, is not emphasized adult body characteristics, so the more-mature read disclosed above does not by itself trigger the exclusion that follows. If emphasized adult body characteristics conflict with any child-reading proportion, do not generate the combination or silently moderate the body request; reopen this gate and move to a non-child-reading tier.
 
 ## Character Sheet
@@ -156,13 +158,13 @@ Treat visible facial styling, grooming, and hair whose makeup status or source i
 
 Define Appearance Coverage by the Protected Identity Cues needed for the target. Ask for more evidence or an Inference Boundary only when source styling, filters, face paint, hair, accessories, occlusion, or image quality hide a target-critical cue; clear visible cues require no additional appearance question.
 
-Before constructing the coverage record or its Choice Gate paths, consult the resolved Medium Contract. Suppress a request only for the specific identity channel recorded `closed`, never for a whole body region. At the shortest coherent proportion, do not request shoulder width, chest volume, waist, hip, torso-shape, build, limb-length, or height evidence to reconstruct the closed source-supported figure. Keep requesting target-critical shoes, stance direction, weight placement, and characteristic wardrobe when they are missing because that proportion still expresses them. As proportion closes, treat missing characteristic-wardrobe evidence as target-critical more readily because its transferred recognition weight increases; never fold it into the suppressed figure.
+Before constructing the coverage record or its Choice Gate paths, consult the resolved Medium Contract. Suppress a request only for a specific identity channel it records `closed`, or for Visible Body Evidence it records as not carried, never for a whole body region. Everything the contract still carries stays requestable, including target-critical shoes, stance direction, weight placement, and characteristic wardrobe, which no proportion stops expressing. As the contract closes structural channels, treat missing characteristic-wardrobe evidence as target-critical more readily because its transferred recognition weight increases; never fold it into suppressed body evidence.
 
 Before generation, record only the coverage needed by the target as `verified`, `described`, `inferred`, or `missing`, separated by evidence type and visible region:
 
 - face identity coverage: visible facial structure and which face angles are actually shown
 - appearance coverage: target-critical Protected Identity Cues visible through the Reference Appearance
-- body-scale coverage: for identity channels the resolved Medium Contract does not close, plus other production facts the target proportion still expresses, visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
+- body-scale coverage: visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
 - angle coverage: frontal, three-quarter, profile, high/low viewpoint, and perspective evidence
 - performance coverage: expression range, weight-bearing pose, action, hands, and prop interaction
 

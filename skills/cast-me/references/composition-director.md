@@ -29,7 +29,7 @@ For a Drawn Character, resolve one concrete stylization-intensity decision befor
 
 ### Drawn Motion Convention
 
-When movement treatment materially changes a Drawn Character, record one ordinary visible production decision using concrete treatments such as speed lines, an afterimage, repeated limb positions, or a held freeze. If it remains production-critical and unresolved, use the existing localized Choice Gate with three brief-specific visible outcomes plus `D) Custom`; this vocabulary is not a fixed catalog. Repeated limb positions require an explicit user selection and are the only convention that may depict additional positions of the same anatomical limbs. Never let a default, delegation, or another convention add a hand, and never change a locked action, gesture, or crop to avoid its geometry.
+When movement treatment materially changes a Drawn Character, record one ordinary visible production decision using concrete treatments such as speed lines, an afterimage, repeated limb positions, or a held freeze. If it remains production-critical and unresolved, use the existing localized Choice Gate with three brief-specific visible outcomes plus `D) Custom`; this vocabulary is not a fixed catalog. Repeated limb positions require an explicit user selection. Styling's `Pose Geometry` owns what that selection permits, and it is the only path there that may depict additional positions of the same anatomical limbs.
 
 Drawn Motion Convention is separate from the photographic motion treatment in Camera and Capture Plan. It neither resolves nor is resolved by Deformation Tier, stylization intensity, any drawn style axis, or First-Pass Finish.
 
@@ -74,6 +74,8 @@ When another person's artwork or photo is supplied as a style reference, label t
 
 When the selected texture uses dense high-frequency micro-structure, disclose the current model-artifact risk before production as time-stamped information: as of the 2026-08-12 public-information review, GPT Image 2 still had a publicly reported tiling or visible-noise risk in dense high-frequency detail, and no official fix announcement was found. State this as a review-date boundary, not a permanent limitation. Do not turn it into a quality ranking, a per-look reachability claim, or a claim that another look will produce a better result.
 
+When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
+
 ### Style Readout
 
 Deliver a localized Style Readout in the same response as the first result under each style state. It is a disclosure carried by the result, never a Choice Gate, extra turn, or account of how the image was made.
@@ -85,8 +87,6 @@ Deliver one readout for a whole set, not one per item, and suppress it on later 
 For photographic output, use the same once-per-state and changed-control-only behavior, but report only the two or three locked First-Pass Finish controls that materially changed the look. Do not use the six drawn axes or reproduce a Direction Signature.
 
 Read only the locked decision record; do not inspect the image to construct the readout. It makes no completion, likeness, quality, or correspondence claim. Identity Review, including its Uneven Stylization check, separately decides whether the visible result matches those decisions.
-
-When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
 
 ### Direction Atlas and Freshness
 
@@ -195,7 +195,21 @@ D) Custom - say how much body to show, whether the camera looks from above/level
 Reply with A, or reply with "B + camera near waist height + long station platform behind + title space above".
 ```
 
-Drawn worked example: for a locked roughly two-and-a-half-head sticker whose brief requires visible shoes and stance, photographic waist-up, mid-thigh, and whole-body labels collapse to one deliverable subject scale. Resolve that readable compact full figure internally; if placement or background remains unresolved, offer paths only for those fields without reopening Deformation Tier.
+For a Drawn Character whose locked proportion collapses the crop ladder, resolve subject scale internally and ask only the shot parts that still vary. At a roughly two-and-a-half-head sticker proportion the waist-up, mid-thigh, and whole-body labels all deliver the same compact full figure, so the remaining question is placement and background:
+
+```text
+I recommend: stand the figure alone on a clean field, because the sticker has to read at chat size and the pose is what carries it.
+
+Options:
+A) Alone on a clean field (Recommended) - no scene behind the figure, so the pose and expression read first at small size
+B) One flat graphic shape behind the figure - a single colour or halo block adds weight without competing with the pose
+C) A small suggested setting under the feet - a hint of ground or one prop, which grounds the action but eats sticker space
+D) Custom - say what sits behind the figure, where it sits in frame, and how much empty margin to keep
+
+Reply with A, or reply with "B + warm halo + figure slightly left".
+```
+
+Subject scale is not offered here because the locked proportion already decided it. Do not reopen Deformation Tier to create a crop choice.
 
 ## Perspective Intent
 
@@ -224,8 +238,6 @@ Translate the selected shot into an internal capture plan using controls that ch
 - for photographic capture, frozen action, natural motion blur, or long-exposure character when motion matters
 
 Focal length, aperture, shutter speed, ISO, white balance, format, or equipment names are optional aesthetic vocabulary, not required fields. Tie each one used to a visible consequence. If the user asks for parameter styling, label numbers as approximate visual cues; never claim a physically valid exposure or lighting rig from the generation brief alone.
-
-Photographic motion treatment does not resolve or replace a Drawn Character's separately recorded Drawn Motion Convention.
 
 ## Final-Asset Quality
 

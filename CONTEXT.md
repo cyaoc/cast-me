@@ -21,12 +21,16 @@ A visible structural, surface, or external characteristic whose replacement or o
 _Avoid_: Makeup intensity, beauty feature
 
 **Medium Contract**:
-The identity channels the selected medium and deformation level can actually express, resolved from the direction already locked rather than asked as a separate choice. It resolves each Protected Identity Cue to one of three states: open, drawn as the person's own quantity and therefore comparable against the Primary Identity Anchor for drift; transferred, shaped by the medium's convention yet still carrying recognition in place of channels the medium has closed, and weighted up accordingly; and closed, not expressible in this medium, excluded from drift judgment, and disclosed before generation.
+The identity channels the selected medium and deformation level can actually express, resolved from the direction already locked rather than asked as a separate choice. It resolves each Protected Identity Cue to one of three states: open, drawn as the person's own quantity and therefore comparable against the Primary Identity Anchor for drift; transferred, shaped by the medium's convention yet still carrying recognition in place of channels the medium has closed, and weighted up accordingly; and closed, not expressible in this medium, excluded from drift judgment, disclosed before generation, and never requested as missing reference evidence. It separately records how far the medium carries Visible Body Evidence — carried, simplified, or not carried — and evidence it does not carry is likewise never requested.
 _Avoid_: Style preset, medium label, drawn-media exemption
 
 **Deformation Tier**:
 The selected degree of drawn deformation, presented as three fixed semantic labels whose concrete proportions vary with the intended use. It resolves the request's Medium Contract and therefore decides which identity channels remain open, which carry recognition in their place, and which are disclosed as closed. It governs proportion and shape, not the separate ordinary decision about stylization intensity.
 _Avoid_: Style level, chibi mode, stylization intensity
+
+**Drawn Motion Convention**:
+The visible drawing treatment that expresses movement in a Drawn Character, such as speed lines, an afterimage, repeated limb positions, or a held freeze. It is chosen like any other visible decision rather than left to the model's own convention, and it is separate from the photographic motion treatment the capture plan owns.
+_Avoid_: Motion blur, action treatment, dynamic pose
 
 **Visible Body Evidence**:
 Clearly shown body relationships at any source crop, such as head-to-neck-to-shoulder scale, shoulder width, chest volume, visible torso shape, and body build; they are preserved by default and named neutrally and concretely across styling changes without a separate Choice Gate. Obscured or off-frame anatomy is not evidence and must not be guessed as if verified.
@@ -80,6 +84,10 @@ _Avoid_: Face score, biometric verification, identity guarantee
 What CastMe delivers in place of a repair when a visible result unambiguously fails required quality: the concrete defect, the recovery operation the existing contracts select for that result and why, and the statement that it has not been performed. It never accompanies a completion claim. A multi-item request receives one offer for the whole request — a single shared cause with the operation it selects where several items inherit one, otherwise one entry per failing item — and a single user instruction may accept all of it, part of it, or none.
 _Avoid_: Choice Gate, auto-repair, retry prompt
 
+**Style Readout**:
+The user-visible record of the rendering decisions locked for a result, written in the visible vocabulary the user can then reopen one axis at a time. It reports what was specified rather than what the image turned out to be, so it never carries a quality or likeness claim of its own.
+_Avoid_: Style card, prompt dump, process narration, style label
+
 **First-Pass Finish**:
 The generation-time visual finish that resolves lighting/color, identity-safe retouching, texture, and final image character in the original image request. It is not a later edit of an exported file.
 _Avoid_: Post-processing, second pass
@@ -117,8 +125,8 @@ A concrete direction whose Direction Signature differs from every Shown Directio
 _Avoid_: Renamed option, palette swap
 
 **Choice Gate**:
-A user-visible A/B/C/D decision that resolves one scoped choice or tightly coupled group. A through C are valid concrete paths, with an explicit stop path when only two substantive resolutions exist; D is always the Custom Path, and any recommendation inherits current locks and known identity or geometry risk rather than optimizing its scope in isolation.
-_Avoid_: Open-ended question, padded preset menu
+A user-visible A/B/C/D decision that resolves one scoped choice or tightly coupled group. A through C are concrete paths the current locked decision state can actually deliver, with an explicit stop path when only two substantive resolutions exist; D is always the Custom Path, and every offered path, not only the recommendation, inherits current locks and known identity or geometry risk rather than optimizing its scope in isolation.
+_Avoid_: Open-ended question, padded preset menu, unreachable option
 
 **Custom Path**:
 The permanent `D) Custom` affordance in every Choice Gate. It accepts a user-supplied resolution only within that gate's valid scope; the placeholder itself creates no lock or history entry.

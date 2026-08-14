@@ -82,7 +82,7 @@ flowchart TB
     subgraph STYLE["Styling & Performance"]
         S1["Styling Direction / Character Read"]
         S2["妆发、服装、配饰、道具"]
-        S3["动作、表情、视线、逐手姿态几何<br/>用途化 mannerism 权重"]
+        S3["动作、表情、视线、手部、姿态几何<br/>用途化 mannerism 权重"]
         S4["角色、制服、历史服装研究"]
     end
 
@@ -110,7 +110,7 @@ flowchart TB
 | `SKILL.md` | 用户请求、参考图、对话状态、宿主能力 | 路由、Gate 格式、状态、生命周期、安全异常、完成条件 | 各视觉领域的具体生产知识 | 下一道问题、生产提示词、调用或停止说明 |
 | `identity-anchor.md` | 人物图、已锁媒介、显式 Deformation Tier/Custom、目标角度/身体/动作、可见结果 | 身份锚、证据、Drawn Character 分类、Deformation Tier、Medium Contract、Character Sheet 角色、Coverage、Inference Boundary、Identity Review、双手 chirality 检查、假定 mannerism 的审查排除与固定根恢复 | 具体镜头、造型、表演选项 | 变形 Gate、身份约束、媒介通道记录、身体证据梯度、风险 Gate、实际输入与恢复路径 |
 | `composition-director.md` | 用途、方向、画布、镜头、成片要求 | First Read、方向、Drawn Motion Convention、绘制风格化强度、绘制风格六轴与具名起点词汇、Style Readout、镜头、透视、成片质量、Character Sheet 保守设计锁、应用表演自由、批次/回退、First-Pass Finish、布局、尺寸、文字与交付、提示词结构 | 妆发服装、表演内容与人物身份 | 构图与成片贡献、Style Readout、输出合约、提示词骨架 |
-| `styling-performance.md` | 角色/故事、妆发服装、道具、动作 | Styling Direction、Character Read、Story Makeup、Look Continuity、表演、按 Deformation Tier 与用途加权 mannerism、逐手姿态几何、视觉研究 | 裁切、相机位置、背景空间、身份证据本身 | 造型表演贡献、研究锚点、姿态链 |
+| `styling-performance.md` | 角色/故事、妆发服装、道具、动作 | Styling Direction、Character Read、Story Makeup、Look Continuity、表演、按 Deformation Tier 与用途加权 mannerism、姿态几何、视觉研究 | 裁切、相机位置、背景空间、身份证据本身 | 造型表演贡献、研究锚点、姿态链 |
 | `scoped-option-refresh.md` | 更多、换一批、换某项、你决定 | 刷新目标、最近 Gate、分区历史、新鲜度、委派、耗尽 | 目标区域的具体候选内容 | 新批次、内部选项或重开一个限制锁的 Gate |
 | 宿主图像 Adapter | 提示词、实际图像、可用控制 | 执行生成或编辑 | CastMe 领域决策与完成判断 | 图像及可验证的能力、尺寸信息 |
 
@@ -122,10 +122,10 @@ flowchart TB
 | 润饰和成片 | `First-Pass Finish` | 第一次生成时完成，不建立强制后处理流程 |
 | 安全 | `SKILL.md` 异常分支 | 不是普通创意维度 |
 | Physical Scene Coherence | Composition 内部检查 | 不是新的用户 Gate |
-| Medium Contract | Identity Anchor + 既有非摄影 Output Recipe | closed channel 不作为缺失参考证据请求；不扩展成生产合约，也不增加问题、Gate、Module、流程阶段或运行时组件 |
+| Medium Contract | Identity Anchor + 既有非摄影 Output Recipe | 逐 cue 通道状态之外另记一个 Visible Body Evidence 承载状态（carried / simplified / not carried）；记为 closed 的通道与记为不承载的身体证据都不作为缺失参考证据请求；不扩展成生产合约，也不增加问题、Gate、Module、流程阶段或运行时组件 |
 | Deformation Tier | Identity Anchor + 既有 Choice Gate | A/B/C 语义顺序固定、具体比例按用途适配；身体证据梯度属于该 Tier，后续 Shot 也按已锁 Tier 调整可见 crop 选项；不增加独立身体 Gate、Module 或持久比例档案 |
 | 绘制风格化强度 | Composition 的 Creative Direction、First-Pass Finish 与 Prompt + Identity Review | 普通生产决定；独立于 Deformation Tier、渲染 look、surface coloring 和 First-Pass Finish optical controls，不增加固定层级、预设目录、Module 或流程阶段 |
-| Drawn Motion Convention | Composition 的 Creative Direction 与 Prompt + Styling 的 Pose Geometry | 只在动作绘制处理影响结果时记录；speed lines、afterimage、repeated limb positions 或 held freeze 是可见词汇，不是固定目录；重复肢体位置必须由用户明确选择，且不改写 Deformation Tier、强度、六轴或摄影 motion treatment |
+| Drawn Motion Convention | Composition 的 Creative Direction 与 Prompt + Styling 的 Pose Geometry | 只在需要表现运动时记录；speed lines、afterimage、repeated limb positions 或 held freeze 是可见词汇，不是固定目录；重复肢体位置必须由用户明确选择，且不改写 Deformation Tier、强度、六轴或摄影 motion treatment |
 | 绘制风格六轴与具名起点词汇 | Composition 的 Creative Direction、Output Recipe、Prompt + 既有 Scoped Refresh | line、surface coloring、colour logic、eye rendering、texture、background 分开记录和刷新；First-Pass Finish 负责成片实现，其 optical controls 不并入 surface coloring；不增加 Style Browser、Preset Catalog、Module 或新阶段 |
 | Style Readout | Composition 的 `Style Readout` + SKILL 的结果交付 | 从锁定记录披露，不检查图像，也不新增 Gate、轮次或质量裁决；绘制 style state 以六轴 + Tier + 强度为单位，摄影只报告真正改变观感的两三个 Finish controls |
 | Character Sheet 与绘制组图 | Identity Anchor 的实际输入/固定根规则 + Composition 的设计、批次/回退、布局与交付 | set、series、reusable design、multi-angle 或同一角色第二张图触发 Sheet（这是连续性条件，不是绘制角色的判定）；可接受用户提供的 Sheet；只有当前操作验证批次能力才走一次批次，否则各项从同一固定根独立生成；不增加 Module、Agent、Gate、批次服务或持久角色库，无连续性要求的单张绘图不使用 |
@@ -155,7 +155,7 @@ flowchart LR
     STATE --- AXES["绘制风格六轴<br/>line / surface / colour / eyes / texture / background<br/>可独立重开"]
     STATE --- READOUT["Style Readout state<br/>绘制 = 六轴 + Tier + 强度<br/>摄影 = 实质 Finish controls"]
     STATE --- OPTICAL["First-Pass Finish 的绘制 optical controls<br/>diffusion / bloom / flare / bokeh / eye-highlight strength"]
-    STATE --- MEDIUM["Medium Contract<br/>每个 cue = open / transferred / closed"]
+    STATE --- MEDIUM["Medium Contract<br/>每个 cue = open / transferred / closed<br/>身体证据 = carried / simplified / not carried"]
     STATE --- ROOT["Fixed root<br/>Anchor + 必需参考 + 锁定产物"]
     STATE --- HIST["分区 Shown Option<br/>最近 refreshable Gate"]
 
@@ -188,7 +188,7 @@ flowchart LR
 | 绘制 set、series、reusable design、multi-angle 或同一角色第二张图 | 生成前 | 使用用户提供且可用的 Character Sheet；否则先从 Anchor 生成并锁定一个；每个应用的固定根都加入 Anchor 与 Sheet |
 | Character Sheet 与全部 per-item Brief 已就绪 | P7 宿主能力检查 | 当前操作验证支持完整 set 的一次批次才走该路；否则每项从同一固定根独立生成，不串联应用 |
 
-`locked: explicit` 始终优先于冲突的非显式值。对绘制角色，Medium Contract 读取已锁媒介与用户显式选择的 Deformation Tier 或具体 Custom 变形；`anime`、`chibi`、`manga`、`cartoon`、风格名、Anchor、结果、灯光、构图、遮挡、分辨率和其他场景条件都不参与推断。推荐默认和 `you decide` 不能替绘制角色选档。对其余请求，Medium Contract 只读取已锁媒介与用户显式请求的变形。等比例保留可表达结构 cue 与身体证据，中间比例简化身体证据，次短比例可明确携带胸/腰/臀曲线并披露更成熟观感，最短比例在生成前披露无法携带源图身形。Reference Coverage 在构造记录与路径前读取该 Contract，只按 identity channel 抑制 `closed` 证据请求：最短比例不再追问源图身形，但仍处理可表达的鞋、特征服装、站姿方向与重心位置，其中特征服装随比例关闭而提高 transferred 识别权重。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
+`locked: explicit` 始终优先于冲突的非显式值。对绘制角色，Medium Contract 读取已锁媒介与用户显式选择的 Deformation Tier 或具体 Custom 变形；`anime`、`chibi`、`manga`、`cartoon`、风格名、Anchor、结果、灯光、构图、遮挡、分辨率和其他场景条件都不参与推断。推荐默认和 `you decide` 不能替绘制角色选档。对其余请求，Medium Contract 只读取已锁媒介与用户显式请求的变形。等比例保留可表达结构 cue 与身体证据，中间比例简化身体证据，次短比例可明确携带胸/腰/臀曲线并披露更成熟观感，最短比例在生成前披露无法携带源图身形；该梯度结果连同逐 cue 通道状态一起记入 Contract，身体证据走单独的承载状态而不是通道状态，因为它不是 Protected Identity Cue。Reference Coverage 在构造记录与路径前读取该 Contract，只抑制它记为 `closed` 的通道和记为不承载的身体证据，绝不按身体区域整块抑制：最短比例不再追问源图身形，但仍处理契约仍在承载的鞋、特征服装、站姿方向与重心位置，其中特征服装随结构通道关闭而提高 transferred 识别权重。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
 
 绘制角色的风格化强度只描述画面离摄影有多远，不能由 Deformation Tier、渲染 look、surface coloring 或 First-Pass Finish optical controls 推断，也不能反向改写它们。它按普通选择规则显式记录一个具体可见结果；只有仍影响生产且未解决时才显示适配当前 Brief 的既有 Choice Gate。
 
@@ -226,7 +226,7 @@ Deformation Tier 复用该 Interface，但它不是每次重写的风格菜单�
 ```mermaid
 flowchart TD
     P1["P1 输入与参考角色<br/>确认 Primary Identity Anchor 和其他参考用途"] --> P2["P2 输出与 Brief<br/>确定用途、画布和已知锁"]
-    P2 --> P3["P3 自适应决策循环<br/>绘制角色显式解决 Deformation Tier，单独解决强度、按需动作绘制处理与六轴渲染<br/>其余一次只解决一个维度或真正紧耦合组"]
+    P2 --> P3["P3 自适应决策循环<br/>绘制角色显式解决 Deformation Tier，单独解决强度、按需Drawn Motion Convention 与六轴渲染<br/>其余一次只解决一个维度或真正紧耦合组"]
     P3 --> ORDINARY{"普通选择是否已锁定、无关、默认或委派？"}
     ORDINARY -- 否 --> GATE["显示一个 A/B/C/D Choice Gate"]
     GATE --> P3
@@ -254,7 +254,7 @@ flowchart TD
     FOLLOW -- 否 --> REPORT["报告具体剩余缺陷并停止<br/>不宣称完成"]
 ```
 
-Deformation Tier、Medium Contract、绘制风格化强度、Drawn Motion Convention 和六轴渲染都不增加 P 编号：绘制角色在 P3 通过既有 Choice Gate 显式选择按用途适配的比例，单独记录一个具体强度结果，在动作绘制处理影响结果时记录一个可见 motion convention，并让六轴渲染具体到可见后果。只有用户明确选择 repeated limb positions 才能描绘同一肢体的额外位置。Identity Anchor 随后只用已锁媒介与已记录的 Tier/Custom 解析一次请求级 Medium Contract 和身体证据梯度。在 P6 前，closed channel 与最短比例造成的源图身形损失只做非提问式说明；dense high-frequency texture 的当前模型 artifact 风险按最近复核日期说明，不写成永久缺陷。P6 分开写比例、强度、motion convention、六轴与 First-Pass Finish 的绘制 optical controls，艺术家/流派/陌生风格名不能代替可见锚点；P9 读取同一记录，Character Sheet、应用和重生成都不重新推断。Character Sheet 也不增加 P 编号或新 Module：连续性条件命中时，使用用户提供的 Sheet，或先从 Anchor 生成一个；P7 验证完整 set 的批次能力，能执行才走一次计划批次，否则所有应用从 Anchor + Sheet 独立分支。
+Deformation Tier、Medium Contract、绘制风格化强度、Drawn Motion Convention 和六轴渲染都不增加 P 编号：绘制角色在 P3 通过既有 Choice Gate 显式选择按用途适配的比例，单独记录一个具体强度结果，在需要表现运动时记录一个 Drawn Motion Convention，并让六轴渲染具体到可见后果。只有用户明确选择 repeated limb positions 才能描绘同一肢体的额外位置。Identity Anchor 随后只用已锁媒介与已记录的 Tier/Custom 解析一次请求级 Medium Contract 和身体证据梯度。在 P6 前，closed channel 与最短比例造成的源图身形损失只做非提问式说明；dense high-frequency texture 的当前模型 artifact 风险按最近复核日期说明，不写成永久缺陷。P6 分开写比例、强度、Drawn Motion Convention、六轴与 First-Pass Finish 的绘制 optical controls，艺术家/流派/陌生风格名不能代替可见锚点；P9 读取同一记录，Character Sheet、应用和重生成都不重新推断。Character Sheet 也不增加 P 编号或新 Module：连续性条件命中时，使用用户提供的 Sheet，或先从 Anchor 生成一个；P7 验证完整 set 的批次能力，能执行才走一次计划批次，否则所有应用从 Anchor + Sheet 独立分支。
 
 Style Readout 同样不增加 P 编号：P8 产生结果后立即按锁定记录决定是否随结果披露，P9 Identity Review 随后独立检查实际图像。readout 的有无和内容都不是 review 证据；即使结果进入 Recovery Offer，它也不能携带完成、相似或质量结论。
 
@@ -265,7 +265,7 @@ Style Readout 同样不增加 P 编号：P8 产生结果后立即按锁定记录
 - 用户锁定意图没有被静默改变。
 - 绘制角色已有用户显式选择的 A/B/C Deformation Tier 或具体 Custom 变形，且整项请求只使用同一份 Medium Contract 与身体证据梯度。
 - 绘制角色已有一个具体风格化强度决定，并与 Deformation Tier、渲染 look、surface coloring 和 First-Pass Finish optical controls 分开记录。
-- 动作绘制处理影响结果时，已有一个与摄影 motion treatment 分开的 Drawn Motion Convention；repeated limb positions 只有用户明确选择才可用。
+- 需要表现运动时，已有一个与摄影 motion treatment 分开的 Drawn Motion Convention；repeated limb positions 只有用户明确选择才可用。
 - 绘制角色的 line、surface coloring、colour logic、eye rendering、texture 与 background 均有具体可见方向；First-Pass Finish 的绘制 optical controls 与 surface coloring 分开，生产提示词没有用艺术家、流派或陌生标签代替这些方向。
 - 另一人的 style reference 只贡献渲染处理；dense high-frequency texture 已显示带复核日期且非永久化的模型 artifact 风险说明。
 - 绘制 set 是单人请求，已锁 item 顺序或 panel 组织与一致尺寸；透明 sticker 已说明模型边界并记录下游 cutout。
@@ -563,7 +563,7 @@ flowchart TD
 | 活跃条件 | 必读章节 | 条件追加 |
 | --- | --- | --- |
 | 普通人物图生成 | Identity：`Priority`、`Reference Transfer`、`Reference Coverage` | 无 |
-| 绘制角色、变形/强度、动作绘制处理、渲染 look、风格轴/名称或 style reference | Identity：`Reference Transfer`、`Deformation Tier`、`Identity Prompt Constraints`；Composition：`Creative Direction`、`Drawn Motion Convention`、`Drawn Style Axes`、`Drawn Style Starting Vocabulary`、`First-Pass Finish`、`Illustration or Other Non-Photographic Output` | 绘制角色先显式选择 Tier/Custom，单独解决强度，动作处理影响结果时再单独解决 motion convention，并把渲染写成六轴可见锚点；一帧插画不因媒介名打开这些门；First-Pass Finish 实现已锁 palette/texture，而绘制 optical controls 不并入 surface coloring；另一人的 style reference 只供渲染处理；Composition 不重新解析 Medium Contract |
+| 绘制角色、变形/强度、运动表现、渲染 look、风格轴/名称或 style reference | Identity：`Reference Transfer`、`Deformation Tier`、`Identity Prompt Constraints`；Composition：`Creative Direction`、`Drawn Motion Convention`、`Drawn Style Axes`、`Drawn Style Starting Vocabulary`、`First-Pass Finish`、`Illustration or Other Non-Photographic Output` | 绘制角色先显式选择 Tier/Custom，单独解决强度，需要表现运动时再单独解决 Drawn Motion Convention，并把渲染写成六轴可见锚点；一帧插画不因媒介名打开这些门；First-Pass Finish 实现已锁 palette/texture，而绘制 optical controls 不并入 surface coloring；另一人的 style reference 只供渲染处理；Composition 不重新解析 Medium Contract |
 | 绘制 set、series、reusable design、multi-angle、同一角色第二张图或用户提供 Sheet | Identity：`Character Sheet`；Composition：`Character Sheet Applications`、`Layout and Output Contract` | 使用提供的 Sheet，否则先生成一个；应用实际输入都标注 Anchor 与 Sheet；验证批次能力，否则各项独立；检查尺寸、组织与交付边界 |
 | 写最终提示词前 | Identity：`Identity Prompt Constraints`；Composition：`Final-Asset Quality`、`First-Pass Finish`、`Prompt Structure` | 所有当前活跃所有者章节 |
 | 创意方向、First Read、决定性时刻 | Composition：`Creative Direction`、`Directorial Intent and Decisive Moment` | 需要选项时加 `Direction Atlas and Freshness`；刷新时加 `Style Refresh` |
@@ -571,7 +571,7 @@ flowchart TD
 | 物理世界、品味、媒介配方 | Composition 对应的 `Art Direction and Physical World`、`Taste Rules`、`Prompt Craft Rules` 或 `Output Recipes` 子节 | 只读相关媒介 |
 | 服装、头饰、首饰、配件、妆发、道具 | Styling 对应的 `Ownership`、`Risk and Facial Treatment`、`Category Routing`、`Styling Direction` 或 `Props` | 按实际字段选择 |
 | 故事造型、Delegated Styling、Story Makeup、Look Continuity | Styling：`Ownership`、`Risk and Facial Treatment`、`Styling Direction`、`Prompt Contributions` | 源造型遮挡关键身份 cue 时加 Identity `Reference Coverage` |
-| 姿态、动作、表情、视线、手部、表演或 characteristic mannerism | Styling：`Performance Direction`；非简单动作加 `Pose Geometry` | 按 Tier 与用途决定 mannerism 权重；单图推断只是假定；Drawn Character 的动作绘制处理影响结果时加 Composition `Drawn Motion Convention`；脸角度影响身份时加 Identity `Face Visibility and Performance Integrity` |
+| 姿态、动作、表情、视线、手部、表演或 characteristic mannerism | Styling：`Performance Direction`；非简单动作加 `Pose Geometry` | 按 Tier 与用途决定 mannerism 权重；单图推断只是假定；Drawn Character 需要表现运动时加 Composition `Drawn Motion Convention`；脸角度影响身份时加 Identity `Face Visibility and Performance Integrity` |
 | 指定角色、制服、历史服装 | Styling：`Role, Costume, and Visual Research` | 多版本时先走版本 Gate |
 | 精确文字、布局、交付、变体、透明、set、series 或 multi-angle | Composition：`Layout and Output Contract` | 文字或分区复杂时加 `Prompt Craft Rules` |
 | 展示或替换可刷新 Gate | Refresh：`Scope`、`Visible Gate and History` | 按分支加 `Route the Target`、`Locks and Continuity`、`Refresh Exhaustion`，并加载目标所有者 |
@@ -583,7 +583,7 @@ flowchart TD
 
 1. 用途、画布、布局。
 2. Primary Identity Anchor、源图可见身份结构、Reference Transfer、Coverage，以及显式 Deformation Tier/Custom 所解析的 open / transferred 通道和可表达身体证据；比例、圆润度、简化、五官位置、手部与身体曲线都用正面绘制语言；应用或批次随后标注 Character Sheet 的绘制设计角色，Anchor 仍是唯一身份来源；另一人的 artwork/photo style reference 只标注渲染用途，绝不当人物、年龄或身体身份；closed-channel 与身形损失说明不进入提示词。
-3. 单独记录的绘制风格化强度；动作绘制处理影响结果时再单独写 Drawn Motion Convention；随后用可见语言写 line、surface coloring、colour logic、eye rendering、texture、background，再写其他已锁意图、First Read、创意方向和决定性时刻。已选择的具名 look 只按普通锁规则提供其选项明示的六轴起点，不改写 Tier、强度、motion convention 或未明示的轴；艺术家/流派/陌生词不进入生产提示词。
+3. 单独记录的绘制风格化强度；需要表现运动时再单独写 Drawn Motion Convention；随后用可见语言写 line、surface coloring、colour logic、eye rendering、texture、background，再写其他已锁意图、First Read、创意方向和决定性时刻。已选择的具名 look 只按普通锁规则提供其选项明示的六轴起点，不改写 Tier、强度、Drawn Motion Convention 或未明示的轴；艺术家/流派/陌生词不进入生产提示词。
 4. Shot、相机/透视、世界空间人体与投影比例。
 5. Styling、Performance、Props、Pose Geometry；只写画面内相关节点，两手可见并参与动作时分别写左/右手位置、相对身体朝向和拇指侧；只有 Tier 与用途需要时才提高假定 mannerism 的识别权重。
 6. 有动机的灯光/色彩与 First-Pass Finish；对绘制输出，它实现已锁 palette/texture，而 diffusion、bloom、flare、bokeh、eye-highlight strength 等 optical controls 不改写 surface coloring 或 Texture 轴。
@@ -689,7 +689,7 @@ flowchart TD
 | 155 | F4 | 已锁 Deformation Tier 抑制 closed 身形证据与不可区分 crop，同时保留鞋、特征服装、站姿和重心 Coverage |
 | 156 | F1 | 所有 A/B/C 路径继承当前锁且可交付；不可达路径不显示，Custom 与双解 stop path 不变 |
 | 157 | F4 | 强变形双手动作逐手写位置、相对朝向和拇指侧；条件式 chirality 约束与审查；只有明确选择 repeated limbs 才可增加描绘位置 |
-| 158 | F5 | 每个 style state 的首个结果携带锁定 Style Readout；set 只报告一次；单轴刷新只报告变化；摄影只写实质 Finish controls；不替代 Identity Review |
+| 158 | F1 | 每个 style state 的首个结果携带锁定 Style Readout；set 只报告一次；单轴刷新只报告变化；摄影只写实质 Finish controls；不替代 Identity Review |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -711,15 +711,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,755 词 |
-| `composition-director.md` | 8,906 词 |
-| `identity-anchor.md` | 7,377 词 |
+| `SKILL.md` | 4,775 词 |
+| `composition-director.md` | 9,032 词 |
+| `identity-anchor.md` | 7,401 词 |
 | `styling-performance.md` | 3,082 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 24,983 词 |
-| `CONTEXT.md` | 43 个规范术语，2,224 词 |
+| 运行时 Markdown 合计 | 25,153 词 |
+| `CONTEXT.md` | 43 个规范术语，2,252 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 158 个场景，20,260 词 |
+| `golden-conversations.md` | 158 个场景，20,292 词 |
 
 ### 优化优先级
 
