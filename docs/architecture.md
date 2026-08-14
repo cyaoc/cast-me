@@ -712,12 +712,12 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,766 词 |
+| `SKILL.md` | 4,571 词 |
 | `composition-director.md` | 8,583 词 |
-| `identity-anchor.md` | 7,499 词 |
+| `identity-anchor.md` | 7,290 词 |
 | `styling-performance.md` | 3,082 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 24,793 词 |
+| 运行时 Markdown 合计 | 24,389 词 |
 | `CONTEXT.md` | 43 个规范术语，2,252 词 |
 | `docs/adr/` | 11 条 ADR |
 | `golden-conversations.md` | 159 个场景，20,605 词 |
