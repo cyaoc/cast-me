@@ -127,7 +127,7 @@ flowchart TB
 | 绘制风格化强度 | Composition 的 Creative Direction、First-Pass Finish 与 Prompt + Identity Review | 普通生产决定；独立于 Deformation Tier、渲染 look、surface coloring 和 First-Pass Finish optical controls，不增加固定层级、预设目录、Module 或流程阶段 |
 | Drawn Motion Convention | Composition 的 Creative Direction 与 Prompt + Styling 的 Pose Geometry | 只在需要表现运动时记录；speed lines、afterimage、repeated limb positions 或 held freeze 是可见词汇，不是固定目录；重复肢体位置必须由用户明确选择，且不改写 Deformation Tier、强度、六轴或摄影 motion treatment |
 | 绘制风格六轴与具名起点词汇 | Composition 的 Creative Direction、Output Recipe、Prompt + 既有 Scoped Refresh | line、surface coloring、colour logic、eye rendering、texture、background 分开记录和刷新；First-Pass Finish 负责成片实现，其 optical controls 不并入 surface coloring；不增加 Style Browser、Preset Catalog、Module 或新阶段 |
-| Style Readout | Composition 的 `Style Readout` + SKILL 的结果交付 | 从锁定记录披露，不检查图像，也不新增 Gate、轮次或质量裁决；绘制 style state 以六轴 + Tier + 强度为单位，摄影只报告真正改变观感的两三个 Finish controls |
+| Style Readout | Composition 的 `Style Readout` + SKILL 的结果交付 | 从锁定记录披露，不检查图像，也不新增 Gate、轮次或质量裁决；绘制 style state 以六轴 + Tier + 强度为单位，摄影只报告真正改变观感的两三个 Finish controls；绘制 style state 不完整不构成免交付，未单独锁定的字段写成未解决而不是省略或从别处倒推；摄影侧不列未解决项，没有实质改变观感的已锁控制时不交付 |
 | Character Sheet 与绘制组图 | Identity Anchor 的实际输入/固定根规则 + Composition 的设计、批次/回退、布局与交付 | set、series、reusable design、multi-angle 或同一角色第二张图触发 Sheet（这是连续性条件，不是绘制角色的判定）；可接受用户提供的 Sheet；只有当前操作验证批次能力才走一次批次，否则各项从同一固定根独立生成；不增加 Module、Agent、Gate、批次服务或持久角色库，无连续性要求的单张绘图不使用 |
 | 特征表情与 mannerism | Styling 的 Performance Direction + Identity Review | 强变形、熟悉受众的 sticker set 可提高识别权重；静态结构可用或受众不熟悉时保持低权重；单张照片只支持假定，不能推断 Character Read 或新增 profile、Gate、人格模型、审查分数 |
 | Identity Review | Identity Anchor | 身份通过与恢复分类由同一所有者判断 |
@@ -188,7 +188,7 @@ flowchart LR
 | 绘制 set、series、reusable design、multi-angle 或同一角色第二张图 | 生成前 | 使用用户提供且可用的 Character Sheet；否则先从 Anchor 生成并锁定一个；每个应用的固定根都加入 Anchor 与 Sheet |
 | Character Sheet 与全部 per-item Brief 已就绪 | P7 宿主能力检查 | 当前操作验证支持完整 set 的一次批次才走该路；否则每项从同一固定根独立生成，不串联应用 |
 
-`locked: explicit` 始终优先于冲突的非显式值。对绘制角色，Medium Contract 读取已锁媒介与用户显式选择的 Deformation Tier 或具体 Custom 变形；`anime`、`chibi`、`manga`、`cartoon`、风格名、Anchor、结果、灯光、构图、遮挡、分辨率和其他场景条件都不参与推断。推荐默认和 `you decide` 不能替绘制角色选档。对其余请求，Medium Contract 只读取已锁媒介与用户显式请求的变形。等比例保留可表达结构 cue 与身体证据，中间比例简化身体证据，次短比例可明确携带胸/腰/臀曲线并披露更成熟观感，最短比例在生成前披露无法携带源图身形；该梯度结果连同逐 cue 通道状态一起记入 Contract，身体证据走单独的承载状态而不是通道状态，因为它不是 Protected Identity Cue。Reference Coverage 在构造记录与路径前读取该 Contract，只抑制它记为 `closed` 的通道和记为不承载的身体证据，绝不按身体区域整块抑制：最短比例不再追问源图身形，但仍处理契约仍在承载的鞋、特征服装、站姿方向与重心位置，其中特征服装随结构通道关闭而提高 transferred 识别权重。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
+`locked: explicit` 始终优先于冲突的非显式值。对绘制角色，Medium Contract 读取已锁媒介与用户显式选择的 Deformation Tier 或具体 Custom 变形；只有点名三档之一或给出具体头身比才算已指定，其余任何语言的风格、媒介、流派或角色 look 名（`anime`、`chibi`、`manga`、`cartoon`、`Q版` 等）连同 Anchor、结果、灯光、构图、遮挡、分辨率和其他场景条件都不参与推断。推荐默认和 `you decide` 不能替绘制角色选档；绘制角色下其他 gate 的选项文案也不得写出绘制头身比、头部大小或身体简化程度，那等于换个名字重解该档；Perspective Intent 不受影响，视点与距离产生的投影缩放和 head/body exaggeration 不是该比例。对其余请求，Medium Contract 只读取已锁媒介与用户显式请求的变形。等比例保留可表达结构 cue 与身体证据，中间比例简化身体证据，次短比例可明确携带胸/腰/臀曲线并披露更成熟观感，最短比例在生成前披露无法携带源图身形；该梯度结果连同逐 cue 通道状态一起记入 Contract，身体证据走单独的承载状态而不是通道状态，因为它不是 Protected Identity Cue。Reference Coverage 在构造记录与路径前读取该 Contract，只抑制它记为 `closed` 的通道和记为不承载的身体证据，绝不按身体区域整块抑制：最短比例不再追问源图身形，但仍处理契约仍在承载的鞋、特征服装、站姿方向与重心位置，其中特征服装随结构通道关闭而提高 transferred 识别权重。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
 
 绘制角色的风格化强度只描述画面离摄影有多远，不能由 Deformation Tier、渲染 look、surface coloring 或 First-Pass Finish optical controls 推断，也不能反向改写它们。它按普通选择规则显式记录一个具体可见结果；只有仍影响生产且未解决时才显示适配当前 Brief 的既有 Choice Gate。
 
@@ -690,6 +690,7 @@ flowchart TD
 | 156 | F1 | 所有 A/B/C 路径继承当前锁且可交付；不可达路径不显示，Custom 与双解 stop path 不变 |
 | 157 | F4 | 强变形双手动作逐手写位置、相对朝向和拇指侧；条件式 chirality 约束与审查；只有明确选择 repeated limbs 才可增加描绘位置 |
 | 158 | F1 | 每个 style state 的首个结果携带锁定 Style Readout；set 只报告一次；单轴刷新只报告变化；摄影只写实质 Finish controls；不替代 Identity Review |
+| 159 | F1 | 请求里的 look 名不定档位，仍开 Deformation Tier gate；具体头身比直接锁；绘制角色下其他 gate 选项不得夹带比例；style state 不完整时 Readout 仍交付并写明未解决项；摄影线不受影响，Perspective Intent 照旧且不交付未解决清单 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -712,14 +713,14 @@ flowchart TD
 | 资产 | 当前规模 |
 | --- | ---: |
 | `SKILL.md` | 4,775 词 |
-| `composition-director.md` | 9,032 词 |
-| `identity-anchor.md` | 7,401 词 |
+| `composition-director.md` | 9,088 词 |
+| `identity-anchor.md` | 7,499 词 |
 | `styling-performance.md` | 3,082 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 25,153 词 |
+| 运行时 Markdown 合计 | 25,307 词 |
 | `CONTEXT.md` | 43 个规范术语，2,252 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 158 个场景，20,292 词 |
+| `golden-conversations.md` | 159 个场景，20,605 词 |
 
 ### 优化优先级
 
