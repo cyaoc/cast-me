@@ -60,7 +60,7 @@ Resolve and record every Protected Identity Cue once:
 
 - `open`: the medium renders the person's own quantity, so the cue remains comparable against the Primary Identity Anchor
 - `transferred`: the medium's convention governs the cue's shape, but it still carries recognition in place of channels the medium closes — hairstyle outline, eye shape, distinctive marks, and characteristic wardrobe — and Identity Review weights those channels up rather than merely retaining them
-- `closed`: the medium cannot express the cue, so Identity Review excludes it from drift judgment
+- `closed`: the medium cannot express the cue, so Identity Review excludes it from drift judgment and Reference Coverage never requests it as missing evidence
 
 The structural cue class is fixed and medium-independent: face outline and bone structure; facial and forehead proportions; brow-and-eye relationship; eye shape and size with eyelid structure and eye distance; the nose group; the lip and philtrum group; and chin and jawline. Overall recognizability, recognizability across expressions, eyebrow shape, hairstyle and hairline, wardrobe, and distinctive styling details are not structural cues. Only each cue's Medium Contract state varies. The photographic default leaves the existing Protected Identity Cue catalog open and preserves current photographic behavior unchanged. Transferred hair, wardrobe, and styling details remain Styling-owned and user-changeable even when Identity Review weights them more heavily.
 
@@ -156,11 +156,13 @@ Treat visible facial styling, grooming, and hair whose makeup status or source i
 
 Define Appearance Coverage by the Protected Identity Cues needed for the target. Ask for more evidence or an Inference Boundary only when source styling, filters, face paint, hair, accessories, occlusion, or image quality hide a target-critical cue; clear visible cues require no additional appearance question.
 
+Before constructing the coverage record or its Choice Gate paths, consult the resolved Medium Contract. Suppress a request only for the specific identity channel recorded `closed`, never for a whole body region. At the shortest coherent proportion, do not request shoulder width, chest volume, waist, hip, torso-shape, build, limb-length, or height evidence to reconstruct the closed source-supported figure. Keep requesting target-critical shoes, stance direction, weight placement, and characteristic wardrobe when they are missing because that proportion still expresses them. As proportion closes, treat missing characteristic-wardrobe evidence as target-critical more readily because its transferred recognition weight increases; never fold it into the suppressed figure.
+
 Before generation, record only the coverage needed by the target as `verified`, `described`, `inferred`, or `missing`, separated by evidence type and visible region:
 
 - face identity coverage: visible facial structure and which face angles are actually shown
 - appearance coverage: target-critical Protected Identity Cues visible through the Reference Appearance
-- body-scale coverage: visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
+- body-scale coverage: for channels and production facts the resolved Medium Contract still expresses, visible head-to-neck-to-shoulder scale, shoulder width, chest volume, torso shape, body build, hip, limb, height, stance, and outfit information; keep verified regions separate from missing or inferred continuation
 - angle coverage: frontal, three-quarter, profile, high/low viewpoint, and perspective evidence
 - performance coverage: expression range, weight-bearing pose, action, hands, and prop interaction
 
@@ -174,7 +176,7 @@ Run this check before generation when the requested output depends on source inf
 - the target requires expression or performance range not demonstrated by the source
 - multiple reference images with unclear roles
 
-If production-critical coverage is missing and the user has not explicitly accepted an Inference Boundary for those gaps, ask one Choice Gate before generation. Construct its paths from the actual coverage gaps and inherit every locked scene, camera, Shot, action, expression, and styling choice. A bare-face or substantially different facial-styling target may expose missing Appearance Coverage when the source hides cues that target requires; never promise automatic de-makeup or reconstruction.
+If production-critical open or transferred coverage or other expressible evidence is missing and the user has not explicitly accepted an Inference Boundary for those gaps, ask one Choice Gate before generation. Construct its paths from the actual coverage gaps and inherit every locked scene, camera, Shot, action, expression, and styling choice. A bare-face or substantially different facial-styling target may expose missing Appearance Coverage when the source hides cues that target requires; never promise automatic de-makeup or reconstruction.
 
 Present exactly four relevant paths: A) add real references for the listed missing evidence, B) describe those missing facts, C) accept an explicit Inference Boundary for only those gaps, and D) supply another coherent resolution inside this coverage gate. Preserve the locked Shot, camera, action, styling, and scene; do not introduce a safer crop, body concealment, or other lock change unless the user explicitly reopens it.
 

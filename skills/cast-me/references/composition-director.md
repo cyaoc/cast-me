@@ -145,7 +145,7 @@ Before generation, verify that every Explicit wardrobe and body-cutoff/crop lock
 
 If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If subject scale/body cutoff, camera distance, or angle is already locked, ask only the unresolved shot part, such as placement or background relationship.
 
-Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A/B/C to the current scene, locks, and Shown Option history through `scoped-option-refresh.md`.
+Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A/B/C to the current scene, locks including the locked Deformation Tier, and Shown Option history through `scoped-option-refresh.md`. When the tier's concrete proportion leaves no visibly distinguishable crop choice, resolve subject scale internally and ask only the remaining meaningful Shot fields instead of offering paths that differ only in an amount of body the proportion cannot show.
 
 For realistic, lifestyle, social, and beauty/editorial portraits, ask a lightweight shot-direction question unless framing, camera/viewpoint, subject placement, and background relationship are already resolved or accepted through recommended defaults. Performance details alone do not resolve shot direction.
 
@@ -176,6 +176,8 @@ D) Custom - say how much body to show, whether the camera looks from above/level
 
 Reply with A, or reply with "B + camera near waist height + long station platform behind + title space above".
 ```
+
+Drawn worked example: for a locked roughly two-and-a-half-head sticker whose brief requires visible shoes and stance, photographic waist-up, mid-thigh, and whole-body labels collapse to one deliverable subject scale. Resolve that readable compact full figure internally; if placement or background remains unresolved, offer paths only for those fields without reopening Deformation Tier.
 
 ## Perspective Intent
 

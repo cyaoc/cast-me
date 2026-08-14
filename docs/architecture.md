@@ -122,8 +122,8 @@ flowchart TB
 | 润饰和成片 | `First-Pass Finish` | 第一次生成时完成，不建立强制后处理流程 |
 | 安全 | `SKILL.md` 异常分支 | 不是普通创意维度 |
 | Physical Scene Coherence | Composition 内部检查 | 不是新的用户 Gate |
-| Medium Contract | Identity Anchor + 既有非摄影 Output Recipe | 不增加问题、Gate、Module、流程阶段或运行时组件 |
-| Deformation Tier | Identity Anchor + 既有 Choice Gate | A/B/C 语义顺序固定、具体比例按用途适配；身体证据梯度属于该 Tier，不增加独立身体 Gate、Module 或持久比例档案 |
+| Medium Contract | Identity Anchor + 既有非摄影 Output Recipe | closed channel 不作为缺失参考证据请求；不扩展成生产合约，也不增加问题、Gate、Module、流程阶段或运行时组件 |
+| Deformation Tier | Identity Anchor + 既有 Choice Gate | A/B/C 语义顺序固定、具体比例按用途适配；身体证据梯度属于该 Tier，后续 Shot 也按已锁 Tier 调整可见 crop 选项；不增加独立身体 Gate、Module 或持久比例档案 |
 | 绘制风格化强度 | Composition 的 Creative Direction、First-Pass Finish 与 Prompt + Identity Review | 普通生产决定；独立于 Deformation Tier、渲染 look、surface coloring 和 First-Pass Finish optical controls，不增加固定层级、预设目录、Module 或流程阶段 |
 | 绘制风格六轴与具名起点词汇 | Composition 的 Creative Direction、Output Recipe、Prompt + 既有 Scoped Refresh | line、surface coloring、colour logic、eye rendering、texture、background 分开记录和刷新；First-Pass Finish 负责成片实现，其 optical controls 不并入 surface coloring；不增加 Style Browser、Preset Catalog、Module 或新阶段 |
 | Character Sheet 与绘制组图 | Identity Anchor 的实际输入/固定根规则 + Composition 的设计、批次/回退、布局与交付 | set、series、reusable design、multi-angle 或同一角色第二张图触发 Sheet（这是连续性条件，不是绘制角色的判定）；可接受用户提供的 Sheet；只有当前操作验证批次能力才走一次批次，否则各项从同一固定根独立生成；不增加 Module、Agent、Gate、批次服务或持久角色库，无连续性要求的单张绘图不使用 |
@@ -182,7 +182,7 @@ flowchart LR
 | 绘制 set、series、reusable design、multi-angle 或同一角色第二张图 | 生成前 | 使用用户提供且可用的 Character Sheet；否则先从 Anchor 生成并锁定一个；每个应用的固定根都加入 Anchor 与 Sheet |
 | Character Sheet 与全部 per-item Brief 已就绪 | P7 宿主能力检查 | 当前操作验证支持完整 set 的一次批次才走该路；否则每项从同一固定根独立生成，不串联应用 |
 
-`locked: explicit` 始终优先于冲突的非显式值。对绘制角色，Medium Contract 读取已锁媒介与用户显式选择的 Deformation Tier 或具体 Custom 变形；`anime`、`chibi`、`manga`、`cartoon`、风格名、Anchor、结果、灯光、构图、遮挡、分辨率和其他场景条件都不参与推断。推荐默认和 `you decide` 不能替绘制角色选档。对其余请求，Medium Contract 只读取已锁媒介与用户显式请求的变形。等比例保留可表达结构 cue 与身体证据，中间比例简化身体证据，次短比例可明确携带胸/腰/臀曲线并披露更成熟观感，最短比例在生成前披露无法携带源图身形。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
+`locked: explicit` 始终优先于冲突的非显式值。对绘制角色，Medium Contract 读取已锁媒介与用户显式选择的 Deformation Tier 或具体 Custom 变形；`anime`、`chibi`、`manga`、`cartoon`、风格名、Anchor、结果、灯光、构图、遮挡、分辨率和其他场景条件都不参与推断。推荐默认和 `you decide` 不能替绘制角色选档。对其余请求，Medium Contract 只读取已锁媒介与用户显式请求的变形。等比例保留可表达结构 cue 与身体证据，中间比例简化身体证据，次短比例可明确携带胸/腰/臀曲线并披露更成熟观感，最短比例在生成前披露无法携带源图身形。Reference Coverage 在构造记录与路径前读取该 Contract，只按 identity channel 抑制 `closed` 证据请求：最短比例不再追问源图身形，但仍处理可表达的鞋、特征服装、站姿方向与重心位置，其中特征服装随比例关闭而提高 transferred 识别权重。接受某个风险只覆盖已命名的 cue、遮挡、角度、变换、缺失证据或 Medium Contract 关闭的通道，不是全局免责。
 
 绘制角色的风格化强度只描述画面离摄影有多远，不能由 Deformation Tier、渲染 look、surface coloring 或 First-Pass Finish optical controls 推断，也不能反向改写它们。它按普通选择规则显式记录一个具体可见结果；只有仍影响生产且未解决时才显示适配当前 Brief 的既有 Choice Gate。
 
@@ -197,13 +197,13 @@ Flat cel、semi-gradient、thick-painted、watercolour、lineless、monochrome s
 每个用户可见 Gate 都使用同一个 Interface：
 
 1. 本地化推荐句和一个简短理由。
-2. A/B/C 三个当前范围内有效的具体方案；只有两个实质方案时，C 表示保持现状并停止。
+2. A/B/C 三个继承完整当前锁、Coverage、已接受风险及已知身份或几何风险，且当前确实可交付的具体方案；只有两个实质方案时，C 表示保持现状并停止。
 3. 永久存在的 `D) Custom`，只允许在当前 Gate 范围内自定义。
 4. 回复示例同时展示裸推荐项，以及推荐项加本地化 `use recommended defaults`。
 
 D 占位符本身不创建锁或历史；具体 Custom 答案才由当前 Gate 校验。裸字母只解决当前选项拥有的字段。全局 `you decide` 结束普通澄清，但不会绕过 Reference Coverage、身份风险、安全、精确文字或未选择的 Deformation Tier Gate。
 
-Deformation Tier 复用该 Interface，但它不是每次重写的风格菜单：A/B/C 始终按 `conservative`、`standard`、`strong` 的语义顺序出现，显示标签本地化；每项的具体头身比例和圆润度、简化、五官位置、手部与身体曲线后果按用途适配。身体证据取舍写入同一道 Gate，不另问身体形状。
+Deformation Tier 复用该 Interface，但它不是每次重写的风格菜单：A/B/C 始终按 `conservative`、`standard`、`strong` 的语义顺序出现，显示标签本地化；每项的具体头身比例和圆润度、简化、五官位置、手部与身体曲线后果按用途适配。身体证据取舍写入同一道 Gate，不另问身体形状。后续 Shot Direction 读取已锁 Tier；具体比例无法形成可见不同的 crop 时，内部解析 subject scale，只询问仍有意义的 Shot 字段。
 
 风格化强度也复用该 Interface，但 A/B/C 是当前 Brief 的三个具体可见结果，不是全局固定层级；D 仍是当前范围内的 Custom Path。它属于普通创意决定，可由用户接受默认或委派解决，不增加新阶段。
 
@@ -342,8 +342,8 @@ flowchart TD
 ```mermaid
 flowchart TD
     U["输入<br/>近景/半身 Anchor + 全身动作 + 强视点或道具"] --> LOCKS["P1/P2<br/>锁定用户要求的 Shot、相机、投影、动作、视线和造型"]
-    LOCKS --> C["P3 Identity Coverage<br/>分别记录脸、外观、身体、角度、动作证据"]
-    C --> GAP{"P4 目标关键证据缺失？"}
+    LOCKS --> C["P3 Identity Coverage<br/>先读 Medium Contract<br/>按 channel 记录脸、外观、身体、角度、动作证据"]
+    C --> GAP{"P4 open / transferred channel<br/>或其他可表达目标证据缺失？"}
     GAP -- 是 --> G["Coverage Gate<br/>A 补真实参考 / B 描述 / C 精确 Inference Boundary / D Custom"]
     GAP -- 否 --> P
     G --> P["P5/P6<br/>提示词区分 verified、described、inferred；不降低已锁镜头和动作"]
@@ -357,7 +357,7 @@ flowchart TD
     FAIL -- 是 --> REGEN["Structural Scale Failure / 非局部失败<br/>从 Anchor + 锁定 Brief 重生成，失败图不得作为比例或构图证据"]
 ```
 
-Inference Boundary 只允许推断逐项列出的未知区域或事实；它不会把已验证身体证据改成可变项，也不能替代 Primary Identity Anchor。
+Coverage 抑制按 channel 而不是整块身体区域判断：`closed` channel 不进入缺失证据路径；最短比例不追问无法携带的源图身形，但鞋、特征服装、站姿方向和重心位置仍可触发正常 Gate。Inference Boundary 只允许推断逐项列出的未知区域或事实；它不会把已验证身体证据改成可变项，也不能替代 Primary Identity Anchor。
 
 ### F5. Style / Scoped Refresh
 
@@ -592,7 +592,7 @@ flowchart TD
 | 组图交付 | 检查每项实际尺寸和 item/panel 组织；不匹配就不声称完成 |
 | 结果不可见或分辨率不足 | 对相应审查标记 unavailable / unverified |
 
-## 6. Golden 1–154 覆盖矩阵
+## 6. Golden 1–156 覆盖矩阵
 
 每个编号在下表恰好出现一次，表示它的主要端到端流程族；Shared Checks 仍横跨全部流程。场景可以触及多个 Module，但不需要复制多张完整图。
 
@@ -666,6 +666,8 @@ flowchart TD
 | 152 | F8 | 普通 Identity Review 不判定 noise / dirtiness / degradation；局部失败给 Recovery Offer 且不展示计数或剩余次数 |
 | 153 | F8 | 无连续性的单张绘制图仍可走 surgical 修复 |
 | 154 | F8 | 无共同原因的批次失败逐项选择操作、只报告一次，并由一条指令接受全部、子集或不恢复 |
+| 155 | F4 | 已锁 Deformation Tier 抑制 closed 身形证据与不可区分 crop，同时保留鞋、特征服装、站姿和重心 Coverage |
+| 156 | F1 | 所有 A/B/C 路径继承当前锁且可交付；不可达路径不显示，Custom 与双解 stop path 不变 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -687,15 +689,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,650 词 |
-| `composition-director.md` | 8,318 词 |
-| `identity-anchor.md` | 7,208 词 |
+| `SKILL.md` | 4,664 词 |
+| `composition-director.md` | 8,413 词 |
+| `identity-anchor.md` | 7,338 词 |
 | `styling-performance.md` | 2,943 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 23,982 词 |
-| `CONTEXT.md` | 41 个规范术语，2,078 词 |
-| `docs/adr/` | 9 条 ADR |
-| `golden-conversations.md` | 154 个场景，19,402 词 |
+| 运行时 Markdown 合计 | 24,221 词 |
+| `CONTEXT.md` | 43 个规范术语，2,224 词 |
+| `docs/adr/` | 11 条 ADR |
+| `golden-conversations.md` | 156 个场景，19,742 词 |
 
 ### 优化优先级
 
