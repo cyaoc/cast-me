@@ -6,18 +6,18 @@
 
 ## 0. 系统本质
 
-CastMe 不是传统应用，没有仓库内的常驻服务、数据库或图像生成代码。它是一个声明式 Agent Skill：宿主读取 Markdown 合约，在当前对话中维护决策状态，再通过宿主提供的图像生成或编辑能力调用 GPT Image 2。
+CastMe 不是传统应用，没有仓库内的常驻服务、数据库或图像生成代码。它是一个声明式 Agent Skill：宿主读取 Markdown 合约，在当前对话中维护决策状态，再调用宿主内置的图像生成或编辑能力（ChatGPT 中为 ChatGPT Images）。
 
 因此：
 
 - Module 是一组有明确职责与 Interface 的行为合约。
 - 稳定的 Markdown 标题是 Interface 所在的 Seam。
-- ChatGPT、Codex 或其他 API 宿主提供真正执行图像能力的 Adapter。
+- ChatGPT 或 Codex 宿主提供真正执行图像能力的 Adapter。
 - 只有 `skills/cast-me/` 会作为运行时包安装；仓库其他文件用于说明、治理和验证。
 
 ```mermaid
 flowchart LR
-    U["用户<br/>人物参考图 + 目标"] --> H["宿主<br/>ChatGPT / Codex / API 宿主"]
+    U["用户<br/>人物参考图 + 目标"] --> H["宿主<br/>ChatGPT / Codex"]
 
     subgraph PKG["运行时包：skills/cast-me"]
         META["agents/openai.yaml<br/>发现与默认入口"]
@@ -34,7 +34,7 @@ flowchart LR
     end
 
     H --> META
-    K --> G["宿主图像 Adapter<br/>GPT Image 2"]
+    K --> G["宿主图像 Adapter<br/>内置图像生成/编辑"]
     G --> O["可见结果"]
     O --> K
     K --> F["结果 + 应有的 Style Readout<br/>或明确的未完成说明"]
@@ -199,7 +199,7 @@ Flat cel、semi-gradient、thick-painted、watercolour、lineless、monochrome s
 
 Style Readout 随每个未报告 style state 的首个结果交付，不是 Choice Gate、额外轮次或生成过程说明。绘制结果使用与 Scoped Option Refresh 完全相同的六轴名称并写锁定可见值、Tier 和强度；同一 state 的 set 只报告一次，单轴刷新后的新 state 只报告移动轴。摄影结果沿用一次性/差量机制，但只写实质改变观感的两三个锁定 Finish controls，不复制六轴或 Direction Signature。它只读决定记录且永不带艺术家/流派名，也不声称完成、相似、质量或图像符合决定；这些结论仍只由 Identity Review（含 Uneven Stylization）和其他活跃所有者审查产生。
 
-绘制组图在生成前锁定 item 顺序或 panel 组织与一致尺寸。透明 sticker 先说明 GPT Image 2 当前不支持透明背景，只把下游 cutout 记为交付要求；多人绘制请求在生成前停止。实际结果的尺寸、组织和所用批次/回退路径都必须可验证，不承诺 alpha、批次一致性、成功率或可用图数量。
+绘制组图在生成前锁定 item 顺序或 panel 组织与一致尺寸。透明 sticker 在生产提示中请求透明背景，检查过实际文件的 alpha 才声称透明，否则说明未验证并把下游 cutout 记为交付要求；多人绘制请求在生成前停止。实际结果的尺寸、组织和所用批次/回退路径都必须可验证，不承诺未经验证的 alpha、批次一致性、成功率或可用图数量。
 
 ### Choice Gate 合约
 
@@ -269,7 +269,7 @@ Style Readout 同样不增加 P 编号：P8 产生结果后立即按锁定记录
 - 需要表现运动时，已有一个与摄影 motion treatment 分开的 Drawn Motion Convention；repeated limb positions 只有用户明确选择才可用。
 - 绘制角色的 line、surface coloring、colour logic、eye rendering、texture 与 background 均有具体可见方向；First-Pass Finish 的绘制 optical controls 与 surface coloring 分开，生产提示词没有用艺术家、流派或陌生标签代替这些方向。
 - 另一人的 style reference 只贡献渲染处理；dense high-frequency texture 已显示带复核日期且非永久化的模型 artifact 风险说明。
-- 绘制 set 是单人请求，已锁 item 顺序或 panel 组织与一致尺寸；透明 sticker 已说明模型边界并记录下游 cutout。
+- 绘制 set 是单人请求，已锁 item 顺序或 panel 组织与一致尺寸；透明 sticker 的透明背景已写进生产提示。
 - 必要的 closed-channel 说明已在生成前显示，且没有进入生产提示词。
 - 可见且可检查的结果通过 Identity Review。
 - 本次参与生成或修改的所有者贡献都体现在提示词或修改中。
@@ -471,7 +471,7 @@ flowchart TD
 
 强变形 sticker set 在静态结构通道减少且目标受众熟悉本人时，可以提高有用的特征表情或 mannerism 的识别权重；social avatar、等比例绘制人像、静态结构仍可用或受众可能不熟悉本人时保持低权重。单张照片中的表情、视线、姿态或手位只能记为假定，不能推出习惯、Character Read、人格、职业、关系或内在特质；其缺失、变化或执行不完美也不能让 Identity Review 失败，审查仍只读请求级 Medium Contract 的 open / transferred 通道和既有缩略图 silhouette 下限。
 
-透明 sticker 在生成前说明 GPT Image 2 当前不支持透明背景，并只记录下游 cutout 要求；不承诺 alpha 或自动 cutout。多人绘制请求在生成前停止，避免混合身份。单张图片也不创建 Look Continuity。
+透明 sticker 在生产提示中请求透明背景；只有检查过实际文件的 alpha 才声称透明，否则说明未验证并记录下游 cutout 要求；不做自动 cutout。多人绘制请求在生成前停止，避免混合身份。单张图片也不创建 Look Continuity。
 
 ### F8. 局部修复、身份漂移与重生成
 
@@ -555,7 +555,7 @@ flowchart TD
     R --> O["P11<br/>通过则完成；失败进入 F8"]
 ```
 
-安全处理保持工具无关；能力处理保持事实优先。提示词中的 batch、transparent、4K、high quality 或“保留 Anchor”不能替代真实控制。
+安全处理保持工具无关；能力处理保持事实优先。提示词中的 batch、4K、high quality 或“保留 Anchor”不能替代真实控制。
 
 ## 5. 按需读取与所有者路由参考
 
@@ -601,7 +601,7 @@ flowchart TD
 | 明确 current / latest / trending | Trend Refresh，必须实时研究；无法验证就明说 |
 | 指定角色、制服、历史服装 | 优先官方或可靠视觉资料，只提取生产锚点 |
 | 艺术家、流派、陌生或不支持的风格词 | 生产前转换为六轴与 First-Pass Finish optical controls 的可见锚点；无法可靠定义时显示三个可见起点 + D Custom，不把名称传入提示词 |
-| dense high-frequency micro-structure | 生成前显示当前模型 artifact 风险；仓库当前复核点为 2026-08-12、当时未找到官方修复宣布，必须写成时点信息而非永久缺陷或质量排名 |
+| dense high-frequency micro-structure | 生成前显示当前模型 artifact 风险；仓库当前复核点为 2026-10-20、当时未找到官方修复宣布，必须写成时点信息而非永久缺陷或质量排名 |
 | 正常人物成片 | 按 final asset 处理，不加质量问卷 |
 | 有真实质量控制 | 请求 `high` |
 | 有真实尺寸控制 | 请求不超过 `3,686,400` 总像素且符合画幅的最高稳定尺寸 |
@@ -609,7 +609,7 @@ flowchart TD
 | 控制不存在 | 继续可执行部分，但不声称已设置 high、2K、4K 等 |
 | 需要精确尺寸 | 实际检查输出像素后才能声称 |
 | 绘制 set / multi-angle | 当前操作验证完整 set 的一次批次能力才走批次；否则各项从同一 Anchor + Sheet 固定根独立生成；说明实际路径，不承诺一致性、成功率或可用图数量 |
-| 透明 sticker | 生成前说明 GPT Image 2 当前不支持透明背景；只记录下游 cutout，不承诺 alpha 或自动处理 |
+| 透明 sticker | 在生产提示中请求透明背景；检查实际 alpha 后才声称透明，否则说明未验证并记录下游 cutout；不做自动处理 |
 | 组图交付 | 检查每项实际尺寸和 item/panel 组织；不匹配就不声称完成 |
 | 结果不可见或分辨率不足 | 对相应审查标记 unavailable / unverified |
 
@@ -681,7 +681,7 @@ flowchart TD
 | 146 | F3 | 风格名转换、style-reference 身份边界与带日期的模型 artifact 风险说明 |
 | 147 | F7 | 验证一次批次能力，否则从同一 Character Sheet 固定根独立生成，不虚报批次一致性 |
 | 148 | F7 | Character Sheet 按连续性需求触发；接受用户提供的 Sheet；外来 Sheet 失败时从 Anchor 与当前 brief 替换 |
-| 149 | F9 | 组图尺寸/组织、透明 cutout、尽力而为与多人绘制停止边界 |
+| 149 | F9 | 组图尺寸/组织、透明验证与下游 cutout、尽力而为与多人绘制停止边界 |
 | 150 | F7 | Character Sheet 保守锁定源头呈现，但不约束应用的表情、动作、角度与灯光 |
 | 151 | F7 | mannerism 按变形与用途加权，单图只是假定且不进入 Identity Review 失败条件 |
 | 152 | F8 | 普通 Identity Review 不判定 noise / dirtiness / degradation；局部失败给 Recovery Offer 且不展示计数或剩余次数 |
@@ -713,15 +713,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,571 词 |
-| `composition-director.md` | 8,583 词 |
+| `SKILL.md` | 4,554 词 |
+| `composition-director.md` | 8,586 词 |
 | `identity-anchor.md` | 7,290 词 |
 | `styling-performance.md` | 3,082 词 |
 | `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 24,389 词 |
+| 运行时 Markdown 合计 | 24,375 词 |
 | `CONTEXT.md` | 43 个规范术语，2,252 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 159 个场景，20,605 词 |
+| `golden-conversations.md` | 159 个场景，20,613 词 |
 
 ### 优化优先级
 

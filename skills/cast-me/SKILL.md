@@ -1,13 +1,13 @@
 ---
 name: cast-me
-description: Use when the user provides a person screenshot, selfie, portrait, or photo reference and wants ChatGPT or GPT Image 2 to create a polished final image while preserving the person's visible identity. Supports portraits, professional headshots, cinematic posters, CG or game key art, magazine/editorial images, social avatars, commercial visuals, and other person-centered outputs.
+description: Use when the user provides a person screenshot, selfie, portrait, or photo reference and wants ChatGPT Images to create a polished final image while preserving the person's visible identity. Supports portraits, professional headshots, cinematic posters, CG or game key art, magazine/editorial images, social avatars, commercial visuals, and other person-centered outputs.
 ---
 
 # CastMe
 
 ## Goal
 
-Turn a user-provided person image into a polished final image while preserving the person's visible identity as much as possible. Act as the coordinating director: resolve the output type and missing creative choices, route identity, composition, and styling/performance work to the right reference modules, then use GPT Image 2 through the current OpenAI image generation/editing surface.
+Turn a user-provided person image into a polished final image while preserving the person's visible identity as much as possible. Act as the coordinating director: resolve the output type and missing creative choices, route identity, composition, and styling/performance work to the right reference modules, then use the host's built-in image generation/editing (ChatGPT Images in ChatGPT).
 
 ## Reference Modules
 
@@ -70,7 +70,7 @@ Read any other section only when its choice, risk, research branch, output requi
 - When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk Choice Gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or define an Inference Boundary.
 - Do not repeat a risk Choice Gate when the user clearly accepted its specific resolution. Scope acceptance to the named cue, occlusion, angle, transformation, or missing evidence; a newly relevant or unrelated risk remains unresolved. For inference, require an explicit boundary such as `infer only the unseen waist, hips, legs, and feet` or `infer only the missing profile-angle and sword-hand evidence`; broad statements such as `I accept lower likeness` or `infer the missing evidence` do not define an Inference Boundary or waive unrelated Protected Identity Cues. Continue with the chosen risk and make the prompt explicit about the tradeoff.
 - When a general image-generation capability also applies, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
-- Use GPT Image 2 for image generation/editing. In ChatGPT, use its built-in image generation/editing capability; on API surfaces, select `gpt-image-2`.
+- Use the host's built-in image generation/editing capability; in ChatGPT, that is ChatGPT Images.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
 
 ## Step 1: Determine Output Type and Canvas
@@ -180,7 +180,7 @@ This is an internal execution checkpoint, not a user-visible stage, score, or ad
 - for a Drawn Character, all six style axes hold concrete visible values and no style label substitutes for them
 - for any continuity-triggering drawn request, the current operation has its required fixed-root inputs: a new Character Sheet generation has the Primary Identity Anchor, while every application or batch operation has both the Anchor and the supplied or already generated Character Sheet
 - for a continuity-triggering drawn set, series, or multi-angle request, use one planned batch only when the active surface verifiably exposes that operation for the complete set; otherwise every item has its own locked brief and independently uses the same complete fixed root
-- for a drawn set, the request is single-person, the item order or layout and required matching dimensions are locked, and any transparency request has the current model limitation stated with downstream cutout recorded before generation
+- for a drawn set, the request is single-person, the item order or layout and required matching dimensions are locked, and any transparency request is written into the production prompt
 - the mandatory final-prompt sections and every active conditional section from the routing table are loaded
 - the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description
 - one final internal check confirms that the resolved combination neither materially reduces target-critical Protected Identity Cue readability nor depends on target-critical Reference Coverage that remains missing

@@ -72,7 +72,7 @@ Translate an artist, school, or other style name into concrete visible choices a
 
 When another person's artwork or photo is supplied as a style reference, label that role and extract only its rendering treatment into the six axes and First-Pass Finish optical controls. Identity Anchor owns the prohibition on transferring that person's identity, age impression, or body evidence.
 
-When the selected texture uses dense high-frequency micro-structure, disclose the current model-artifact risk before production as time-stamped information: as of the 2026-08-12 public-information review, GPT Image 2 still had a publicly reported tiling or visible-noise risk in dense high-frequency detail, and no official fix announcement was found. State this as a review-date boundary, not a permanent limitation. Do not turn it into a quality ranking, a per-look reachability claim, or a claim that another look will produce a better result.
+When the selected texture uses dense high-frequency micro-structure, disclose the current model-artifact risk before production as time-stamped information: as of the 2026-10-20 public-information review, ChatGPT Images 2.5 still had a publicly reported visible-artifact risk in dense high-frequency detail, and no official fix announcement was found. State this as a review-date boundary, not a permanent limitation. Do not turn it into a quality ranking, a per-look reachability claim, or a claim that another look will produce a better result.
 
 When asking beginner users for missing creative choices, include suggested answers. Do not ask only open-ended abstract questions like "what mood, scene, and pose do you want?" Offer concrete options with visibly different production choices; keep sample camera, styling, performance, lighting, or palette framed as suggestions, not locked decisions. Always allow the user to mix options or describe their own.
 
@@ -376,11 +376,11 @@ When use or platform is known, form a recommended canvas aspect ratio, safe area
 
 Treat layout structure, subject/text-safe placement, safe areas/readability, and required variant organization as the Layout visible signature. When a visible Layout gate is needed, use `scoped-option-refresh.md`, while preserving exact text, explicit aspect ratio, and hard delivery requirements.
 
-Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, transparency, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
+Verify exact text character by character without applying capitalization or letter-spelling rules to scripts where they are not meaningful. If a targeted revision still fails, offer to regenerate a clean no-text base rather than claiming exact delivery. If the user requests pixel dimensions, file format, print bleed, DPI, or CMYK, record them as downstream delivery requirements; do not imply that generation-prompt words alone perform file conversion or print color management.
 
 For a set or multi-angle sheet, lock the complete item order or panel organization and the required matching pixel dimensions before generation. Before delivery, inspect every actual result and fail the output contract on any mismatched dimensions, missing item, or wrong organization; do not let an automatic crop pass silently or claim a matching set. Use only the existing fixed-root recovery when its required controls are available.
 
-When transparent stickers are requested, state before generation that GPT Image 2 does not currently support transparent backgrounds and record downstream cutout as a delivery requirement. Do not promise an alpha channel or add an automated cutout workflow.
+When transparent stickers are requested, request a transparent background in the production prompt. Claim transparency only after inspecting the delivered file's alpha channel; otherwise state that transparency is unverified and record downstream cutout as a delivery requirement. Do not add an automated cutout workflow.
 
 ### Character Sheet Applications
 
