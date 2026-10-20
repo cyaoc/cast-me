@@ -20,12 +20,15 @@ Route reference reading by stable Markdown heading. Prefer reading only the name
 | Creative direction, First Read, or decisive moment | `references/composition-director.md`: `Creative Direction` and `Directorial Intent and Decisive Moment`; add `Direction Atlas and Freshness` when options are needed and `Style Refresh` when that branch is active |
 | Shot, perspective, camera, or projection | `references/composition-director.md`: `Shot Direction`; add `Perspective Intent` and `Camera and Capture Plan` when relevant. For side-facing identity, action, or strong perspective, also add identity `Face Visibility and Performance Integrity` and styling/performance `Pose Geometry` as relevant |
 | Physical world, taste, prompt craft, or medium-specific output guidance | `references/composition-director.md`: the relevant `Art Direction and Physical World`, `Taste Rules`, `Prompt Craft Rules`, or matching subsection under `Output Recipes` |
+| Drawn character, requested drawn deformation or stylization intensity, rendering look, style axis/name, or style reference | `references/identity-anchor.md`: `Reference Transfer`, `Deformation Tier`, and `Identity Prompt Constraints`; `references/composition-director.md`: `Creative Direction`, `Drawn Style Axes`, `Drawn Style Starting Vocabulary`, `First-Pass Finish`, and `Illustration or Other Non-Photographic Output`; add `Drawn Motion Convention` when movement treatment matters |
 | Wardrobe, headwear, jewelry, accessories, makeup, hair, or props | `references/styling-performance.md`: the relevant `Ownership`, `Risk and Facial Treatment`, `Category Routing`, `Styling Direction`, or `Props` |
 | Story-driven styling, Delegated Styling, Character Read, Story Makeup, or Look Continuity | `references/styling-performance.md`: `Ownership`, `Risk and Facial Treatment`, `Styling Direction`, and `Prompt Contributions`; add identity `Reference Coverage` when source styling may hide target-critical identity cues |
-| Pose, action, expression, gaze, hands, or performance | `references/styling-performance.md`: `Performance Direction` and, for non-trivial action, `Pose Geometry`; add identity `Face Visibility and Performance Integrity` when the face angle or performance affects identity readability |
+| Pose, action, expression, gaze, hands, characteristic mannerism, or performance | `references/styling-performance.md`: `Performance Direction` and, for non-trivial action, `Pose Geometry`; add composition `Drawn Motion Convention` when a Drawn Character's movement treatment matters; add identity `Face Visibility and Performance Integrity` when the face angle or performance affects identity readability |
 | Named character, uniform, historical dress, or other canon-dependent styling | `references/styling-performance.md`: `Role, Costume, and Visual Research` |
-| Exact text, layout, platform delivery, variants, or a requested series | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
+| Exact text, layout, platform delivery, variants, transparency, or a requested set, series, or multi-angle sheet | `references/composition-director.md`: `Layout and Output Contract`; add `Prompt Craft Rules` when the prompt needs text or structured regions |
+| Drawn set, series, reusable character design, multi-angle sheet, second or later image of the same character, or a supplied Character Sheet | `references/identity-anchor.md`: `Character Sheet`; `references/composition-director.md`: `Character Sheet Applications`; add the ordinary sections needed by each application |
 | Presenting or replacing a refreshable creative gate | `references/scoped-option-refresh.md`: `Scope` and `Visible Gate and History`; add `Route the Target`, `Locks and Continuity`, or `Refresh Exhaustion` when active, plus the section that owns the target creative area |
+| Delivering a visible result or set | `references/composition-director.md`: `Style Readout`; load this result disclosure independently from the review route below |
 | Reviewing a visible result | Read identity `Identity Review and Revision` first, then only the owner sections that contributed to generation or revision and their final review checks; composition review checks are in `Prompt Structure`, and styling/performance review checks are in `Prompt Contributions` |
 | Narrow revision to a visible result | Bypass the normal-generation core. Read identity `Identity Review and Revision` plus the section that owns the requested correction. Add identity `Priority` and `Identity Prompt Constraints` for a likeness or face correction; add other core sections only when the correction actually touches reference transfer or coverage, composition, final quality, or finish |
 
@@ -41,10 +44,10 @@ Read any other section only when its choice, risk, research branch, output requi
 - The Custom Path accepts a user-supplied resolution only inside the presenting gate's valid scope. It cannot bypass safety, preserve a physical contradiction, or silently reopen unrelated Explicit Locks. Localize D with gate-specific guidance rather than reusing one generic sentence.
 - Merely showing `D) Custom` creates no lock or history entry. Once the user supplies a concrete answer, the owning gate applies its normal validation, lock, and history semantics. An adopted creative Custom Direction becomes a Shown Direction; focused coverage, identity-risk, safety, and exact-text answers remain owned by their gates and do not enter creative history.
 - Every Choice Gate must use the same lightweight gstack-style decision format:
-  - start with a localized recommendation sentence: `<localized I recommend>: <recommended path>, <localized because> <one short reason>.`
+  - start with a localized recommendation sentence: `<localized I recommend>: <recommended path>, <localized because> <one short reason>.` When an owning contract explicitly forbids a default recommendation, state the concrete tradeoff instead and mark no path as recommended.
   - then a localized options label with the four concrete A/B/C/D paths, with one path marked by a localized equivalent of `(Recommended)` when a safe default exists
-  - end with a localized reply instruction showing how to accept the recommendation and how to override specific fields; for an ordinary creative gate, show both the bare recommended path and the same path plus a localized equivalent of `use recommended defaults`, which delegates every remaining ordinary creative choice without bypassing a focused gate
-- Do not use bare open-ended questions, yes/no-only prompts, or number-only menus for clarification. Give concrete choices, the recommended path, and shorthand examples.
+  - end with a localized reply instruction showing how to select a path and, when one is recommended, how to accept it and override specific fields; for an ordinary creative gate, show both the bare recommended path and the same path plus a localized equivalent of `use recommended defaults`, which delegates every remaining ordinary creative choice without bypassing a focused gate
+- Do not use bare open-ended questions, yes/no-only prompts, or number-only menus for clarification. Give concrete choices, a recommended path when one exists, and shorthand examples.
 - Ask missing production-critical choices serially, one unresolved dimension or tightly coupled decision group per turn, with concrete suggestions. Do not hide important choices inside a dense preset when the user has not chosen them.
 - Do not create nested menus. A follow-up must ask the next missing decision, not route the user into another category menu. The only exception is one compact refresh-scope gate when the user asks for more choices without an explicit, unresolved, or recent refreshable target.
 - Keep the eight production dimensions as an internal completeness checklist, not as eight mandatory user questions. Adapt the route to the task: simple headshots and avatars usually need fewer choices than portraits, while posters, key art, full-body action, exact text, or series work may need more. Skip dimensions that are already stated, irrelevant, or accepted through recommended defaults.
@@ -56,19 +59,19 @@ Read any other section only when its choice, risk, research branch, output requi
   - `suggested`: a prior option or recommendation previewed this value, but the user has not explicitly locked it
   - `unresolved`: the value is still missing and production-critical
 - Every clarification must ask exactly one unresolved dimension or tightly coupled decision group and inherit all locked and suggested prior decisions. Do not ask a locked dimension again unless the user reopens it, contradicts it, or asks to change it.
-- Every recommendation must also inherit the complete current decision state, including accepted risks, Reference Coverage, and known identity or geometry risk. Within the presenting gate's valid scope, recommend a path that fulfills the creative purpose without adding avoidable unresolved identity risk. Keep every valid creative path available and never silently reopen, weaken, or replace an Explicit Lock.
+- Every offered A/B/C path, including the recommendation, must inherit the complete current decision state, including accepted risks, Reference Coverage, and known identity or geometry risk. Offer only paths the current locks can actually deliver. Within the presenting gate's valid scope, recommend a path that fulfills the creative purpose without adding avoidable unresolved identity risk. Keep every valid, deliverable creative path available and never silently reopen, weaken, or replace an Explicit Lock.
 - Suggested details are not final choices, but later questions must refine or adapt from them instead of restarting with generic menus. When the user accepts recommended defaults, convert relevant suggested details into `locked: derived` decisions; a repeated or overridden value becomes `locked: explicit`.
 - Route any request for more, different, replacement, or new choices through `references/scoped-option-refresh.md`; it owns target priority, recent-gate tracking, delegation, and the no-target fallback. A target resolved as Creative Direction uses Style Refresh, while a precise first-time style request simply locks that theme.
 - A partial answer resolves only the choices it explicitly answers. A bare number, letter, or option name selects that option only; continue to the next missing production-critical choice unless the user also says `default`, `use recommended defaults`, `generate now`, or an unscoped equivalent of `you decide`. A `you decide` or `pick one` attached to a Scoped Option Refresh delegates only that target area.
-- If the user says `default`, `use recommended defaults`, `generate now`, or an unscoped global equivalent of `you decide`, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated Inference Boundary.
+- If the user says `default`, `use recommended defaults`, `generate now`, or an unscoped global equivalent of `you decide`, stop ordinary clarification and use recommended defaults for unresolved creative choices. A focused coverage/risk, safety, or exact-text gate may still be required; defaults do not accept an unstated Inference Boundary or select a drawn character's Deformation Tier.
 - Treat defaults as recommendations, not silent decisions. Use a default only when the user explicitly accepts defaults, asks the assistant to decide, or the dimension is irrelevant to the requested output.
 - A creative-direction preview does not resolve First-Pass Finish; it remains `suggested` until resolved, defaulted, or delegated.
+- A Drawn Character's classification, Deformation Tier, stylization intensity, and six style axes are each resolved and recorded by their owning module; none of them resolves another.
 - When identity or geometry constraints conflict with requested camera, composition, styling, pose, expression, hands, or beautification, trigger a risk Choice Gate instead of silently rejecting or weakening the user's intent. Recommend the most accurate path that preserves locked choices, explain the risk in one short reason, and let the user choose how to handle missing evidence or define an Inference Boundary.
 - Do not repeat a risk Choice Gate when the user clearly accepted its specific resolution. Scope acceptance to the named cue, occlusion, angle, transformation, or missing evidence; a newly relevant or unrelated risk remains unresolved. For inference, require an explicit boundary such as `infer only the unseen waist, hips, legs, and feet` or `infer only the missing profile-angle and sword-hand evidence`; broad statements such as `I accept lower likeness` or `infer the missing evidence` do not define an Inference Boundary or waive unrelated Protected Identity Cues. Continue with the chosen risk and make the prompt explicit about the tradeoff.
 - When a general image-generation capability also applies, this skill's clarification gates take precedence. Do not call, describe, or proceed with image generation until the user answers.
 - Use GPT Image 2 for image generation/editing. In ChatGPT, use its built-in image generation/editing capability; on API surfaces, select `gpt-image-2`.
 - Do not hardcode a specific scene, culture, genre, palette, or story world as the default. Adapt all scene, pose, expression, and palette choices to the user's theme.
-- Treat normal person-centered generation as a final asset across every crop and medium; only an explicit preview, draft, exploration, or high-volume batch request permits a lower-quality trade-off. Do not add a quality question.
 
 ## Step 1: Determine Output Type and Canvas
 
@@ -124,11 +127,11 @@ Stop asking as soon as every user-visible tradeoff that could materially change 
 
 Keep ownership clear while routing:
 
-- creative direction owns the visual premise, world, mood, audience read, decisive moment, Direction Signature, and conversation-local Shown Directions
+- creative direction owns the visual premise, world, mood, audience read, decisive moment, Direction Signature, conversation-local Shown Directions, the separate drawn-character stylization-intensity decision, and a drawn character's six visible style axes and named starting vocabulary
 - shot direction owns scene framing, subject scale/body cutoff, camera position/viewpoint/distance, perspective strength, allowed projection exaggeration, subject placement, spatial layers, and background relationship
 - styling owns Character Read as creative intent plus wardrobe, hair, makeup, grooming, accessories, props, Story Makeup, and series-only Look Continuity
 - performance owns pose/action, expression, gaze, mouth state, hands, and energy
-- lighting/color/retouch/finish owns motivated light, contrast, palette, identity-safe facial or material treatment, texture, and final image character
+- lighting/color/retouch/finish owns motivated light, contrast, palette, identity-safe facial or material treatment, texture, and final image character; for a Drawn Character, Creative Direction first locks colour-logic and Texture-axis choices, which First-Pass Finish realizes without reselecting, while its optical controls remain independent of surface coloring
 - art direction internally verifies Physical Scene Coherence across the resolved setting/time/weather, shot/perspective, performance, styling/materials, and lighting/finish; it is not a separate user gate
 - output contract owns canvas aspect ratio, safe areas, platform variants, exact text, and platform readability
 
@@ -147,6 +150,8 @@ Treat safety as exception handling, not as a normal creative dimension.
 - Clear benign intent matters. If the user says the goal is fashion swimwear editorial, resort lookbook, stage performance styling, athletic progress, dance portfolio, or character costume accuracy, do not over-constrain it unless high-risk signals are also present.
 - If generation is blocked or refused, say the model/tool blocked it, do not silently switch wardrobe/crop/pose/concept, and offer revisions that preserve the original setting, role, wardrobe category, and visual style as much as safely possible.
 - Keep safety handling tool-agnostic. Do not make platform-specific policy claims, and do not silently rewrite the user's requested wardrobe, crop, pose, concept, or visual style.
+
+For a Drawn Character, do not combine emphasized adult body characteristics with a child-reading proportion. Preserve the requested body treatment and return to Deformation Tier for a non-child-reading proportion rather than silently moderating the body request.
 
 When a safety option is necessary, use the standard options format:
 
@@ -170,15 +175,23 @@ This is an internal execution checkpoint, not a user-visible stage, score, or ad
 
 - ordinary choices are resolved, defaulted, overridden, or delegated, and every focused coverage, identity-risk, safety, exact-text, or Physical Scene Coherence gate is resolved; never let `where the crop allows` silently choose between conflicting Explicit Locks
 - the Primary Identity Anchor, the image being edited when applicable, and every person reference required by Reference Coverage are available to the active image surface as actual image inputs; text does not substitute for them
+- for a Drawn Character, the user explicitly selected an A/B/C Deformation Tier or supplied a concrete Custom deformation, and it is recorded in the request-wide Medium Contract
+- for a Drawn Character, one concrete stylization-intensity decision is resolved and recorded separately
+- for a Drawn Character, all six style axes hold concrete visible values and no style label substitutes for them
+- for any continuity-triggering drawn request, the current operation has its required fixed-root inputs: a new Character Sheet generation has the Primary Identity Anchor, while every application or batch operation has both the Anchor and the supplied or already generated Character Sheet
+- for a continuity-triggering drawn set, series, or multi-angle request, use one planned batch only when the active surface verifiably exposes that operation for the complete set; otherwise every item has its own locked brief and independently uses the same complete fixed root
+- for a drawn set, the request is single-person, the item order or layout and required matching dimensions are locked, and any transparency request has the current model limitation stated with downstream cutout recorded before generation
 - the mandatory final-prompt sections and every active conditional section from the routing table are loaded
 - the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description
 - one final internal check confirms that the resolved combination neither materially reduces target-critical Protected Identity Cue readability nor depends on target-critical Reference Coverage that remains missing
 
-If any item fails, route only the current blocker through existing behavior: reattach an unavailable Primary Identity Anchor, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate this checkpoint after the focused answer, and do not repeat an accepted risk inside its exact boundary.
+If any item fails, route only the current blocker through existing behavior: reattach each unavailable image required by the operation's complete fixed root, resolve missing evidence through Reference Coverage and an Inference Boundary, or resolve a proposed transformation or occlusion through the identity-risk Choice Gate. Preserve the complete decision state, re-evaluate this checkpoint after the focused answer, and do not repeat an accepted risk inside its exact boundary.
 
 ## Step 3: Generate
 
-After the checkpoint passes, use the assembled production prompt. Do not replace it with a short generic summary or compact config block.
+After the checkpoint passes, use the assembled production prompt as Composition assembled it.
+
+Apply Composition's Style Readout contract to every visible result before the response ends. When a readout is due for the current style state, deliver it in the same response from the locked decision record; it never substantiates Identity Review or any likeness, quality, or visual-completion claim.
 
 Generation and review are complete only when:
 
@@ -187,16 +200,18 @@ Generation and review are complete only when:
 - locked user intent is unchanged
 - every visible, inspectable result passes Identity Review against the Primary Identity Anchor; an unavailable, ambiguous, or failed review receives no final or completion claim
 - the results of every module whose sections contributed to generation or revision are represented in the production prompt or revision
-- claims about tool controls, output quality, size, text, and visual review are truthful and verified where required
+- every delivered set member's required dimensions and output organization are verified from the actual results
+- any Style Readout due for the current style state was delivered with the result from the locked record rather than visual inspection
+- claims about tool controls, batch routing, output quality, size, text, and visual review are truthful and verified where required
 
 ## Step 4: Review or Revise
 
 If the generated output is visible in the current conversation, perform Identity Review first, then review only the modules whose sections contributed to generation or revision. Apply the cross-module completion conditions above; do not load or review unrelated composition, styling, performance, text, quality, finish, or delivery guidance.
 
-Compare the result directly with the Primary Identity Anchor first. A clear face, natural pose, clean background, absent watermark, or absent livestream UI establishes only that review can proceed. Report concrete Protected Identity Cue drift, decide whether Identity Review passes, and, on failure, classify whether the result remains reliable identity evidence. Review other visual-quality areas only after identity passes.
+Compare the result directly with the Primary Identity Anchor first. A clear face, natural pose, clean background, absent watermark, or absent livestream UI establishes only that review can proceed. Report concrete Protected Identity Cue drift, decide whether Identity Review passes, and, on failure, classify whether the result remains reliable identity evidence. Review other visual-quality areas only after identity passes. On any visible, inspectable, unambiguous required-quality failure, return the Recovery Offer defined in `identity-anchor.md` only when the active surface's required controls are verified, and stop without generating, editing, or claiming completion unless the user already requested recovery.
 
-Follow the local-defect and identity-wide recovery paths in `identity-anchor.md`. Invoke a recovery path only when the active generation surface exposes and executes its required actual-image controls; never infer those controls from prompt wording.
+Follow the local-defect and identity-wide recovery paths in `identity-anchor.md`. Invoke a recovery path only when the user requests it and the active generation surface exposes and executes its required actual-image controls; never infer those controls from prompt wording. If the surface cannot select a required fixed-root image, preserve the complete decision state and ask only for that image to be reattached rather than naming an operation the surface cannot run.
 
 A user report that the face is distorted or no longer looks like the person triggers Identity Review; the wording does not itself classify the defect as local. Use the narrow-revision path only after the result remains reliable identity evidence and the requested change is one coherent local unit. Likeness repair combined with a pose, action, camera, crop, or other whole-image geometry change is not narrow; route it through the recovery rules and preserve the requested change as a lock in any new generation.
 
-If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible, the Primary Identity Anchor or relevant region cannot be inspected reliably, or the review is ambiguous, do not claim visual QA or automatic correction; report the review boundary truthfully.
+If the user explicitly requests a targeted revision to a visibly close result, change only the named issue and repeat the identity lock. If the output is not visible, the Primary Identity Anchor or relevant region cannot be inspected reliably, or the review is ambiguous, do not claim visual QA or completion; report the review boundary truthfully.

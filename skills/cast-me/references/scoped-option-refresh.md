@@ -14,6 +14,8 @@ Refreshable creative areas are:
 - First-Pass Finish
 - Layout / Output Contract, excluding exact text and hard delivery requirements
 
+Within Creative Direction, line, surface coloring, colour logic, eye rendering, texture, and background are separately addressable drawn-style subtargets, not new owners or top-level workflow areas. A named axis target reopens only that axis.
+
 Output Type, Role/Costume Version, Safety, reference coverage, identity risk, exact-text verification, and Perspective Intent classification are focused or classificatory choices, not novelty menus. New facts or explicit user intent may change them, but do not maintain Shown Option history or apply creative freshness to them.
 
 ## Route the Target
@@ -41,9 +43,10 @@ Maintain separate Shown Option history for each creative area while it remains a
 - Never record or consume the `D) Custom` placeholder. Record an adopted concrete custom answer in the target area's history.
 - Record an option selected internally during a Delegated Refresh.
 - Keep Creative Direction's Shown Direction history separate; do not mix another area's options into it.
+- Keep each drawn-style axis subtarget's Shown Option history separate from the full Creative Direction history and from the other axes.
 - Do not add persistence or require prior-session history.
 
-Generate candidates sequentially. Before presenting a candidate outside Creative Direction, use the owner's visible signature as an internal diversity check: it must differ from every available Shown Option in the same area, including candidates already chosen for the current batch, in at least two parts. Creative Direction keeps its existing three-of-six Direction Signature rule. Do not promise exact deduplication after earlier conversation history is unavailable.
+Generate candidates sequentially. Before presenting a candidate outside Creative Direction, use the owner's visible signature as an internal diversity check: it must differ from every available Shown Option in the same area, including candidates already chosen for the current batch, in at least two parts. Full Creative Direction keeps its existing three-of-six Direction Signature rule; a named drawn-style axis subtarget instead uses the axis signature in `composition-director.md` and differs in at least two listed controls. Do not promise exact deduplication after earlier conversation history is unavailable.
 
 A renamed option, palette-only change, adjective-only change, creator name, equipment token, professional term, or minor prompt rewrite is not fresh by itself. Freshness limits automatic recommendations, not user intent; restore a prior Shown Option when the user explicitly requests it.
 

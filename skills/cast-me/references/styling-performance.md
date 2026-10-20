@@ -12,6 +12,12 @@ When styling or performance conflicts with identity or geometry, first simplify 
 
 Visible Body Evidence belongs to `identity-anchor.md`, not Styling. Preserve clearly shown shoulder width, chest volume, torso shape, and body build through every wardrobe or costume change. Garments may change fabric, layers, material, and silhouette treatment, but must drape over the verified body shape rather than flatten, narrow, enlarge, or replace it. Do not claim anatomy hidden by clothing, crop, pose, or projection is verified.
 
+For a Drawn Character, follow the body-evidence treatment already resolved by Deformation Tier: unchanged, simplified, or unavailable at the shortest proportion. Do not ask another body-shape question, use clothing to flatten evidence the tier can carry, or use clothing to restore a figure the tier cannot carry.
+
+If emphasized adult body characteristics conflict with a child-reading proportion, preserve the body request and route back to Deformation Tier for a non-child-reading proportion. Do not combine the two or silently moderate the requested body characteristics.
+
+Deformation may make hairstyle outline and characteristic wardrobe more important transferred recognition channels, but they remain Styling-owned and user-changeable. Identity Anchor still owns eye shape, physical distinctive marks, channel resolution, and review weight; Styling makes the selected hair and wardrobe concrete without redefining identity evidence.
+
 Before asking about wardrobe, props, pose, expression, gaze, hands, or facial treatment, read the coordinating director's decision state. Do not ask for locked composition, crop, camera angle, scene, action, expression, wardrobe, or facial treatment again. If earlier composition or creative-direction options suggested pose, expression, hands, lighting, or styling, refine within those suggestions instead of reopening a generic performance menu.
 
 ## Risk and Facial Treatment
@@ -102,6 +108,12 @@ Pose/action options must cover body direction, gaze, mouth state, and energy lev
 
 Treat action/body direction, expression/mouth, gaze, hands/prop interaction, and energy as the Performance visible signature. When several choices fit or the user requests a Scoped Option Refresh, use `scoped-option-refresh.md`.
 
+Treat a characteristic expression or mannerism as recognition evidence only when it is useful for the selected Deformation Tier and use. Weight it strongly for a strongly deformed sticker set when reduced static structural channels and an audience likely to know the person make it useful. Keep its weight low for social avatars, equal-proportion drawn portraits, and other outputs where static structure remains available or the audience may not know the person.
+
+A Character Sheet's conservative expression and presentation do not constrain application performance. Preserve each application's locked expression, gaze, pose or action, and face angle instead of copying the sheet.
+
+Record an expression, gaze, posture, or hand position seen in one photograph explicitly as an assumption, never as a fact about the person's habits. Do not derive Character Read, personality, profession, relationships, or inner traits from it, and do not create a mannerism profile or another gate.
+
 Describe performance choices as visible behavior, not acting jargon: where the body turns, what the hands do, where the eyes land, whether the mouth is relaxed or active, and how restrained or forceful the moment feels. For example, distinguish a quiet pause with gaze beyond camera from an engaged task with hands occupied or a stronger action with accepted identity/anatomy risk. Adapt the behavior to the locked decisive moment.
 
 Selecting performance does not lock framing, camera, background, lighting, or color. If those dimensions are unresolved, keep any previewed details suggested for their own later questions.
@@ -120,9 +132,12 @@ For non-trivial action, write one coherent chain using only the links relevant a
 - torso/ribcage and shoulder rotation
 - neck, head turn, and tilt
 - facial plane and gaze
-- hands, props, and follow-through
+- left hand: visible position, orientation relative to the body, thumb side, prop relationship, and follow-through
+- right hand: visible position, orientation relative to the body, thumb side, prop relationship, and follow-through
 
 Every link must agree with the locked camera and perspective. Do not write only "natural dynamic pose", attach decorative limbs to a static torso, or turn the head independently of neck and shoulders.
+
+When both hands are visible and performing, state the anatomical count positively as exactly two — one left and one right — and keep their positions, orientations relative to the body, and thumb sides distinct. Preserve thumb side as the minimum chirality anchor at every simplification level, including the strongest deformation; the finger-articulation avoidance below still applies. Only an explicitly selected Drawn Motion Convention of repeated limb positions may depict additional positions of those two hands; no other path may add a hand. Never substitute another action, a simpler gesture, or a safer crop for a locked action to avoid this requirement.
 
 For high-risk source-to-target jumps, simplify only unresolved, unsupported, and non-story-critical performance details. Never change a locked action, head direction, gaze, framing, or camera intent without a risk-choice gate. Prefer simpler hands, props, or expression only when those fields remain unresolved or the user selects that tradeoff.
 
@@ -162,12 +177,12 @@ When writing the production prompt, include styling/performance details only whe
 - hair/makeup/grooming constraints, especially if visible identity depends on them
 - Reference Appearance, its unknown source status when relevant, and the concrete target transformation without claiming a verified unseen bare-face baseline
 - Protected Identity Cues to preserve and any accepted styling-related likeness risk
-- Visible Body Evidence the clothing must follow, named neutrally and concretely without measurements or erotic emphasis
+- Visible Body Evidence the clothing must follow, named neutrally and concretely without measurements or erotic emphasis; when supported, relate chest volume to the shoulders and upper torso
 - Story Makeup that must survive First-Pass Finish and series-only Look Continuity with moment-specific evolution
 - facial finish: Natural Retouch, stronger non-structural polish, or identity-changing treatment with accepted likeness risk
 - materials, color, pattern, layers, cut, fit, silhouette, wearing method, weathering, and distinctive details
 - prop purpose, hand relationship, and hand complexity
-- pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, hand/prop, and energy relationships
+- pose/action plus relevant support, weight, pelvis, torso/shoulder, neck/head, facial-plane, gaze, mouth, each visible left- or right-hand position, body-relative orientation, thumb side, prop, and energy relationships
 - forbidden styling, props, expressions, or performance notes
 
 For fashion, costume, uniform, or character work, name the visible production anchors rather than writing only a label such as "luxury", "cyberpunk", "old money", "warrior", or "professional". Include what is actually visible: silhouette, garment layers, fabric behavior, closures, trims, accessories, makeup/grooming, and how the person performs the role.
