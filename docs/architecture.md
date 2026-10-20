@@ -51,7 +51,8 @@ flowchart LR
 | 用户说明 | `README.md` | 安装、调用和用户示例 | 否 |
 | 规范术语 | `CONTEXT.md` | 唯一领域词汇表 | 否 |
 | 架构决定 | `docs/adr/*.md` | 已接受的模块边界和取舍 | 否 |
-| 规格与研究 | `.scratch/*` | PRD、研究、实施计划 | 否 |
+| 规格与任务 | [GitHub Issues](https://github.com/cyaoc/cast-me/issues) | 规格与实现任务 | 否 |
+| 研究归档 | [research Issues](https://github.com/cyaoc/cast-me/issues?q=is%3Aissue+is%3Aclosed+label%3Aresearch) | 已迁移的研究、PRD 与实施记录全文 | 否 |
 | 行为验证 | `evals/golden-conversations.md` | 可观察行为回归合约 | 否 |
 | 贡献约束 | `AGENTS.md`、`docs/agents/*.md` | 修改、Issue、术语与 Triage 规则 | 否 |
 

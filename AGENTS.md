@@ -68,11 +68,11 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ### Issue tracker
 
-Issues and PRDs use local Markdown under `.scratch/<feature>/`; external PRs are not a triage surface. See `docs/agents/issue-tracker.md`.
+Issues, specs, and archived research use GitHub Issues in `cyaoc/cast-me`. Before publishing or fetching them, read `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
-Use the canonical `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix` roles. See `docs/agents/triage-labels.md`.
+Before applying triage states, Wayfinder types, or research archive labels, read `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
