@@ -1,23 +1,23 @@
 # CastMe
 
-CastMe is an OpenAI Agent Skill for turning a person reference image into a polished final image with ChatGPT and GPT Image 2 while preserving the person's visible identity as much as possible.
+CastMe is an OpenAI Agent Skill for turning a person reference image into a polished final image with ChatGPT Images while preserving the person's visible identity as much as possible.
 
 It is meant for person-centered outputs such as portraits, professional headshots, social avatars, cinematic posters, editorial images, commercial visuals, and CG or game key art. The skill acts like a visual director: it keeps a complete production checklist, but asks only the choices that matter for this image, explains them through visible examples, and translates them into professional camera, lighting, styling, performance, and delivery direction.
 
-CastMe follows the open Agent Skills format, so the same package can also run in Codex. ChatGPT uses its built-in image generation experience; API-capable hosts should target [`gpt-image-2`](https://developers.openai.com/api/docs/models/gpt-image-2).
+CastMe follows the open Agent Skills format, so the same package can also run in Codex. Both use the host's built-in image generation experience.
 
 ## Install in ChatGPT
 
 OpenAI's current ChatGPT flow is:
 
 1. Download this repository, keeping the `skills/cast-me` folder intact.
-2. In ChatGPT, select your profile icon, then **Skills**.
+2. In the ChatGPT sidebar, select **Plugins**, then select the **Skills** tab in the Plugin Directory.
 3. Select **Create** > **Upload from your computer** and upload the CastMe skill package from `skills/cast-me`.
 4. Review the uploaded skill and install it after ChatGPT finishes its safety scan.
 
 ChatGPT's documented flow uploads a local skill package; it does not document direct installation from a GitHub URL.
 
-ChatGPT can use an installed skill automatically when relevant, or you can select it explicitly by `@`-mentioning **CastMe**. Personal Skills are generally available on ChatGPT Business, Enterprise, Healthcare, and Edu; workspace permissions may need to enable Skills and skill uploads. Personal Skills must be added separately on desktop and web/mobile.
+ChatGPT can use an installed skill automatically when relevant, or you can select it explicitly by `@`-mentioning **CastMe**. Personal Skills are generally available on ChatGPT Business, Enterprise, Healthcare, and Edu; workspace permissions may need to enable Skills and skill uploads. Availability, installation, and syncing can differ by product and surface.
 
 See OpenAI's current [Skills in ChatGPT](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) documentation for availability and workspace controls.
 
