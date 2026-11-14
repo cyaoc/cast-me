@@ -83,12 +83,18 @@ def turn(cmd, record=None):
             except json.JSONDecodeError:
                 continue
             kind = event.get("type")
+            item = event.get("item", {})
             if kind == "thread.started":
                 thread_id = event["thread_id"]
                 if record:
                     record.write_text(thread_id + "\n")
             elif kind == "item.completed" and event["item"].get("type") == "agent_message":
                 print(event["item"]["text"] + "\n", flush=True)
+            # one line per step so a long silent turn shows it is alive; a web search
+            # only reports its query once it completes
+            elif kind == ("item.completed" if item.get("type") == "web_search" else "item.started"):
+                detail = " ".join((item.get("query") or item.get("command") or "").split())
+                print(f"· {item.get('type')} {detail[:100]}".rstrip(), file=sys.stderr, flush=True)
             elif kind in ("turn.failed", "error"):
                 print(json.dumps(event, ensure_ascii=False), file=sys.stderr)
         if proc.wait():
