@@ -41,6 +41,16 @@ scripts/cast_me.py --out output/20261114-140847
 
 新会话也可以加 `--out DIR`，把会话放在指定目录。
 
+## 模型
+
+脚本固定用 `gpt-6.1-sol`、推理强度 `high` 主持会话，不跟随 `~/.codex/config.toml` 的全局设置。出图由 Codex 内置的图像工具完成，不受这个设置影响。
+
+长期更换：改 `cast_me.py` 顶部的 `MODEL` 和 `REASONING_EFFORT`。临时更换：加 `--model` / `--effort`，只对这一次运行有效，继续会话时不加就回到默认值：
+
+```bash
+scripts/cast_me.py --model gpt-6-astra --effort xhigh
+```
+
 ## 会话目录
 
 每个会话在 `output/` 下有自己的目录，会话需要的文件都在里面：

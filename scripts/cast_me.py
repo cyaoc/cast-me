@@ -8,6 +8,8 @@ Usage:
                                                    (SESSION: folder name under output/; default: most recent)
   scripts/cast_me.py --forget --all                the same for every session under output/
 Add `--out DIR` to start or continue a session in a specific directory instead.
+Add `--model M` / `--effort E` to override the Codex model and reasoning effort for this run
+(defaults: MODEL and REASONING_EFFORT near the top of this file).
 
 Each session directory is self-contained: the input photos are copied in as input-N,
 results land beside them, and DIR/.cast-me-session holds the Codex session id.
@@ -35,6 +37,9 @@ CODEX_HOME = Path(os.environ.get("CODEX_HOME") or Path.home() / ".codex")
 DEFAULT_ROOT = Path(__file__).resolve().parent.parent / "output"
 SESSION_FILE = ".cast-me-session"
 SESSION_ID = re.compile(r"[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}")
+# Defaults for --model/--effort: the model that directs the session; image_gen picks its own image model.
+MODEL = "gpt-6.1-sol"
+REASONING_EFFORT = "high"
 # Repeated on every turn because these settings are not stored with the session.
 CONFIG = [
     "-c", "skills.include_instructions=false",  # keep installed skills out of the run
@@ -136,10 +141,14 @@ def forget(thread_id, out):
 def main():
     parser = argparse.ArgumentParser(
         description="Run cast-me through Codex CLI.",
-        usage="%(prog)s [--out DIR] [IMAGE ... REQUEST] | --forget [SESSION | --all]",
+        usage="%(prog)s [--out DIR] [--model M] [--effort E] [IMAGE ... REQUEST] "
+              "| --forget [SESSION | --all]",
     )
     parser.add_argument("--out", type=Path,
                         help=f"session directory (default: new or most recent under {DEFAULT_ROOT})")
+    parser.add_argument("--model", default=MODEL, help=f"Codex model for this run (default: {MODEL})")
+    parser.add_argument("--effort", default=REASONING_EFFORT,
+                        help=f"reasoning effort for this run (default: {REASONING_EFFORT})")
     parser.add_argument("--forget", nargs="?", const="", metavar="SESSION",
                         help="delete a session's Codex records and input photo copies; SESSION is "
                              "a folder name under output/ or a path (default: most recent)")
@@ -182,6 +191,9 @@ def main():
             parser.error(f"no session recorded in {out}")
         sys.exit(0 if forget(thread_id, out) else 1)
 
+    # json.dumps output is a valid TOML basic string
+    config = ["-c", "model=" + json.dumps(args.model),
+              "-c", "model_reasoning_effort=" + json.dumps(args.effort), *CONFIG]
     if thread_id:
         if args.inputs:
             parser.error(f"{out} already has a session: run with only --out to continue it, "
@@ -205,7 +217,7 @@ def main():
             "codex", "exec", "--json", "--skip-git-repo-check", "-C", str(out),
             # json.dumps output is a valid TOML basic string
             "-c", "developer_instructions=" + json.dumps(instructions(), ensure_ascii=False),
-            *CONFIG, *image_args, "--", request,
+            *config, *image_args, "--", request,
         ], record)
         if not thread_id:
             sys.exit("codex did not start a session")
@@ -218,7 +230,7 @@ def main():
             break
         if answer in ("", "q"):
             break
-        turn(["codex", "exec", "resume", "--json", "--skip-git-repo-check", *CONFIG,
+        turn(["codex", "exec", "resume", "--json", "--skip-git-repo-check", *config,
               "--", thread_id, answer + MOVED_NOTE.format(out=out)])
     resume = sys.argv[0] if out.parent == DEFAULT_ROOT else f"{sys.argv[0]} --out {shlex.quote(str(out))}"
     print(f"\nsession paused, images in {out}\ncontinue with: {resume}", file=sys.stderr)
