@@ -63,6 +63,16 @@ python "$HOME\.codex\skills\.system\skill-installer\scripts\install-skill-from-g
 
 Start a new Codex session after installing or updating, then invoke `$cast-me`.
 
+## Run from the Terminal
+
+With Codex CLI installed, you can also run the skill straight from this repo without installing it:
+
+```bash
+scripts/cast_me.py photo.jpg "Make a social avatar"
+```
+
+The script asks the skill's questions in the terminal, saves results to `output/` with C2PA metadata removed, and can resume or clean up sessions. See [scripts/README.md](scripts/README.md).
+
 ## How to Use
 
 In ChatGPT, attach a person image and `@`-mention CastMe:
