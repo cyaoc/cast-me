@@ -5,7 +5,7 @@ This context describes how the skill preserves a person's identity while guiding
 ## Language
 
 **Primary Identity Anchor**:
-The actual person reference image that authoritatively anchors face identity for generation or editing. Supporting images and text may add evidence but never replace or override it.
+The actual person reference image that authoritatively anchors one person's face identity for generation or editing. Supporting images and text may add evidence but never replace or override it. A request that names several people has one per person, never shared or blended.
 _Avoid_: Primary identity reference, text-only identity description
 
 **Drawn Character**:

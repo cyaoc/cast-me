@@ -397,7 +397,7 @@ When a Recovery Offer selects individual regeneration for members that failed af
 
 State which route the active operation actually used. Do not infer batch support from a product tier or claim batch consistency, a success rate, or a usable-image count that the operation did not verify.
 
-This drawn-set route supports one person only. For a multi-person drawn request, state the unsupported boundary before generation and stop rather than producing a blended identity. Keep drawn likeness best effort without a similarity score, identity or batch-consistency guarantee, or persistent character library.
+For a multi-person drawn set, series, or reusable character, build one Character Sheet per named person as Identity Anchor's `Character Sheet` requires. Every Sheet shares the request-wide Medium Contract, Deformation Tier, stylization intensity, and six style axes, and locks that person's own face construction, hair, wardrobe, and palette. Each item brief names which people it shows and each one's placement. Keep drawn likeness best effort without a similarity score, identity or batch-consistency guarantee, or persistent character library.
 
 For a requested series, generate each image from the request's complete fixed root and its locked brief rather than from the preceding output. Use the written Look Continuity to lock the base makeup, hair, wardrobe, and accessories, then record explicit per-image story-state changes such as wetness, wear, injury, dirt, cosmetic breakdown, and costume damage. Separately preserve existing series invariants such as prop state, light direction, location geography, and color treatment. Continuity means coherent evolution, not identical condition; do not add these contracts to a single image.
 

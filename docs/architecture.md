@@ -131,6 +131,7 @@ flowchart TB
 | Style Readout | Composition 的 `Style Readout` + SKILL 的结果交付 | 从锁定记录披露，不检查图像，也不新增 Gate、轮次或质量裁决；绘制 style state 以六轴 + Tier + 强度为单位，摄影只报告真正改变观感的两三个 Finish controls；绘制 style state 不完整不构成免交付，未单独锁定的字段写成未解决而不是省略或从别处倒推；摄影侧不列未解决项，没有实质改变观感的已锁控制时不交付 |
 | Character Sheet 与绘制组图 | Identity Anchor 的实际输入/固定根规则 + Composition 的设计、批次/回退、布局与交付 | set、series、reusable design、multi-angle 或同一角色第二张图触发 Sheet（这是连续性条件，不是绘制角色的判定）；可接受用户提供的 Sheet；只有当前操作验证批次能力才走一次批次，否则各项从同一固定根独立生成；不增加 Module、Agent、Gate、批次服务或持久角色库，无连续性要求的单张绘图不使用 |
 | 特征表情与 mannerism | Styling 的 Performance Direction + Identity Review | 强变形、熟悉受众的 sticker set 可提高识别权重；静态结构可用或受众不熟悉时保持低权重；单张照片只支持假定，不能推断 Character Read 或新增 profile、Gate、人格模型、审查分数 |
+| 多人 | Identity Anchor 的 `Reference Transfer`、`Identity Prompt Constraints` 与 `Identity Review and Revision` | 用户明确点名的每个人各有一个 Primary Identity Anchor，既有规则逐人适用，任一人不过即不过；不因多人而拒绝、丢人或把某人的图降为风格/造型参考；不增加术语、Gate、Module 或人物档案；绘制组图、系列与复用角色每人一张 Character Sheet，各自只从本人的 Anchor 生成，每个 item 只带画面中出现的人的 Anchor 与 Sheet，共同缺陷只重生成受影响者的 Sheet |
 | Identity Review | Identity Anchor | 身份通过与恢复分类由同一所有者判断 |
 | Look Continuity | Styling，仅系列任务 | 单张图不创建连续性状态 |
 | 质量、尺寸与批次事实 | Composition + 宿主事实 | 不添加质量问卷，不声称不可验证的控制、批次一致性、成功率或可用图数量 |
@@ -199,7 +200,7 @@ Flat cel、semi-gradient、thick-painted、watercolour、lineless、monochrome s
 
 Style Readout 随每个未报告 style state 的首个结果交付，不是 Choice Gate、额外轮次或生成过程说明。绘制结果使用与 Scoped Option Refresh 完全相同的六轴名称并写锁定可见值、Tier 和强度；同一 state 的 set 只报告一次，单轴刷新后的新 state 只报告移动轴。摄影结果沿用一次性/差量机制，但只写实质改变观感的两三个锁定 Finish controls，不复制六轴或 Direction Signature。它只读决定记录且永不带艺术家/流派名，也不声称完成、相似、质量或图像符合决定；这些结论仍只由 Identity Review（含 Uneven Stylization）和其他活跃所有者审查产生。
 
-绘制组图在生成前锁定 item 顺序或 panel 组织与一致尺寸。透明 sticker 在生产提示中请求透明背景，检查过实际文件的 alpha 才声称透明，否则说明未验证并把下游 cutout 记为交付要求；多人绘制请求在生成前停止。实际结果的尺寸、组织和所用批次/回退路径都必须可验证，不承诺未经验证的 alpha、批次一致性、成功率或可用图数量。
+绘制组图在生成前锁定 item 顺序或 panel 组织与一致尺寸。透明 sticker 在生产提示中请求透明背景，检查过实际文件的 alpha 才声称透明，否则说明未验证并把下游 cutout 记为交付要求；多人绘制组图每人一张 Character Sheet。实际结果的尺寸、组织和所用批次/回退路径都必须可验证，不承诺未经验证的 alpha、批次一致性、成功率或可用图数量。
 
 ### Choice Gate 合约
 
@@ -269,7 +270,7 @@ Style Readout 同样不增加 P 编号：P8 产生结果后立即按锁定记录
 - 需要表现运动时，已有一个与摄影 motion treatment 分开的 Drawn Motion Convention；repeated limb positions 只有用户明确选择才可用。
 - 绘制角色的 line、surface coloring、colour logic、eye rendering、texture 与 background 均有具体可见方向；First-Pass Finish 的绘制 optical controls 与 surface coloring 分开，生产提示词没有用艺术家、流派或陌生标签代替这些方向。
 - 另一人的 style reference 只贡献渲染处理；dense high-frequency texture 已显示带复核日期且非永久化的模型 artifact 风险说明。
-- 绘制 set 是单人请求，已锁 item 顺序或 panel 组织与一致尺寸；透明 sticker 的透明背景已写进生产提示。
+- 绘制 set 已锁 item 顺序或 panel 组织与一致尺寸；透明 sticker 的透明背景已写进生产提示。
 - 必要的 closed-channel 说明已在生成前显示，且没有进入生产提示词。
 - 可见且可检查的结果通过 Identity Review。
 - 本次参与生成或修改的所有者贡献都体现在提示词或修改中。
@@ -471,7 +472,7 @@ flowchart TD
 
 强变形 sticker set 在静态结构通道减少且目标受众熟悉本人时，可以提高有用的特征表情或 mannerism 的识别权重；social avatar、等比例绘制人像、静态结构仍可用或受众可能不熟悉本人时保持低权重。单张照片中的表情、视线、姿态或手位只能记为假定，不能推出习惯、Character Read、人格、职业、关系或内在特质；其缺失、变化或执行不完美也不能让 Identity Review 失败，审查仍只读请求级 Medium Contract 的 open / transferred 通道和既有缩略图 silhouette 下限。
 
-透明 sticker 在生产提示中请求透明背景；只有检查过实际文件的 alpha 才声称透明，否则说明未验证并记录下游 cutout 要求；不做自动 cutout。多人绘制请求在生成前停止，避免混合身份。单张图片也不创建 Look Continuity。
+透明 sticker 在生产提示中请求透明背景；只有检查过实际文件的 alpha 才声称透明，否则说明未验证并记录下游 cutout 要求；不做自动 cutout。多人绘制组图每人一张 Character Sheet，不把两个人画进同一张 Sheet，避免混合身份。单张图片也不创建 Look Continuity。
 
 ### F8. 局部修复、身份漂移与重生成
 
@@ -681,7 +682,7 @@ flowchart TD
 | 146 | F3 | 风格名转换、style-reference 身份边界与带日期的模型 artifact 风险说明 |
 | 147 | F7 | 验证一次批次能力，否则从同一 Character Sheet 固定根独立生成，不虚报批次一致性 |
 | 148 | F7 | Character Sheet 按连续性需求触发；接受用户提供的 Sheet；外来 Sheet 失败时从 Anchor 与当前 brief 替换 |
-| 149 | F9 | 组图尺寸/组织、透明验证与下游 cutout、尽力而为与多人绘制停止边界 |
+| 149 | F9 | 组图尺寸/组织、透明验证与下游 cutout、尽力而为；多人绘制组图不停止，每人一张 Character Sheet |
 | 150 | F7 | Character Sheet 保守锁定源头呈现，但不约束应用的表情、动作、角度与灯光 |
 | 151 | F7 | mannerism 按变形与用途加权，单图只是假定且不进入 Identity Review 失败条件 |
 | 152 | F8 | 普通 Identity Review 不判定 noise / dirtiness / degradation；局部失败给 Recovery Offer 且不展示计数或剩余次数 |
@@ -693,6 +694,7 @@ flowchart TD
 | 158 | F1 | 每个 style state 的首个结果携带锁定 Style Readout；set 只报告一次；单轴刷新只报告变化；摄影只写实质 Finish controls；不替代 Identity Review |
 | 159 | F1 | 请求里的 look 名不定档位，仍开 Deformation Tier gate；具体头身比直接锁；绘制角色下其他 gate 选项不得夹带比例；style state 不完整时 Readout 仍交付并写明未解决项；摄影线不受影响，Perspective Intent 照旧且不交付未解决清单 |
 | 160 | F4 | 创意 Gate 与输出类型 Gate 给 A–D 四个具体方案加 E) Custom；Coverage 等聚焦 Gate 仍为 A–C 加 D) Custom；可交付方案不足时用 stop path 补位而不凑数，Custom 永远是最后一个字母 |
+| 161 | F4 | 用户明确点名的多人各自一个 Primary Identity Anchor；不拒绝、不丢人、不降为风格/造型参考；提示词逐人绑定图与画面位置；Identity Review 逐人判定且特征串人算双方漂移；单张绘制多人不需要 Character Sheet；多人绘制组图每人一张 Sheet，只出现在一人身上的共同缺陷只重生成该人的 Sheet |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -714,15 +716,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,657 词 |
-| `composition-director.md` | 8,658 词 |
-| `identity-anchor.md` | 7,290 词 |
+| `SKILL.md` | 4,660 词 |
+| `composition-director.md` | 8,692 词 |
+| `identity-anchor.md` | 7,673 词 |
 | `styling-performance.md` | 3,108 词 |
 | `scoped-option-refresh.md` | 864 词 |
-| 运行时 Markdown 合计 | 24,577 词 |
-| `CONTEXT.md` | 43 个规范术语，2,294 词 |
+| 运行时 Markdown 合计 | 24,997 词 |
+| `CONTEXT.md` | 43 个规范术语，2,310 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 160 个场景，20,845 词 |
+| `golden-conversations.md` | 161 个场景，21,155 词 |
 
 ### 优化优先级
 
