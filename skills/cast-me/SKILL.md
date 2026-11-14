@@ -1,6 +1,6 @@
 ---
 name: cast-me
-description: Use when the user provides a person screenshot, selfie, portrait, or photo reference and wants ChatGPT Images to create a polished final image while preserving the person's visible identity. Supports portraits, professional headshots, cinematic posters, CG or game key art, magazine/editorial images, social avatars, commercial visuals, and other person-centered outputs.
+description: Use when the user provides a photo or screenshot of one or more people and wants a new image of them, from a headshot or avatar to a poster, key art, or a drawn character. Load before any image generation or editing call so each person keeps their visible identity. Skip it for a mechanical fix that keeps the photo as shot, such as a crop, background removal, upscale, or color correction.
 ---
 
 # CastMe
