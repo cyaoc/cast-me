@@ -9,3 +9,6 @@
 *.swp
 *.swo
 *~
+
+# scripts/cast_me.py sessions: personal photos and generated images
+/output/
