@@ -16,14 +16,14 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 - A broad statement such as `I accept lower likeness` or `infer the missing evidence` does not define an Inference Boundary; list the exact missing regions or facts before generation.
 - Never repeat a locked choice. "Use recommended defaults", "you decide", or equivalent wording ends ordinary clarification.
 - Reference-coverage, identity-risk, safety, and exact-text gates remain focused exceptions.
-- Every user-visible Choice Gate contains exactly four scoped paths labeled A/B/C/D. A through C are concrete, valid, and deliverable under the current locked decision state; when only two substantive resolutions exist, C keeps the current state and stops instead of padding the gate. D is always a localized, gate-specific Custom Path that cannot bypass safety, preserve a physical contradiction, or silently reopen unrelated Explicit Locks.
-- The `D) Custom` placeholder creates no lock or history entry. A concrete custom answer receives the presenting gate's normal validation, lock, and history treatment; only an adopted creative Custom Direction becomes a Shown Direction.
-- Every visible Direction Gate contains three concrete A/B/C directions plus the permanent `D) Custom` option.
+- A creative Choice Gate whose options are generated for the brief, and the output-type gate, offer four concrete paths A–D plus `E) Custom`; every other user-visible Choice Gate offers three concrete paths A–C plus `D) Custom`. Concrete paths are valid and deliverable under the current locked decision state; when fewer substantive resolutions exist than concrete slots, list only those, then one path that keeps the current state and stops, instead of padding the gate. The last path is always a localized, gate-specific Custom Path that cannot bypass safety, preserve a physical contradiction, or silently reopen unrelated Explicit Locks.
+- The Custom placeholder creates no lock or history entry. A concrete custom answer receives the presenting gate's normal validation, lock, and history treatment; only an adopted creative Custom Direction becomes a Shown Direction.
+- Every visible Direction Gate contains four concrete A/B/C/D directions plus the permanent `E) Custom` option.
 - Every concrete direction shown or internally chosen remains Shown while it is available in the current conversation context. Before presenting automatic recommendations, apply the three-of-six Direction Signature check against the current batch and every available Shown Direction; do not promise exact deduplication after earlier history is unavailable.
 - Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dimension, never as a later mandatory step or automatic second pass.
-- When First-Pass Finish is unresolved, the existing lighting/color gate offers exactly three image-specific Finish Directions plus `D) Custom`; each direction describes one coherent visible result rather than a parameter list or palette swap.
+- When First-Pass Finish is unresolved, the existing lighting/color gate offers exactly four image-specific Finish Directions plus `E) Custom`; each direction describes one coherent visible result rather than a parameter list or palette swap.
 - Route a request for replacement choices to the explicitly named creative area, otherwise the unresolved visible gate, otherwise the most recently presented refreshable gate. Ask one compact scope question only when none of those targets exists.
-- Every visible refreshable creative gate contains three concrete A/B/C options plus the permanent `D) Custom` option. While history is available in the current conversation context, track all presented concrete options in per-area Shown Option histories; adopted Custom and delegated options count, while the placeholder does not.
+- Every visible refreshable creative gate contains four concrete A/B/C/D options plus the permanent `E) Custom` option. While history is available in the current conversation context, track all presented concrete options in per-area Shown Option histories; adopted Custom and delegated options count, while the placeholder does not.
 - Outside Creative Direction, apply the two-part owner-specific visible-signature check before presenting each Fresh Option, against the current batch and every available Shown Option in the same area. Renaming, palette-only changes, adjective-only changes, equipment vocabulary, or professional terminology alone is not fresh.
 - A Scoped Option Refresh preserves identity, output requirements, unrelated values, and every Explicit Lock. It may reopen only target-area Derived Locks and fields the user explicitly asks to change.
 - Output Type, Role/Costume Version, Safety, reference coverage, identity risk, Perspective Intent classification, and exact-text verification remain focused or classificatory choices rather than novelty menus.
@@ -118,21 +118,21 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 13. Three consecutive Style Refreshes
 
-**Input:** `[portrait] Show A/B/C plus D) Custom for a cinematic editorial portrait. I reject the first batch, then request three consecutive new batches.`
+**Input:** `[portrait] Show A/B/C/D plus E) Custom for a cinematic editorial portrait. I reject the first batch, then request three consecutive new batches.`
 
-**Expected:** Each gate contains exactly three concrete A/B/C directions plus `D) Custom`. The three refreshes add nine Shown Directions; every new Direction Signature differs from every direction shown earlier in the conversation, including options from the same batch, in at least three of production context, medium/era, scene and decisive moment, composition grammar, lighting/color logic, and finish. Renaming, a palette-only change, or equipment vocabulary does not count as fresh.
+**Expected:** Each gate contains exactly four concrete A/B/C/D directions plus `E) Custom`. The three refreshes add twelve Shown Directions; every new Direction Signature differs from every direction shown earlier in the conversation, including options from the same batch, in at least three of production context, medium/era, scene and decisive moment, composition grammar, lighting/color logic, and finish. Renaming, a palette-only change, or equipment vocabulary does not count as fresh.
 
 ## 14. Unselected options still become Shown Directions
 
-**Input:** `[portrait] Present a creative-direction gate. I choose none of A/B/C and ask for another batch.`
+**Input:** `[portrait] Present a creative-direction gate. I choose none of A/B/C/D and ask for another batch.`
 
-**Expected:** Record all three presented A/B/C options immediately, not only a selected or generated direction. The next batch must be fresh against all three. Keep the tracking conversation-local and require no persistence or setup.
+**Expected:** Record all four presented A/B/C/D options immediately, not only a selected or generated direction. The next batch must be fresh against all four. Keep the tracking conversation-local and require no persistence or setup.
 
 ## 15. Adopted Custom Direction
 
-**Input:** `[portrait] D) Custom: an embossed paper-cut theatre portrait with flat side-on staging. Now refresh the style.`
+**Input:** `[portrait] E) Custom: an embossed paper-cut theatre portrait with flat side-on staging. Now refresh the style.`
 
-**Expected:** Derive and record the adopted Custom Direction's six-part Direction Signature, then exclude equivalent automatic recommendations. Every refreshed gate still includes the permanent `D) Custom` placeholder; never record or consume the placeholder itself.
+**Expected:** Derive and record the adopted Custom Direction's six-part Direction Signature, then exclude equivalent automatic recommendations. Every refreshed gate still includes the permanent `E) Custom` placeholder; never record or consume the placeholder itself.
 
 ## 16. Style Refresh lock provenance
 
@@ -144,7 +144,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[portrait] Keep the current scene, action, composition, and subject placement. Only change the visual style.`
 
-**Expected:** Reopen only medium/era, lighting/color, material treatment, and finish. Preserve the scene, action, composition, subject placement, identity, and every other Explicit Lock. Show exactly three Fresh Directions plus `D) Custom` unless the user delegates the choice.
+**Expected:** Reopen only medium/era, lighting/color, material treatment, and finish. Preserve the scene, action, composition, subject placement, identity, and every other Explicit Lock. Show exactly four Fresh Directions plus `E) Custom` unless the user delegates the choice.
 
 ## 18. Completely change the direction
 
@@ -166,9 +166,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 21. Refresh Exhaustion
 
-**Input:** `[portrait] Keep the exact scene, composition, action, lighting, palette, medium, and finish, but give me three fresh directions after many prior batches.`
+**Input:** `[portrait] Keep the exact scene, composition, action, lighting, palette, medium, and finish, but give me fresh directions after many prior batches.`
 
-**Expected:** If the skill cannot assemble three directions that satisfy both the three-part freshness threshold and every Explicit Lock, declare Refresh Exhaustion. Do not display a partial or padded Direction Gate. Identify the single Explicit Lock most responsible and ask whether to reopen only that dimension, using the standard decision format with stop and `D) Custom` paths. If the user keeps every lock, stop refreshing instead of offering a non-fresh batch.
+**Expected:** If the skill cannot assemble four directions that satisfy both the three-part freshness threshold and every Explicit Lock, declare Refresh Exhaustion. Do not display a partial or padded Direction Gate. Identify the single Explicit Lock most responsible and ask whether to reopen only that dimension, using the standard decision format with stop and `D) Custom` paths. If the user keeps every lock, stop refreshing instead of offering a non-fresh batch.
 
 ## 22. Explicitly restore a Shown Direction
 
@@ -186,7 +186,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[portrait] Keep the locked 4:5 rainy-station editorial direction, waist-up shot, black jacket, three-quarter turn, quiet expression, and gaze past camera. Everything is resolved except light, color, retouching, texture, and the final finished feeling; I do not know post-production.`
 
-**Expected:** Reuse the existing lighting/color gate rather than adding a post-processing step. Show exactly three image-specific Finish Directions labeled A/B/C plus `D) Custom`, with one recommendation and one short visible-result reason. Each direction makes its overall feeling, light/contrast, person/environment color relationship, identity-safe facial treatment, and relevant texture easy to imagine. Do not ask for LUTs, software, camera, or parameter-by-parameter choices.
+**Expected:** Reuse the existing lighting/color gate rather than adding a post-processing step. Show exactly four image-specific Finish Directions labeled A/B/C/D plus `E) Custom`, with one recommendation and one short visible-result reason. Each direction makes its overall feeling, light/contrast, person/environment color relationship, identity-safe facial treatment, and relevant texture easy to imagine. Do not ask for LUTs, software, camera, or parameter-by-parameter choices.
 
 ## 25. Explicit finish bypasses the gate
 
@@ -210,7 +210,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[portrait] Make premium dark-fantasy game key art. Keep the identity, 16:9 canvas, full-body stance, bronze lamellar armor, ruined gate, low camera, and amber moonlight. Everything is locked except the final surface, material, and finished look.`
 
-**Expected:** Use the existing lighting/color gate to offer three coherent, image-specific material/medium Finish Directions plus `D) Custom`. Describe face rendering, bronze, cloth, stone, atmosphere, surface detail, and final key-art character in medium-appropriate language; do not turn the choice into photographic skin-retouching, LUT, exposure, or irrelevant editing controls.
+**Expected:** Use the existing lighting/color gate to offer four coherent, image-specific material/medium Finish Directions plus `E) Custom`. Describe face rendering, bronze, cloth, stone, atmosphere, surface detail, and final key-art character in medium-appropriate language; do not turn the choice into photographic skin-retouching, LUT, exposure, or irrelevant editing controls.
 
 ## 29. Explicit targeted finish revision
 
@@ -220,13 +220,13 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 30. Active Finish Refresh
 
-**Input:** `[portrait at the Finish Direction gate] These three do not work. Give me another batch.`
+**Input:** `[portrait at the Finish Direction gate] These four do not work. Give me another batch.`
 
-**Expected:** Refresh only First-Pass Finish. Show three new image-specific Finish Directions plus `D) Custom`; preserve identity, creative direction, scene, Shot, Styling, Performance, canvas, and text. Do not enter Style Refresh, generate an image, or start a targeted revision.
+**Expected:** Refresh only First-Pass Finish. Show four new image-specific Finish Directions plus `E) Custom`; preserve identity, creative direction, scene, Shot, Styling, Performance, canvas, and text. Do not enter Style Refresh, generate an image, or start a targeted revision.
 
 ## 31. Explicit refresh target beats the visible gate
 
-**Input:** `[portrait at the Finish Direction gate] Give me three new shot choices instead.`
+**Input:** `[portrait at the Finish Direction gate] Give me new shot choices instead.`
 
 **Expected:** Refresh only Shot because the user named it explicitly. Keep First-Pass Finish unresolved, preserve every unrelated choice and Explicit Lock, and do not interpret the request as Style Refresh.
 
@@ -234,7 +234,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[user adopted a Finish Direction and generated the first image; no later refreshable gate was shown] The choices from before were not right after all. Give me another batch.`
 
-**Expected:** Treat First-Pass Finish as the most recently presented refreshable gate and show three Fresh Finish Directions plus `D) Custom`. Do not edit or regenerate the visible image merely because choices were requested.
+**Expected:** Treat First-Pass Finish as the most recently presented refreshable gate and show four Fresh Finish Directions plus `E) Custom`. Do not edit or regenerate the visible image merely because choices were requested.
 
 ## 33. No reliable refresh scope
 
@@ -244,57 +244,57 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 34. Named creative refresh while a focused gate is pending
 
-**Input:** `[reference-coverage gate is unresolved] Before I answer that, give me three new performance choices.`
+**Input:** `[reference-coverage gate is unresolved] Before I answer that, give me new performance choices.`
 
 **Expected:** Refresh only Performance and keep the Reference Coverage gate unresolved for return before generation. The topic change does not define an Inference Boundary, weaken the focused gate, or turn its paths into creative options.
 
 ## 35. Partial Shot reopen preserves an Explicit Lock
 
-**Input:** `[waist-up framing is locked] Keep it waist-up, but give me three new shot relationships.`
+**Input:** `[waist-up framing is locked] Keep it waist-up, but give me new shot relationships.`
 
-**Expected:** Preserve the waist-up body cutoff. Generate three Shot options plus `D) Custom` that differ through viewpoint/distance/projection, subject placement, or spatial/background relationship; do not change style, action, expression, or lighting.
+**Expected:** Preserve the waist-up body cutoff. Generate four Shot options plus `E) Custom` that differ through viewpoint/distance/projection, subject placement, or spatial/background relationship; do not change style, action, expression, or lighting.
 
 ## 36. Three consecutive Decisive Moment refreshes
 
 **Input:** `[story-bearing direction locked] Reject the Decisive Moment gate and request three consecutive new batches.`
 
-**Expected:** Each batch contains three concrete moments plus `D) Custom`. Every new moment differs from all prior moments in at least two of event/action, before/after tension, story evidence, and first impression while remaining inside the locked Creative Direction.
+**Expected:** Each batch contains four concrete moments plus `E) Custom`. Every new moment differs from all prior moments in at least two of event/action, before/after tension, story evidence, and first impression while remaining inside the locked Creative Direction.
 
 ## 37. Three consecutive Shot refreshes
 
 **Input:** `[scene and Creative Direction locked] Reject the Shot gate and request three consecutive new batches.`
 
-**Expected:** Each batch contains three concrete Shot options plus `D) Custom`. Every option differs from all prior Shot options in at least two of body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship. Fixed crop labels, equipment tokens, and renamed versions do not count as fresh.
+**Expected:** Each batch contains four concrete Shot options plus `E) Custom`. Every option differs from all prior Shot options in at least two of body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship. Fixed crop labels, equipment tokens, and renamed versions do not count as fresh.
 
 ## 38. Three consecutive First-Pass Finish refreshes
 
 **Input:** `[all dimensions except First-Pass Finish locked] Reject the Finish gate and request three consecutive new batches.`
 
-**Expected:** Each batch contains three image-specific Finish Directions plus `D) Custom`. Every option differs from all prior Finish options in at least two of overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character. A palette-only change is not fresh.
+**Expected:** Each batch contains four image-specific Finish Directions plus `E) Custom`. Every option differs from all prior Finish options in at least two of overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character. A palette-only change is not fresh.
 
 ## 39. Three consecutive Styling refreshes
 
 **Input:** `[professional portrait with identity, scene, Shot, and Performance locked] Reject the Styling gate and request three consecutive new batches.`
 
-**Expected:** Each batch contains three concrete Styling options plus `D) Custom`. Every option differs from all prior Styling options in at least two of silhouette/layers, materials, headwear/accessories, makeup/hair/grooming, and props. Preserve every named garment or accessory Explicit Lock; do not reuse keep/simplify/replace as a fixed catalog.
+**Expected:** Each batch contains four concrete Styling options plus `E) Custom`. Every option differs from all prior Styling options in at least two of silhouette/layers, materials, headwear/accessories, makeup/hair/grooming, and props. Preserve every named garment or accessory Explicit Lock; do not reuse keep/simplify/replace as a fixed catalog.
 
 ## 40. Three consecutive Performance refreshes
 
 **Input:** `[Decisive Moment and Shot locked] Reject the Performance gate and request three consecutive new batches.`
 
-**Expected:** Each batch contains three visible Performance options plus `D) Custom`. Every option differs from all prior Performance options in at least two of action/body direction, expression/mouth, gaze, hands/prop interaction, and energy. Adjective-only changes such as “more natural” or “more powerful” are not fresh.
+**Expected:** Each batch contains four visible Performance options plus `E) Custom`. Every option differs from all prior Performance options in at least two of action/body direction, expression/mouth, gaze, hands/prop interaction, and energy. Adjective-only changes such as “more natural” or “more powerful” are not fresh.
 
 ## 41. Three consecutive Layout refreshes
 
 **Input:** `[poster exact title and platform requirements locked] Reject the Layout gate and request three consecutive new batches.`
 
-**Expected:** Each batch contains three Layout options plus `D) Custom`. Every option differs from all prior Layout options in at least two of layout structure, subject/text-safe placement, safe areas/readability, and required variant organization. Preserve exact text, required aspect ratio, and platform delivery locks.
+**Expected:** Each batch contains four Layout options plus `E) Custom`. Every option differs from all prior Layout options in at least two of layout structure, subject/text-safe placement, safe areas/readability, and required variant organization. Preserve exact text, required aspect ratio, and platform delivery locks.
 
 ## 42. Scoped Custom option history
 
-**Input:** `[Shot gate] D) Custom: waist-up, low viewpoint, subject on the far right, deep empty platform to the left. Now give me a new Shot batch.`
+**Input:** `[Shot gate] E) Custom: waist-up, low viewpoint, subject on the far right, deep empty platform to the left. Now give me a new Shot batch.`
 
-**Expected:** Record the adopted Custom Shot in Shot history and exclude equivalent automatic recommendations. Keep the `D) Custom` placeholder available in the next gate; do not add the Custom Shot to Creative Direction or another area's history.
+**Expected:** Record the adopted Custom Shot in Shot history and exclude equivalent automatic recommendations. Keep the `E) Custom` placeholder available in the next gate; do not add the Custom Shot to Creative Direction or another area's history.
 
 ## 43. Scoped Delegated Refresh
 
@@ -304,9 +304,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 44. Scoped Refresh Exhaustion
 
-**Input:** `[waist-up crop, eye-level viewpoint, centered placement, flat background, and proportion-first perspective are all Explicit Locks after many Shot batches] Give me three new Shot options without changing anything.`
+**Input:** `[waist-up crop, eye-level viewpoint, centered placement, flat background, and proportion-first perspective are all Explicit Locks after many Shot batches] Give me new Shot options without changing anything.`
 
-**Expected:** If the skill cannot assemble three Shot options that satisfy both the two-part Shot freshness threshold and every Explicit Lock, declare Refresh Exhaustion. Do not display a partial or padded Shot gate. Identify the single Explicit Lock most responsible and ask whether to reopen only that field, while retaining stop and `D) Custom` paths. If every lock stays, stop; do not fabricate a batch or escalate to Style Refresh.
+**Expected:** If the skill cannot assemble four Shot options that satisfy both the two-part Shot freshness threshold and every Explicit Lock, declare Refresh Exhaustion. Do not display a partial or padded Shot gate. Identify the single Explicit Lock most responsible and ask whether to reopen only that field, while retaining stop and `D) Custom` paths. If every lock stays, stop; do not fabricate a batch or escalate to Style Refresh.
 
 ## 45. Focused and classificatory gates do not become novelty menus
 
@@ -316,7 +316,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 ## 46. Perspective classification stays stable
 
-**Input:** `[strong viewpoint with controlled projected proportions is locked] Give me three more spatially dramatic choices.`
+**Input:** `[strong viewpoint with controlled projected proportions is locked] Give me more spatially dramatic choices.`
 
 **Expected:** Preserve the selected Perspective Intent and generate Fresh Shot expressions within it. Do not invent a fourth perspective-risk category, weaken the controlled-proportion constraint, or reopen action, Styling, Performance, or First-Pass Finish.
 
@@ -540,7 +540,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[person reference; story and Character Read locked] Show me styling choices for the character.`
 
-**Expected:** Show exactly three complete story-specific Styling Directions plus `D) Custom`, with one recommendation and one short visible-result reason. Each option describes Character Read, concrete makeup/grooming, hair, wardrobe/accessories, Protected Identity Cues to preserve, and material likeness risk; do not create separate makeup, hair, or wardrobe menus.
+**Expected:** Show exactly four complete story-specific Styling Directions plus `E) Custom`, with one recommendation and one short visible-result reason. Each option describes Character Read, concrete makeup/grooming, hair, wardrobe/accessories, Protected Identity Cues to preserve, and material likeness risk; do not create separate makeup, hair, or wardrobe menus.
 
 ## 84. Explicit hair and wardrobe locks narrow Styling to makeup
 
@@ -642,7 +642,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[clear frontal Primary Identity Anchor; a full-body low-viewpoint running Shot, three-quarter head turn, strong motion, and windblown hair across the far eye are already locked; risk acceptance covers only that eye occlusion, and inference covers only the missing lower-body, target-angle, and action evidence] Present the next lighting choice.`
 
-**Expected:** Inherit the locked Shot, head turn, motion, hair, exact accepted occlusion, and Inference Boundary. Recommend a valid lighting treatment that serves the action without adding avoidable unresolved occlusion or facial-structure risk, while keeping more transformative valid paths and `D) Custom` available. Do not turn the face toward camera, weaken the viewpoint or action, remove the locked hair, or treat either earlier acceptance as permission to hide unrelated Protected Identity Cues.
+**Expected:** Inherit the locked Shot, head turn, motion, hair, exact accepted occlusion, and Inference Boundary. Recommend a valid lighting treatment that serves the action without adding avoidable unresolved occlusion or facial-structure risk, while keeping more transformative valid paths and `E) Custom` available. Do not turn the face toward camera, weaken the viewpoint or action, remove the locked hair, or treat either earlier acceptance as permission to hide unrelated Protected Identity Cues.
 
 ## 101. Complex but well-covered briefs do not trigger a risk gate
 
@@ -894,7 +894,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[the same Primary Identity Anchor and locked drawn brief, with an explicitly selected Deformation Tier, rendering look, surface coloring, and First-Pass Finish optical controls. A) Stylization intensity remains production-critical and unresolved; after a brief-specific low-intensity choice, the visible result reads as the source photograph under one uniform drawing filter. B) Intensity is unresolved again for a separate run; after a brief-specific high-intensity choice, the visible result is uniformly drawn but replaces the person's features with a generic anime face. In both results, skin, hair, eyes, wardrobe, lighting, shading, and background receive one consistent treatment.]` Resolve the intensity and review both results.
 
-**Expected:** Before generation, use one localized Choice Gate with brief-specific visible outcomes and `D) Custom`, without canonical intensity labels or a preset catalog. Record the chosen intensity separately from Deformation Tier, rendering look, surface coloring, and First-Pass Finish optical controls. Keep the selected tier and look locked at both ends. Direct a low-intensity result to remain an actual drawing by converting skin, hair, eyes, wardrobe, lighting, shading, and background coherently into the selected medium; direct a high-intensity result from the Primary Identity Anchor and the Medium Contract's open and transferred channels instead of a generic anime face. Raise intensity progressively rather than maximizing it in one step, and do not ask to preserve every pore or other photographic surface detail that conflicts with the medium. Fail A and B as failures of the selected intensity or its execution without silently changing tier or look. Do not classify either uniform result as Uneven Stylization; reserve that separate failure for a mixed-surface result in which only some visible surfaces convert.
+**Expected:** Before generation, use one localized Choice Gate with four brief-specific visible outcomes and `E) Custom`, without canonical intensity labels or a preset catalog. Record the chosen intensity separately from Deformation Tier, rendering look, surface coloring, and First-Pass Finish optical controls. Keep the selected tier and look locked at both ends. Direct a low-intensity result to remain an actual drawing by converting skin, hair, eyes, wardrobe, lighting, shading, and background coherently into the selected medium; direct a high-intensity result from the Primary Identity Anchor and the Medium Contract's open and transferred channels instead of a generic anime face. Raise intensity progressively rather than maximizing it in one step, and do not ask to preserve every pore or other photographic surface detail that conflicts with the medium. Fail A and B as failures of the selected intensity or its execution without silently changing tier or look. Do not classify either uniform result as Uneven Stylization; reserve that separate failure for a mixed-surface result in which only some visible surfaces convert.
 
 ## 143. Six visible style axes remain independently controllable
 
@@ -906,7 +906,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[a Primary Identity Anchor; the user asks only, "Make me anime." No rendering look or style axes are otherwise resolved.]`
 
-**Expected:** Do not silently select a rendering look. Use the existing localized Choice Gate to present exactly three relevant A/B/C starting points plus `D) Custom`, defining every option through visible line, surface-coloring, colour-logic, eye, texture, and background consequences rather than a name alone. Draw candidates from the non-exclusive flat cel, semi-gradient, thick-painted, watercolour, lineless, monochrome screentone, and toon-shaded three-dimensional vocabulary without showing a nested seven-item catalog. Keep the other valid directions reachable through refresh. Selecting a look records only the visible axis features stated by that option under the ordinary lock rules; unmentioned axes remain unresolved. Do not offer grisaille or an unsupported coined term as a finished look, rank the looks by quality, claim which will render better, or let any look name resolve Deformation Tier or stylization intensity.
+**Expected:** Do not silently select a rendering look. Use the existing localized Choice Gate to present exactly four relevant A/B/C/D starting points plus `E) Custom`, defining every option through visible line, surface-coloring, colour-logic, eye, texture, and background consequences rather than a name alone. Draw candidates from the non-exclusive flat cel, semi-gradient, thick-painted, watercolour, lineless, monochrome screentone, and toon-shaded three-dimensional vocabulary without showing a nested seven-item catalog. Keep the other valid directions reachable through refresh. Selecting a look records only the visible axis features stated by that option under the ordinary lock rules; unmentioned axes remain unresolved. Do not offer grisaille or an unsupported coined term as a finished look, rank the looks by quality, claim which will render better, or let any look name resolve Deformation Tier or stylization intensity.
 
 ## 145. Surface coloring, colour logic, and optical finish stay orthogonal
 
@@ -978,7 +978,7 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 
 **Input:** `[a poster's exact title-safe zones and central product placement are Explicit Locks. Subject placement remains unresolved; placing the person in the center would cover the product, while left and right placements remain deliverable. Those are the only two substantive resolutions.]` Present the subject-placement Choice Gate.
 
-**Expected:** Omit the unreachable centered-person path. Offer concrete left and right placements that both inherit the exact title-safe zones, central product, accepted risks, Reference Coverage, and known identity or geometry risk; recommend only between those deliverable paths. Use C to keep the current state and stop rather than inventing a third resolution, and keep `D) Custom` available within the placement gate's valid scope. A concrete Custom answer still receives ordinary validation and cannot cover the locked product or silently reopen another lock.
+**Expected:** Omit the unreachable centered-person path. Offer concrete left and right placements that both inherit the exact title-safe zones, central product, accepted risks, Reference Coverage, and known identity or geometry risk; recommend only between those deliverable paths. Use C to keep the current state and stop rather than inventing a third or fourth resolution, and keep the Custom Path, here `D) Custom`, available within the placement gate's valid scope. A concrete Custom answer still receives ordinary validation and cannot cover the locked product or silently reopen another lock.
 
 ## 157. Both hands survive a drawn action
 
@@ -997,3 +997,9 @@ Use these scenarios to review changes to the skill. They are behavioral checks, 
 **Input:** `[a single-person Primary Identity Anchor. case A: the request is `生成Q版表情包` and names no tier and no proportion. case B: the request asks for a sticker set at roughly two-and-a-half heads. case C: deformation is still unresolved and the art-style Choice Gate is about to be presented. case D: a first drawn result is ready, but neither Deformation Tier nor stylization intensity was ever separately locked, while line, colour logic, and background were. case E: a photographic portrait request with a locked photographic medium reaches Perspective Intent unresolved, and its First-Pass Finish locked no control that materially changed the look.]` Run the drawn-character flow, and case E as an ordinary photographic request.
 
 **Expected:** In A, treat `Q版` as a look name rather than a resolved proportion and open the ordinary Deformation Tier gate with its fixed A/B/C/D semantic order and use-adapted concrete proportions; do not lock a tier from the request wording, a recommended default, or `you decide`. In B, lock the stated proportion directly and do not open the gate. In C, keep every art-style, rendering-look, and stylization-intensity option free of head-to-body proportion, head size, and body-simplification wording, so no option resolves the tier under another name. In D, still deliver the Style Readout with the result: report the locked line, colour logic, and background values, and name surface coloring, eye rendering, texture, Deformation Tier, and stylization intensity as unresolved rather than omitting them, inferring them from the image, or recovering them from the art-style option the user picked. In E, change nothing about the photographic line: open no Deformation Tier gate, keep the Perspective Intent lanes free to describe restrained or pronounced head/body exaggeration and projected size because projection is not drawn proportion, and deliver no readout at all rather than a photographic list of unresolved controls.
+
+## 160. Creative and focused gates keep their own sizes
+
+**Input:** `[a frontal close-up Primary Identity Anchor. case A: the user asks for a full-body cinematic poster and locks nothing else; later, Explicit Locks leave only three deliverable Performance resolutions. case B: the user attaches only the photo and states no output type.]` Continue to generation.
+
+**Expected:** In A, each unresolved creative gate on the route, such as Creative Direction, Shot, Styling, Performance, Layout, or First-Pass Finish, offers four concrete brief-specific paths A–D plus `E) Custom`, each passing its owner's freshness check against the rest of its batch. The Reference Coverage gate for the unseen lower body keeps exactly A) add references, B) describe the missing facts, C) accept an explicit Inference Boundary, and `D) Custom`; do not add a fourth concrete path to it. When only three Performance resolutions are deliverable, show them as A–C, use D to keep the current state and stop, and keep `E) Custom`; never invent a fourth resolution. In B, the first gate is the output-type gate with four type groups A–D plus `E) Custom`; it stays classificatory, so it keeps no Shown Option history. In every gate, Custom is the last letter.

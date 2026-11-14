@@ -125,19 +125,19 @@ A concrete direction whose Direction Signature differs from every Shown Directio
 _Avoid_: Renamed option, palette swap
 
 **Choice Gate**:
-A user-visible A/B/C/D decision that resolves one scoped choice or tightly coupled group. A through C are concrete paths the current locked decision state can actually deliver, with an explicit stop path when only two substantive resolutions exist; D is always the Custom Path, and every offered path, not only the recommendation, inherits current locks and known identity or geometry risk rather than optimizing its scope in isolation.
+A user-visible lettered decision that resolves one scoped choice or tightly coupled group. A creative gate whose options are generated for the brief, and the output-type gate, offer four concrete paths, A through D; every other gate offers three, A through C. Concrete paths are ones the current locked decision state can actually deliver, with an explicit stop path when fewer substantive resolutions exist than concrete slots; the last letter is always the Custom Path, and every offered path, not only the recommendation, inherits current locks and known identity or geometry risk rather than optimizing its scope in isolation.
 _Avoid_: Open-ended question, padded preset menu, unreachable option
 
 **Custom Path**:
-The permanent `D) Custom` affordance in every Choice Gate. It accepts a user-supplied resolution only within that gate's valid scope; the placeholder itself creates no lock or history entry.
-_Avoid_: Fourth preset, unrestricted override
+The permanent last-letter Custom affordance in every Choice Gate: `E) Custom` in a creative or output-type gate, `D) Custom` elsewhere. It accepts a user-supplied resolution only within that gate's valid scope; the placeholder itself creates no lock or history entry.
+_Avoid_: Extra preset, unrestricted override
 
 **Custom Direction**:
 A concrete Creative Direction supplied through the Custom Path. Once adopted, it is recorded like any other shown direction, while the reusable Custom Path remains available.
 _Avoid_: Custom Path, custom option placeholder
 
 **Shown Direction**:
-A concrete A, B, or C option that has been presented to the user, whether or not it was selected or generated. An adopted Custom Direction also becomes a Shown Direction.
+A concrete A, B, C, or D option that has been presented to the user, whether or not it was selected or generated. An adopted Custom Direction also becomes a Shown Direction.
 _Avoid_: Selected direction, generated direction
 
 **Scoped Option Refresh**:
@@ -145,7 +145,7 @@ A user-requested replacement of concrete options within one named or contextuall
 _Avoid_: Full restart, universal reroll
 
 **Shown Option**:
-A concrete refreshable option that has been presented to the user, whether or not it was selected. An adopted Custom option counts; the `D) Custom` placeholder does not.
+A concrete refreshable option that has been presented to the user, whether or not it was selected. An adopted Custom option counts; the Custom placeholder does not.
 _Avoid_: Selected option, option label
 
 **Fresh Option**:
@@ -157,11 +157,11 @@ The internal combination vocabulary for producing concrete directions from produ
 _Avoid_: Style menu, prompt gallery
 
 **Refresh Exhaustion**:
-The state in which the skill cannot assemble a complete three-option batch for the requested creative choice area without violating Explicit Locks or that area's freshness threshold. It stops the batch and asks whether to reopen the single explicit field that most restricts variation.
+The state in which the skill cannot assemble a complete four-option batch for the requested creative choice area without violating Explicit Locks or that area's freshness threshold. It stops the batch and asks whether to reopen the single explicit field that most restricts variation.
 _Avoid_: Silent deduplication fallback
 
 **Direction Gate**:
-The existing creative-direction question enhanced by the Direction Atlas. It always offers three concrete directions plus `D) Custom`; a Style Refresh replaces its three concrete directions without adding a new workflow step.
+The existing creative-direction question enhanced by the Direction Atlas. It always offers four concrete directions plus `E) Custom`; a Style Refresh replaces its four concrete directions without adding a new workflow step.
 _Avoid_: Style browser, extra style step
 
 **Delegated Refresh**:
