@@ -54,7 +54,7 @@ Activate Styling when role, period, ceremony, fashion, performance context, name
 
 Treat wording equivalent to `design the styling from the story`, `you decide the makeup and look`, or `styling according to the character` as Delegated Styling for the owned fields. Select one compatible identity-preserving Styling Direction internally, record only its resolved fields as Derived Locks, and continue without a visible Styling gate; focused Appearance Coverage, identity-risk, safety, and exact-text choices remain available.
 
-When the user requests options or a material Styling choice remains unresolved, present exactly three complete story-specific Styling Directions plus `D) Custom`, with one recommendation and one short visible-result reason. Each option describes the intended Character Read, concrete makeup/grooming, hair, wardrobe/accessories, target-critical Protected Identity Cues to preserve, and any material likeness risk in beginner-facing visual language. Selecting an option locks only the fields it actually states.
+When the user requests options or a material Styling choice remains unresolved, present exactly four complete story-specific Styling Directions plus `E) Custom`, with one recommendation and one short visible-result reason. Each option describes the intended Character Read, concrete makeup/grooming, hair, wardrobe/accessories, target-critical Protected Identity Cues to preserve, and any material likeness risk in beginner-facing visual language. Selecting an option locks only the fields it actually states.
 
 Treat intentional fatigue, weathering, injury, ritual marks, cosmetic design, grooming, wet hair, and cosmetic breakdown as Story Makeup. Record it as a Styling lock that First-Pass Finish must render coherently rather than remove as a defect. Selecting or refreshing Styling does not resolve First-Pass Finish, and selecting or refreshing Finish does not reopen Styling.
 
@@ -72,7 +72,7 @@ Treat silhouette/layers, materials, headwear/accessories, makeup/hair/grooming, 
 
 For LinkedIn, professional headshot, resume, or business-avatar requests, do not assume the outfit or headwear should be replaced. If distinctive wardrobe, headwear, jewelry, or accessories are visible and the user did not say whether to keep or change them, ask:
 
-The pattern below shows the expected level of visible consequence for an initial gate; it is not a permanent keep/simplify/replace catalog. Adapt A/B/C to the actual visible wardrobe and current locks, and generate Fresh Options from the Styling signature when the user asks for another batch.
+The pattern below shows the expected level of visible consequence for an initial gate; it is not a permanent keep/simplify/replace catalog. Adapt A–D to the actual visible wardrobe and current locks, and generate Fresh Options from the Styling signature when the user asks for another batch.
 
 ```text
 I recommend: keep the original outfit, headwear, and accessories, then polish them for the professional context, because these are the strongest visual identity cues in the reference and replacing them can shift the final image too far.
@@ -81,7 +81,8 @@ Options:
 A) Keep as-is and elevate the finish (Recommended) - remove livestream elements; preserve clothing, headwear, jewelry, and wearing method; make the background and lighting LinkedIn-ready
 B) Simplify moderately - keep the most recognizable headwear or silver jewelry while reducing strong stage styling for a more business-appropriate avatar
 C) Replace with a new professional look - use a blazer, shirt, or simple business outfit while preserving the same face identity
-D) Custom - specify which outfit, headwear, or accessories to keep or replace
+D) Keep the original and add one professional layer - a plain blazer or cardigan over the existing top, with the headwear and jewelry still visible
+E) Custom - specify which outfit, headwear, or accessories to keep or replace
 
 Reply with A, or reply with "B + square 1:1 + no text + avoid overly corporate styling".
 ```

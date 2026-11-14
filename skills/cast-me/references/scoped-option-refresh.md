@@ -35,12 +35,12 @@ Treat `you decide`, `pick one`, and equivalent wording as delegation modifiers, 
 
 ## Visible Gate and History
 
-Every visible refreshable creative Choice Gate contains exactly three concrete options labeled A through C plus the permanent `D) Custom` Path. Use the standard decision format and describe visible outcomes before professional vocabulary.
+Every visible refreshable creative Choice Gate contains exactly four concrete options labeled A through D plus the permanent `E) Custom` Path. Use the standard decision format and describe visible outcomes before professional vocabulary.
 
 Maintain separate Shown Option history for each creative area while it remains available in the current conversation context:
 
-- Record every presented A, B, and C immediately, whether selected or generated.
-- Never record or consume the `D) Custom` placeholder. Record an adopted concrete custom answer in the target area's history.
+- Record every presented A, B, C, and D immediately, whether selected or generated.
+- Never record or consume the `E) Custom` placeholder. Record an adopted concrete custom answer in the target area's history.
 - Record an option selected internally during a Delegated Refresh.
 - Keep Creative Direction's Shown Direction history separate; do not mix another area's options into it.
 - Keep each drawn-style axis subtarget's Shown Option history separate from the full Creative Direction history and from the other axes.
@@ -60,6 +60,6 @@ Ordinary Scoped Option Refresh does not browse. Only a Style Refresh that explic
 
 ## Refresh Exhaustion
 
-If the skill cannot assemble a complete three-option batch in the target area without violating Explicit Locks or that area's freshness threshold, declare Refresh Exhaustion. Do not display a partial or padded gate. Identify the single Explicit Lock that most restricts variation and ask with the standard decision format whether to reopen only that field; retain a `D) Custom` path and a path that keeps every lock and stops refreshing. Do not claim that the global creative space is exhausted.
+If the skill cannot assemble a complete four-option batch in the target area without violating Explicit Locks or that area's freshness threshold, declare Refresh Exhaustion. Do not display a partial or padded gate. Identify the single Explicit Lock that most restricts variation and ask with the standard decision format whether to reopen only that field; retain a `D) Custom` path and a path that keeps every lock and stops refreshing. Do not claim that the global creative space is exhausted.
 
 If the user keeps every restricting lock, stop. Do not fabricate a new batch, relax unrelated locks, or silently escalate the request into Style Refresh.

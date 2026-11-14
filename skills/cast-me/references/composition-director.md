@@ -23,13 +23,13 @@ Before asking any composition question, read the coordinating director's decisio
 
 Resolve creative direction whenever it is still production-critical. Do not force a direction question when a practical use and the user's desired read already define it; posters, editorials, commercial visuals, key art, and story-heavy portraits usually need a distinct direction choice unless already specified.
 
-If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly three concrete directions labeled A through C plus the permanent `D) Custom` option.
+If the user gives a precise theme, use it and ask only for missing production-critical choices. If the theme or art direction is under-specified, or the user requests a Style Refresh, use the Direction Atlas below. Every visible Direction Gate contains exactly four concrete directions labeled A through D plus the permanent `E) Custom` option.
 
-For a Drawn Character, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and First-Pass Finish optical controls; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with three visible outcomes adapted to the current brief plus `D) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
+For a Drawn Character, resolve one concrete stylization-intensity decision before generation. Record its visible outcome separately from Deformation Tier, the selected rendering look, surface coloring, and First-Pass Finish optical controls; none of these decisions resolves another. If intensity remains production-critical and unresolved after the ordinary default and delegation rules, use the existing localized Choice Gate with four visible outcomes adapted to the current brief plus `E) Custom`. Generate those outcomes for the image at hand; do not create canonical intensity labels or a preset catalog.
 
 ### Drawn Motion Convention
 
-When movement treatment materially changes a Drawn Character, record one ordinary visible production decision using concrete treatments such as speed lines, an afterimage, repeated limb positions, or a held freeze. If it remains production-critical and unresolved, use the existing localized Choice Gate with three brief-specific visible outcomes plus `D) Custom`; this vocabulary is not a fixed catalog. Repeated limb positions require an explicit user selection. Styling's `Pose Geometry` owns what that selection permits, and it is the only path there that may depict additional positions of the same anatomical limbs.
+When movement treatment materially changes a Drawn Character, record one ordinary visible production decision using concrete treatments such as speed lines, an afterimage, repeated limb positions, or a held freeze. If it remains production-critical and unresolved, use the existing localized Choice Gate with four brief-specific visible outcomes plus `E) Custom`; this vocabulary is not a fixed catalog. Repeated limb positions require an explicit user selection. Styling's `Pose Geometry` owns what that selection permits, and it is the only path there that may depict additional positions of the same anatomical limbs.
 
 Drawn Motion Convention is separate from the photographic motion treatment in Camera and Capture Plan. It neither resolves nor is resolved by Deformation Tier, stylization intensity, any drawn style axis, or First-Pass Finish.
 
@@ -66,9 +66,9 @@ Use these recognizable looks only as non-exclusive starting vocabulary. Always s
 | Monochrome screentone | Monochrome colour logic, line-led forms, and explicitly described screentone standing in for shading |
 | Toon-shaded three-dimensional | Drawn contour around three-dimensional form with two or three discrete colour steps |
 
-When the user asks only for `anime`, do not choose one look. Present exactly three relevant A/B/C starting points from this vocabulary plus `D) Custom` in the existing localized Choice Gate, and define each through visible features rather than its label. Refresh provides other valid directions; never show a nested seven-item catalog. The looks may be combined or overridden axis by axis, and none is a quality tier. Do not rank them, claim which one will render better, or offer grisaille or an unsupported coined term as a finished look; grisaille is a working method whose visible destination belongs under thick-painted treatment.
+When the user asks only for `anime`, do not choose one look. Present exactly four relevant A/B/C/D starting points from this vocabulary plus `E) Custom` in the existing localized Choice Gate, and define each through visible features rather than its label. Refresh provides other valid directions; never show a nested seven-item catalog. The looks may be combined or overridden axis by axis, and none is a quality tier. Do not rank them, claim which one will render better, or offer grisaille or an unsupported coined term as a finished look; grisaille is a working method whose visible destination belongs under thick-painted treatment.
 
-Translate an artist, school, or other style name into concrete visible choices across the six axes and First-Pass Finish optical controls before production. Never pass an artist or school name into the production prompt. If a term is unfamiliar, unsupported, or has no reliable visible definition, do not invent one or collapse it into a default; use the existing Choice Gate to offer three relevant visible-feature starting points plus `D) Custom`.
+Translate an artist, school, or other style name into concrete visible choices across the six axes and First-Pass Finish optical controls before production. Never pass an artist or school name into the production prompt. If a term is unfamiliar, unsupported, or has no reliable visible definition, do not invent one or collapse it into a default; use the existing Choice Gate to offer four relevant visible-feature starting points plus `E) Custom`.
 
 When another person's artwork or photo is supplied as a style reference, label that role and extract only its rendering treatment into the six axes and First-Pass Finish optical controls. Identity Anchor owns the prohibition on transferring that person's identity, age impression, or body evidence.
 
@@ -133,7 +133,8 @@ Options:
 A) <direction name> (Recommended) - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
 B) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
 C) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
-D) Custom - describe your own theme or combine several directions
+D) <direction name> - <setting/world>, <role/archetype>, <visible decisive moment when relevant>, <mood and output use>
+E) Custom - describe your own theme or combine several directions
 
 Reply with A, or reply with "B + use recommended defaults". If you reply with only B, I will ask the next missing dimension, such as shot direction, styling, performance, aspect/text, or lighting/color.
 ```
@@ -162,7 +163,7 @@ Before generation, verify that every Explicit wardrobe and body-cutoff/crop lock
 
 If scene concept or creative direction is already locked, shot-direction options must be variants within that direction, not a new style or scene menu. If subject scale/body cutoff, camera distance, or angle is already locked, ask only the unresolved shot part, such as placement or background relationship.
 
-Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A/B/C to the current scene, locks including the locked Deformation Tier, and Shown Option history through `scoped-option-refresh.md`. When the tier's concrete proportion leaves no visibly distinguishable crop choice, resolve subject scale internally and ask only the remaining meaningful Shot fields instead of offering paths that differ only in an amount of body the proportion cannot show.
+Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A–D to the current scene, locks including the locked Deformation Tier, and Shown Option history through `scoped-option-refresh.md`. When the tier's concrete proportion leaves no visibly distinguishable crop choice, resolve subject scale internally and ask only the remaining meaningful Shot fields instead of offering paths that differ only in an amount of body the proportion cannot show.
 
 For realistic, lifestyle, social, and beauty/editorial portraits, ask a lightweight shot-direction question unless framing, camera/viewpoint, subject placement, and background relationship are already resolved or accepted through recommended defaults. Performance details alone do not resolve shot direction.
 
@@ -175,7 +176,8 @@ Options:
 A) Show the person from the waist up (Recommended) - camera around eye height, face easy to read, background still shows where they are
 B) Show the whole body - the setting carries more of the story, but more body reference is needed
 C) Move closer to the face and shoulders - expression becomes the focus and the background matters less
-D) Custom - say how much of the body to show, whether the camera looks from above/level/below, where the person sits in frame, and how much background remains
+D) Show the person from mid-thigh up, off to one side - posture and hands join the read, and open space on the other side shows the setting
+E) Custom - say how much of the body to show, whether the camera looks from above/level/below, where the person sits in frame, and how much background remains
 
 Reply with A, or reply with "B + camera near eye level + person on the right + deep station background".
 ```
@@ -191,7 +193,8 @@ Options:
 A) Alone on a clean field (Recommended) - no scene behind the figure, so the pose and expression read first at small size
 B) One flat graphic shape behind the figure - a single colour or halo block adds weight without competing with the pose
 C) A small suggested setting under the feet - a hint of ground or one prop, which grounds the action but eats sticker space
-D) Custom - say what sits behind the figure, where it sits in frame, and how much empty margin to keep
+D) Figure pushed slightly off-centre on a soft ground shadow - the offset adds movement and the shadow lifts the figure off the field, at a slightly smaller size
+E) Custom - say what sits behind the figure, where it sits in frame, and how much empty margin to keep
 
 Reply with A, or reply with "B + warm halo + figure slightly left".
 ```
@@ -242,7 +245,7 @@ Treat lighting/color/retouch/finish as one generation-time First-Pass Finish dim
 
 Resolve it in this order: honor an explicit finish; after accepted recommended defaults or delegated choices, resolve it internally; otherwise use the existing lighting/color gate. A bare creative-direction choice leaves previewed finish details `suggested`.
 
-When the gate is needed, present exactly three image-specific Finish Directions labeled A through C plus `D) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
+When the gate is needed, present exactly four image-specific Finish Directions labeled A through D plus `E) Custom`, with one recommended by intended use, output type, locked creative direction, motivated scene light, and identity preservation. Give one short reason describing the visible result. Each direction must make one coherent outcome easy to imagine: overall feeling, light and contrast, color and person/environment relationship, identity-safe facial treatment or medium-specific face/material treatment, and relevant texture. Generate names and contents for the current image; a fixed preset menu or palette-only variation is insufficient.
 
 Treat overall feeling, lighting/contrast, person-environment color relationship, face/material treatment, and texture/final character as the First-Pass Finish visible signature for `scoped-option-refresh.md`. For a Drawn Character, keep the selected Texture-axis values locked during a finish refresh: First-Pass Finish realizes them but does not reselect them, while optical variation uses diffusion, bloom, flare, bokeh, and eye-highlight strength.
 

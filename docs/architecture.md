@@ -179,8 +179,8 @@ flowchart LR
 | 绘制角色、Deformation Tier 未记录 | 进入下一项普通选择 | 显示 A `conservative` / B `standard` / C `strong` / D Custom 的本地化 Gate；每项给出按用途适配的具体比例与可见后果 |
 | 绘制角色已记录 Tier 或具体 Custom 变形 | 当前选择完成 | 解析并记录一次请求级 Medium Contract 与身体证据梯度 |
 | 非绘制角色的已锁非摄影媒介 | Creative Direction 锁定 | 从已锁媒介与任何用户显式请求的变形解析，不打开 Deformation Tier |
-| 绘制角色、风格化强度仍影响生产且未解决 | 进入当前普通创意选择 | 使用既有本地化 A/B/C/D Gate 展示按当前 Brief 适配的可见结果；不使用固定强度标签或预设目录 |
-| 用户只说 `anime`、渲染 look 未解决 | 进入当前 Creative Direction 选择 | 从七项非排他起点词汇中展示三个与 Brief 相关且有六轴可见定义的 A/B/C，加 D Custom；其余方向通过刷新取得，不显示嵌套目录 |
+| 绘制角色、风格化强度仍影响生产且未解决 | 进入当前普通创意选择 | 使用既有本地化 A/B/C/D/E Gate 展示按当前 Brief 适配的可见结果；不使用固定强度标签或预设目录 |
+| 用户只说 `anime`、渲染 look 未解决 | 进入当前 Creative Direction 选择 | 从七项非排他起点词汇中展示四个与 Brief 相关且有六轴可见定义的 A/B/C/D，加 E Custom；其余方向通过刷新取得，不显示嵌套目录 |
 | 用户点名一个风格轴刷新 | Scoped Refresh 命中该轴 | 只重开该轴的 Derived Locks 和用户明确重开的字段；保留其余五轴、First-Pass Finish、强度、Tier 与无关锁 |
 | 尚未报告的 style state 产生首个结果 | 交付结果 | 绘制输出报告六轴、Tier 与强度的锁定可见值；摄影输出只报告实质改变观感的两三个 Finish controls；一个 set 只报告一次 |
 | style state 组合保持不变 | 后续结果或 set item | 抑制重复 Style Readout |
@@ -206,17 +206,17 @@ Style Readout 随每个未报告 style state 的首个结果交付，不是 Choi
 每个用户可见 Gate 都使用同一个 Interface：
 
 1. 本地化推荐句和一个简短理由。
-2. A/B/C 三个继承完整当前锁、Coverage、已接受风险及已知身份或几何风险，且当前确实可交付的具体方案；只有两个实质方案时，C 表示保持现状并停止。
-3. 永久存在的 `D) Custom`，只允许在当前 Gate 范围内自定义。
+2. 具体方案：按当前 Brief 现编选项的创意 Gate（所有可刷新创意区域、风格化强度、Drawn Motion Convention）和输出类型 Gate 给 A/B/C/D 四个；其余 Gate（Coverage、身份风险、安全、Deformation Tier、Perspective Intent、冲突确认、重建范围、刷新范围与耗尽）的路径由问题本身决定，给 A/B/C 三个。每个都继承完整当前锁、Coverage、已接受风险及已知身份或几何风险，且当前确实可交付；实质方案少于具体槽位时只列实质方案，紧跟一条保持现状并停止的路径，不凑数。
+3. 永久存在的 Custom Path，永远是最后一个字母（创意与输出类型 Gate 为 `E) Custom`，其余为 `D) Custom`），只允许在当前 Gate 范围内自定义。
 4. 回复示例同时展示裸推荐项，以及推荐项加本地化 `use recommended defaults`。
 
-D 占位符本身不创建锁或历史；具体 Custom 答案才由当前 Gate 校验。裸字母只解决当前选项拥有的字段。全局 `you decide` 结束普通澄清，但不会绕过 Reference Coverage、身份风险、安全、精确文字或未选择的 Deformation Tier Gate。
+Custom 占位符本身不创建锁或历史；具体 Custom 答案才由当前 Gate 校验。裸字母只解决当前选项拥有的字段。全局 `you decide` 结束普通澄清，但不会绕过 Reference Coverage、身份风险、安全、精确文字或未选择的 Deformation Tier Gate。
 
 Deformation Tier 复用该 Interface，但它不是每次重写的风格菜单：A/B/C 始终按 `conservative`、`standard`、`strong` 的语义顺序出现，显示标签本地化；每项的具体头身比例和圆润度、简化、五官位置、手部与身体曲线后果按用途适配。身体证据取舍写入同一道 Gate，不另问身体形状。后续 Shot Direction 读取已锁 Tier；具体比例无法形成可见不同的 crop 时，内部解析 subject scale，只询问仍有意义的 Shot 字段。
 
-风格化强度也复用该 Interface，但 A/B/C 是当前 Brief 的三个具体可见结果，不是全局固定层级；D 仍是当前范围内的 Custom Path。它属于普通创意决定，可由用户接受默认或委派解决，不增加新阶段。
+风格化强度也复用该 Interface，但 A/B/C/D 是当前 Brief 的四个具体可见结果，不是全局固定层级；E 仍是当前范围内的 Custom Path。它属于普通创意决定，可由用户接受默认或委派解决，不增加新阶段。
 
-只说 `anime` 时也复用同一 Interface：一次只显示三个与当前 Brief 相关、由可见六轴定义的起点和 D Custom，不静默选 look，也不嵌套显示全部七项。其他有效起点通过刷新取得；任何 look 或单轴选择都不替代 Deformation Tier 或风格化强度。
+只说 `anime` 时也复用同一 Interface：一次只显示四个与当前 Brief 相关、由可见六轴定义的起点和 E Custom，不静默选 look，也不嵌套显示全部七项。其他有效起点通过刷新取得；任何 look 或单轴选择都不替代 Deformation Tier 或风格化强度。
 
 八个生产维度只是内部检查顺序，不是八轮问卷：输出类型/画布 → 创意方向 → 镜头/透视 → 造型/妆发/道具 → 画幅/文字 → 表演 → Finish → 避免项。已锁定、无关或已接受默认的维度直接跳过。
 
@@ -229,7 +229,7 @@ flowchart TD
     P1["P1 输入与参考角色<br/>确认 Primary Identity Anchor 和其他参考用途"] --> P2["P2 输出与 Brief<br/>确定用途、画布和已知锁"]
     P2 --> P3["P3 自适应决策循环<br/>绘制角色显式解决 Deformation Tier，单独解决强度、按需Drawn Motion Convention 与六轴渲染<br/>其余一次只解决一个维度或真正紧耦合组"]
     P3 --> ORDINARY{"普通选择是否已锁定、无关、默认或委派？"}
-    ORDINARY -- 否 --> GATE["显示一个 A/B/C/D Choice Gate"]
+    ORDINARY -- 否 --> GATE["显示一个 Choice Gate"]
     GATE --> P3
     ORDINARY -- 是 --> P4{"P4 是否仍有聚焦阻塞？<br/>Coverage / 身份风险 / 安全 / 精确文字"}
     P4 -- 是 --> FOCUSED["只处理当前阻塞并保留全部状态"]
@@ -298,7 +298,7 @@ flowchart TD
     I --> B["P2 Brief<br/>锁定用途；源图姿态、自拍透视和背景不是默认锁"]
     B --> Q["P3 轻量路径<br/>裁切/背景 → 必要时造型 → 表情视线 → First-Pass Finish"]
     Q --> MISSING{"仍有影响结果的普通选择？"}
-    MISSING -- 是 --> G["一个 A/B/C/D Gate<br/>不问设备参数，不制造故事或道具问题"]
+    MISSING -- 是 --> G["一个 A/B/C/D/E Gate<br/>不问设备参数，不制造故事或道具问题"]
     G --> Q
     MISSING -- 否 --> F{"P4 是否有真实 Coverage、身份风险或文字冲突？"}
     F -- 是 --> FG["只显示当前聚焦 Gate"]
@@ -385,10 +385,10 @@ flowchart TD
     CLASS -- 是 --> STATE["P3<br/>保留身份、输出、精确文字、无关值与所有 Explicit Locks<br/>只重开目标区域 Derived Locks"]
     STATE --> DELEGATE{"用户是否委派？"}
     DELEGATE -- 是 --> PICK["内部选择并记录一个兼容 Fresh Option"]
-    DELEGATE -- 否 --> BATCH["顺序生成 A/B/C<br/>逐个对当前批次和分区历史检查新鲜度"]
-    BATCH --> FULL{"能组成完整三项？"}
+    DELEGATE -- 否 --> BATCH["顺序生成 A/B/C/D<br/>逐个对当前批次和分区历史检查新鲜度"]
+    BATCH --> FULL{"能组成完整四项？"}
     FULL -- 否 --> EX["Refresh Exhaustion Gate<br/>只询问是否重开最限制变化的一个 Explicit Lock"]
-    FULL -- 是 --> SHOW["显示 A/B/C + 永久 D) Custom<br/>展示时立即记录 A/B/C"]
+    FULL -- 是 --> SHOW["显示 A/B/C/D + 永久 E) Custom<br/>展示时立即记录 A/B/C/D"]
     SHOW --> SELECT["用户选择或提供具体 Custom"]
     PICK --> READY
     FOCUSED --> READY
@@ -600,7 +600,7 @@ flowchart TD
 | 普通换一批 | 使用当前对话历史与 Direction Atlas，不浏览 |
 | 明确 current / latest / trending | Trend Refresh，必须实时研究；无法验证就明说 |
 | 指定角色、制服、历史服装 | 优先官方或可靠视觉资料，只提取生产锚点 |
-| 艺术家、流派、陌生或不支持的风格词 | 生产前转换为六轴与 First-Pass Finish optical controls 的可见锚点；无法可靠定义时显示三个可见起点 + D Custom，不把名称传入提示词 |
+| 艺术家、流派、陌生或不支持的风格词 | 生产前转换为六轴与 First-Pass Finish optical controls 的可见锚点；无法可靠定义时显示四个可见起点 + E Custom，不把名称传入提示词 |
 | dense high-frequency micro-structure | 生成前显示当前模型 artifact 风险；仓库当前复核点为 2026-10-20、当时未找到官方修复宣布，必须写成时点信息而非永久缺陷或质量排名 |
 | 正常人物成片 | 按 final asset 处理，不加质量问卷 |
 | 有真实质量控制 | 请求 `high` |
@@ -676,7 +676,7 @@ flowchart TD
 | 141 | F9 | 年轻观感、成熟曲线说明与 child-reading / adult-emphasis 冲突解析；中性承载不算强调 |
 | 142 | F8 | 风格化强度独立决定、两个均匀失败端点及与 Uneven Stylization 的边界 |
 | 143 | F5 | 六个可见风格轴分别表达和刷新；uniform line 读作硬、strongly varied 读作软；background-only 变更不改角色渲染 |
-| 144 | F1 | `anime` 请求得到三个可见特征起点 + Custom；选中 look 只锁选项写明的轴 |
+| 144 | F1 | `anime` 请求得到四个可见特征起点 + Custom；选中 look 只锁选项写明的轴 |
 | 145 | F1 | surface coloring、colour logic 与 First-Pass Finish optical controls 正交；full-frame light diffusion 是现代标记；period palette 只限角色层 |
 | 146 | F3 | 风格名转换、style-reference 身份边界与带日期的模型 artifact 风险说明 |
 | 147 | F7 | 验证一次批次能力，否则从同一 Character Sheet 固定根独立生成，不虚报批次一致性 |
@@ -688,10 +688,11 @@ flowchart TD
 | 153 | F8 | 无连续性的单张绘制图仍可走 surgical 修复 |
 | 154 | F8 | 无共同原因的批次失败逐项选择操作、只报告一次，并由一条指令接受全部、子集或不恢复 |
 | 155 | F4 | 已锁 Deformation Tier 抑制 closed 身形证据与不可区分 crop，同时保留鞋、特征服装、站姿和重心 Coverage |
-| 156 | F1 | 所有 A/B/C 路径继承当前锁且可交付；不可达路径不显示，Custom 与双解 stop path 不变 |
+| 156 | F1 | 所有具体路径继承当前锁且可交付；不可达路径不显示，Custom 与双解 stop path 不变 |
 | 157 | F4 | 强变形双手动作逐手写位置、相对朝向和拇指侧；条件式 chirality 约束与审查；只有明确选择 repeated limbs 才可增加描绘位置 |
 | 158 | F1 | 每个 style state 的首个结果携带锁定 Style Readout；set 只报告一次；单轴刷新只报告变化；摄影只写实质 Finish controls；不替代 Identity Review |
 | 159 | F1 | 请求里的 look 名不定档位，仍开 Deformation Tier gate；具体头身比直接锁；绘制角色下其他 gate 选项不得夹带比例；style state 不完整时 Readout 仍交付并写明未解决项；摄影线不受影响，Perspective Intent 照旧且不交付未解决清单 |
+| 160 | F4 | 创意 Gate 与输出类型 Gate 给 A–D 四个具体方案加 E) Custom；Coverage 等聚焦 Gate 仍为 A–C 加 D) Custom；可交付方案不足时用 stop path 补位而不凑数，Custom 永远是最后一个字母 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -713,15 +714,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,554 词 |
-| `composition-director.md` | 8,586 词 |
+| `SKILL.md` | 4,657 词 |
+| `composition-director.md` | 8,658 词 |
 | `identity-anchor.md` | 7,290 词 |
-| `styling-performance.md` | 3,082 词 |
-| `scoped-option-refresh.md` | 863 词 |
-| 运行时 Markdown 合计 | 24,375 词 |
-| `CONTEXT.md` | 43 个规范术语，2,252 词 |
+| `styling-performance.md` | 3,108 词 |
+| `scoped-option-refresh.md` | 864 词 |
+| 运行时 Markdown 合计 | 24,577 词 |
+| `CONTEXT.md` | 43 个规范术语，2,294 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 159 个场景，20,613 词 |
+| `golden-conversations.md` | 160 个场景，20,845 词 |
 
 ### 优化优先级
 
