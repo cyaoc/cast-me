@@ -175,13 +175,13 @@ This is an internal execution checkpoint, not a user-visible stage, score, or ad
 **STOP:** Do not call the image tool until every item below is true:
 
 - ordinary choices are resolved, defaulted, overridden, or delegated, and every focused coverage, identity-risk, safety, exact-text, or Physical Scene Coherence gate is resolved; never let `where the crop allows` silently choose between conflicting Explicit Locks
-- the Primary Identity Anchor, the image being edited when applicable, and every person reference required by Reference Coverage are available to the active image surface as actual image inputs; text does not substitute for them
+- every named person's Primary Identity Anchor, the image being edited when applicable, and every person reference required by Reference Coverage are available to the active image surface as actual image inputs; text does not substitute for them
 - for a Drawn Character, the user explicitly selected an A/B/C Deformation Tier or supplied a concrete Custom deformation, and it is recorded in the request-wide Medium Contract
 - for a Drawn Character, one concrete stylization-intensity decision is resolved and recorded separately
 - for a Drawn Character, all six style axes hold concrete visible values and no style label substitutes for them
-- for any continuity-triggering drawn request, the current operation has its required fixed-root inputs: a new Character Sheet generation has the Primary Identity Anchor, while every application or batch operation has both the Anchor and the supplied or already generated Character Sheet
+- for any continuity-triggering drawn request, the current operation has its required fixed-root inputs: a new Character Sheet generation has that person's Primary Identity Anchor, while every application or batch operation has the Anchor and the supplied or already generated Character Sheet of every person it shows
 - for a continuity-triggering drawn set, series, or multi-angle request, use one planned batch only when the active surface verifiably exposes that operation for the complete set; otherwise every item has its own locked brief and independently uses the same complete fixed root
-- for a drawn set, the request is single-person, the item order or layout and required matching dimensions are locked, and any transparency request is written into the production prompt
+- for a drawn set, the item order or layout and required matching dimensions are locked, and any transparency request is written into the production prompt
 - the mandatory final-prompt sections and every active conditional section from the routing table are loaded
 - the production prompt is complete and concrete for the chosen output, preserves the full decision state, omits irrelevant filler, and places concrete source-observed identity details before named-character styling, makeup, lighting, and finish; generic phrases such as `same person` or `preserve eye shape` are insufficient when the Anchor supports a visible description
 - one final internal check confirms that the resolved combination neither materially reduces target-critical Protected Identity Cue readability nor depends on target-critical Reference Coverage that remains missing
