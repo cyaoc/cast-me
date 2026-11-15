@@ -176,7 +176,7 @@ When writing the production prompt, include styling/performance details only whe
 - Character Read as user/story intent, never as an inferred fact about the person
 - wardrobe/headwear/jewelry/accessories: preserve, simplify, polish, or replace because requested
 - hair/makeup/grooming constraints, especially if visible identity depends on them
-- Reference Appearance, its unknown source status when relevant, and the concrete target transformation without claiming a verified unseen bare-face baseline
+- Reference Appearance and the concrete target transformation, both as visible results; the prompt states neither the source's unknown makeup or filter status nor an unseen bare-face baseline
 - Protected Identity Cues to preserve and any accepted styling-related likeness risk
 - Visible Body Evidence the clothing must follow, named neutrally and concretely without measurements or erotic emphasis; when supported, relate chest volume to the shoulders and upper torso
 - Story Makeup that must survive First-Pass Finish and series-only Look Continuity with moment-specific evolution

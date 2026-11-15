@@ -165,6 +165,8 @@ If scene concept or creative direction is already locked, shot-direction options
 
 Treat body cutoff/subject scale, viewpoint/distance/projection, subject placement, and spatial layers/background relationship as the Shot visible signature. The example gates below show an appropriate level of visible detail, not a fixed crop catalog; adapt A–D to the current scene, locks including the locked Deformation Tier, and Shown Option history through `scoped-option-refresh.md`. When the tier's concrete proportion leaves no visibly distinguishable crop choice, resolve subject scale internally and ask only the remaining meaningful Shot fields instead of offering paths that differ only in an amount of body the proportion cannot show.
 
+While the Medium Contract leaves any structural Protected Identity Cue open, an option that frames the whole body, or otherwise leaves the face small in frame, says in its own text that the face becomes small and holds less likeness. This is expectation setting inside the option, not an added question or risk Choice Gate.
+
 For realistic, lifestyle, social, and beauty/editorial portraits, ask a lightweight shot-direction question unless framing, camera/viewpoint, subject placement, and background relationship are already resolved or accepted through recommended defaults. Performance details alone do not resolve shot direction.
 
 For LinkedIn, resume, professional headshot, business avatar, or simple social avatar requests, keep the gate lightweight: crop and background. Use `styling-performance.md` for expression and wardrobe/accessory treatment. Do not ask a full Director Shot Plan or introduce props unless the user requests them.
@@ -174,7 +176,7 @@ I recommend: show the person from the waist up, because the face stays clear whi
 
 Options:
 A) Show the person from the waist up (Recommended) - camera around eye height, face easy to read, background still shows where they are
-B) Show the whole body - the setting carries more of the story, but more body reference is needed
+B) Show the whole body - the setting carries more of the story, but the face becomes small and holds less likeness, and more body reference is needed
 C) Move closer to the face and shoulders - expression becomes the focus and the background matters less
 D) Show the person from mid-thigh up, off to one side - posture and hands join the read, and open space on the other side shows the setting
 E) Custom - say how much of the body to show, whether the camera looks from above/level/below, where the person sits in frame, and how much background remains
@@ -253,7 +255,7 @@ Translate the selected direction into only production controls that materially a
 
 For realistic portraits, professional headshots, social avatars, photographic editorials, and photographic commercial visuals, use Natural Retouch when defaults are accepted: reduce distracting shine, clearly temporary redness, minor unevenness, and clearly temporary blemishes while preserving pores, fine lines, skin tone, age impression, facial structure, and distinctive moles, freckles, or scars. Preserve every uncertain mark and every Story Makeup lock from Styling, including intentional fatigue, weathering, injury, dirt, grooming, wet hair, cosmetic treatment, or breakdown. Natural Retouch must not change face outline, bone structure, intrinsic eye shape, nose, lips, chin, jawline, ethnicity impression, body shape, skin tone, or apparent age.
 
-Natural Retouch is not a second beauty-filter pass over a filtered, livestream, or screenshot reference. It must not enlarge or round the eyes, narrow the nose or jaw, fill the lips, erase pores or fine lines, or make the person appear younger. If a requested finish would change those structures, route it through the existing identity-risk Choice Gate.
+Natural Retouch is neither a second beauty-filter pass over a filtered, livestream, or screenshot reference nor a reversal of the first: the structures that reference shows stay as shown. It must not enlarge or round the eyes, narrow the nose or jaw, fill the lips, erase pores or fine lines, or make the person appear younger. Write this limit into the production prompt only as `identity-anchor.md` `Identity Prompt Constraints` directs. If a requested finish would change those structures, route it through the existing identity-risk Choice Gate.
 
 Treat explicit `no retouch`, preservation requests, named facial marks, and Story Makeup as locks. Keep global exposure, color, contrast, grain, sharpness, and environmental texture separately controllable. Use `styling-performance.md` to distinguish physical or depicted styling from finish treatment and route identity-changing treatment through the existing identity risk-choice gate. Selecting or refreshing First-Pass Finish never reopens Styling.
 
@@ -313,7 +315,7 @@ Use these cross-output rules when writing the final production prompt:
 
 Use these recipes as medium-specific success criteria and likely failure guidance after the relevant choices are resolved. Build the actual prompt from the current identity, First Read, scene, action, framing, lighting, palette, materials, and First-Pass Finish; never reuse a fixed scene, lighting setup, palette, or suffix. Do not let a recipe silently decide unresolved production-critical choices such as styling/performance, aspect ratio, text, lighting, palette, or avoid-list.
 
-For any photographic output, including headshots, editorials, avatars, and commercial visuals, state `photorealistic` or equivalent real-capture semantics, motivated light, believable exposure and color, and concrete physical texture. Preserve ordinary imperfections and avoid plastic skin, heavy beauty retouching, CG sheen, and artificial HDR halos.
+For any photographic output, including headshots, editorials, avatars, and commercial visuals, state `photorealistic` or equivalent real-capture semantics, motivated light, believable exposure and color, and concrete physical texture. Preserve ordinary imperfections and avoid plastic skin, CG sheen, and artificial HDR halos.
 
 ### Realistic Portrait
 
@@ -411,6 +413,8 @@ Omit irrelevant dimensions instead of inventing filler. Never keep placeholder r
 
 The expanded prompt should be theme-adaptive. Do not reuse examples such as forests, temples, cyberpunk, saints, warriors, or luxury studios unless the user chose that direction.
 
+A person-centered prompt states its change boundary before any styling or scene: it keeps the person in the Primary Identity Anchor, through the cues and Visible Body Evidence `identity-anchor.md` names and binds to that image, and only what the request adds to that person (hair, makeup, wardrobe, accessories, markings) and the new staging (medium, scene, Shot, performance, light, finish) change. Describe the additions and the staging concretely, because no input image shows them.
+
 ```text
 Use case: identity-preserve
 Asset type: <selected output type>
@@ -418,7 +422,7 @@ Canvas/aspect: <ratio, crop, platform, or size intent>
 Layout contract: <subject placement, negative space, text-safe areas, panel/region structure, or "simple single-image layout">
 Input image: reference for the person's visible identity
 Primary request: <user request>
-Identity and reference transfer: <same person; face anchors; source-observed facial structure with no face redesign; temporary source pose/expression/angle/crop/perspective, selfie or screenshot capture artifacts, and source lighting not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
+Identity and reference transfer: <keep the person in the Primary Identity Anchor; each target-critical open cue and carried Visible Body Evidence named and bound to that image with no face redesign; distinctive marks and where they sit; only the additions and staging change; temporary source pose/expression/angle/crop/perspective, selfie or screenshot capture artifacts, and source lighting not to copy; required face/body-scale/angle/performance coverage marked verified, described, inferred, or missing>
 Locked intent and quality constraints: <camera perspective, projection strength, requested deformation, action, head direction, gaze, and other locked choices that cannot change silently; identity, body coherence within the selected medium, projection, and pose quality required inside them>
 First Read: <the one person, face, silhouette, action, emotion, product, or message that registers first; how composition, contrast, scale, focus, action, or spacing makes supporting elements subordinate>
 Creative direction: <style, hero hierarchy, mood, and world/setting: location, time/weather, story evidence, spatial layers, atmosphere, scale, and physical logic>
@@ -429,7 +433,7 @@ Directorial intent: <first audience impression; decisive moment; what is happeni
 Shot direction: <portrait shot direction or director shot plan; subject scale/body cutoff, composition, camera distance/angle, subject blocking, and background relationship>
 Camera/capture plan: <camera height and subject distance, perspective character and strength, allowed projection exaggeration, focus/depth distribution, photographic motion treatment when relevant, and only useful numeric cues tied to visible results>
 Perspective contract: <underlying anatomy or positively described requested medium deformation; projected proportions; which requested or near/far enlargement and foreshortening are intentional; which random, camera-inconsistent, or unrequested deformation is forbidden>
-Subject identity/anatomy: <Primary Identity Anchor role; concrete source-observed identity details the medium preserves as the person's own or uses for recognition; verified, described, inferred, or missing evidence; identity readability at the target face angle rather than rotating the person back toward camera; angle-correct facial planes; anatomically valid or coherently requested world-space head, shoulder, torso, hip, limb, and joint structure>
+Subject identity/anatomy: <Primary Identity Anchor role; medium-adapted recognition language for transferred cues; verified, described, inferred, or missing evidence; identity readability at the target face angle rather than rotating the person back toward camera; angle-correct facial planes; anatomically valid or coherently requested world-space head, shoulder, torso, hip, limb, and joint structure>
 Wardrobe/materials: <from styling-performance.md; preserve / subtly polish / replace because requested; include Character Read, makeup/hair/grooming, Story Makeup, important materials, and accessory constraints>
 Performance/props: <pose/action, expression, gaze, mouth state, hands, props, and performance complexity>
 Pose geometry: <coherent relationships among only the relevant visible support/contact, weight, pelvis, torso/shoulders, neck/head, facial plane/gaze, and separate visible left/right hand positions, body-relative orientations, thumb sides, props, and follow-through; all aligned with the locked camera>
