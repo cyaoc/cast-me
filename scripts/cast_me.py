@@ -14,20 +14,30 @@ Add `--model M` / `--effort E` to override the Codex model and reasoning effort 
 Each session directory is self-contained: the input photos are copied in as input-N,
 results land beside them, and DIR/.cast-me-session holds the Codex session id.
 SKILL.md is read when a session starts; references/ is read live.
-An empty answer or `q` pauses the session. Generated PNGs are moved out of
-$CODEX_HOME/generated_images into DIR and stripped of C2PA/XMP.
+An empty answer or `q` pauses the session. While codex works you can type as in the
+Codex TUI: Esc interrupts the turn, Enter queues the line as the next answer, and an
+unfinished line carries over to the prompt. Esc with nothing typed brings the interrupted
+message back to the prompt to edit and resend. Generated PNGs are
+moved out of $CODEX_HOME/generated_images into DIR and stripped of C2PA/XMP.
 """
 
 import argparse
+import codecs
+import fcntl
 import json
 import os
 import re
+import select
 import shlex
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
+import termios
+import threading
 import time
+import tty
 from pathlib import Path
 
 from strip_png_c2pa import PngError, strip_png_c2pa
@@ -65,39 +75,137 @@ def instructions():
     )
 
 
-def turn(cmd, record=None):
+class InputLine:
+    """What the user types while codex works, as in the Codex TUI: Esc interrupts the turn,
+    Enter queues the line as the next answer, and an unfinished line carries over to `>`.
+    Esc with nothing typed brings the interrupted message back to `>` for editing."""
+
+    def __init__(self):
+        self.text = ""
+        self.queued = []
+        self.sent = ""  # the message of the running turn
+        self.lock = threading.RLock()
+
+    def show(self, text, file=sys.stdout):
+        """Print a line above the one being typed."""
+        with self.lock:
+            if self.text:
+                self.draw("")
+            print(text, file=file, flush=True)
+            if self.text:
+                self.draw("> " + self.text)
+
+    def draw(self, row):
+        """Replace the screen row being typed on."""
+        # shortcut: one row only, so a draft wider than the terminal leaves rows behind
+        sys.stdout.write("\r\x1b[K" + row)
+        sys.stdout.flush()
+
+    def watch(self, proc, fd, interrupted):
+        decode = codecs.getincrementaldecoder("utf-8")(errors="replace").decode
+        while proc.poll() is None:
+            if not select.select([fd], [], [], 0.1)[0]:
+                continue
+            keys = decode(os.read(fd, 64))
+            with self.lock:
+                for n, key in enumerate(keys):
+                    if key == "\x1b":
+                        # arrow and function keys arrive as \x1b[... in one read: skip them
+                        if n == len(keys) - 1 and not interrupted.is_set():
+                            interrupted.set()
+                            self.show("· interrupting", sys.stderr)
+                            # codex exec treats SIGINT as an interrupt: the turn is saved as
+                            # interrupted and resumable
+                            proc.send_signal(signal.SIGINT)
+                        break
+                    if key in "\r\n":
+                        if self.text.strip():
+                            self.queued.append(self.text)
+                            self.text = ""
+                            sys.stdout.write("\n")  # the queued line stays on screen
+                    elif key in "\x7f\b":
+                        if self.text:
+                            self.text = self.text[:-1]
+                            self.draw("> " + self.text if self.text else "")
+                    elif key >= " ":
+                        sys.stdout.write(key if self.text else "> " + key)
+                        self.text += key
+                sys.stdout.flush()
+
+    def ask(self):
+        """The next answer: the lines queued during the turn, or the line typed at `>`."""
+        if self.queued:
+            answer, self.queued = "\n".join(self.queued), []
+            return answer
+        draft, self.text = self.text, ""
+        if not draft:
+            return input("> ")
+        sys.stdout.write("> ")
+        sys.stdout.flush()
+        try:  # hand the draft to the terminal so it stays editable
+            for byte in draft.encode():
+                fcntl.ioctl(sys.stdin.fileno(), termios.TIOCSTI, bytes([byte]))
+        except OSError:  # no TIOCSTI (some Linux kernels): keep the draft, though not editable
+            sys.stdout.write(draft)
+            sys.stdout.flush()
+            return draft + input()
+        return input()
+
+
+def turn(cmd, typed, record=None):
     """Run one codex turn, print its messages, and return its thread id.
 
-    `record` gets the thread id as soon as codex reports it, so an interrupted
-    first turn still leaves a session that --forget can delete.
+    `typed` takes the keys pressed meanwhile. `record` gets the thread id as soon
+    as codex reports it, so an interrupted first turn still leaves a session that
+    --forget can delete.
     """
-    print("... codex is working", file=sys.stderr, flush=True)
+    fd = sys.stdin.fileno() if sys.stdin.isatty() else None
+    typed.show("... codex is working" + (" (esc to interrupt)" if fd is not None else ""),
+               sys.stderr)
     thread_id = None
+    interrupted = threading.Event()
     # codex appends piped stdin to the prompt; the user's terminal input belongs to this script
     with tempfile.TemporaryFile("w+") as errors:
         proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
                                 stderr=errors, text=True)
-        for line in proc.stdout:
-            try:
-                event = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            kind = event.get("type")
-            item = event.get("item", {})
-            if kind == "thread.started":
-                thread_id = event["thread_id"]
-                if record:
-                    record.write_text(thread_id + "\n")
-            elif kind == "item.completed" and event["item"].get("type") == "agent_message":
-                print(event["item"]["text"] + "\n", flush=True)
-            # one line per step so a long silent turn shows it is alive; a web search
-            # only reports its query once it completes
-            elif kind == ("item.completed" if item.get("type") == "web_search" else "item.started"):
-                detail = " ".join((item.get("query") or item.get("command") or "").split())
-                print(f"· {item.get('type')} {detail[:100]}".rstrip(), file=sys.stderr, flush=True)
-            elif kind in ("turn.failed", "error"):
-                print(json.dumps(event, ensure_ascii=False), file=sys.stderr)
-        if proc.wait():
+        if fd is not None:
+            saved = termios.tcgetattr(fd)
+            tty.setcbreak(fd)  # keys arrive one by one and typed.watch echoes them
+            watcher = threading.Thread(target=typed.watch, args=(proc, fd, interrupted), daemon=True)
+            watcher.start()
+        try:
+            for line in proc.stdout:
+                try:
+                    event = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                kind = event.get("type")
+                item = event.get("item", {})
+                if kind == "thread.started":
+                    thread_id = event["thread_id"]
+                    if record:
+                        record.write_text(thread_id + "\n")
+                elif kind == "item.completed" and event["item"].get("type") == "agent_message":
+                    typed.show(event["item"]["text"] + "\n")
+                # one line per step so a long silent turn shows it is alive; a web search
+                # only reports its query once it completes
+                elif kind == ("item.completed" if item.get("type") == "web_search" else "item.started"):
+                    detail = " ".join((item.get("query") or item.get("command") or "").split())
+                    typed.show(f"· {item.get('type')} {detail[:100]}".rstrip(), sys.stderr)
+                elif kind in ("turn.failed", "error"):
+                    typed.show(json.dumps(event, ensure_ascii=False), sys.stderr)
+            proc.wait()
+        finally:
+            if fd is not None:
+                watcher.join()  # it stops reading before input() gets the terminal back
+                termios.tcsetattr(fd, termios.TCSADRAIN, saved)
+                if typed.text:
+                    typed.draw("")  # typed.ask shows it again at `>`
+                elif interrupted.is_set() and not typed.queued:
+                    # as in Codex and Claude Code: the interrupted message comes back to edit;
+                    # `>` is one line, so newlines become spaces
+                    typed.text = " ".join(typed.sent.split("\n"))
+        if proc.returncode and not interrupted.is_set():
             errors.seek(0)
             print(f"codex exited {proc.returncode}:\n{errors.read()[-2000:]}", file=sys.stderr)
     return thread_id
@@ -200,6 +308,7 @@ def main():
     # json.dumps output is a valid TOML basic string
     config = ["-c", "model=" + json.dumps(args.model),
               "-c", "model_reasoning_effort=" + json.dumps(args.effort), *CONFIG]
+    typed = InputLine()
     if thread_id:
         if args.inputs:
             parser.error(f"{out} already has a session: run with only --out to continue it, "
@@ -219,25 +328,27 @@ def main():
         for image, copy in zip(images, copies):
             shutil.copy2(image, copy)
         image_args = [arg for copy in copies for arg in ("-i", str(copy))]
+        typed.sent = request
         thread_id = turn([
             "codex", "exec", "--json", "--skip-git-repo-check", "-C", str(out),
             # json.dumps output is a valid TOML basic string
             "-c", "developer_instructions=" + json.dumps(instructions(), ensure_ascii=False),
             *config, *image_args, "--", request,
-        ], record)
+        ], typed, record)
         if not thread_id:
             sys.exit("codex did not start a session")
 
     while True:
         collect(thread_id, out)
         try:
-            answer = input("> ").strip()
+            answer = typed.ask().strip()
         except (EOFError, KeyboardInterrupt):
             break
         if answer in ("", "q"):
             break
+        typed.sent = answer
         turn(["codex", "exec", "resume", "--json", "--skip-git-repo-check", *config,
-              "--", thread_id, answer + MOVED_NOTE.format(out=out)])
+              "--", thread_id, answer + MOVED_NOTE.format(out=out)], typed)
     resume = sys.argv[0] if out.parent == DEFAULT_ROOT else f"{sys.argv[0]} --out {shlex.quote(str(out))}"
     print(f"\nsession paused, images in {out}\ncontinue with: {resume}", file=sys.stderr)
 

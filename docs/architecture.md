@@ -304,7 +304,7 @@ flowchart TD
     MISSING -- 否 --> F{"P4 是否有真实 Coverage、身份风险或文字冲突？"}
     F -- 是 --> FG["只显示当前聚焦 Gate"]
     FG --> F
-    F -- 否 --> P["P5/P6 Identity + Composition<br/>具体身份结构、First Read、Shot、Natural Retouch、输出合约"]
+    F -- 否 --> P["P5/P6 Identity + Composition<br/>点名并绑定 Anchor 的身份 cue、First Read、Shot、Natural Retouch、输出合约"]
     P --> T["P7/P8<br/>传入 Anchor；有真实控制才请求 high/稳定尺寸；生成"]
     T --> R["P9/P10<br/>先审身份，再看头像可读性、背景、造型和 Finish"]
     R --> O["P11<br/>通过则完成；失败进入 F8"]
@@ -341,7 +341,7 @@ flowchart TD
     STATE --> RISK{"P4 妆容会替换、重画或遮挡 Protected Identity Cue？"}
     RISK -- 是 --> RG["Identity Risk Gate<br/>风险按具体 cue 和处理范围限定"]
     RISK -- 否 --> PROMPT
-    RG --> PROMPT["P5/P6 提示词<br/>先写真人源图可见身份结构，再写角色妆容、发型和服装"]
+    RG --> PROMPT["P5/P6 提示词<br/>先声明保留 Anchor 里的人并点名绑定其 cue 与体型，只有添加项和新场景改变，再写角色妆容、发型和服装"]
     PROMPT --> INPUTS["P7 参考角色分工<br/>真人 Anchor 必须实际输入；角色图若输入则标注 styling-only"]
     INPUTS --> GEN["P8 生成"]
     GEN --> IR{"P9 先与真人 Anchor 做 Identity Review"}
@@ -350,7 +350,7 @@ flowchart TD
     SR --> O["P11<br/>全部通过才完成"]
 ```
 
-关键不变量：妆容改变颜料、线条、质感、覆盖方式和修饰，不授权放大眼睛、缩鼻、改唇形、改下颌、换肤色或改变年龄感。源图已有妆容但来源未知时，它是 Reference Appearance；只有目标需要的身份 cue 被遮挡才形成 Appearance Coverage 缺口。
+关键不变量：妆容改变颜料、线条、质感、覆盖方式和修饰，不授权放大眼睛、缩鼻、改唇形、改下颌、换肤色或改变年龄感。源图已有妆容但来源未知时，它是 Reference Appearance；只有目标需要的身份 cue 被遮挡才形成 Appearance Coverage 缺口。源数量就是 Anchor 所示的数量，无论它是否经过妆容、美颜滤镜或拍摄处理；对 open cue 和 Medium Contract 仍承载的 Visible Body Evidence，它是双向目标：既不向美颜理想推，也不向平均脸或平均体型回归。
 
 ### F4. 全身动作与证据缺失
 
@@ -371,6 +371,10 @@ flowchart TD
     FAIL -- 否 --> LOCAL["一个可靠局部缺陷<br/>进入 F8 恢复分类"]
     FAIL -- 是 --> REGEN["Structural Scale Failure / 非局部失败<br/>从 Anchor + 锁定 Brief 重生成，失败图不得作为比例或构图证据"]
 ```
+
+Anchor 里的脸只是弱可见（画面中很小、明显歪头或转头、部分遮挡、重度磨皮或被贴纸包围）时不算 Coverage 缺口：随第一个 Choice Gate 用一行说明相似度受这张图限制、补一两张更清晰的同人照片会更像；这是预期说明，不是提问或 Gate。
+
+只要 Medium Contract 还留有 open 的结构性 cue，全身或其他让脸在画面中变小的 Shot 选项就在选项文字里写明脸会变小、相似度更难保持；这是选项内的预期说明，不新增提问或风险 Gate。
 
 Coverage 抑制按 channel 而不是整块身体区域判断：`closed` channel 不进入缺失证据路径；最短比例不追问无法携带的源图身形，但鞋、特征服装、站姿方向和重心位置仍可触发正常 Gate。Inference Boundary 只允许推断逐项列出的未知区域或事实；它不会把已验证身体证据改成可变项，也不能替代 Primary Identity Anchor。
 
@@ -584,7 +588,7 @@ flowchart TD
 ### 提示词合成顺序
 
 1. 用途、画布、布局。
-2. Primary Identity Anchor、源图可见身份结构、Reference Transfer、Coverage，以及显式 Deformation Tier/Custom 所解析的 open / transferred 通道和可表达身体证据；比例、圆润度、简化、五官位置、手部与身体曲线都用正面绘制语言；应用或批次随后标注 Character Sheet 的绘制设计角色，Anchor 仍是唯一身份来源；另一人的 artwork/photo style reference 只标注渲染用途，绝不当人物、年龄或身体身份；closed-channel 与身形损失说明不进入提示词。
+2. Primary Identity Anchor 与改动边界（保留这个人，只有添加项与新场景改变）；Anchor 清晰可见的 open cue 和身体证据只点名并绑定到参考图，形状不用形容词转述，文字只写标志物及其位置、described / inferred 证据与 transferred cue；Reference Transfer、Coverage，以及显式 Deformation Tier/Custom 所解析的 open / transferred 通道和可表达身体证据；比例、圆润度、简化、五官位置、手部与身体曲线都用正面绘制语言；应用或批次随后标注 Character Sheet 的绘制设计角色，Anchor 仍是唯一身份来源；另一人的 artwork/photo style reference 只标注渲染用途，绝不当人物、年龄或身体身份；closed-channel 与身形损失说明不进入提示词；源数量正面写出并绑定到参考图，Anchor 的滤镜/美颜/妆容状态、任何美颜滤镜字样、未见基线声明，以及与 Anchor 所示方向相同的否定句同样不进入生成或修订提示词。
 3. 单独记录的绘制风格化强度；需要表现运动时再单独写 Drawn Motion Convention；随后用可见语言写 line、surface coloring、colour logic、eye rendering、texture、background，再写其他已锁意图、First Read、创意方向和决定性时刻。已选择的具名 look 只按普通锁规则提供其选项明示的六轴起点，不改写 Tier、强度、Drawn Motion Convention 或未明示的轴；艺术家/流派/陌生词不进入生产提示词。
 4. Shot、相机/透视、世界空间人体与投影比例。
 5. Styling、Performance、Props、Pose Geometry；只写画面内相关节点，两手可见并参与动作时分别写左/右手位置、相对身体朝向和拇指侧；只有 Tier 与用途需要时才提高假定 mannerism 的识别权重。
@@ -656,7 +660,7 @@ flowchart TD
 | 109 | F8 | 用户接受 Recovery Offer 后才执行恢复；复审通过才完成，仍失败就具体报告并停止 |
 | 110 | F8 | 通过或不可查结果不伪装完成；失败结果的 Recovery Offer 不得退化成完成后的可选美容微调 |
 | 111-112 | F8 | 风险范围与尽力而为 |
-| 113-115 | F3 | 源图身份细节优先、角色不供脸、妆容形容词不改结构 |
+| 113-115 | F3 | Anchor 所示 cue 点名绑定优先且不转述形状、角色不供脸、妆容形容词不改结构 |
 | 116-117 | F6 | 裁切与服装锁冲突、扩裁触发新 Coverage |
 | 118 | F8 | 干净呈现不能替代 Identity Review；明确失败只交付 Recovery Offer 或走重附边界 |
 | 119 | F2 | 普通 Gate 的全局默认捷径 |
@@ -695,6 +699,10 @@ flowchart TD
 | 159 | F1 | 请求里的 look 名不定档位，仍开 Deformation Tier gate；具体头身比直接锁；绘制角色下其他 gate 选项不得夹带比例；style state 不完整时 Readout 仍交付并写明未解决项；摄影线不受影响，Perspective Intent 照旧且不交付未解决清单 |
 | 160 | F4 | 创意 Gate 与输出类型 Gate 给 A–D 四个具体方案加 E) Custom；Coverage 等聚焦 Gate 仍为 A–C 加 D) Custom；可交付方案不足时用 stop path 补位而不凑数，Custom 永远是最后一个字母 |
 | 161 | F4 | 用户明确点名的多人各自一个 Primary Identity Anchor；不拒绝、不丢人、不降为风格/造型参考；提示词逐人绑定图与画面位置；Identity Review 逐人判定且特征串人算双方漂移；单张绘制多人不需要 Character Sheet；多人绘制组图每人一张 Sheet，只出现在一人身上的共同缺陷只重生成该人的 Sheet |
+| 162 | F3 | 美颜 Anchor 以所示数量为双向目标：清晰可见的 cue 按所示数量 verified，只有被滤镜抹掉的才 unverified；提示词正面绑定参考图，不写滤镜/妆容状态、美颜滤镜字样、未见基线声明或同向否定句；绘制角色只对 open cue 与仍承载的身体证据适用 |
+| 163 | F4 | 全身 Shot 选项自身写明脸变小、相似度更难保持；不新增提问或风险 Gate；没有 open 结构性 cue 的绘制角色不写 |
+| 164 | F3 | 提示词先声明保留 Anchor 里的人、点名绑定脸部 cue 与身体关系，并写明只有添加项和新场景改变；角色添加项与场景用文字具体描述；清晰可见的 cue 不写形状形容词；绘制角色的 transferred cue 仍用媒介识别语言 |
+| 165 | F4 | Anchor 里脸只是弱可见时不算 Coverage 缺口：随第一个 Gate 说明一次相似度受限、可补一两张更清晰的同人照片；不新增提问或 Gate，不重复；补图标为 supporting person reference |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -716,15 +724,15 @@ flowchart TD
 
 | 资产 | 当前规模 |
 | --- | ---: |
-| `SKILL.md` | 4,682 词 |
-| `composition-director.md` | 8,692 词 |
-| `identity-anchor.md` | 7,673 词 |
-| `styling-performance.md` | 3,108 词 |
+| `SKILL.md` | 4,683 词 |
+| `composition-director.md` | 8,873 词 |
+| `identity-anchor.md` | 8,006 词 |
+| `styling-performance.md` | 3,115 词 |
 | `scoped-option-refresh.md` | 864 词 |
-| 运行时 Markdown 合计 | 25,019 词 |
+| 运行时 Markdown 合计 | 25,541 词 |
 | `CONTEXT.md` | 43 个规范术语，2,310 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 161 个场景，21,155 词 |
+| `golden-conversations.md` | 165 个场景，21,893 词 |
 
 ### 优化优先级
 
