@@ -588,10 +588,10 @@ flowchart TD
 ### 提示词合成顺序
 
 1. 用途、画布、布局。
-2. Primary Identity Anchor 与改动边界（保留这个人，只有添加项与新场景改变）；Anchor 清晰可见的 open cue 和身体证据只点名并绑定到参考图，形状不用形容词转述，文字只写标志物及其位置、described / inferred 证据与 transferred cue；Reference Transfer、Coverage，以及显式 Deformation Tier/Custom 所解析的 open / transferred 通道和可表达身体证据；比例、圆润度、简化、五官位置、手部与身体曲线都用正面绘制语言；应用或批次随后标注 Character Sheet 的绘制设计角色，Anchor 仍是唯一身份来源；另一人的 artwork/photo style reference 只标注渲染用途，绝不当人物、年龄或身体身份；closed-channel 与身形损失说明不进入提示词；源数量正面写出并绑定到参考图，Anchor 的滤镜/美颜/妆容状态、任何美颜滤镜字样、未见基线声明，以及与 Anchor 所示方向相同的否定句同样不进入生成或修订提示词。
+2. Primary Identity Anchor 与改动边界（保留这个人，只有添加项与新场景改变；仍有 open 结构性 cue 时先声明脸部相似度是第一优先、排在造型精致度、服装细节和场景细节之前，媒介和 look 只改表面、材质、光线和场景）；Anchor 清晰可见的 open cue 和身体证据只点名并绑定到参考图，除五官本身外也点名它们之间的关系（每只眼的宽高关系、鼻梁长宽、嘴宽相对双眼与脸、下巴形状及其与嘴的距离），形状不用形容词转述，文字只写标志物及其位置、described / inferred 证据与 transferred cue；Reference Transfer、Coverage，以及显式 Deformation Tier/Custom 所解析的 open / transferred 通道和可表达身体证据；比例、圆润度、简化、五官位置、手部与身体曲线都用正面绘制语言；应用或批次随后标注 Character Sheet 的绘制设计角色，Anchor 仍是唯一身份来源；另一人的 artwork/photo style reference 只标注渲染用途，绝不当人物、年龄或身体身份；closed-channel 与身形损失说明不进入提示词；源数量正面写出并绑定到参考图，Anchor 的滤镜/美颜/妆容状态、任何美颜滤镜字样、未见基线声明，以及与 Anchor 所示方向相同的否定句同样不进入生成或修订提示词。
 3. 单独记录的绘制风格化强度；需要表现运动时再单独写 Drawn Motion Convention；随后用可见语言写 line、surface coloring、colour logic、eye rendering、texture、background，再写其他已锁意图、First Read、创意方向和决定性时刻。已选择的具名 look 只按普通锁规则提供其选项明示的六轴起点，不改写 Tier、强度、Drawn Motion Convention 或未明示的轴；艺术家/流派/陌生词不进入生产提示词。
 4. Shot、相机/透视、世界空间人体与投影比例。
-5. Styling、Performance、Props、Pose Geometry；只写画面内相关节点，两手可见并参与动作时分别写左/右手位置、相对身体朝向和拇指侧；只有 Tier 与用途需要时才提高假定 mannerism 的识别权重。
+5. Styling、Performance、Props、Pose Geometry；表情与 Anchor 不同时写明由哪些部位承载（如视线和轻微眉部），眼睑轮廓与嘴宽、唇形仍绑定参考图；只写画面内相关节点，两手可见并参与动作时分别写左/右手位置、相对身体朝向和拇指侧；只有 Tier 与用途需要时才提高假定 mannerism 的识别权重。
 6. 有动机的灯光/色彩与 First-Pass Finish；对绘制输出，它实现已锁 palette/texture，而 diffusion、bloom、flare、bokeh、eye-highlight strength 等 optical controls 不改写 surface coloring 或 Texture 轴。
 7. 精确文字允许集、平台和交付约束；组图写明 item 顺序或 panel 组织、一致尺寸、批次/回退路径与必要的下游 cutout。
 8. 约 3–8 个本次最可能发生且可观察的失败约束；只有两手都可见并参与动作时才选择 duplicated handedness。
@@ -703,6 +703,8 @@ flowchart TD
 | 163 | F4 | 全身 Shot 选项自身写明脸变小、相似度更难保持；不新增提问或风险 Gate；没有 open 结构性 cue 的绘制角色不写 |
 | 164 | F3 | 提示词先声明保留 Anchor 里的人、点名绑定脸部 cue 与身体关系，并写明只有添加项和新场景改变；角色添加项与场景用文字具体描述；清晰可见的 cue 不写形状形容词；绘制角色的 transferred cue 仍用媒介识别语言 |
 | 165 | F4 | Anchor 里脸只是弱可见时不算 Coverage 缺口：随第一个 Gate 说明一次相似度受限、可补一两张更清晰的同人照片；不新增提问或 Gate，不重复；补图标为 supporting person reference |
+| 166 | F3 | 仍有 open 结构性 cue 时提示词先声明脸部相似度第一优先、排在造型精致度、服装细节和场景细节之前，媒介只改表面材质与场景；除五官外点名并绑定五官间关系（眼睛宽高、鼻梁长宽、嘴宽相对双眼与脸、下巴与嘴的距离），不转述成形状形容词；没有 open 结构性 cue 的绘制角色不写此声明 |
+| 167 | F3 | 表情与 Anchor 不同时写明由视线和轻微眉部承载，眼睑轮廓、嘴宽与唇形绑定参考图；大喊等必须动嘴或眯眼的表情从 Anchor 自身形状出发；复审时表情解释不了的眼睑或嘴宽变化算漂移 |
 
 当前编号场景没有单独覆盖安全 Gate 或生成工具安全拒绝；F9 的安全分支来自运行时合约和 Shared Checks。只有后续安全行为发生变更时，才增加最小专门 Golden 场景。
 
@@ -725,14 +727,14 @@ flowchart TD
 | 资产 | 当前规模 |
 | --- | ---: |
 | `SKILL.md` | 4,683 词 |
-| `composition-director.md` | 8,873 词 |
-| `identity-anchor.md` | 8,006 词 |
+| `composition-director.md` | 8,938 词 |
+| `identity-anchor.md` | 8,179 词 |
 | `styling-performance.md` | 3,115 词 |
 | `scoped-option-refresh.md` | 864 词 |
-| 运行时 Markdown 合计 | 25,541 词 |
+| 运行时 Markdown 合计 | 25,779 词 |
 | `CONTEXT.md` | 43 个规范术语，2,310 词 |
 | `docs/adr/` | 11 条 ADR |
-| `golden-conversations.md` | 165 个场景，21,893 词 |
+| `golden-conversations.md` | 167 个场景，22,198 词 |
 
 ### 优化优先级
 
